@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include 'includes/head.php';?>
-
+<?php require '../db/db_conn.php';
+include 'includes/head.php';?>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
@@ -16,7 +16,10 @@
   <?php
   if(!isset($_GET['page']) && empty($_GET['page'])){
     include './page/dashboard/index.php';
-  }else{
+  }elseif((isset($_GET['page']) && $_GET['page'] == 'product')){
+    include './page/product/index.php';
+  }
+  else{
     include './page/not_found.php';
   };
   ?>
