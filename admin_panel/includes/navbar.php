@@ -11,7 +11,7 @@
       <a href="#" class="nav-link">Contact</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="../" class="nav-link">BC Game Store</a>
+      <a href="../" class="nav-link">Go back to test page</a>
     </li>
   </ul>
 
