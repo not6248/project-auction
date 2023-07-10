@@ -15,6 +15,7 @@
 | `Register` | ![](https://geps.dev/progress/0) | :x: |
 | `Login` | ![](https://geps.dev/progress/0) | :x: |
 | `Data Base` | ![](https://geps.dev/progress/15) | :x: |
+| `UX/UI` | ![](https://geps.dev/progress/2) | :x: |
 
 #### Admin panel (backend)
 
