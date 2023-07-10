@@ -1,20 +1,36 @@
 # project-auction
 การพัฒนาระบบประมูลของสะสมออนไลน์ กรณีศึกษาการประมูลแผ่นเสียงไวนิล\
 (เป็นภาพ mockup ต้นแบบเท่านั้น ยังต้องแก้ไขอีกมาก)
+<p align="center">
+<img src="https://github.com/not6248/project-auction/assets/96365700/dd621c09-a92e-4af8-a062-002db9682edf" width=75%>
+</p>
 
-<img src="https://github.com/not6248/project-auction/assets/96365700/dd621c09-a92e-4af8-a062-002db9682edf" width=65%>
 ## Features
-- Light/dark mode toggle
-- Live previews
-- Fullscreen mode
-- Cross platform
-
 
 ## ความคืบหน้า Features 
+#### Global
 
-#### ความคืบหน้า
+| Features | ความคืบหน้า | เสร็จ
+| :-------- | :------- | :------- |
+| `Register` | ![](https://geps.dev/progress/0) | :x: |
+| `Login` | ![](https://geps.dev/progress/0) | :x: |
+| `Data Base` | ![](https://geps.dev/progress/15) | :x: |
 
-| Features | ความคืบหน้า    
-| :-------- | :------- |
-| `Login` | ![](https://geps.dev/progress/10) | 
+#### Admin panel (backend)
 
+| Features | ความคืบหน้า | เสร็จ
+| :-------- | :------- | :------- |
+| `Delete` | ![](https://geps.dev/progress/0) | :x: |
+ `-delete img` | ![](https://geps.dev/progress/0) | :x: |
+| `ADD` | ![](https://geps.dev/progress/0) | :x: |
+| `-add img` | ![](https://geps.dev/progress/0) | :x: |
+| `Edit` | ![](https://geps.dev/progress/0) | :x: |
+| `-edit Product` | ![](https://geps.dev/progress/0) | :x: |
+| `-edit User` | ![](https://geps.dev/progress/0) | :x: |
+
+
+#### home page (fontend)
+
+| Features | ความคืบหน้า | เสร็จ
+| :-------- | :------- | :------- |
+| `ประมูล` | ![](https://geps.dev/progress/0) | :x: |
