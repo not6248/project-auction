@@ -3,7 +3,7 @@
 
 <?php include 'includes/head.php'; ?>
 <style>
-    *{
+    * {
         font-family: 'Kanit', sans-serif;
     }
 </style>
@@ -23,7 +23,7 @@
                             <form class="text-center" action="login_check.php" method="post">
                                 <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email"></div>
                                 <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Password"></div>
-                                <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit">Login</button></div>
+                                <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit" name="admin_login">Login</button></div>
                             </form>
                         </div>
                     </div>
@@ -31,8 +31,17 @@
             </div>
         </div>
     </section>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <a class="btn btn-primary" href="index.php">Back to test page</a>
+    <h5>
+        <p>user_id : 1</p>
+        <p>username : admin</p>
+        <p>password : admin0000</p>
+        <p>firstname : admin</p>
+        <p>email : admin@admin.com</p>
+        <p>user_type : 1</p>
+        <p>status : 1</p>
+        <p>email_verified : 0</p>
+    </h5>
+    <a class="btn btn-primary" href="../index.php">Back to test page</a>
     <?php include 'includes/scripts.php'; ?>
 </body>
 
