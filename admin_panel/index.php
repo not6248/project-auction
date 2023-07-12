@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php require '../db/db_conn.php';
-include 'includes/head.php';?>
+<?php include 'includes/head.php';?>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
