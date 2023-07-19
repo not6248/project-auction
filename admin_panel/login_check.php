@@ -25,6 +25,8 @@
 
                 if(mysqli_num_rows($result) == 1 ){
                     $row = mysqli_fetch_assoc($result);
+                    $_SESSION['admin_login'] = $row['user_id'];
+                    header("location: index.php");
                     echo "<script>console.log('Login สำเร็จ');</script>";
                 }else{
                     echo"<script>alert('Email หรือ รหัสไม่ถูก')</script>";
