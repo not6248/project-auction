@@ -9,6 +9,14 @@ session_start(); ?>
   <a type="" class="btn btn-primary" href="index.php?LoginByPass">Admin Login (login bypass)</a>
   <a class="btn btn-primary" href="admin_panel/login.php">Admin Login Page</a>
   <a class="btn btn-primary" href="admin_panel">User Page</a>
+
+  <br><br><br>
+  <form action="send_mail.php" method="post">
+    Email <input type="email" name="email"> <br>
+    หัวเรื่อง <input type="text" name="subject"><br>
+    ข้อความ <input type="text" name="message" ><br>
+    <button type="submit" name="send" >ส่ง</button>
+  </form>
   <?php include 'includes/scripts.php'; ?>
 
   <?php
