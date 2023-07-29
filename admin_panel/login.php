@@ -38,14 +38,14 @@
         </div>
     </section>
     <h5>
+        <p>===========================</p>
+        <p>email : admin@admin.com</p>
+        <p>password : admin0000</p>
+        <p>===========================</p>
         <p>user_id : 1</p>
         <p>username : admin</p>
-        <p>password : admin0000</p>
         <p>firstname : admin</p>
-        <p>email : admin@admin.com</p>
         <p>user_type : 1</p>
-        <p>status : 1</p>
-        <p>email_verified : 0</p>
     </h5>
     <a class="btn btn-primary" href="../index.php">Back to test page</a>
     <?php include 'includes/scripts.php'; ?>
