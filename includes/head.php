@@ -6,16 +6,22 @@
     <title>Document</title>
 
     <!-- main CSS ============================================================-->
-    <link rel="stylesheet" href="dist/css/main.css">
+    <link rel="stylesheet" href="assets/css/main.css">
     <!-- ----------------------------------------------------------------------->
 
     <!-- bootstrap CSS =======================================================-->
-    <link rel="stylesheet" href="dist/css/bootstrapCSS/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <!-- ----------------------------------------------------------------------->
     
     <!-- jquery ==============================================================-->
-    <script src="dist/js/jquery-3.7.0.min.js"></script>
+    <script src="assets/js/jquery-3.7.0.min.js"></script>
     <!-- ----------------------------------------------------------------------->
-    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+Thambi+2&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Berkshire+Swash&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit&amp;display=swap">
+    <link rel="stylesheet" href="assets/css/bs-theme-overrides.css">
+    <link rel="stylesheet" href="assets/css/Navbar-Right-Links-icons.css">
+    <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
     
 </head>

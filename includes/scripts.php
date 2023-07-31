@@ -1,3 +1,3 @@
 <script 
-src="dist/js/bootstrapJS/bootstrap.bundle.min.js">
+src="assets/bootstrap/js/bootstrap.bundle.min.js">
 </script>
