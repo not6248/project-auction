@@ -1,0 +1,12 @@
+@media (min-width: 768px) {
+  .input-group {
+    width: 270px;
+  }
+}
+
+@media (min-width: 992px) {
+  .input-group {
+    width: 494px;
+  }
+}
+
