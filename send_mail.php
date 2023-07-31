@@ -37,3 +37,4 @@ if(isset($_POST['send'])){
         echo 'ไม่สามารถส่งอีเมลได้: ' . $mail->ErrorInfo;
     }
 }
+?>
