@@ -13,10 +13,10 @@
 | Features | ความคืบหน้า | เสร็จ
 | :-------- | :------- | :------- |
 | `Register` | ![](https://geps.dev/progress/0) | :x: |
-| `ยืนยันการสมัครสมาชิกทางอีเมล์` | ![](https://geps.dev/progress/0) | :x: |
-| `Login` | ![](https://geps.dev/progress/0) | :x: |
+| `ยืนยันการสมัครสมาชิกทางอีเมล์` | ![](https://geps.dev/progress/5) | :x: |
+| `Login` | ![](https://geps.dev/progress/10) | :x: |
 | `Data Base` | ![](https://geps.dev/progress/15) | :x: |
-| `UX/UI` | ![](https://geps.dev/progress/2) | :x: |
+| `UX/UI` | ![](https://geps.dev/progress/20) | :x: |
 
 
 #### Admin panel (backend)
@@ -36,4 +36,4 @@
 
 | Features | ความคืบหน้า | เสร็จ
 | :-------- | :------- | :------- |
-| `ประมูล` | ![](https://geps.dev/progress/0) | :x: |
+| `ประมูล` | ![](https://geps.dev/progress/10) | :x: |
