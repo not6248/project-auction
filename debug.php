@@ -6,7 +6,7 @@ session_start(); ?>
 <body>
   <h1>ทดสอบ</h1><br>
   <a class="btn btn-primary" href="admin_panel">Admin Login (no login bypass)</a>
-  <a type="" class="btn btn-primary" href="index.php?LoginByPass">Admin Login (login bypass)</a>
+  <a type="" class="btn btn-primary" href="debug.php?LoginByPass">Admin Login (login bypass)</a>
   <a class="btn btn-primary" href="admin_panel/login.php">Admin Login Page</a>
   <a class="btn btn-primary" href="admin_panel">User Page</a>
 
