@@ -16,10 +16,10 @@ body {
   z-index: 2;
 }
 
-#page-container {
+/* #page-container {
   position: relative;
   min-height: 80vh;
-}
+} */
 
 /* .form-signin input[type="email"] {
   margin-bottom: -1px;
@@ -115,7 +115,7 @@ body {
             <button class="btn btn-primary w-100 py-2" type="submit">Sign Up</button>
         </form>
     </main>
-    <footer class="text-center bg-dark ">
+    <footer class="fixed-bottom text-center bg-dark ">
         <div class="container text-white py-4 py-lg-5 pb-xl-2 mt-xl-0 pt-xl-3">
             <ul class="list-inline">
                 <li class="list-inline-item me-4"><a class="link-light" href="#">Web design</a></li>
