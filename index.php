@@ -2,14 +2,25 @@
 <html data-bs-theme="light" lang="en">
 
 <?php include './includes/head.php'; ?>
+<style>
+    input[type=text]:focus {
+        border: 1px solid #1c62b9;
+        box-shadow: none;
+        margin-left: 0px;
+    }
+</style>
 
 <body style="background: rgb(255,255,255);">
     <nav class="navbar navbar-expand-md bg-body py-3" style="box-shadow: 0px 0px 8px rgba(33,37,41,0.1);">
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><img src="assets/img/logo.png" width="30" height="37"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-2">
-                <div class="input-group me-auto ms-0 pe-0 me-5 me-sm-5 me-md-0 pe-md-3 pe-lg-5 me-xl-0 pe-xl-0" "><input class=" form-control search ms-0" type="text" placeholder="Search..."><button class="btn btn-primary" type="button"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style="font-size: 20px;" class="me-md-2">
+                <div class="input-group me-auto ms-0 pe-0 me-5 me-sm-5 me-md-0 pe-md-3 pe-lg-5 me-xl-0 pe-xl-0" ">
+                <input class=" form-control search ms-0" type="text" placeholder="Search...">
+                    <button class="btn btn-primary" type="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" style="font-size: 20px;" class="me-md-2">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M18.319 14.4326C20.7628 11.2941 20.542 6.75347 17.6569 3.86829C14.5327 0.744098 9.46734 0.744098 6.34315 3.86829C3.21895 6.99249 3.21895 12.0578 6.34315 15.182C9.22833 18.0672 13.769 18.2879 16.9075 15.8442C16.921 15.8595 16.9351 15.8745 16.9497 15.8891L21.1924 20.1317C21.5829 20.5223 22.2161 20.5223 22.6066 20.1317C22.9971 19.7412 22.9971 19.1081 22.6066 18.7175L18.364 14.4749C18.3493 14.4603 18.3343 14.4462 18.319 14.4326ZM16.2426 5.28251C18.5858 7.62565 18.5858 11.4246 16.2426 13.7678C13.8995 16.1109 10.1005 16.1109 7.75736 13.7678C5.41421 11.4246 5.41421 7.62565 7.75736 5.28251C10.1005 2.93936 13.8995 2.93936 16.2426 5.28251Z" fill="currentColor"></path>
-                        </svg></button></div>
+                        </svg></button>
+                </div>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="debug.php" style="font-weight: bold;font-size: 16px;">debug.php</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#" style="font-weight: bold;font-size: 16px;">Home</a></li>
@@ -60,7 +71,7 @@
             <div class="col-md-6 col-lg-4 col-xl-4 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-start align-items-center justify-content-md-start justify-content-xl-center ps-sm-0 me-sm-0 pe-sm-0 ms-sm-0 div-hero1" style="height: 450px;">
                 <div class="text-start mt-xl-5 pt-xl-0 ms-xl-4 ms-sm-5 ms-4 ps-md-0 ms-md-4" style="max-width: 350px;width: 365.641px;height: 241.781px;">
                     <h1 class="text-uppercase fw-bold" style="font-family: Kanit, sans-serif;">Vinyl is old<br>But&nbsp;&nbsp;<span style="color: #FFB800;">GOld</span></h1>
-                    <p  class="my-3" style="font-family: Kanit, sans-serif;font-size: 19px;">best auction site<br>Collected and selected for you.</p><a class="btn btn-dark btn-lg me-2" role="button" href="#product" style="font-family: 'Berkshire Swash', serif;">View Collection</a>
+                    <p class="my-3" style="font-family: Kanit, sans-serif;font-size: 19px;">best auction site<br>Collected and selected for you.</p><a class="btn btn-dark btn-lg me-2" role="button" href="#product" style="font-family: 'Berkshire Swash', serif;">View Collection</a>
                 </div>
             </div>
             <div class="col-md-6 col-lg-3 col-xl-4 d-none d-sm-none d-md-none d-lg-inline d-xl-flex align-items-xl-center" style="height: 450px;background: #D6FFCF;border-top-right-radius: 0px;border-bottom-right-radius: 0px;box-shadow: inset 0px 0px 17px rgba(33,37,41,0.1);">
@@ -83,142 +94,27 @@
                 <div class="col"><button class="btn btn-primary mt-2 me-2" type="button" style="box-shadow: 0px 0px 6px rgba(13,110,253,0.46);">Historical Vinyls</button><button class="btn btn-light mt-2 me-2" type="button" style="box-shadow: 0px 0px 11px rgba(0,0,0,0.2);">Genre Vinyls</button><button class="btn btn-light mt-2 me-2" type="button" style="box-shadow: 0px 0px 11px rgba(0,0,0,0.2);">Artist Vinyls</button><button class="btn btn-light mt-2 me-2" type="button" style="box-shadow: 0px 0px 11px rgba(0,0,0,0.2);">Collector’s Vinyls</button></div>
             </div>
             <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3 mb-xl-4">
-                <div class="col-sm-6 col-lg-4 col-xl-3">
-                    <div class="card hover-p"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                        <div class="card-body p-4 ps-xl-2 pe-xl-2">
-                            <h4 class="card-title" style="font-size: 18px;font-family: 'Baloo Thambi 2', serif;font-weight: bold;">EyeHateGod Exclusive Brown </h4>
-                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio,&nbsp;</p>
-                            <div class="row mb-3" style="color: rgb(13,110,253);">
-                                <div class="col-6 col-xl-6">
-                                    <h6 style="font-family: Kanit, sans-serif;font-weight: bold;" class="mb-xl-0 pb-xl-2">ราคาปัจจุบัน</h6><span style="font-family: Kanit, sans-serif;">1,000 ฿</span>
+                <?php
+                for ($i = 0; $i < 12; $i++) : ?>
+                    <div class="col-sm-6 col-lg-4 col-xl-3">
+                        <div class="card hover-p"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
+                            <div class="card-body p-4 ps-xl-2 pe-xl-2">
+                                <h4 class="card-title" style="font-size: 18px;font-family: 'Baloo Thambi 2', serif;font-weight: bold;">EyeHateGod Exclusive Brown </h4>
+                                <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio,&nbsp;</p>
+                                <div class="row mb-3" style="color: rgb(13,110,253);">
+                                    <div class="col-6 col-xl-6">
+                                        <h6 style="font-family: Kanit, sans-serif;font-weight: bold;" class="mb-xl-0 pb-xl-2">ราคาปัจจุบัน</h6><span style="font-family: Kanit, sans-serif;">1,000 ฿</span>
+                                    </div>
+                                    <div class="col-6 col-xl-6 text-end">
+                                        <h6 style="font-family: Kanit, sans-serif;font-weight: bold;" class="mb-xl-0 pb-xl-2">เวลาที่เหลือ</h6><span style="font-family: Kanit, sans-serif;">xx:xx:xx</span>
+                                    </div>
                                 </div>
-                                <div class="col-6 col-xl-6 text-end">
-                                    <h6 style="font-family: Kanit, sans-serif;font-weight: bold;" class="mb-xl-0 pb-xl-2">เวลาที่เหลือ</h6><span style="font-family: Kanit, sans-serif;">xx:xx:xx</span>
-                                </div>
+                                <div class="d-flex"><button class="btn btn-dark" type="button" style="font-weight: bold;width: 100%;">Start Bidding</button></div>
                             </div>
-                            <div class="d-flex"><button class="btn btn-dark" type="button" style="font-weight: bold;width: 100%;">Start Bidding</button></div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xl-3">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                        <div class="card-body p-4 ps-xl-2 pe-xl-2">
-                            <h4 class="card-title" style="font-size: 18px;font-family: 'Baloo Thambi 2', serif;font-weight: bold;">EyeHateGod Exclusive Brown </h4>
-                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio,&nbsp;</p>
-                            <div class="row mb-3" style="color: rgb(13,110,253);">
-                                <div class="col-6 col-xl-6">
-                                    <h6 style="font-family: Kanit, sans-serif;font-weight: bold;" class="mb-xl-0 pb-xl-2">ราคาปัจจุบัน</h6><span style="font-family: Kanit, sans-serif;">1,000 ฿</span>
-                                </div>
-                                <div class="col-6 col-xl-6 text-end">
-                                    <h6 style="font-family: Kanit, sans-serif;font-weight: bold;" class="mb-xl-0 pb-xl-2">เวลาที่เหลือ</h6><span style="font-family: Kanit, sans-serif;">xx:xx:xx</span>
-                                </div>
-                            </div>
-                            <div class="d-flex"><button class="btn btn-dark" type="button" style="font-weight: bold;width: 100%;">Start Bidding</button></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xl-3">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                        <div class="card-body p-4 ps-xl-2 pe-xl-2">
-                            <h4 class="card-title" style="font-size: 18px;font-family: 'Baloo Thambi 2', serif;font-weight: bold;">EyeHateGod Exclusive Brown </h4>
-                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio,&nbsp;</p>
-                            <div class="row mb-3" style="color: rgb(13,110,253);">
-                                <div class="col-6 col-xl-6">
-                                    <h6 style="font-family: Kanit, sans-serif;font-weight: bold;" class="mb-xl-0 pb-xl-2">ราคาปัจจุบัน</h6><span style="font-family: Kanit, sans-serif;">1,000 ฿</span>
-                                </div>
-                                <div class="col-6 col-xl-6 text-end">
-                                    <h6 style="font-family: Kanit, sans-serif;font-weight: bold;" class="mb-xl-0 pb-xl-2">เวลาที่เหลือ</h6><span style="font-family: Kanit, sans-serif;">xx:xx:xx</span>
-                                </div>
-                            </div>
-                            <div class="d-flex"><button class="btn btn-dark" type="button" style="font-weight: bold;width: 100%;">Start Bidding</button></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xl-3">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                        <div class="card-body p-4 ps-xl-2 pe-xl-2">
-                            <h4 class="card-title" style="font-size: 18px;font-family: 'Baloo Thambi 2', serif;font-weight: bold;">EyeHateGod Exclusive Brown </h4>
-                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio,&nbsp;</p>
-                            <div class="row mb-3" style="color: rgb(13,110,253);">
-                                <div class="col-6 col-xl-6">
-                                    <h6 style="font-family: Kanit, sans-serif;font-weight: bold;" class="mb-xl-0 pb-xl-2">ราคาปัจจุบัน</h6><span style="font-family: Kanit, sans-serif;">1,000 ฿</span>
-                                </div>
-                                <div class="col-6 col-xl-6 text-end">
-                                    <h6 style="font-family: Kanit, sans-serif;font-weight: bold;" class="mb-xl-0 pb-xl-2">เวลาที่เหลือ</h6><span style="font-family: Kanit, sans-serif;">xx:xx:xx</span>
-                                </div>
-                            </div>
-                            <div class="d-flex"><button class="btn btn-dark" type="button" style="font-weight: bold;width: 100%;">Start Bidding</button></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xl-3">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                        <div class="card-body p-4 ps-xl-2 pe-xl-2">
-                            <h4 class="card-title" style="font-size: 18px;font-family: 'Baloo Thambi 2', serif;font-weight: bold;">EyeHateGod Exclusive Brown </h4>
-                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio,&nbsp;</p>
-                            <div class="row mb-3" style="color: rgb(13,110,253);">
-                                <div class="col-6 col-xl-6">
-                                    <h6 style="font-family: Kanit, sans-serif;font-weight: bold;" class="mb-xl-0 pb-xl-2">ราคาปัจจุบัน</h6><span style="font-family: Kanit, sans-serif;">1,000 ฿</span>
-                                </div>
-                                <div class="col-6 col-xl-6 text-end">
-                                    <h6 style="font-family: Kanit, sans-serif;font-weight: bold;" class="mb-xl-0 pb-xl-2">เวลาที่เหลือ</h6><span style="font-family: Kanit, sans-serif;">xx:xx:xx</span>
-                                </div>
-                            </div>
-                            <div class="d-flex"><button class="btn btn-dark" type="button" style="font-weight: bold;width: 100%;">Start Bidding</button></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xl-3">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                        <div class="card-body p-4 ps-xl-2 pe-xl-2">
-                            <h4 class="card-title" style="font-size: 18px;font-family: 'Baloo Thambi 2', serif;font-weight: bold;">EyeHateGod Exclusive Brown </h4>
-                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio,&nbsp;</p>
-                            <div class="row mb-3" style="color: rgb(13,110,253);">
-                                <div class="col-6 col-xl-6">
-                                    <h6 style="font-family: Kanit, sans-serif;font-weight: bold;" class="mb-xl-0 pb-xl-2">ราคาปัจจุบัน</h6><span style="font-family: Kanit, sans-serif;">1,000 ฿</span>
-                                </div>
-                                <div class="col-6 col-xl-6 text-end">
-                                    <h6 style="font-family: Kanit, sans-serif;font-weight: bold;" class="mb-xl-0 pb-xl-2">เวลาที่เหลือ</h6><span style="font-family: Kanit, sans-serif;">xx:xx:xx</span>
-                                </div>
-                            </div>
-                            <div class="d-flex"><button class="btn btn-dark" type="button" style="font-weight: bold;width: 100%;">Start Bidding</button></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xl-3">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                        <div class="card-body p-4 ps-xl-2 pe-xl-2">
-                            <h4 class="card-title" style="font-size: 18px;font-family: 'Baloo Thambi 2', serif;font-weight: bold;">EyeHateGod Exclusive Brown </h4>
-                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio,&nbsp;</p>
-                            <div class="row mb-3" style="color: rgb(13,110,253);">
-                                <div class="col-6 col-xl-6">
-                                    <h6 style="font-family: Kanit, sans-serif;font-weight: bold;" class="mb-xl-0 pb-xl-2">ราคาปัจจุบัน</h6><span style="font-family: Kanit, sans-serif;">1,000 ฿</span>
-                                </div>
-                                <div class="col-6 col-xl-6 text-end">
-                                    <h6 style="font-family: Kanit, sans-serif;font-weight: bold;" class="mb-xl-0 pb-xl-2">เวลาที่เหลือ</h6><span style="font-family: Kanit, sans-serif;">xx:xx:xx</span>
-                                </div>
-                            </div>
-                            <div class="d-flex"><button class="btn btn-dark" type="button" style="font-weight: bold;width: 100%;">Start Bidding</button></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4 col-xl-3">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
-                        <div class="card-body p-4 ps-xl-2 pe-xl-2">
-                            <h4 class="card-title" style="font-size: 18px;font-family: 'Baloo Thambi 2', serif;font-weight: bold;">EyeHateGod Exclusive Brown </h4>
-                            <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio,&nbsp;</p>
-                            <div class="row mb-3" style="color: rgb(13,110,253);">
-                                <div class="col-6 col-xl-6">
-                                    <h6 style="font-family: Kanit, sans-serif;font-weight: bold;" class="mb-xl-0 pb-xl-2">ราคาปัจจุบัน</h6><span style="font-family: Kanit, sans-serif;">1,000 ฿</span>
-                                </div>
-                                <div class="col-6 col-xl-6 text-end">
-                                    <h6 style="font-family: Kanit, sans-serif;font-weight: bold;" class="mb-xl-0 pb-xl-2">เวลาที่เหลือ</h6><span style="font-family: Kanit, sans-serif;">xx:xx:xx</span>
-                                </div>
-                            </div>
-                            <div class="d-flex"><button class="btn btn-dark" type="button" style="font-weight: bold;width: 100%;">Start Bidding</button></div>
-                        </div>
-                    </div>
-                </div>
+                <?php endfor ?>
+
             </div>
         </div>
     </div>
