@@ -54,6 +54,7 @@
             </div>
         </div>
     </nav>
+    <!-- end nav -->
     <div class="container py-4 py-xl-5 pt-xl-3 pb-xl-3 pt-2 mt-xl-4 mt-4">
         <div class="row gy-4 gy-md-0 row-hero" style="/*background: #FFF6E2;*/border-radius: 20px;box-shadow: 8px 7px 10px rgba(33,37,41,0.18);">
             <div class="col-md-6 col-lg-4 col-xl-4 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-start align-items-center justify-content-md-start justify-content-xl-center ps-sm-0 me-sm-0 pe-sm-0 ms-sm-0 div-hero1" style="height: 450px;">
