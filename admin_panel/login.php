@@ -7,14 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <?php include 'includes\link.php'; ?>
+    <style>
+        * {
+            font-family: 'Kanit', sans-serif;
+        }
+    </style>
 </head>
-
-<style>
-    * {
-        font-family: 'Kanit', sans-serif;
-    }
-</style>
-
 <body>
     <section class="position-relative py-4 py-xl-5">
         <div class="container">
