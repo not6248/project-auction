@@ -1,5 +1,5 @@
 <head>
-    <?php require 'db/db_conn.php';?>
+    <?php require 'db/db_conn.php'; ?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
     <!-- bootstrap CSS =======================================================-->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <!-- ----------------------------------------------------------------------->
-    
+
     <!-- jquery ==============================================================-->
     <script src="assets/js/jquery-3.7.0.min.js"></script>
     <!-- ----------------------------------------------------------------------->
@@ -23,5 +23,5 @@
     <link rel="stylesheet" href="assets/css/Navbar-Right-Links-icons.css">
     <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
     <link rel="stylesheet" href="assets/css/styles.css">
-    
+
 </head>
