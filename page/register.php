@@ -4,7 +4,7 @@
             <div class="row justify-content-center">
                 <div class="col-6">
                     <form>
-                        <h1 class="h3 mt-5 mb-3 fw-normal">Register Form</h1>
+                        <h1 class="text-center h2 fw-bold mb-5 mt-4 fw-normal">Register</h1>
 
                         <div class="form-floating mb-2">
                             <input type="text" class="form-control" id="floatingInput" placeholder="Username">
@@ -29,10 +29,12 @@
                     Remember me
                 </label>
             </div> -->
-                        <button class="btn btn-primary w-100 py-2" type="submit">Sign Up</button>
+                        <button class="btn btn-primary w-100 py-2" type="submit">Register</button>
                     </form>
                 </div>
-                <div class="col-6">dwadaw</div>
+                <div class="col-6 d-flex align-items-center">
+                    <img src="https://static.thairath.co.th/media/dFQROr7oWzulq5Fa5nRRVgnzYSSwUoPM7rigVHaj4QhdURLfyt90hBPNzf89n8vZ5bp.jpg" class="img-fluid" alt="Sample image">
+                </div>
 
             </div>
         </div>
