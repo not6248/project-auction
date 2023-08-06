@@ -1,9 +1,9 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="./" class="brand-link">
-    <i class="fas fa-user-shield"></i>
-      <!-- <img src="dist/img/AdminLTELogo.png" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
-      <span class="brand-text font-weight-light">ADMIN PANEL</span>
+        <i class="fas fa-user-shield"></i>
+        <!-- <img src="dist/img/AdminLTELogo.png" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8"> -->
+        <span class="brand-text font-weight-light">ADMIN PANEL</span>
     </a>
 
     <!-- Sidebar -->
@@ -35,20 +35,6 @@
                 </li>
                 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
                 <li class="nav-item">
-                    <a href="?page=product" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'product' ? 'active' : '' ?>">
-                        <i class="fas fa-shopping-cart"></i>
-                        <p>Product</p>
-                    </a>
-                </li>
-                <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
-                <li class="nav-item">
-                    <a href="?page=category" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'category' ? 'active' : '' ?>">
-                        <i class="fas fa-tags"></i>
-                        <p>Category</p>
-                    </a>
-                </li>
-                <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
-                <li class="nav-item">
                     <a href="?page=user" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'user' ? 'active' : '' ?>">
                         <i class="fas fa-user-cog"></i>
                         <p>จัดการข้อมูลผู้ใช้</p>
@@ -56,9 +42,44 @@
                 </li>
                 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
                 <li class="nav-item">
+                    <a href="?page=product" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'product' ? 'active' : '' ?>">
+                        <i class="fas fa-boxes"></i>
+                        <p>สินค้า</p>
+                    </a>
+                </li>
+                <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
+                <li class="nav-item">
                     <a href="?page=order" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'order' ? 'active' : '' ?>">
                         <i class="fas fa-paste"></i>
                         <p>Order </p>
+                    </a>
+                </li>
+                <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
+                <li class="nav-item">
+                    <a href="?page=" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == '404' ? 'active' : '' ?>">
+                        <i class="fas fa-font"></i>
+                        <p>คำนำหน้า </p>
+                    </a>
+                </li>
+                <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
+                <li class="nav-item">
+                    <a href="?page=category" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'category' ? 'active' : '' ?>">
+                        <i class="fa-solid fa-tags"></i>
+                        <p>ประเภทสินค้า </p>
+                    </a>
+                </li>
+                <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
+                <li class="nav-item">
+                    <a href="?page=" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == '404' ? 'active' : '' ?>">
+                        <i class="fa-solid fa-tags"></i>
+                        <p>ประเภทขนส่ง </p>
+                    </a>
+                </li>
+                <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
+                <li class="nav-item">
+                    <a href="?page=" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == '404' ? 'active' : '' ?>">
+                        <i class="fa-solid fa-building-columns"></i>
+                        <p>ธนาคาร </p>
                     </a>
                 </li>
                 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
