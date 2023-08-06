@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html data-bs-theme="light" class="h-100" lang="en">
-
+5
 <?php include './includes/head.php'; ?>
 
 <body style="background: rgb(255,255,255);" class="d-flex flex-column h-100">
@@ -17,7 +17,6 @@
     } elseif ((isset($_GET['page']) && $_GET['page'] == 'register')) {
         include './page/register.php';
     }
-
 
     include "./includes/footer.php";
     include "./includes/scripts.php"
