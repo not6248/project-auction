@@ -12,10 +12,10 @@
 
 | Features | ความคืบหน้า | เสร็จ
 | :-------- | :------- | :------- |
-| `Register` | ![](https://geps.dev/progress/0) | :x: |
+| `Register` | ![](https://geps.dev/progress/20) | :x: |
 | `ยืนยันการสมัครสมาชิกทางอีเมล์` | ![](https://geps.dev/progress/5) | :x: |
 | `Login` | ![](https://geps.dev/progress/10) | :x: |
-| `Data Base` | ![](https://geps.dev/progress/15) | :x: |
+| `Data Base` | ![](https://geps.dev/progress/70) | :x: |
 | `UX/UI` | ![](https://geps.dev/progress/20) | :x: |
 
 
