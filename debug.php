@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'includes/head.php';
-session_start(); ?>
+?>
 
 <body>
   <h1>ทดสอบ</h1><br>
@@ -14,8 +14,8 @@ session_start(); ?>
   <form action="send_mail.php" method="post">
     Email <input type="email" name="email"> <br>
     หัวเรื่อง <input type="text" name="subject"><br>
-    ข้อความ <input type="text" name="message" ><br>
-    <button type="submit" name="send" >ส่ง</button>
+    ข้อความ <input type="text" name="message"><br>
+    <button type="submit" name="send">ส่ง</button>
   </form>
   <?php include 'includes/scripts.php'; ?>
 
