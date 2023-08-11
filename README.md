@@ -1,5 +1,5 @@
 # project-auction
-การพัฒนาระบบประมูลของสะสมออนไลน์ กรณีศึกษาการประมูลแผ่นเสียงไวนิล\
+การพัฒนาระบบประมูลของสะสมออนไลน์ กรณีศึกษาการประมูลแผ่นเสียงไวนิล
 
 <p align="center">
 <img src="https://github.com/not6248/project-auction/assets/96365700/7feb806c-be3d-4a20-9fc7-af93d3314fc4" width=75%>
