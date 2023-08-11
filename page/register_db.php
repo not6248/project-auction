@@ -32,7 +32,7 @@ if (isset($_POST['signup'])) {
     }
 
     //เตรียมคำสั่ง SQL ในรูปแบบของ prepared statement
-    $check_email = mysqli_prepare($conn, "SELECT ud_email FROM user_detail WHERE ud_email = ?");
+    $check_email = mysqli_prepare($conn, "SELECT user_email FROM login WHERE user_email = ?");
 
     //เพื่อผูกค่าพารามิเตอร์กับพารามิเตอร์ในคำสั่ง SQL และระบุประเภทข้อมูลของพารามิเตอร์
     // "s": String (ข้อความ)
@@ -59,14 +59,14 @@ if (isset($_POST['signup'])) {
 
         mysqli_begin_transaction($conn);
 
-        $stmt = mysqli_prepare($conn, "INSERT INTO login (username, password) VALUES (?, ?)");
-        mysqli_stmt_bind_param($stmt, "ss", $username, $passwordHash);
+        $stmt = mysqli_prepare($conn, "INSERT INTO login (username, password,user_email) VALUES (?,?,?)");
+        mysqli_stmt_bind_param($stmt, "sss", $username, $passwordHash, $email);
         mysqli_stmt_execute($stmt);
 
         $last_user_id = mysqli_insert_id($conn);
 
-        $stmt = mysqli_prepare($conn, "INSERT INTO user_detail (ud_id, user_id, ud_email) VALUES (?, ?, ?)");
-        mysqli_stmt_bind_param($stmt, "iis", $last_user_id, $last_user_id, $email);
+        $stmt = mysqli_prepare($conn, "INSERT INTO user_detail (ud_id, user_id) VALUES (?,?)");
+        mysqli_stmt_bind_param($stmt, "ii", $last_user_id, $last_user_id);
         mysqli_stmt_execute($stmt);
 
         mysqli_commit($conn);
