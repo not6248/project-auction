@@ -11,10 +11,10 @@ body {
     transform: scale(1.03);
 }
 
-input[type=text]:focus {
-    border: 1px solid #1c62b9;
-    box-shadow: none;
-    margin-left: 0px;
+input:focus {
+    border: 1px solid #1c62b9 !important;
+    box-shadow: none !important;
+    margin-left: 0px !important;
 }
 
 .container {
