@@ -1,8 +1,16 @@
 <main id="page-container" class="form-signin w-100 m-auto mt-1">
-    <?php if (isset($_SESSION['error'])) : ?>
+    <?php
+    if (isset($_SESSION['error'])) : ?>
         <div class="alert alert-danger" role="alert">
             <?= $_SESSION['error'];
             unset($_SESSION['error']); ?>
+        </div>
+    <?php endif; ?>
+    <?php
+    if (isset($_SESSION['success'])) : ?>
+        <div class="alert alert-danger" role="alert">
+            <?= $_SESSION['success'];
+            unset($_SESSION['success']); ?>
         </div>
     <?php endif; ?>
 
@@ -40,7 +48,7 @@
                     </form>
                 </div>
                 <div class="col-6 d-flex align-items-end">
-                    <img src="img/regis_img.jpg" class="img-fluid" alt="Sample image">
+                    <img src="./assets/img/regis_img.jpg" class="img-fluid" alt="Sample image">
                 </div>
 
             </div>
