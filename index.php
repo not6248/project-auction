@@ -7,8 +7,6 @@
     <?php
     include './includes/navbar.php';
 
-
-
     if (!isset($_GET['page']) && empty($_GET['page'])) {
         include './page/homepage.php';
     } elseif ((isset($_GET['page']) && $_GET['page'] == 'register')) {
@@ -18,6 +16,7 @@
     include "./includes/footer.php";
     include "./includes/scripts.php"
     ?>
+
     <!-- end nav -->
 </body>
 
