@@ -10,7 +10,16 @@
     if (isset($_SESSION['success'])) : ?>
         <div class="alert alert-danger" role="alert">
             <?= $_SESSION['success'];
-            unset($_SESSION['success']); ?>
+            unset($_SESSION['success']);
+            ?>
+        </div>
+    <?php endif; ?>
+    <?php
+    if (isset($_SESSION['warning'])) : ?>
+        <div class="alert alert-danger" role="alert">
+            <?= $_SESSION['warning'];
+            unset($_SESSION['warning']);
+            ?>
         </div>
     <?php endif; ?>
 
@@ -18,7 +27,7 @@
         <div class="card-body p-md-5">
             <div class="row justify-content-center">
                 <div class="col-6">
-                    <form action="page/register_db.php" method="post">
+                    <form action="./php_feature/login_register/controllerUserData.php" method="post">
                         <h1 class="text-center h2 fw-bold mb-5 mt-4 fw-normal">Register</h1>
 
                         <div class="form-floating mb-2">
