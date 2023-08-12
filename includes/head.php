@@ -8,10 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <!-- main CSS ============================================================-->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <!-- ----------------------------------------------------------------------->
-
     <!-- bootstrap CSS =======================================================-->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <!-- ----------------------------------------------------------------------->
@@ -27,4 +23,7 @@
     <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 
+    <!-- main CSS ============================================================-->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <!-- ----------------------------------------------------------------------->
 </head>
