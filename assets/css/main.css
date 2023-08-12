@@ -1,33 +1,40 @@
 body {
-    overflow-y: scroll;
+  overflow-y: scroll;
+  font-family: Kanit, sans-serif;
 }
 
 .hover-p {
-    /* cursor: pointer; */
-    transition: 0.3s;
+  /* cursor: pointer; */
+  transition: 0.3s;
 }
 
 .hover-p:hover {
-    transform: scale(1.03);
+  transform: scale(1.03);
 }
 
 input:focus {
-    border: 1px solid #1c62b9 !important;
-    box-shadow: none !important;
-    margin-left: 0px !important;
-}
-
-.container {
-    width: auto;
-    max-width: 680px;
-    padding: 0 15px;
+  border: 1px solid #1c62b9 !important;
+  box-shadow: none !important;
+  margin-left: 0px !important;
 }
 
 .form-signin {
-    max-width: 850px;
-    padding: 1rem;
+  max-width: 850px;
+  padding: 1rem;
 }
 
 .form-signin .form-floating:focus-within {
-    z-index: 2;
+  z-index: 2;
+}
+
+@media (min-width: 768px) {
+  .input-group {
+    width: 270px;
+  }
+}
+
+@media (min-width: 992px) {
+  .input-group {
+    width: 494px;
+  }
 }
