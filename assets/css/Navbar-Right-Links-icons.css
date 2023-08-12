@@ -55,7 +55,7 @@
   border-radius: 50%;
 }
 
-.btn {
+.btn.btn-nav {
   border-radius: 41px;
 }
 
@@ -66,7 +66,7 @@
 
 @media (min-width: 300px) {
   .row-hero {
-    background: url("../../assets/img/holdingman%202.png") 25px 100px / 170% no-repeat, rgb(255,246,226);
+    background: url("../../assets/img/holdingman%202.png") 25px 100px / 170% no-repeat, rgb(255, 246, 226);
   }
 }
 
@@ -81,4 +81,3 @@
     background: rgb(255, 246, 226);
   }
 }
-
