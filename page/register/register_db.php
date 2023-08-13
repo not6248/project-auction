@@ -79,6 +79,7 @@ if (isset($_POST['signup'])) {
                 $_SESSION['info'] = $info;
                 $_SESSION['email'] = $email;
                 $_SESSION['password'] = $password;
+                $_SESSION['otp_chack'] = "1";
                 header('location:../../?page=register&function=verify_email');
                 exit();
             }
@@ -89,9 +90,9 @@ if (isset($_POST['signup'])) {
             header("location:../../?page=register");
         }
 
-        $_SESSION['success'] = "สมัครสมาชิกเรียบร้อยแล้ว! <a href='signin.php' class='alert-link'>คลิ๊กที่นี่</a> เพื่อเข้าสู่ระบบ";
-        header("location:../../?page=register");
-        exit();
+        // $_SESSION['success'] = "สมัครสมาชิกเรียบร้อยแล้ว! <a href='signin.php' class='alert-link'>คลิ๊กที่นี่</a> เพื่อเข้าสู่ระบบ";
+        // header("location:../../?page=register");
+        // exit();
     } else {
         $_SESSION['error'] = "มีบางอย่างผิดผลาด";
         header("location:../../?page=register");
