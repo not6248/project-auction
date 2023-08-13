@@ -17,7 +17,6 @@
                 ) ?>
 
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link " href="debug.php" style="font-weight: bold;font-size: 16px;">debug.php</a></li>
                     <li class="nav-item"><a class="nav-link active" href="#" style="font-weight: bold;font-size: 16px;">Home</a></li>
                     <li class="nav-item" style="font-weight: bold;font-size: 16px;"><a class="nav-link" href="#" style="font-weight: bold;font-size: 16px;">About</a></li>
                     <li class="nav-item" style="font-weight: bold;font-size: 16px;"><a class="nav-link" href="#" style="font-weight: bold;font-size: 16px;">Contact</a></li>
