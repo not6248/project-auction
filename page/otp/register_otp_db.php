@@ -1,45 +1,43 @@
-<main id="page-container" class="form-otp w-100 m-auto mt-1">
-    <?php
-    if (isset($_SESSION['error'])) : ?>
-        <div class="alert alert-danger" role="alert">
-            <?= $_SESSION['error'];
-            unset($_SESSION['error']); ?>
-        </div>
-    <?php endif; ?>
-    <?php
-    if (isset($_SESSION['success'])) : ?>
-        <div class="alert alert-danger" role="alert">
-            <?= $_SESSION['success'];
-            unset($_SESSION['success']);
-            ?>
-        </div>
-    <?php endif; ?>
-    <?php
-    if (isset($_SESSION['warning'])) : ?>
-        <div class="alert alert-danger" role="alert">
-            <?= $_SESSION['warning'];
-            unset($_SESSION['warning']);
-            ?>
-        </div>
-    <?php endif; ?>
+<?php
+session_start();
+require_once '../../db/db_conn.php';
 
-    <div class="card border-0">
-        <div class="card-body p-5 ps-4 pe-4 shadow-lg rounded-4 ">
-            <div class="row justify-content-center">
-                <div class="col-11">
-                    <form action="" method="post">
-                        <h1 class="text-center h2 fw-bold mb-3 mt-1 fw-normal">Code Verification</h1>
-                        <div class="form-floating mb-3">
-                            <input name="v_code" type="text" class="form-control" id="floatingPassword" placeholder="verification code">
-                            <label for="floatingPassword">verification code</label>
-                        </div>
-                        <button name="signup" class="btn btn-primary w-100 py-2" type="submit">Submit</button>
-                    </form>
-                </div>
+//if user click verification code submit button
+if (isset($_POST['check_otp']) && !empty($_POST['otp'])) {
+    $email = $_SESSION['email'];   // Email
+    $otp_code = mysqli_real_escape_string($conn, $_POST['otp']);
+    $check_code = "SELECT * FROM login WHERE email_verified_code = $otp_code AND user_email = '$email'";
 
-            </div>
-        </div>
-
-
-    </div>
-</main>
+    $code_res = mysqli_query($conn, $check_code);
+    if (mysqli_num_rows($code_res) > 0) { //ตรวจสอบว่ามีโค้ดในระบบหรือไม่
+        $fetch_data = mysqli_fetch_assoc($code_res);
+        $name = $fetch_data['username'];
+        $code = 'null';
+        $status = 1;
+        $update_otp = "UPDATE login SET email_verified_code = $code,email_verified_status = $status WHERE user_email = '$email'";
+        echo $update_otp . "<br>";
+        $update_res = mysqli_query($conn, $update_otp);
+        if ($update_res) {
+            unset($_SESSION['info']);
+            unset($_SESSION['otp_chack']);
+            $_SESSION['name'] = $name;
+            $_SESSION['email'] = $email;
+            // header('location: home.php');
+            header('location:../../');
+            echo "ยืนยัน Email แล้ว";
+            exit();
+        } else {
+            // $errors['otp-error'] = "Failed while updating code!";
+            // echo "Failed while updating code!";
+            // query fail
+            header('location:../../?page=register&function=verify_email');
+        }
+    } else {
+        // echo "You've entered incorrect code!";
+        //รหัสที่กรอกผิด
+        header('location:../../?page=register&function=verify_email');
+        // $errors['otp-error'] = "You've entered incorrect code!";
+    }
+} else {
+    echo "กรุณาใส่ข้อความ";
+}
