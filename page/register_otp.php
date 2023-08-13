@@ -1,4 +1,4 @@
-<main id="page-container" class="form-signin w-100 m-auto mt-1">
+<main id="page-container" class="form-otp w-100 m-auto mt-1">
     <?php
     if (isset($_SESSION['error'])) : ?>
         <div class="alert alert-danger" role="alert">
@@ -23,41 +23,18 @@
         </div>
     <?php endif; ?>
 
-    <div class="container">
-        <div class="card-body p-md-5">
+    <div class="card border-0">
+        <div class="card-body p-5 ps-4 pe-4 shadow-lg rounded-4 ">
             <div class="row justify-content-center">
-                <div class="col-6">
-                    <form action="./php_feature/login_register/controllerUserData.php" method="post">
-                        <h1 class="text-center h2 fw-bold mb-5 mt-4 fw-normal">Register</h1>
-
-                        <div class="form-floating mb-2">
-                            <input name="username" type="text" class="form-control" id="floatingInput" placeholder="Username">
-                            <label for="floatingInput">Username</label>
-                        </div>
-                        <div class="form-floating mb-2">
-                            <input name="email" type="email" class="form-control" id="floatingInput" placeholder="Email address">
-                            <label for="floatingInput">Email address</label>
-                        </div>
-                        <div class="form-floating mb-2">
-                            <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Password</label>
-                        </div>
+                <div class="col-11">
+                    <form action="" method="post">
+                        <h1 class="text-center h2 fw-bold mb-3 mt-1 fw-normal">Code Verification</h1>
                         <div class="form-floating mb-3">
-                            <input name="c_password" type="password" class="form-control" id="floatingPassword" placeholder="Confirm Password">
-                            <label for="floatingPassword">Confirm Password</label>
+                            <input name="v_code" type="text" class="form-control" id="floatingPassword" placeholder="verification code">
+                            <label for="floatingPassword">verification code</label>
                         </div>
-
-                        <!-- <div class="form-check text-start my-3">
-                <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                    Remember me
-                </label>
-            </div> -->
-                        <button name="signup" class="btn btn-primary w-100 py-2" type="submit">Register</button>
+                        <button name="signup" class="btn btn-primary w-100 py-2" type="submit">Submit</button>
                     </form>
-                </div>
-                <div class="col-6 d-flex align-items-end">
-                    <img src="./assets/img/regis_img.jpg" class="img-fluid" alt="Sample image">
                 </div>
 
             </div>
