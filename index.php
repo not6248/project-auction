@@ -18,7 +18,6 @@
     ?>
 
     <!-- end nav -->
-    hello
 </body>
 
 </html>
