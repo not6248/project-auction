@@ -1,6 +1,10 @@
 <?php
 session_start();
 require_once '../../db/db_conn.php';
+$username   = "";
+$email      = "";
+$password   = "";
+$c_password = "";
 
 if (isset($_POST['signup'])) {
     $username   = $_POST['username'];
@@ -67,7 +71,12 @@ if (isset($_POST['signup'])) {
         if ($execute1 && $execute2) {
             // เรียกใช้ mysqli_commit เมื่อทุกคำสั่ง SQL ทำงานสำเร็จ
             mysqli_commit($conn);
-            echo "บันทึกข้อมูลสำเร็จ";
+            $subject = "Email Verification Code";
+            $message = "Your verification code is $email_v_code";
+            $sender = "From: PMN <com40190boy@gmail.com>";
+            if (mail($email, $subject, $message, $sender)) {
+                //รอเอาโค้ดมาใส่
+            }
             //End transaction and commit
         } else {
             mysqli_rollback($conn);
