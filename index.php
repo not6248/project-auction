@@ -10,7 +10,13 @@
     if (!isset($_GET['page']) && empty($_GET['page'])) {
         include './page/homepage.php';
     } elseif ((isset($_GET['page']) && $_GET['page'] == 'register')) {
-        include './page/register.php';
+        if (isset($_GET['function']) && $_GET['function'] == 'verify_email') {
+            include './page/register_otp.php';
+        } else {
+            include './page/register.php';
+        }
+        //function
+
     }
 
     include "./includes/footer.php";
