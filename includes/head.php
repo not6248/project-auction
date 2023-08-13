@@ -23,6 +23,10 @@
     <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
     <link rel="stylesheet" href="assets/css/styles.css">
 
+    <!-- Font Awesome Icons ======================================================================-->
+    <link rel="stylesheet" href="admin_panel/plugins/fontawesome-free/css/all.min.css">
+    <!-- ------------------------------------------------------------------------------------------->
+
     <!-- main CSS ============================================================-->
     <link rel="stylesheet" href="assets/css/main.css">
     <!-- ----------------------------------------------------------------------->
