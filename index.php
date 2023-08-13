@@ -11,9 +11,9 @@
         include './page/homepage.php';
     } elseif ((isset($_GET['page']) && $_GET['page'] == 'register')) {
         if (isset($_GET['function']) && $_GET['function'] == 'verify_email') {
-            include './page/register_otp.php';
+            include './page/otp/register_otp.php';
         } else {
-            include './page/register.php';
+            include './page/register/register.php';
         }
         //function
 
