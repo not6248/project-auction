@@ -20,7 +20,7 @@ if (isset($_POST['admin_login'])) {
         header("location: login.php");
     } else {
 
-        $query = ("SELECT * FROM login WHERE email = '$email' AND password = '$password' AND status = '1'");
+        $query = ("SELECT * FROM login WHERE user_email = '$email' AND password = '$password' AND user_status = '1' and user_type = '0'");
         $result = mysqli_query($conn, $query);
 
         if (mysqli_num_rows($result) == 1) {
