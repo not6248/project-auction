@@ -51,35 +51,35 @@
                 <li class="nav-item">
                     <a href="?page=order" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'order' ? 'active' : '' ?>">
                         <i class="fas fa-paste"></i>
-                        <p>Order </p>
+                        <p>Order</p>
                     </a>
                 </li>
                 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
                 <li class="nav-item">
-                    <a href="?page=" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == '404' ? 'active' : '' ?>">
+                    <a href="?page=prefix" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'prefix' ? 'active' : '' ?>">
                         <i class="fas fa-font"></i>
-                        <p>คำนำหน้า </p>
+                        <p>คำนำหน้า</p>
                     </a>
                 </li>
                 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
                 <li class="nav-item">
-                    <a href="?page=category" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'category' ? 'active' : '' ?>">
+                    <a href="?page=product_type" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'product_type' ? 'active' : '' ?>">
                         <i class="fa-solid fa-tags"></i>
-                        <p>ประเภทสินค้า </p>
+                        <p>ประเภทสินค้า</p>
                     </a>
                 </li>
                 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
                 <li class="nav-item">
-                    <a href="?page=" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == '404' ? 'active' : '' ?>">
+                    <a href="?page=delivery_type" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'delivery_type' ? 'active' : '' ?>">
                         <i class="fa-solid fa-tags"></i>
-                        <p>ประเภทขนส่ง </p>
+                        <p>ประเภทขนส่ง</p>
                     </a>
                 </li>
                 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
                 <li class="nav-item">
-                    <a href="?page=" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == '404' ? 'active' : '' ?>">
+                    <a href="?page=bank" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'bank' ? 'active' : '' ?>">
                         <i class="fa-solid fa-building-columns"></i>
-                        <p>ธนาคาร </p>
+                        <p>ธนาคาร</p>
                     </a>
                 </li>
                 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
