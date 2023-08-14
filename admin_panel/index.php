@@ -16,11 +16,23 @@
     <?php
     if (!isset($_GET['page']) && empty($_GET['page'])) {
       include './page/dashboard/index.php';
+    } elseif ((isset($_GET['page']) && $_GET['page'] == 'user')) {
+      include './page/user/index.php';
     } elseif ((isset($_GET['page']) && $_GET['page'] == 'product')) {
       include './page/product/index.php';
+    } elseif ((isset($_GET['page']) && $_GET['page'] == 'order')) {
+      include './page/order/index.php';
+    } elseif ((isset($_GET['page']) && $_GET['page'] == 'prefix')) {
+      include './page/prefix/index.php';
+    } elseif ((isset($_GET['page']) && $_GET['page'] == 'product_type')) {
+      include './page/product_type/index.php';
+    } elseif ((isset($_GET['page']) && $_GET['page'] == 'delivery_type')) {
+      include './page/delivery_type/index.php';
+    } elseif ((isset($_GET['page']) && $_GET['page'] == 'bank')) {
+      include './page/bank/index.php';
     } else {
       include './page/not_found.php';
-    };
+    }
     ?>
     <!-- /.content-wrapper -->
 
