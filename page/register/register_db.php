@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once '../../db/db_conn.php';
+include '../../send_mail.php';
 $username   = "";
 $email      = "";
 
@@ -73,8 +74,8 @@ if (isset($_POST['signup'])) {
             mysqli_commit($conn);
             $subject = "Email Verification Code";
             $message = "Your verification code is $email_v_code";
-            $sender = "From: PMN <com40190boy@gmail.com>";
-            if (mail($email, $subject, $message, $sender)) {
+            $sender = "PMN";
+            if (sendMail($email, $subject, $message, $sender)) {
                 $info = "We've sent a verification code to your<br>email - $email";
                 $_SESSION['info'] = $info;
                 $_SESSION['email'] = $email;
