@@ -30,10 +30,12 @@ include '../../db/db_conn.php';
                     echoJson_status_msg("warning","ดูเหมือนว่าคุณยังไม่ได้ยืนยันอีเมลของคุณ <br> Email: $email");
                 }
             }else{
-                echo "Incorrect email or password!";
+                echoJson_status_msg("error","Incorrect email or password!");
+                // echo "Incorrect email or password!";
             }
         }else{
-            echo "It's look like you're not yet a member! Click on the bottom link to signup.";
+            echoJson_status_msg("error","It's look like you're not yet a member! Click on the bottom link to signup.");
+            // echo "It's look like you're not yet a member! Click on the bottom link to signup.";
         }
     }else{
         //มีปัญหาในการ execute
