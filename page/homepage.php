@@ -28,29 +28,35 @@
      </div>
      <div id="product">
          <div class="row pb-xl-5 pb-4">
-             <div class="col"><button class="btn btn-primary mt-2 me-2" type="button" style="box-shadow: 0px 0px 6px rgba(13,110,253,0.46);">Historical Vinyls</button><button class="btn btn-light mt-2 me-2" type="button" style="box-shadow: 0px 0px 11px rgba(0,0,0,0.2);">Genre Vinyls</button><button class="btn btn-light mt-2 me-2" type="button" style="box-shadow: 0px 0px 11px rgba(0,0,0,0.2);">Artist Vinyls</button><button class="btn btn-light mt-2 me-2" type="button" style="box-shadow: 0px 0px 11px rgba(0,0,0,0.2);">Collector’s Vinyls</button></div>
+             <div class="col">
+                 <button class="btn btn-primary mt-2 me-2" type="button" style="box-shadow: 0px 0px 6px rgba(13,110,253,0.46);">Historical Vinyls</button>
+                 <button class="btn btn-light mt-2 me-2" type="button" style="box-shadow: 0px 0px 11px rgba(0,0,0,0.2);">Genre Vinyls</button>
+                 <button class="btn btn-light mt-2 me-2" type="button" style="box-shadow: 0px 0px 11px rgba(0,0,0,0.2);">Artist Vinyls</button>
+                 <button class="btn btn-light mt-2 me-2" type="button" style="box-shadow: 0px 0px 11px rgba(0,0,0,0.2);">Collector’s Vinyls</button>
+             </div>
          </div>
          <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3 mb-xl-4">
              <?php
                 for ($i = 0; $i < 12; $i++) : ?>
                  <div class="col-sm-6 col-lg-4 col-xl-3">
-                     <div class="card hover-p"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
+                     <div class="card hover-p">
+                         <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
                          <div class="card-body p-4 ps-xl-2 pe-xl-2">
-                             <h4 class="card-title" style="font-size: 18px;font-family: 'Baloo Thambi 2', serif;font-weight: bold;">EyeHateGod
-                                 Exclusive Brown </h4>
-                             <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo
-                                 odio,&nbsp;</p>
+                             <h4 class="card-title" style="font-size: 18px;font-family: 'Baloo Thambi 2', serif;font-weight: bold;">EyeHateGod Exclusive Brown </h4>
+                             <p class="card-text">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio,&nbsp;</p>
                              <div class="row mb-3" style="color: rgb(13,110,253);">
                                  <div class="col-6 col-xl-6">
-                                     <h6 style="font-weight: bold;" class="mb-xl-0 pb-xl-2">ราคาปัจจุบัน</h6><span>1,000
-                                         ฿</span>
+                                     <h6 style="font-weight: bold;" class="mb-xl-0 pb-xl-2">ราคาปัจจุบัน</h6>
+                                     <span>1,000 ฿</span>
                                  </div>
                                  <div class="col-6 col-xl-6 text-end">
                                      <h6 style="font-weight: bold;" class="mb-xl-0 pb-xl-2">เวลาที่เหลือ</h6>
                                      <span>xx:xx:xx</span>
                                  </div>
                              </div>
-                             <div class="d-flex"><button class="btn btn-dark" type="button" style="font-weight: bold;width: 100%;">Start Bidding</button></div>
+                             <div class="d-flex">
+                                 <button class="btn btn-dark" type="button" style="font-weight: bold;width: 100%;">Start Bidding</button>
+                             </div>
                          </div>
                      </div>
                  </div>
