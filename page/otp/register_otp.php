@@ -28,7 +28,7 @@ if (empty($_SESSION['email']) && empty($_SESSION['otp_chack'])) {
                         <?php endif; ?>
 
                         <div class="form-floating mb-3">
-                            <input name="otp" type="number" class="form-control" id="floatingPassword" placeholder="verification code">
+                            <input name="otp" type="number" class="form-control" placeholder="verification code">
                             <label for="floatingPassword">verification code</label>
                         </div>
                         <button name="check_otp" class="btn btn-primary w-100 py-2" type="submit">Submit</button>
