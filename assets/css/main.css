@@ -1,7 +1,9 @@
 body {
   overflow-y: scroll;
+  /* padding-right:0px !important; */
   font-family: Kanit, sans-serif;
 }
+
 
 .hover-p {
   /* cursor: pointer; */
@@ -66,4 +68,8 @@ input:focus {
 .nav-tabs,
 .nav-link {
   margin-bottom: 2px;
+}
+
+a{
+  text-decoration: none;
 }
