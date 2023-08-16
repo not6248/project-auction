@@ -8,26 +8,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <!-- bootstrap CSS =======================================================-->
+    <!-- bootstrap CSS =========================================================-->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <!-- ----------------------------------------------------------------------->
+    <!-- ------------------------------------------------------------------------->
 
-    <!-- jquery ==============================================================-->
+    <!-- sweetalert2 CSS =======================================================-->
+    <link rel="stylesheet" href="assets/css/sweetalert2.min.css">
+    <!-- ------------------------------------------------------------------------->
+
+    <!-- jquery ================================================================-->
     <script src="assets/js/jquery-3.7.0.min.js"></script>
-    <!-- ----------------------------------------------------------------------->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Baloo+Thambi+2&amp;display=swap">
+    <!-- ------------------------------------------------------------------------->
+
+    <!-- sweetalert2 ===========================================================-->
+    <script src="assets/js/sweetalert2.all.min.js"></script>
+    <!-- ------------------------------------------------------------------------->
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Berkshire+Swash&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kanit&amp;display=swap">
     <link rel="stylesheet" href="assets/css/bs-theme-overrides.css">
     <link rel="stylesheet" href="assets/css/Navbar-Right-Links-icons.css">
     <link rel="stylesheet" href="assets/css/Projects-Grid-images.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
 
-    <!-- Font Awesome Icons ======================================================================-->
+    <!-- Font Awesome Icons ====================================================-->
     <link rel="stylesheet" href="admin_panel/plugins/fontawesome-free/css/all.min.css">
-    <!-- ------------------------------------------------------------------------------------------->
+    <!-- ------------------------------------------------------------------------->
 
-    <!-- main CSS ============================================================-->
+    <!-- main CSS ==============================================================-->
     <link rel="stylesheet" href="assets/css/main.css">
-    <!-- ----------------------------------------------------------------------->
+    <!-- ------------------------------------------------------------------------->
+
 </head>
