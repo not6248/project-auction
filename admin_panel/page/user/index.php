@@ -21,61 +21,58 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-6">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-
-              <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's
-                content.
-              </p>
-
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div>
-
-          <div class="card card-primary card-outline">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-
-              <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's
-                content.
-              </p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div><!-- /.card -->
+        <!-- left column -->
+        <div class="col-12 text-right">
+          <a href="?page=<?= $_GET['page'] ?>&function=add" class="btn btn-success mb-3">เพิ่มข้อมูลผู้ใช้</a>
         </div>
-        <!-- /.col-md-6 -->
-        <div class="col-lg-6">
-          <div class="card">
+        <div class="col-md-12">
+          <?php
+          $sql = 'SELECT * FROM login';
+          $query = mysqli_query($conn, $sql);
+          ?>
+          <!-- general form elements -->
+          <div class="card card-primary">
             <div class="card-header">
-              <h5 class="m-0">Featured</h5>
+              <h3 class="card-title">ตารางข้อมูลผู้ใช้</h3>
             </div>
             <div class="card-body">
-              <h6 class="card-title">Special title treatment</h6>
+              <table class="table" id="example">
+                <thead>
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">ชื่อ - นามสกุล</th>
+                    <th scope="col">อีเมล</th>
+                    <th scope="col">ระดับสิทธิ์</th>
+                    <th scope="col">สถานะ</th>
+                    <th scope="col">เมนู</th>
+                    <th scope="col">เมนู</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php foreach ($query as $data) : ?>
+                    <tr>
+                      <td><?= $data['user_id'] ?></td>
+                      <td><?= $data['username'] ?></td>
+                      <td><?= ($data['user_type'] == 0
+                            ? '<span class="text-primary">[ADMIN]</span>'
+                            : '<span class="text-success">USER</span>') ?></td>
+                      <td><?= $data['user_status'] ?></td>
+                      <td><?= $data['user_email'] ?></td>
+                      <td><?= ($data['email_verified_status'] == 0
+                            ? '<span class="text-success">เปิดใช้งาน</span>'
+                            : '<span class="font-weight-bold text-danger">*ปิดใช้งาน*</span>') ?></td>
+                      <td>
+                        <a href="?page=<?= $_GET['page'] ?>&function=update&user_id=<?= $data['user_id'] ?>" class="btn btn-sm btn-warning">แก้ไข</a>
+                        <a href="?page=<?= $_GET['page'] ?>&function=delete&user_id=<?= $data['user_id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('คุณต้องการลบข้อมูลของ <?= $data['username'] ?> หรือไม่')">ลบ</a>
+                      </td>
+                    </tr>
+                  <?php endforeach; ?>
 
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+                </tbody>
+              </table>
             </div>
-          </div>
-
-          <div class="card card-primary card-outline">
-            <div class="card-header">
-              <h5 class="m-0">Featured</h5>
-            </div>
-            <div class="card-body">
-              <h6 class="card-title">Special title treatment</h6>
-
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
+          </div> <!-- /.card -->
         </div>
-        <!-- /.col-md-6 -->
       </div>
       <!-- /.row -->
     </div><!-- /.container-fluid -->
