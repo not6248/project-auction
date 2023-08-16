@@ -21,7 +21,3 @@ if (!$conn) {
     exit();
 }
 ?>
-
-
-
-//echoJson_status_msg
