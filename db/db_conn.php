@@ -11,5 +11,16 @@ if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
   // echo "Connected successfully";
+
+
+
+
+  function showError($status, $msg)
+{
+    echo json_encode(array("status" => $status, "msg" => $msg));
+    exit();
+}
 ?>
+
+
 
