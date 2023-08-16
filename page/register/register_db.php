@@ -14,11 +14,11 @@ $c_password = $_POST['c_password'];
 
 if (!$username) {
     showError("error", "กรุณากรอกชื่อผู้ใช้");
-} elseif (empty($email)) {
+} elseif (!($email)) {
     showError("error", "กรุณากรอกอีเมล");
-} elseif (empty($password)) {
+} elseif (!($password)) {
     showError("error", "กรุณากรอกรหัสผ่าน");
-} elseif (empty($c_password)) {
+} elseif (!($c_password)) {
     showError("error", "กรุณายืนยันรหัสผ่าน");
 } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     showError("error", "รูปแบบอีเมลไม่ถูกต้อง");
@@ -77,10 +77,9 @@ if (mysqli_num_rows($result) > 0) {
         if (sendMail($email, $subject, $message, $sender)) {
             $info = "We've sent a verification code to your<br>email - $email";
             $_SESSION['info'] = $info;
-            $_SESSION['email'] = $email;
-            $_SESSION['password'] = $password;
-            $_SESSION['otp_chack'] = "1";
-            header('location:../../?page=register&function=verify_email');
+            $_SESSION['otp'] = $email;
+            echo json_encode(array("status" => "success"));
+            // header('location:../../?page=register&function=verify_email');
             exit();
         }
         //End transaction and commit
@@ -100,8 +99,4 @@ if (mysqli_num_rows($result) > 0) {
     // exit();
 }
 
-function showError($status, $msg)
-{
-    echo json_encode(array("status" => $status, "msg" => $msg));
-    exit();
-}
+
