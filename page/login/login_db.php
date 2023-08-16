@@ -27,7 +27,7 @@ include '../../db/db_conn.php';
                     // echo "ดูเหมือนว่าคุณยังไม่ได้ยืนยันอีเมลของคุณ - $email";
                     // $_SESSION['info'] = $info;
                     // header('location: user-otp.php');
-                    showError("warning","ดูเหมือนว่าคุณยังไม่ได้ยืนยันอีเมลของคุณ <br> Email: $email");
+                    echoJson_status_msg("warning","ดูเหมือนว่าคุณยังไม่ได้ยืนยันอีเมลของคุณ <br> Email: $email");
                 }
             }else{
                 echo "Incorrect email or password!";

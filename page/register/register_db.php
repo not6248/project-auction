@@ -13,19 +13,19 @@ $password   = $_POST['password'];
 $c_password = $_POST['c_password'];
 
 if (!$username) {
-    showError("error", "กรุณากรอกชื่อผู้ใช้");
+    echoJson_status_msg("error", "กรุณากรอกชื่อผู้ใช้");
 } elseif (!($email)) {
-    showError("error", "กรุณากรอกอีเมล");
+    echoJson_status_msg("error", "กรุณากรอกอีเมล");
 } elseif (!($password)) {
-    showError("error", "กรุณากรอกรหัสผ่าน");
+    echoJson_status_msg("error", "กรุณากรอกรหัสผ่าน");
 } elseif (!($c_password)) {
-    showError("error", "กรุณายืนยันรหัสผ่าน");
+    echoJson_status_msg("error", "กรุณายืนยันรหัสผ่าน");
 } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    showError("error", "รูปแบบอีเมลไม่ถูกต้อง");
+    echoJson_status_msg("error", "รูปแบบอีเมลไม่ถูกต้อง");
 } elseif (strlen($password) > 20 || strlen($password) < 5) {
-    showError("error", "รหัสผ่านต้องมีความยาวระหว่าง 5 ถึง 20 ตัวอักษร");
+    echoJson_status_msg("error", "รหัสผ่านต้องมีความยาวระหว่าง 5 ถึง 20 ตัวอักษร");
 } elseif ($password != $c_password) {
-    showError("error", "รหัสผ่านไม่ตรงกัน");
+    echoJson_status_msg("error", "รหัสผ่านไม่ตรงกัน");
 }
 
 //เตรียมคำสั่ง SQL ในรูปแบบของ prepared statement
@@ -48,7 +48,7 @@ $result = mysqli_stmt_get_result($check_email);
 
 
 if (mysqli_num_rows($result) > 0) {
-    showError("warning", "มีอีเมลนี้อยู่ในระบบแล้ว คลิกที่ปุ่ม เพื่อเข้าสู่ระบบ");
+    echoJson_status_msg("warning", "มีอีเมลนี้อยู่ในระบบแล้ว คลิกที่ปุ่ม เพื่อเข้าสู่ระบบ");
     // $_SESSION['warning'] = "มีอีเมลนี้อยู่ในระบบแล้ว <a href='signin.php'>คลิ๊กที่นี่</a> เพื่อเข้าสู่ระบบ";
     exit();
 } elseif (!isset($_SESSION['error'])) {
@@ -86,14 +86,14 @@ if (mysqli_num_rows($result) > 0) {
     } else {
         mysqli_rollback($conn);
         // $_SESSION['error'] = "เกิดข้อผิดพลาดในการบันทึกข้อมูล: " . mysqli_error($conn);
-        showError("error","เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+        echoJson_status_msg("error","เกิดข้อผิดพลาดในการบันทึกข้อมูล");
     }
 
     // $_SESSION['success'] = "สมัครสมาชิกเรียบร้อยแล้ว! <a href='signin.php' class='alert-link'>คลิ๊กที่นี่</a> เพื่อเข้าสู่ระบบ";
     // header("location:../../?page=register");
     // exit();
 } else {
-    showError("error","มีบางอย่างผิดผลาด");
+    echoJson_status_msg("error","มีบางอย่างผิดผลาด");
     // $_SESSION['error'] = "มีบางอย่างผิดผลาด";
     // header("location:../../?page=register");
     // exit();

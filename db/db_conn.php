@@ -15,7 +15,7 @@ if (!$conn) {
 
 
 
-  function showError($status, $msg)
+  function echoJson_status_msg($status, $msg)
 {
     echo json_encode(array("status" => $status, "msg" => $msg));
     exit();
@@ -24,3 +24,4 @@ if (!$conn) {
 
 
 
+//echoJson_status_msg

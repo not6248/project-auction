@@ -22,17 +22,17 @@ require_once '../../db/db_conn.php';
             unset($_SESSION['email']);
             $_SESSION['otp'] = "success";
             // header('location: home.php');
-            showError("success","ยืนยัน Email เรียบร้อยแล้ว<br>กดที่ปุ่ม ok เพื่อเข้าสู่ระบบ");
+            echoJson_status_msg("success","ยืนยัน Email เรียบร้อยแล้ว<br>กดที่ปุ่ม ok เพื่อเข้าสู่ระบบ");
             exit();
         } else {
-            showError("error","query fail");
+            echoJson_status_msg("error","query fail");
             // $errors['otp-error'] = "Failed while updating code!";
             // echo "Failed while updating code!";
             // query fail
             // header('location:../../?page=register&function=verify_email');
         }
     } else {
-        showError("error","รหัสยืนยันไม่ถูกต้อง");
+        echoJson_status_msg("error","รหัสยืนยันไม่ถูกต้อง");
         // echo "You've entered incorrect code!";
         //รหัสที่กรอกผิด
         // header('location:../../?page=register&function=verify_email');
