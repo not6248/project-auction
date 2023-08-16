@@ -12,7 +12,7 @@
         include './page/homepage.php';
     } elseif ((isset($_GET['page']) && $_GET['page'] == 'register')) {
         if (isset($_GET['function']) && $_GET['function'] == 'verify_email') {
-            include './page/otp/register_otp.php';
+            include './page/otp/otp.php';
         } else {
             include './page/register/register.php';
         }
@@ -22,8 +22,20 @@
 
     include "./includes/footer.php";
 
-    include "./includes/scripts.php"
+    include "./includes/scripts.php";
+
+    //สำหรับเปิด modal เมื่อกรอก OTP เสร็จ
+    if (!empty($_SESSION['otp']) && $_SESSION['otp'] === "success") {
+        echo "
+        <script>
+        $(document).ready(function () {
+            $('#Modal-login').modal('show');
+        });
+        </script>";
+        unset($_SESSION['otp']);
+    }
     ?>
+
 </body>
 
 </html>
