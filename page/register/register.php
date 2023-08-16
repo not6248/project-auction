@@ -1,3 +1,9 @@
+<?php
+if (!empty($_SESSION['otp'])) {
+    unset($_SESSION['otp']);
+}
+?>
+
 <main id="page-container" class="form-signin w-100 m-auto mt-1">
     <div class="container">
         <?php
@@ -62,23 +68,27 @@
         </div>
     </div>
 </main>
+<div id="spinner-div" class="pt-5">
+    <div class="spinner-border text-primary" role="status">
+    </div>
+</div>
 <script>
     $(document).ready(function() {
         $("#registerForm").submit(function(e) {
             e.preventDefault();
-            let formUrl = $(this).attr("action");
             let Method = $(this).attr("method");
+            let formUrl = $(this).attr("action");
             let formData = $(this).serialize();
-            console.log(formData);
+            $("#spinner-div").fadeIn(500);
             $.ajax({
-                url: formUrl,
                 type: Method,
+                url: formUrl,
                 data: formData,
                 success: function(data) {
                     let result = JSON.parse(data);
-                    if (result.status == "success") {
-                        console.log("success");
-                    } else if (result.status == "warning") {
+                    if (result.status == "success") { //success
+                            window.location.href = "./?page=register&function=verify_email"
+                    } else if (result.status == "warning") { //warning
                         console.log("warning");
                         Swal.fire({
                             title: 'แจ้งเตือน!',
@@ -91,12 +101,11 @@
                             if (result.isConfirmed) {
                                 setTimeout(() => {
                                     $('#Modal-login').modal('show');
-                                },200)
+                                }, 200)
                             }
                             // window.location.reload();
-
                         });
-                    } else {
+                    } else { //error
                         console.log("error");
                         Swal.fire({
                             title: 'ล้มเหลว!',
@@ -106,6 +115,10 @@
                             // backdrop: false
                         });
                     }
+                },
+                complete: function() {
+                    // ซ่อน Spinners เมื่อเสร็จสิ้นการทำงานทุกกรณี
+                    $("#spinner-div").hide();
                 }
             });
         });
