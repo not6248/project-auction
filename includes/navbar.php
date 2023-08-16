@@ -23,14 +23,10 @@
                     <li class="nav-item" style="font-weight: bold;font-size: 16px;"><a class="nav-link" href="#" style="font-weight: bold;font-size: 16px;">About</a></li>
                     <li class="nav-item" style="font-weight: bold;font-size: 16px;"><a class="nav-link" href="#" style="font-weight: bold;font-size: 16px;">Contact</a></li>
                 </ul>
-                <button type="button" class="btn btn-nav btn-primary me-sm-2 ms-md-2 me-md-3" data-bs-toggle="modal" style="font-weight: bold;font-size: 16px;" data-bs-target="#exampleModal">Login</button>
+                <button type="button" class="btn btn-nav btn-primary me-sm-2 ms-md-2 me-md-3" data-bs-toggle="modal" style="font-weight: bold;font-size: 16px;" data-bs-target="#Modal-login">Login</button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <?php include 'modal_login.php'; ?>
-                    </div>
-                </div>
+                <?php include 'modal_login.php'; ?>
 
                 <!-- End Modal -->
 
