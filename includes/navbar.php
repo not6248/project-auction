@@ -26,7 +26,7 @@
                 <button type="button" class="btn btn-nav btn-primary me-sm-2 ms-md-2 me-md-3" data-bs-toggle="modal" style="font-weight: bold;font-size: 16px;" data-bs-target="#Modal-login">Login</button>
 
                 <!-- Modal -->
-                <?php include 'modal_login.php'; ?>
+                <?php include './page/login/modal_login.php'; ?>
 
                 <!-- End Modal -->
 
@@ -47,3 +47,5 @@
             echo $regis;
         }
     } ?>
+
+    
