@@ -1,6 +1,6 @@
 <?php
-$_SESSION['email'] = "not-6248@hotmail.com";
-if (empty($_SESSION['otp'])) {
+
+if (empty($_SESSION['email'])) {
     echo '<script>window.location.href = "./";</script>';
     exit; // ออกจากการทำงานของสคริปต์ PHP เพื่อป้องกันการแสดงผลเนื้อหาหลังจากนี้
 }
