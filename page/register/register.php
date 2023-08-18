@@ -6,29 +6,6 @@ if (!empty($_SESSION['otp'])) {
 
 <main id="page-container" class="form-signin w-100 m-auto mt-1">
     <div class="container">
-        <?php
-        if (isset($_SESSION['error'])) : ?>
-            <div class="alert alert-danger" role="alert">
-                <?= $_SESSION['error'];
-                unset($_SESSION['error']); ?>
-            </div>
-        <?php endif; ?>
-        <?php
-        if (isset($_SESSION['success'])) : ?>
-            <div class="alert alert-danger" role="alert">
-                <?= $_SESSION['success'];
-                unset($_SESSION['success']);
-                ?>
-            </div>
-        <?php endif; ?>
-        <?php
-        if (isset($_SESSION['warning'])) : ?>
-            <div class="alert alert-danger" role="alert">
-                <?= $_SESSION['warning'];
-                unset($_SESSION['warning']);
-                ?>
-            </div>
-        <?php endif; ?>
         <div class="card-body p-md-5">
             <div class="row justify-content-center">
                 <div class="col-6">
@@ -61,17 +38,13 @@ if (!empty($_SESSION['otp'])) {
                         <button name="signup" class="btn btn-primary w-100 py-2" type="submit">Register</button>
                     </form>
                 </div>
-                <div class="col-6 d-flex align-items-end">
+                <div class="col-6 align-items-end img-regis">
                     <img src="./assets/img/regis_img.jpg" class="img-fluid" alt="Sample image">
                 </div>
             </div>
         </div>
     </div>
 </main>
-<div id="spinner-div" class="pt-5">
-    <div class="spinner-border text-primary" role="status">
-    </div>
-</div>
 <script>
     $(document).ready(function() {
         $("#registerForm").submit(function(e) {
