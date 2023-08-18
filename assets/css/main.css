@@ -83,5 +83,5 @@ a{
   left: 0;
   text-align: center;
   background-color: rgba(255, 255, 255, 0.8);
-  z-index: 2;
+  z-index: 2000;
 }
