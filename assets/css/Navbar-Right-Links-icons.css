@@ -82,4 +82,17 @@
     .row-hero {
         background: rgb(255, 246, 226);
     }
+
+}
+
+.img-regis{
+    display: flex!important;
+    
+}
+@media (max-width: 768px) {
+    .img-regis{
+        
+        display: none !important;
+    }
+
 }
