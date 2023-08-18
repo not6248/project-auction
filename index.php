@@ -4,7 +4,6 @@
 <?php include './includes/head.php'; ?>
 
 <body style="background: rgb(255,255,255);" class="d-flex flex-column h-100">
-
     <?php include './includes/navbar.php'; ?> <!-- mavbar -->
 
     <?php
@@ -35,7 +34,10 @@
         unset($_SESSION['otp']);
     }
     ?>
-
+    <div id="spinner-div" class="pt-5">
+        <div class="spinner-border text-primary" role="status">
+        </div>
+    </div>
 </body>
 
 </html>
