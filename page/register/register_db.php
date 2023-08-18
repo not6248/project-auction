@@ -77,7 +77,7 @@ if (mysqli_num_rows($result) > 0) {
         if (sendMail($email, $subject, $message, $sender)) {
             $info = "We've sent a verification code to your<br>email - $email";
             $_SESSION['info'] = $info;
-            $_SESSION['otp'] = $email;
+            $_SESSION['email'] = $email;
             echo json_encode(array("status" => "success"));
             // header('location:../../?page=register&function=verify_email');
             exit();
@@ -98,5 +98,4 @@ if (mysqli_num_rows($result) > 0) {
     // header("location:../../?page=register");
     // exit();
 }
-
 
