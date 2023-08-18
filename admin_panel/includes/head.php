@@ -2,11 +2,36 @@
     <?php session_start();
     require '../db/db_conn.php';
     if (!isset($_SESSION['admin_login'])) {
-        header('location: ../');
+        header('location: ./login.php');
     }
     ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AdminLTE 3 | Starter</title>
-    <?php include 'link.php'; ?>
+
+<!-- CSS -->
+    <!-- Theme style =============================================================================-->
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+    <!-- ------------------------------------------------------------------------------------------->
+    
+    <!-- Font Awesome Icons ======================================================================-->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+    <!-- ------------------------------------------------------------------------------------------->
+    
+    <!-- datatables ==============================================================================-->
+    <link rel="stylesheet" href="plugins/datatables/datatables.min.css">
+    <!-- ------------------------------------------------------------------------------------------->
+    
+    <!-- main CSS ================================================================================-->
+    <link rel="stylesheet" href="dist/css/main.css">
+    <!-- ------------------------------------------------------------------------------------------->
+<!--  -->
+
+<!-- JS -->
+    <!-- jQuery ==================================================================================-->
+    <script src="plugins/jquery/jquery.min.js"></script>
+     <!-- ------------------------------------------------------------------------------------------>
+<!--  -->
+
+
 </head>
