@@ -10,11 +10,11 @@
                 <!-- Form -->
                 <form id="loginForm" action="page/login/login_db.php" method="post" class="" data-bitwarden-watching="1">
                     <div class="form-floating mb-3">
-                        <input type="email" name="email" class="form-control rounded-3" placeholder="name@example.com" required>
+                        <input type="email" name="email" class="form-control rounded-3" placeholder="name@example.com"  autocomplete="current-password" required>
                         <label for="floatingInput">Email address</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="password" name="password" class="form-control rounded-3" placeholder="Password" required>
+                        <input type="password" name="password" class="form-control rounded-3" placeholder="Password" autocomplete="current-password" required>
                         <label for="floatingPassword">Password</label>
                         <p class="text-end mt-1"><a href="#" class="text-primary">Forgot Password?</a></p>
                     </div>
@@ -35,9 +35,6 @@
                 let formUrl = $(this).attr("action");
                 let Method = $(this).attr("method");
                 let formData = $(this).serialize();
-                console.log(formUrl);
-                console.log(Method);
-                console.log(formData);
                 $.ajax({
                     type: Method,
                     url: formUrl,
@@ -53,7 +50,23 @@
                                 html: result.msg,
                                 icon: result.status,
                                 heightAuto: false,
-                                confirmButtonText: "ตกลง",
+                                confirmButtonText: "OK",
+                            }).then(function(result){
+                                if (result.isConfirmed) {
+                                    $("#spinner-div").fadeIn(500);
+                                    $.ajax({
+                                        type: "post",
+                                        url: "page/otp/renew_otp_login.php",
+                                        success: function (response) {
+                                            let result2 = JSON.parse(response);
+                                            if(result2.status == "success"){
+                                                $("#spinner-div").hide();
+                                                window.location.href = "./?page=register&function=verify_email"
+                                                // window.location.href = "./?page=register&function=verify_email"
+                                            }
+                                        }
+                                    });
+                                }
                             });
                         }else {
                             Swal.fire({
