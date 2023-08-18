@@ -1,4 +1,5 @@
 <?php 
+session_start();
 include '../../db/db_conn.php';
 
 
@@ -27,7 +28,12 @@ include '../../db/db_conn.php';
                     // echo "ดูเหมือนว่าคุณยังไม่ได้ยืนยันอีเมลของคุณ - $email";
                     // $_SESSION['info'] = $info;
                     // header('location: user-otp.php');
-                    echoJson_status_msg("warning","ดูเหมือนว่าคุณยังไม่ได้ยืนยันอีเมลของคุณ <br> Email: $email");
+                    $_SESSION['otp'] = $email;
+                    $_SESSION['email_new_otp'] = $email;
+                    echoJson_status_msg("warning","Looks like you haven't verified your email yet. <br>
+                    Email: $email<br>
+                    Click OK to proceed and complete
+                    ");
                 }
             }else{
                 echoJson_status_msg("error","Incorrect email or password!");
