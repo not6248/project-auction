@@ -24,14 +24,14 @@
     include "./includes/scripts.php";
 
     //สำหรับเปิด modal เมื่อกรอก OTP เสร็จ
-    if (!empty($_SESSION['otp']) && $_SESSION['otp'] === "success") {
+    if (!empty($_SESSION['otp_status']) && $_SESSION['otp_status'] === "success") {
         echo "
         <script>
         $(document).ready(function () {
             $('#Modal-login').modal('show');
         });
         </script>";
-        unset($_SESSION['otp']);
+        unset($_SESSION['otp_status']);
     }
     ?>
     <div id="spinner-div" class="pt-5">
