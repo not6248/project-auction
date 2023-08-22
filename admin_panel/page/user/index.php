@@ -56,14 +56,17 @@
                       <td><?= ($data['user_type'] == 0
                             ? '<span class="text-primary">[ADMIN]</span>'
                             : '<span class="text-success">USER</span>') ?></td>
-                      <td><?= $data['user_status'] ?></td>
+                      <td><?= ($data['user_status'] == 0
+                            ? '<span class="text-success">ปิด</span>'
+                            : '<span class="text-success">เปิด</span>') ?></td>
                       <td><?= $data['user_email'] ?></td>
                       <td><?= ($data['email_verified_status'] == 0
                             ? '<span class="text-success">ยังไม่ยืนยัน</span>'
                             : '<span class="text-success">ยืนยันแล้ว</span>') ?></td>
                       <td>
-                        <a href="?page=<?= $_GET['page'] ?>&function=update&user_id=<?= $data['user_id'] ?>" class="btn btn-sm btn-warning">แก้ไข</a>
-                        <a href="?page=<?= $_GET['page'] ?>&function=delete&user_id=<?= $data['user_id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('คุณต้องการลบข้อมูลของ <?= $data['username'] ?> หรือไม่')">ลบ</a>
+                        <a href="?page=<?= $_GET['page'] ?>&function=update&user_id=<?= $data['user_id'] ?>" class="btn btn-info btn-sm">รายละเอียด</a>
+                        <a href="?page=<?= $_GET['page'] ?>&function=update&user_id=<?= $data['user_id'] ?>" class="btn btn-warning btn-sm">แก้ไข</a>
+                        <a href="?page=<?= $_GET['page'] ?>&function=delete&user_id=<?= $data['user_id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('คุณต้องการลบข้อมูลของ <?= $data['username'] ?> หรือไม่')">ลบ</a>
                       </td>
                     </tr>
                   <?php endforeach; ?>
