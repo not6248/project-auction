@@ -23,17 +23,21 @@
                     <li class="nav-item" style="font-weight: bold;font-size: 16px;"><a class="nav-link" href="#" style="font-weight: bold;font-size: 16px;">About</a></li>
                     <li class="nav-item" style="font-weight: bold;font-size: 16px;"><a class="nav-link" href="#" style="font-weight: bold;font-size: 16px;">Contact</a></li>
                 </ul>
-                <button type="button" class="btn btn-nav btn-primary me-sm-2 ms-md-2 me-md-3" data-bs-toggle="modal" style="font-weight: bold;font-size: 16px;" data-bs-target="#Modal-login">Login</button>
-
+                    
                 <!-- Modal -->
-                <?php include './page/login/modal_login.php'; ?>
+                <?php if(isset($_SESSION['login_status']) || !isset($_SESSION['username'])){
+                    include './page/login/modal_login.php';
+                    hide_for_regis_page('<a class="btn btn-nav btn-dark ms-md-0" role="button" href="./?page=register" style="font-weight: bold;font-size: 16px;">Register</a>', '');
+                }else{
+                    echo "<button>profile</button>";
+                }
+                 ?>
 
                 <!-- End Modal -->
 
                 <!-- <a class="btn btn-primary me-sm-2 ms-md-2 me-md-3" role="button" href="#" style="font-weight: bold;font-size: 16px;">Login</a> -->
                 <?php
-                hide_for_regis_page('<a class="btn btn-nav btn-dark ms-md-0" role="button" href="./?page=register" style="font-weight: bold;font-size: 16px;">Register</a>', '') ?>
-
+                ?>
             </div>
         </div>
     </nav>
