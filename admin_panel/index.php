@@ -41,8 +41,6 @@
   </div>
   <!-- ./wrapper -->
 
-
-
   <!-- REQUIRED SCRIPTS -->
   <?php include 'includes/scripts.php' ?>
 </body>
