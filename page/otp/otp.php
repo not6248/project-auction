@@ -35,8 +35,8 @@ if (empty($_SESSION['email'])) {
 </main>
 
 <script>
-    $(document).ready(function () {
-        $("#otpForm").submit(function (e) { 
+    $(document).ready(function() {
+        $("#otpForm").submit(function(e) {
             e.preventDefault();
             let Method = $(this).attr("method");
             let formUrl = $(this).attr("action");
@@ -45,21 +45,31 @@ if (empty($_SESSION['email'])) {
                 type: Method,
                 url: formUrl,
                 data: formData,
-                success: function (data) {
+                success: function(data) {
                     let result = JSON.parse(data);
-                    if(result.status == "success"){
+                    if (result.status == "success") {
                         Swal.fire({
                             title: 'สำร็จ!',
                             html: result.msg,
                             icon: result.status,
                             heightAuto: false,
-                            // confirmButtonText: "เข้าสู่ระบบ",
-                        }).then(function(result){
-                            if (result.isConfirmed){
-                                window.location.href = "./"
+                            showConfirmButton: false,
+                            timer: 3000,
+                            didOpen: () => {
+                                Swal.showLoading()
+                                const b = Swal.getHtmlContainer().querySelector('b')
+                                timerInterval = setInterval(() => {
+                                    b.textContent = Swal.getTimerLeft()
+                                }, 100)
+                            },
+                            willClose: () => {
+                                clearInterval(timerInterval)
                             }
+                            // confirmButtonText: "เข้าสู่ระบบ",
+                        }).then(function(result) {
+                            window.location.href = "./"
                         })
-                    }else if(result.status == "warning"){
+                    } else if (result.status == "warning") {
                         Swal.fire({
                             title: 'แจ้งเตือน!',
                             html: result.msg,
@@ -67,7 +77,7 @@ if (empty($_SESSION['email'])) {
                             heightAuto: false,
                             // confirmButtonText: "เข้าสู่ระบบ",
                         })
-                    }else{
+                    } else {
                         Swal.fire({
                             title: 'ล้มเหลว!',
                             html: result.msg,
