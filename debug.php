@@ -26,8 +26,33 @@
     $_SESSION['admin_login'] = "";
     header("location: admin_panel");
   }
-
   ?>
+
+  <br><br>
+  <?php
+ 
+
+  if (!empty($_SESSION)) {
+    echo '<pre style="font-size:20px">';
+    var_dump($_SESSION);
+    echo '</pre>';
+  } else {
+    echo "SESSION empty";
+  }
+  ?>
+
+  <?php 
+  if (isset($_POST['clear_session'])) {
+    session_unset();
+    session_destroy();
+    echo '<script>window.location.href = "./debug.php";</script>';
+
+}
+  ?>
+
+  <form method="post">
+    <input type="submit" name="clear_session" value="Clear Session">
+  </form>
 </body>
 
 </html>
