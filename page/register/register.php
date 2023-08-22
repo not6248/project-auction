@@ -1,6 +1,6 @@
 <?php
-if (!empty($_SESSION['otp'])) {
-    unset($_SESSION['otp']);
+if (!empty($_SESSION['otp_status'])) {
+    unset($_SESSION['otp_status']);
 }
 ?>
 
