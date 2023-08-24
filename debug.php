@@ -56,3 +56,10 @@
 </body>
 
 </html>
+
+
+<!-- 
+session_unset($_SESSION['user_login']);
+session_unset($_SESSION['username'] );
+session_destroy(); 
+-->
