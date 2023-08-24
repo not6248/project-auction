@@ -70,7 +70,7 @@ input:focus {
   margin-bottom: 2px;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
@@ -84,4 +84,26 @@ a{
   text-align: center;
   background-color: rgba(255, 255, 255, 0.8);
   z-index: 2000;
+}
+
+@media (min-width: 768px) {
+  .dropdown-menu{
+    display: block;
+    opacity: 0;
+    transition: all 0.2s;
+    right: 0;
+    left: auto;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+    /* margin-left: -50px; */
+    opacity: 1;
+  }
+
+  .dropdown .dropdown-toggle:active {
+    /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+  }
 }
