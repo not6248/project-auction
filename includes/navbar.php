@@ -2,9 +2,8 @@
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="./"><img src="assets/img/logo.png" width="30" height="37"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-2">
                 <?php
-                hide_for_regis_page(
-                    '
-                <div class="input-group search me-auto ms-0 pe-0 me-5 me-sm-5 me-md-0 pe-md-3 pe-lg-5 me-xl-0 pe-xl-0" ">
+                hide_for_regis_page('
+                <div class="input-group search mt-3 mt-md-0 me-auto ms-0 pe-0 me-5 me-sm-5 me-md-0 pe-md-3 pe-lg-5 me-xl-0 pe-xl-0" ">
                 <input class=" form-control search ms-0 pb-xxl-1 pt-xxl-1" type="text" placeholder="Search..." style="padding-left: 20px;" />
 
                 <button class="btn btn-primary" type="button">
@@ -13,43 +12,44 @@
                     </svg>
                     </button>
             </div>
-            ',
-                    ''
-                ) ?>
+            ') ?>
 
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link " href="debug.php" style="font-weight: bold;font-size: 16px;">debug.php</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#" style="font-weight: bold;font-size: 16px;">Home</a></li>
-                    <li class="nav-item" style="font-weight: bold;font-size: 16px;"><a class="nav-link" href="#" style="font-weight: bold;font-size: 16px;">About</a></li>
-                    <li class="nav-item" style="font-weight: bold;font-size: 16px;"><a class="nav-link" href="#" style="font-weight: bold;font-size: 16px;">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="debug.php">debug.php</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="#">Home</a></li> <!-- active -->
+                    <li class="nav-item"><a class="nav-link fw-bold" href="#">About</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="#">Contact</a></li>
+                    <?php if (!(isset($_SESSION['login_status']) || !isset($_SESSION['username']))) : ?>
+                        <div class="dropdown">
+                            <a class="nav-link fw-bold dropdown-toggle" href="profile.php" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-circle-user me-1"></i><?= $_SESSION['username'] ?>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="profile.php">My Profile</a></li>
+                                <li><a class="dropdown-item" href="#">My Order</a></li>
+                                <li><a id="logout-btn" class="dropdown-item text-danger" href="#">Logout</a></li>
+                            </ul>
+                        </div>
+                    <?php endif ?>
                 </ul>
-                    
-                <!-- Modal -->
-                <?php if(isset($_SESSION['login_status']) || !isset($_SESSION['username'])){
-                    include './page/login/modal_login.php';
-                    hide_for_regis_page('<a class="btn btn-nav btn-dark ms-md-0" role="button" href="./?page=register" style="font-weight: bold;font-size: 16px;">Register</a>', '');
-                }else{
-                    echo "<button>profile</button>";
-                }
-                 ?>
 
-                <!-- End Modal -->
-
-                <!-- <a class="btn btn-primary me-sm-2 ms-md-2 me-md-3" role="button" href="#" style="font-weight: bold;font-size: 16px;">Login</a> -->
-                <?php
-                ?>
+                <?php if (isset($_SESSION['login_status']) || !isset($_SESSION['username'])) : ?>
+                    <!-- Modal -->
+                    <?php include './page/login/modal_login.php'; ?>
+                    <!-- End Modal -->
+                    <?php hide_for_regis_page('<a class="fw-bold btn btn-nav btn-dark ms-md-0" role="button" href="./?page=register">Register</a>') ?>
+                <?php endif ?>
             </div>
         </div>
     </nav>
 
     <?php
-    function hide_for_regis_page($no_regis, $regis)
+    function hide_for_regis_page($no_regis)
     {
         if (!(isset($_GET['page']) && $_GET['page'] == 'register')) {
             echo $no_regis;
         } else {
-            echo $regis;
+            echo "";
         }
     } ?>
-
-    
