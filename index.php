@@ -22,7 +22,12 @@
     include "./includes/footer.php";
 
     include "./includes/scripts.php";
+    ?>
 
+    <script src="./assets/js/sweetalert.js"></script>
+    <script src="./assets/js/main.js"></script>
+
+    <?php
     //สำหรับเปิด modal เมื่อกรอก OTP เสร็จ
     if (!empty($_SESSION['otp_status']) && $_SESSION['otp_status'] === "success") {
         echo "
