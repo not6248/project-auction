@@ -9,7 +9,7 @@
             </div>
             <div class="modal-body p-4 pb-2 pt-0">
                 <!-- Form -->
-                <form id="loginForm" action="page/login/login_db.php" method="post" class="" data-bitwarden-watching="1">
+                <form id="loginForm" action="./ajax/ajax_login.php" method="post" class="" data-bitwarden-watching="1">
                     <div class="form-floating mb-3">
                         <input type="email" name="email" class="form-control rounded-3" placeholder="name@example.com"  autocomplete="current-password" required>
                         <label for="floatingInput">Email address</label>
@@ -28,59 +28,3 @@
         </div>
     </div>
 </div>
-
-<script>
-        $(document).ready(function() {
-            $("#loginForm").submit(function(e) {
-                e.preventDefault();
-                let formUrl = $(this).attr("action");
-                let Method = $(this).attr("method");
-                let formData = $(this).serialize();
-                $.ajax({
-                    type: Method,
-                    url: formUrl,
-                    data: formData,
-                    success: function(data) {
-                        let result = JSON.parse(data);
-                        if (result.status == "success") {
-                            console.log("success");
-                        }
-                        else if(result.status == "warning") {
-                            Swal.fire({
-                                title: 'แจ้งเตือน!',
-                                html: result.msg,
-                                icon: result.status,
-                                heightAuto: false,
-                                confirmButtonText: "OK",
-                            }).then(function(result){
-                                if (result.isConfirmed) {
-                                    $("#spinner-div").fadeIn(500);
-                                    $.ajax({
-                                        type: "post",
-                                        url: "page/otp/renew_otp_login.php",
-                                        success: function (response) {
-                                            let result2 = JSON.parse(response);
-                                            if(result2.status == "success"){
-                                                $("#spinner-div").hide();
-                                                window.location.href = "./?page=register&function=verify_email"
-                                                // window.location.href = "./?page=register&function=verify_email"
-                                            }
-                                        }
-                                    });
-                                }
-                            });
-                        }else {
-                            Swal.fire({
-                                title: 'ล้มเหลว!',
-                                html: result.msg,
-                                icon: result.status,
-                                heightAuto: false,
-                                // backdrop: false
-                            });
-                        }
-
-                    }
-                });
-            });
-        });
-    </script>

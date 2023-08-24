@@ -12,7 +12,7 @@ if (empty($_SESSION['email'])) {
             <div class="row justify-content-center">
                 <div class="col-11">
                     <!-- Form -->
-                    <form id="otpForm" action="page/otp/otp_db.php" method="post">
+                    <form id="otpForm" action="./ajax/ajax_otp.php" method="post">
                         <h1 class="text-center h2 fw-bold mb-3 mt-1 fw-normal">Code Verification</h1>
                         <?php
                         if (isset($_SESSION['info'])) : ?>
@@ -33,60 +33,3 @@ if (empty($_SESSION['email'])) {
         </div>
     </div>
 </main>
-
-<script>
-    $(document).ready(function() {
-        $("#otpForm").submit(function(e) {
-            e.preventDefault();
-            let Method = $(this).attr("method");
-            let formUrl = $(this).attr("action");
-            let formData = $(this).serialize();
-            $.ajax({
-                type: Method,
-                url: formUrl,
-                data: formData,
-                success: function(data) {
-                    let result = JSON.parse(data);
-                    if (result.status == "success") {
-                        Swal.fire({
-                            title: 'สำร็จ!',
-                            html: result.msg,
-                            icon: result.status,
-                            heightAuto: false,
-                            showConfirmButton: false,
-                            timer: 3000,
-                            didOpen: () => {
-                                Swal.showLoading()
-                                const b = Swal.getHtmlContainer().querySelector('b')
-                                timerInterval = setInterval(() => {
-                                    b.textContent = Swal.getTimerLeft()
-                                }, 100)
-                            },
-                            willClose: () => {
-                                clearInterval(timerInterval)
-                            }
-                            // confirmButtonText: "เข้าสู่ระบบ",
-                        }).then(function(result) {
-                            window.location.href = "./"
-                        })
-                    } else if (result.status == "warning") {
-                        Swal.fire({
-                            title: 'แจ้งเตือน!',
-                            html: result.msg,
-                            icon: result.status,
-                            heightAuto: false,
-                            // confirmButtonText: "เข้าสู่ระบบ",
-                        })
-                    } else {
-                        Swal.fire({
-                            title: 'ล้มเหลว!',
-                            html: result.msg,
-                            icon: result.status,
-                            heightAuto: false,
-                        });
-                    }
-                }
-            });
-        });
-    });
-</script>
