@@ -16,7 +16,8 @@
             include './page/register/register.php';
         }
         //function
-
+    } elseif((isset($_GET['page']) && $_GET['page'] == 'profile')){
+        include './page/profile/index.php';
     }
 
     include "./includes/footer.php";
