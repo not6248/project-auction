@@ -11,7 +11,6 @@ if (!empty($_SESSION['otp_status'])) {
                 <div class="col-6">
                     <form id="registerForm" action="./ajax/ajax_register.php" method="post">
                         <h1 class="text-center h2 fw-bold mb-5 mt-4 fw-normal">Register</h1>
-
                         <div class="form-floating mb-2">
                             <input name="username" type="text" class="form-control" placeholder="Username">
                             <label for="floatingInput">Username</label>
@@ -28,7 +27,6 @@ if (!empty($_SESSION['otp_status'])) {
                             <input name="c_password" type="password" class="form-control" placeholder="Confirm Password" autocomplete="new-password">
                             <label for="floatingPassword">Confirm Password</label>
                         </div>
-
                         <!-- <div class="form-check text-start my-3">
                 <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
