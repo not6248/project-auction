@@ -12,6 +12,9 @@
     <!-- bootstrap CSS =========================================================-->
         <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <!-- ------------------------------------------------------------------------->
+    <!-- bootstrap icon =========================================================-->
+        <link rel="stylesheet" href="assets/bootstrap/bootstrap-icons-1.10.5/font/bootstrap-icons.css">
+    <!-- ------------------------------------------------------------------------->
 
     <!-- sweetalert2 CSS =======================================================-->
     <link rel="stylesheet" href="assets/css/sweetalert2.min.css">
