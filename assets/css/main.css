@@ -15,6 +15,7 @@ body {
 }
 
 input:focus {
+  outline: none;
   border: 1px solid #1c62b9 !important;
   box-shadow: none !important;
   margin-left: 0px !important;
@@ -65,8 +66,7 @@ input:focus {
   margin-bottom: 2px;
 }
 
-.nav-tabs,
-.nav-link {
+.nav-tabs .nav-link {
   margin-bottom: 2px;
 }
 
