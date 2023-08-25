@@ -26,7 +26,7 @@
                             </a>
 
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="profile.php">My Profile</a></li>
+                                <li><a class="dropdown-item" href="./?page=profile">My Profile</a></li>
                                 <li><a class="dropdown-item" href="#">My Order</a></li>
                                 <li><a id="logout-btn" class="dropdown-item text-danger" href="#">Logout</a></li>
                             </ul>
