@@ -18,15 +18,14 @@
         //function
     } elseif((isset($_GET['page']) && $_GET['page'] == 'profile')){
         include './page/profile/index.php';
+    }elseif((isset($_GET['page']) && $_GET['page'] == 'product')){
+        include './page/product/index.php';
     }
 
     include "./includes/footer.php";
 
     include "./includes/scripts.php";
     ?>
-
-    <script src="./assets/js/sweetalert.js"></script>
-    <script src="./assets/js/main.js"></script>
 
     <?php
     //สำหรับเปิด modal เมื่อกรอก OTP เสร็จ
