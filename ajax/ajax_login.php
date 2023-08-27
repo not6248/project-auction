@@ -21,6 +21,7 @@ if (mysqli_stmt_execute($stmt)) {
                 //ตัวแปรสำหรับ Login
                 $_SESSION['user_login'] = $row['user_id'];
                 $_SESSION['username'] = $row['username'];
+                $_SESSION['user_type'] = $row['user_type'];
 
                 $verified_status = $row['email_verified_status'];
                 if ($verified_status == '0') { //บัญชียืนยันอีเมลแล้วหรือไม่
