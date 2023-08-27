@@ -37,7 +37,7 @@ if (mysqli_num_rows($result) > 0) :
             </div>
         </div>
         <script>
-            countdown_time("product-timeleftID-<?=$row['pd_id']?>","<?=$row['pd_end_date']?>");
+            // countdown_time("product-timeleftID-<?//=$row['pd_id']?>","<?//=$row['pd_end_date']?>");
         </script>
     <?php endforeach ?>
 <?php else : ?>
