@@ -24,7 +24,16 @@
                     <p class="d-inline" style="font-size: 16px;">Order Bidder</p>
                 </a>
             </li>
+            <!-- --------------------------------------------------------------------------------------- -->
+            <!-- Order Bidder -->
+            <li class="nav-item">
+                <a class="nav-link <?= isset($_GET['subpage']) && $_GET['subpage'] == 'favorite' ? 'active' : '' ?>" href="./?page=profile&subpage=favorite">
+                    <i class="bi bi-heart me-1"></i>
+                    <p class="d-inline" style="font-size: 16px;">Favorite</p>
+                </a>
+            </li>
         </ul>
+
 
         <!-- [x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x] -->
 
@@ -37,7 +46,7 @@
             <!-- Product -->
             <li class="nav-item">
                 <a class="nav-link <?= isset($_GET['subpage']) && $_GET['subpage'] == 'product' ? 'active' : '' ?>" href="./?page=profile&subpage=product">
-                    <i class="bi bi-box-seam"></i>
+                    <i class="bi bi-box-seam me-1"></i>
                     <p class="d-inline" style="font-size: 16px;">Product</p>
                 </a>
             </li>
@@ -45,7 +54,7 @@
             <!-- Order Seller -->
             <li class="nav-item">
                 <a class="nav-link <?= isset($_GET['subpage']) && $_GET['subpage'] == 'order_seller' ? 'active' : '' ?>" href="./?page=profile&subpage=order_seller">
-                    <i class="bi bi-box-seam-fill"></i>
+                    <i class="bi bi-box-seam-fill me-1"></i>
                     <p class="d-inline" style="font-size: 16px;">Order Seller</p>
                 </a>
             </li>
