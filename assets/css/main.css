@@ -107,3 +107,11 @@ a {
     pointer-events: none;
   }
 }
+
+#btn-product-type .btn.btn-primary{
+  box-shadow: 0px 0px 6px rgba(13,110,253,0.46);
+}
+#btn-product-type .btn.btn-light{
+  box-shadow: 0px 0px 11px rgba(0,0,0,0.2);
+}
+
