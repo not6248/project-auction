@@ -22,12 +22,12 @@
                     <?php if (!(isset($_SESSION['login_status']) || !isset($_SESSION['username']))) : ?>
                         <div class="dropdown">
                             <a class="nav-link fw-bold dropdown-toggle" href="profile.php" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-circle-user me-1"></i><?= $_SESSION['username'] ?>
+                                <i class="fa-solid fa-circle-user me-1"><?=$_SESSION['user_type'] == '2' ? '<sub><i class="fa-solid fa-circle-check fa-2xs" style="color: #2e8b57;"></i></sub>'  : '' ?></i>
+                                <?= $_SESSION['username'] ?>
                             </a>
-
                             <ul class="dropdown-menu dropdown-menu-end">
                                 <li><a class="dropdown-item" href="./?page=profile">My Profile</a></li>
-                                <li><a class="dropdown-item" href="#">My Order</a></li>
+                                <li><a class="dropdown-item" href="./?page=profile&subpage=order_bidder">My Order</a></li>
                                 <li><a id="logout-btn" class="dropdown-item text-danger" href="#">Logout</a></li>
                             </ul>
                         </div>
