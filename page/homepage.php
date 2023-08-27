@@ -28,17 +28,17 @@
      </div>
      <div id="product">
          <div class="row pb-xl-5 pb-4">
-             <div class="col">
-                 <button class="btn btn-primary mt-2 me-2" type="button" style="box-shadow: 0px 0px 6px rgba(13,110,253,0.46);">Historical Vinyls</button>
-                 <button class="btn btn-light mt-2 me-2" type="button" style="box-shadow: 0px 0px 11px rgba(0,0,0,0.2);">Genre Vinyls</button>
-                 <button class="btn btn-light mt-2 me-2" type="button" style="box-shadow: 0px 0px 11px rgba(0,0,0,0.2);">Artist Vinyls</button>
-                 <button class="btn btn-light mt-2 me-2" type="button" style="box-shadow: 0px 0px 11px rgba(0,0,0,0.2);">Collector’s Vinyls</button>
+             <div id="btn-product-type" class="col">
+                 <button class="btn btn-primary mt-2 me-2 category-btn" type="button" data-pro-type="1">Historical Vinyls</button>
+                 <button class="btn btn-light mt-2 me-2 category-btn" type="button" data-pro-type="2">Genre Vinyls</button>
+                 <button class="btn btn-light mt-2 me-2 category-btn" type="button" data-pro-type="3">Artist Vinyls</button>
+                 <button class="btn btn-light mt-2 me-2 category-btn" type="button" data-pro-type="4">Collector’s Vinyls</button>
              </div>
          </div>
-         <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3 mb-xl-4">
-             <?php
-                for ($i = 0; $i < 12; $i++) : ?>
-                 <div class="col-sm-6 col-lg-4 col-xl-3">
+         <div id="product-list" class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3 mb-xl-4">
+
+
+                 <!-- <div class="col-sm-6 col-lg-4 col-xl-3">
                      <div class="card hover-p">
                          <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
                          <div class="card-body p-4 ps-xl-2 pe-xl-2">
@@ -59,8 +59,8 @@
                              </div>
                          </div>
                      </div>
-                 </div>
-             <?php endfor ?>
+                 </div> -->
+
 
          </div>
      </div>
