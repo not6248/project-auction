@@ -1,5 +1,5 @@
 <?php
-$sql = "SELECT * FROM `login` WHERE user_id = " . $_SESSION['user_login'];
+$sql = "SELECT * FROM `login` INNER JOIN `user_detail` USING(user_id) WHERE user_id = " . $_SESSION['user_login'];
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 ?>
@@ -13,22 +13,26 @@ $row = mysqli_fetch_assoc($result);
             </div>
             <div class="card-body" style="background: #ECEEF9;">
             <!-- form -->
-                <form action="#" method="post">
+                <form action="./page/profile/profile_detail/profile_detail_update.php" method="post">
                     <div class="mb-1">
-                        <p class="mb-0 ms-1">ชื่อ</p><input type="text" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
+                        <p class="mb-0 ms-1">ชื่อ</p>
+                        <input required type="text" name="fname" value="<?= $row['ud_fname'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
                     </div>
                     <div class="mb-1">
-                        <p class="mb-0 ms-1">นามสกุล</p><input type="text" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
+                        <p class="mb-0 ms-1">นามสกุล</p>
+                        <input required type="text" name="lname" value="<?= $row['ud_lname'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
                     </div>
                     <div class="mb-1">
-                        <p class="mb-0 ms-1">ที่อยู่</p><input type="text" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
+                        <p class="mb-0 ms-1">ที่อยู่</p>
+                        <input required type="text" name="address" value="<?= $row['ud_address'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
                     </div>
                     <div class="mb-1">
                         <p class="mb-0 ms-1">อีเมล์</p>
                         <input disabled type="text" value="<?= $row['user_email'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
                     </div>
                     <div class="mb-1">
-                        <p class="mb-0 ms-1">เบอร์โทรศัพท์</p><input type="text" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
+                        <p class="mb-0 ms-1">เบอร์โทรศัพท์</p>
+                        <input required type="text" name="tele" value="<?= $row['ud_phone'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
                     </div>
                     <div class="mb-1">
                         <p class="mb-0 ms-1">คำนำหน้าชื่อ</p>
@@ -46,7 +50,7 @@ $row = mysqli_fetch_assoc($result);
                     </div>
                     <div class="mb-5">
                         <p class="mb-0 ms-1">รหัสบัตรประชาชน</p>
-                        <input type="text" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
+                        <input disabled type="text" value="" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
                         <p style="font-size: 12px;text-decoration:  underline;">อัปโหลด รูปภาพ บัตรประชาชน
                         </p>
                     </div>
