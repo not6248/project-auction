@@ -214,3 +214,34 @@ $(document).ready(function () {
           })
     });
 });
+
+$(document).ready(function () {
+    $('#profil-detail-update-form').submit(function (e) { 
+        e.preventDefault();
+        let formUrl = $(this).attr("action");
+        let Method = $(this).attr("method");
+        let formData = $(this).serialize();
+        $.ajax({
+            type: Method,
+            url: formUrl,
+            data: formData,
+            success: function (response) {
+                console.log("profil-detail-update-form :"+ response);
+                if(response == "success"){
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'ข้อมูลอัพเดตแล้ว',
+                        showConfirmButton: false
+                      })
+                }else if(response == "error"){
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'อัพเดตแล้วไม่สำเร็จ',
+                        showConfirmButton: false
+                      })
+                }
+            }
+        });
+
+    });
+});
