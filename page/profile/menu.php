@@ -18,6 +18,7 @@
             </li>
             <!-- --------------------------------------------------------------------------------------- -->
             <!-- Order Bidder -->
+
             <li class="nav-item">
                 <a class="nav-link <?= isset($_GET['subpage']) && $_GET['subpage'] == 'order_bidder' ? 'active' : '' ?>" href="./?page=profile&subpage=order_bidder">
                     <i class="far fa-list-alt me-1"></i>
@@ -35,30 +36,32 @@
         </ul>
 
 
-        <!-- [x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x] -->
 
-        <!-- =============== Seller =====================================================================-->
-        <p class="card-text mb-xl-1 mt-xl-0 pt-1" style="border-top: 1px solid rgba(33,37,41,0.25) ;">
-            Seller Menu
-        </p>
-        <ul class="nav nav-tabs d-flex flex-column" style="border-bottom-style: none;">
-            <!-- --------------------------------------------------------------------------------------- -->
-            <!-- Product -->
-            <li class="nav-item">
-                <a class="nav-link <?= isset($_GET['subpage']) && $_GET['subpage'] == 'product' ? 'active' : '' ?>" href="./?page=profile&subpage=product">
-                    <i class="bi bi-box-seam me-1"></i>
-                    <p class="d-inline" style="font-size: 16px;">Product</p>
-                </a>
-            </li>
-            <!-- --------------------------------------------------------------------------------------- -->
-            <!-- Order Seller -->
-            <li class="nav-item">
-                <a class="nav-link <?= isset($_GET['subpage']) && $_GET['subpage'] == 'order_seller' ? 'active' : '' ?>" href="./?page=profile&subpage=order_seller">
-                    <i class="bi bi-box-seam-fill me-1"></i>
-                    <p class="d-inline" style="font-size: 16px;">Order Seller</p>
-                </a>
-            </li>
-            <!-- --------------------------------------------------------------------------------------- -->
-        </ul>
+        <!-- [x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x][x] -->
+        <?php if ($_SESSION['user_type'] == 2) : ?>
+            <!-- =============== Seller =====================================================================-->
+            <p class="card-text mb-xl-1 mt-xl-0 pt-1" style="border-top: 1px solid rgba(33,37,41,0.25) ;">
+                Seller Menu
+            </p>
+            <ul class="nav nav-tabs d-flex flex-column" style="border-bottom-style: none;">
+                <!-- --------------------------------------------------------------------------------------- -->
+                <!-- Product -->
+                <li class="nav-item">
+                    <a class="nav-link <?= isset($_GET['subpage']) && $_GET['subpage'] == 'product' ? 'active' : '' ?>" href="./?page=profile&subpage=product">
+                        <i class="bi bi-box-seam me-1"></i>
+                        <p class="d-inline" style="font-size: 16px;">Product</p>
+                    </a>
+                </li>
+                <!-- --------------------------------------------------------------------------------------- -->
+                <!-- Order Seller -->
+                <li class="nav-item">
+                    <a class="nav-link <?= isset($_GET['subpage']) && $_GET['subpage'] == 'order_seller' ? 'active' : '' ?>" href="./?page=profile&subpage=order_seller">
+                        <i class="bi bi-box-seam-fill me-1"></i>
+                        <p class="d-inline" style="font-size: 16px;">Order Seller</p>
+                    </a>
+                </li>
+                <!-- --------------------------------------------------------------------------------------- -->
+            </ul>
+        <?php endif ?>
     </div>
 </div>
