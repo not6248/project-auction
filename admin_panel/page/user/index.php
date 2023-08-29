@@ -36,7 +36,7 @@
               <h3 class="card-title">ตารางข้อมูลผู้ใช้</h3>
             </div>
             <div class="card-body">
-              <table class="table" id="example">
+              <table class="table table-bordered" id="example">
                 <thead>
                   <tr>
                     <th scope="col">ID</th>
