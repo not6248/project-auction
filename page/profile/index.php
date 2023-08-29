@@ -9,6 +9,12 @@
                 include 'profile_detail/index.php';
             } elseif ((isset($_GET['subpage']) && $_GET['subpage'] == 'order_bidder')) {
                 include 'order_bidder/index.php';
+            } elseif ((isset($_GET['subpage']) && $_GET['subpage'] == 'favorite')) {
+                echo "favorite";
+            } elseif ((isset($_GET['subpage']) && $_GET['subpage'] == 'product')) {
+                include 'product/index.php';
+            } elseif ((isset($_GET['subpage']) && $_GET['subpage'] == 'order_seller')) {
+                include 'order_seller/index.php';
             }
             ?>
         </div>
