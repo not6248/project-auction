@@ -5,16 +5,25 @@
         <div class="col-sm-10 col-md-5 d-lg-none pt-0 mt-4 mb-4 mt-md-0 ms-sm-0 ps-sm-0 pe-sm-0" style="text-align: left;">
             <div class="d-flex flex-column justify-content-center align-items-center mb-0" style="height: 190px;border-radius: 16px;border: 3px solid rgb(13,110,253);">
                 <div class="row" style="width: 100%;">
-                    <div class="col-4"><span>เหลือเวลา<br>1 วัน 5 ชม.</span></div>
-                    <div class="col-4 d-flex justify-content-center align-items-end pe-0 ps-0" style="text-align: center;"><span><span style="color: rgb(62, 0, 186);">ราคาปัจจุบัน
-                                !</span></span></div>
-                    <div class="col-4 ms-0" style="text-align: right;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-star-fill text-primary-emphasis me-0" style="font-size: 20px;">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                            </path>
-                        </svg></div>
+                    <div class="col-4">
+                        <span>เหลือเวลา<br>1 วัน 5 ชม.</span>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-end pe-0 ps-0" style="text-align: center;">
+                        <span class="fw-bold" style="color: rgb(62, 0, 186);">ราคาปัจจุบัน!</span>
+                    </div>
+                    <div class="col-4 ms-0" style="text-align: right;">
+                        <i style="font-size: 20px;" class="bi bi-star-fill"></i>
+                    </div>
                 </div>
-                <div class="mb-3" style="min-width: 90%;text-align: center;border-bottom: 1px solid rgba(33,37,41,0.3) ;"><span style="font-size: 23px;font-weight: bold;color: #3E168E;">15,000฿</span></div>
-                <div class="mb-3"><button class="btn btn-primary" type="button" style="font-size: 20px;width: 263.906px;">เสนอราคา</button></div>
+                <div class="mb-3" style="min-width: 90%;text-align: center;border-bottom: 1px solid rgba(33,37,41,0.3);">
+                    <span style="font-size: 23px;font-weight: bold;color: #3E168E;">15,000฿</span>
+                </div>
+                <div class="mb-1">
+                    <button class="btn btn-primary" type="button" style="font-size: 20px;width: 263.906px;">เสนอราคา</button>
+                </div>
+                <div class="">
+                    <span class="fw-bold" style="color: rgb(62, 0, 186);">จำนวนผู้ประมูล 7 คน</span>
+                </div>
             </div>
         </div>
         <div class="col-11 col-lg-4 col-xl-4 col-xxl-4 mt-0">
@@ -59,16 +68,25 @@
         <div class="col-md-11 col-lg-4 d-none d-sm-none d-md-none d-lg-block">
             <div class="d-flex flex-column justify-content-center align-items-center mb-0" style="height: 190px;border-radius: 16px;border: 3px solid rgb(13,110,253);">
                 <div class="row" style="width: 100%;">
-                    <div class="col-4"><span>เหลือเวลา<br>1 วัน 5 ชม.</span></div>
-                    <div class="col-4 d-flex justify-content-center align-items-end pe-0 ps-0" style="text-align: center;"><span><span style="color: rgb(62, 0, 186);">ราคาปัจจุบัน
-                                !</span></span></div>
-                    <div class="col-4 ms-0" style="text-align: right;"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-star-fill text-primary-emphasis me-0" style="font-size: 20px;">
-                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z">
-                            </path>
-                        </svg></div>
+                    <div class="col-4">
+                        <span>เหลือเวลา<br>1 วัน 5 ชม.</span>
+                    </div>
+                    <div class="col-4 d-flex justify-content-center align-items-end pe-0 ps-0" style="text-align: center;">
+                        <span class="fw-bold" style="color: rgb(62, 0, 186);">ราคาปัจจุบัน!</span>
+                    </div>
+                    <div class="col-4 ms-0" style="text-align: right;">
+                        <i style="font-size: 20px;" class="bi bi-star-fill"></i>
+                    </div>
                 </div>
-                <div class="mb-3" style="min-width: 90%;text-align: center;border-bottom: 1px solid rgba(33,37,41,0.3);"><span style="font-size: 23px;font-weight: bold;color: #3E168E;">15,000฿</span></div>
-                <div class="mb-3"><button class="btn btn-primary" type="button" style="font-size: 20px;width: 263.906px;">เสนอราคา</button></div>
+                <div class="mb-3" style="min-width: 90%;text-align: center;border-bottom: 1px solid rgba(33,37,41,0.3);">
+                    <span style="font-size: 23px;font-weight: bold;color: #3E168E;">15,000฿</span>
+                </div>
+                <div class="mb-1">
+                    <button class="btn btn-primary" type="button" style="font-size: 20px;width: 263.906px;">เสนอราคา</button>
+                </div>
+                <div class="">
+                    <span class="fw-bold" style="color: rgb(62, 0, 186);">จำนวนผู้ประมูล 7 คน</span>
+                </div>
             </div>
         </div>
     </div>
