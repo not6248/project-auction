@@ -22,23 +22,30 @@
      <div class="row mb-5 mb-xl-5">
          <div class="col-md-8 col-xl-6 text-center mx-auto">
              <h2>Heading</h2>
-             <p class="w-lg-50">Curae hendrerit donec commodo hendrerit egestas tempus, turpis facilisis nostra nunc.
-                 Vestibulum dui eget ultrices.</p>
+             <p class="w-lg-50">
+                 Online audio auction website offers a platform for buying and selling audio recordings. Our goal is to provide a seamless and efficient marketplace for audio enthusiasts to connect and trade their recordings.</p>
          </div>
      </div>
+     <?php $sqlpro_type = "SELECT * FROM product_type";
+        $sqlpro_type_result = mysqli_query($conn, $sqlpro_type); ?>
      <div id="product">
          <div class="row pb-xl-5 pb-4">
              <div id="btn-product-type" class="col">
-                 <button class="btn btn-primary mt-2 me-2 category-btn" type="button" data-pro-type="1">Historical Vinyls</button>
-                 <button class="btn btn-light mt-2 me-2 category-btn" type="button" data-pro-type="2">Genre Vinyls</button>
-                 <button class="btn btn-light mt-2 me-2 category-btn" type="button" data-pro-type="3">Artist Vinyls</button>
-                 <button class="btn btn-light mt-2 me-2 category-btn" type="button" data-pro-type="4">Collector’s Vinyls</button>
+                 <a href="./" class="btn <?= !isset($_GET['filter_product_typeID'])
+                                                ? "btn btn-primary"
+                                                : "btn-light" ?> mt-2 me-2 category-btn" role="button">All</a>
+
+                 <?php foreach ($sqlpro_type_result as $row_pro_type) : ?>
+                     <a href="./?filter_product_typeID=<?= $row_pro_type['pd_type_id']?>" class="btn <?= isset($_GET['filter_product_typeID']) && $_GET['filter_product_typeID'] == $row_pro_type['pd_type_id']
+                                                                                                            ? "btn btn-primary"
+                                                                                                            : "btn-light" ?> mt-2 me-2 category-btn" role="button"><?= $row_pro_type['pd_type_name'] ?></a>
+                 <?php endforeach ?>
+                 <!-- <a href="" class="btn btn-primary mt-2 me-2 category-btn" role="button" ">Genre Vinyls</a> -->
              </div>
          </div>
-         <div id="product-list" class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3 mb-xl-4">
-
-
-                 <!-- <div class="col-sm-6 col-lg-4 col-xl-3">
+         <div id=" product-list" class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3 mb-xl-4">
+                <?php include 'homepage_product_list.php'?>
+             <!-- <div class="col-sm-6 col-lg-4 col-xl-3">
                      <div class="card hover-p">
                          <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
                          <div class="card-body p-4 ps-xl-2 pe-xl-2">
@@ -60,8 +67,6 @@
                          </div>
                      </div>
                  </div> -->
-
-
          </div>
      </div>
  </div>
