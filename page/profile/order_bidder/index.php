@@ -4,7 +4,7 @@
             <h4 class="card-title mb-6" style="font-size: 28px;">Order Bidder</h4>
             <button type="button" class="btn btn-primary btn-sm">Small button</button>
         </div>
-        <div class="row">
+        <div class="row mt-3">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header" style="background: #D8DBE9;">
