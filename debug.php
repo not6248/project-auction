@@ -6,18 +6,10 @@
 <body>
   <h1>ทดสอบ</h1><br>
   <a class="btn btn-primary" href="admin_panel">Admin Login (no login bypass)</a>
-  <a type="" class="btn btn-primary" href="debug.php?LoginByPass">Admin Login (login bypass)</a>
-  <a class="btn btn-primary" href="admin_panel/login.php">Admin Login Page</a>
-  <a class="btn btn-primary" href="admin_panel">User Page</a>
-
-  <br><br><br>
-  <form action="send_mail.php" method="post">
-    Email <input type="email" name="email"> <br>
-    หัวเรื่อง <input type="text" name="subject"><br>
-    ข้อความ <input type="text" name="message"><br>
-    <button type="submit" name="send">ส่ง</button>
-  </form>
-  <?php include 'includes/scripts.php'; ?>
+  <a type="" class="btn btn-secondary " href="debug.php?LoginByPass">Admin Login (login bypass)</a>
+  <a class="btn btn-success " href="admin_panel/login.php">Admin Login Page</a>
+  <a class="btn btn-info" href="./">User Page</a>
+  <br>
 
   <?php
   unset($_SESSION['admin_login']);
@@ -31,7 +23,6 @@
   <br><br>
   <?php
  
-
   if (!empty($_SESSION)) {
     echo '<pre style="font-size:20px">';
     var_dump($_SESSION);
@@ -53,6 +44,7 @@
   <form method="post">
     <input type="submit" name="clear_session" value="Clear Session">
   </form>
+  <?php include 'includes/scripts.php'; ?>
 </body>
 
 </html>
