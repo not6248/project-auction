@@ -70,10 +70,6 @@ input:focus {
   margin-bottom: 2px;
 }
 
-a {
-  text-decoration: none;
-}
-
 #spinner-div {
   position: fixed;
   display: none;
@@ -93,13 +89,14 @@ a {
     transition: all 0.2s;
     right: 0;
     left: auto;
+    pointer-events: none;
   }
 
   .dropdown:hover .dropdown-menu {
     display: block;
     margin-top: 0;
-    /* margin-left: -50px; */
     opacity: 1;
+    pointer-events: initial;
   }
 
   .dropdown .dropdown-toggle:active {
@@ -115,3 +112,6 @@ a {
   box-shadow: 0px 0px 11px rgba(0,0,0,0.2);
 }
 
+a {
+  text-decoration: none;
+}
