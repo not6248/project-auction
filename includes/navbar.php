@@ -15,24 +15,29 @@
             ') ?>
 
                 <ul class="navbar-nav ms-auto">
+                    <!-- Navbar Menu List -->
                     <li class="nav-item"><a class="nav-link fw-bold" href="debug.php">debug.php</a></li>
-                    <?=isset($_SESSION['user_type']) && $_SESSION['user_type'] == '2' ? '<li class="nav-item"><a class="nav-link fw-bold" href="#"><i class="fa-solid fa-circle-plus"></i> Add Product</a></li>'  : '' ?>
+                    <?= isset($_SESSION['user_type']) && $_SESSION['user_type'] == '2'
+                        ? '<li class="nav-item"><a class="nav-link fw-bold" href="./?page=profile&subpage=product"><i class="fa-solid fa-plus"></i> Add Product</a></li>'
+                        : '' ?>
                     <li class="nav-item"><a class="nav-link fw-bold" href="./">Home</a></li> <!-- active -->
                     <li class="nav-item"><a class="nav-link fw-bold" href="#">About</a></li>
                     <li class="nav-item"><a class="nav-link fw-bold" href="#">Contact</a></li>
+                    <!-- Profile Dropdown-->
                     <?php if (!(isset($_SESSION['login_status']) || !isset($_SESSION['username']))) : ?>
                         <div class="dropdown">
-                            <a class="nav-link fw-bold dropdown-toggle" href="profile.php" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fa-solid fa-circle-user me-1"><?=$_SESSION['user_type'] == '2' ? '<sub><i class="fa-solid fa-circle-check fa-2xs" style="color: #2e8b57;"></i></sub>'  : '' ?></i>
+                            <button class="nav-link fw-bold dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-solid fa-circle-user me-1"><?= $_SESSION['user_type'] == '2' ? '<sub><i class="fa-solid fa-circle-check fa-2xs" style="color: #2e8b57;"></i></sub>'  : '' ?></i>
                                 <?= $_SESSION['username'] ?>
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
+                            </button>
+                            <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="./?page=profile">My Profile</a></li>
                                 <li><a class="dropdown-item" href="./?page=profile&subpage=order_bidder">My Order</a></li>
                                 <li><a id="logout-btn" class="dropdown-item text-danger" href="#">Logout</a></li>
                             </ul>
                         </div>
                     <?php endif ?>
+                    <!-- End Profile Dropdown -->
                 </ul>
 
                 <?php if (isset($_SESSION['login_status']) || !isset($_SESSION['username'])) : ?>
