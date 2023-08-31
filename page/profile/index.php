@@ -1,3 +1,8 @@
+<?php 
+if (!isset($_SESSION['user_login']) && empty($_SESSION['user_login'])) {
+    echo '<script>window.location.href = "./";</script>';
+    exit; // ออกจากการทำงานของสคริปต์ PHP เพื่อป้องกันการแสดงผลเนื้อหาหลังจากนี้
+}?>
 <div class="container py-5">
     <div class="row mt-5">
         <div class="col">
