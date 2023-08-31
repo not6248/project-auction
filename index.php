@@ -9,18 +9,17 @@
     <?php
     if (!isset($_GET['page']) && empty($_GET['page'])) {
         include './page/homepage.php';
-    }elseif((isset($_GET['page']) && $_GET['page'] == 'contact')){
-        include './page/contact.php';
-    }elseif ((isset($_GET['page']) && $_GET['page'] == 'register')) {
+    } elseif ((isset($_GET['page']) && $_GET['page'] == 'register')) {
         if (isset($_GET['function']) && $_GET['function'] == 'verify_email') {
             include './page/otp/otp.php';
         } else {
             include './page/register/register.php';
         }
+        //function
     } elseif((isset($_GET['page']) && $_GET['page'] == 'profile')){
         include './page/profile/index.php';
     }elseif((isset($_GET['page']) && $_GET['page'] == 'product')){
-        include './page/product_details/index.php';
+        include './page/product/index.php';
     }
 
     include "./includes/footer.php";
@@ -40,7 +39,6 @@
         unset($_SESSION['otp_status']);
     }
     ?>
-    <!--  -->
     <div id="spinner-div" class="pt-5">
         <div class="spinner-border text-primary" role="status">
         </div>
