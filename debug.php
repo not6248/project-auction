@@ -4,6 +4,7 @@
 ?>
 
 <body>
+  <div class="container" >
   <h1>ทดสอบ</h1><br>
   <a class="btn btn-primary" href="admin_panel">Admin Login (no login bypass)</a>
   <a type="" class="btn btn-secondary " href="debug.php?LoginByPass">Admin Login (login bypass)</a>
@@ -22,7 +23,7 @@
 
   <br><br>
   <?php
- 
+
   if (!empty($_SESSION)) {
     echo '<pre style="font-size:20px">';
     var_dump($_SESSION);
@@ -32,18 +33,50 @@
   }
   ?>
 
-  <?php 
+  <?php
   if (isset($_POST['clear_session'])) {
     session_unset();
     session_destroy();
     echo '<script>window.location.href = "./debug.php";</script>';
-
-}
+  }
   ?>
 
   <form method="post">
     <input type="submit" name="clear_session" value="Clear Session">
   </form>
+
+  <div class="row mt-5">
+    <h2>Email & Password</h2>
+    <div class="col-3">
+      <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class=" fw-bold list-group-item">admin@admin.com</li>
+          <li class="list-group-item">admin0000</li>
+          <li class="list-group-item">UserType : ADMIN</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="fw-bold list-group-item">b@hotmail.com</li>
+          <li class="list-group-item">111111</li>
+          <li class="list-group-item">UserType : Bider</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="card" style="width: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="fw-bold list-group-item">@:s@hotmail.com</li>
+          <li class="list-group-item">111111</li>
+          <li class="list-group-item">UserType : Seller</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+
   <?php include 'includes/scripts.php'; ?>
 </body>
 
