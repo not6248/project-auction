@@ -1,7 +1,7 @@
 <div class="card" style="box-shadow: 2px 2px 0px 1px rgba(33,37,41,0.25);">
     <div class="card-body" style="background: #ECEEF9;">
-        <h4 class="card-title" style="text-align: center;">Manage Menu</h4>
-        <h6 class="text-muted card-title mb-2 mb-xl-2 pb-xl-0" style="text-align: center;border-style: none;border-bottom: 1px none rgba(33,37,41,0.2) ;">
+        <h4 class="card-title text-center">Manage Menu</h4>
+        <h6 class="text-muted card-title mb-2 mb-xl-2 pb-xl-0 text-center">
             Welcome, <?= $_SESSION['username'] ?></h6>
         <!-- =============== bidder =====================================================================-->
         <p class="card-text mb-xl-1 mt-xl-0 pt-1" style="border-top: 1px solid rgba(33,37,41,0.25) ;">

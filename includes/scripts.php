@@ -1,6 +1,8 @@
 <!-- bootstrap -->
-    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- sweetalert2 -->
-    <script src="assets/js/sweetalert2.all.min.js"></script>
+<script src="assets/js/sweetalert2.all.min.js"></script>
+<!-- datatables -->
+<script src="admin_panel/plugins/datatables/datatables.min.js"></script>
 <!-- โค้ดแจ้งเตือนของ sweetalert2-->
-    <script src="./assets/js/sweetalert.js"></script>
+<script src="assets/js/sweetalert.js"></script>
