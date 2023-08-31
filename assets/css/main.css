@@ -43,7 +43,12 @@ input:focus {
 
 @media (min-width: 992px) {
   .input-group {
-    width: 494px;
+    width: 350px;
+  }
+}
+@media (min-width: 1200px) {
+  .input-group {
+    width: 490px;
   }
 }
 
