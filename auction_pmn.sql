@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 07, 2023 at 06:06 PM
+-- Generation Time: Aug 31, 2023 at 10:35 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -56,7 +56,8 @@ CREATE TABLE `bid` (
 CREATE TABLE `delivery` (
   `dlv_id` int NOT NULL COMMENT 'รหัสขนส่ง',
   `dlvt_id` int NOT NULL COMMENT 'รหัสประเภทขนส่ง',
-  `dlv_code` varchar(150) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'หมายเลขพัสดุ'
+  `dlv_code` varchar(150) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'หมายเลขพัสดุ',
+  `dlv_status` int NOT NULL COMMENT 'สถานะขนส่ง'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -94,6 +95,7 @@ CREATE TABLE `login` (
   `password` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รหัสผ่านผู้ใช้',
   `user_type` int NOT NULL DEFAULT '1' COMMENT 'ประเภทผู้ใช้',
   `user_status` int NOT NULL DEFAULT '1' COMMENT 'สถานะผู้ใช้',
+  `user_email` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'อีเมล์ผู้ใช้',
   `email_verified_code` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'รหัสยืนยันอีเมล์',
   `email_verified_status` int NOT NULL DEFAULT '0' COMMENT 'การยืนยันอีเมล์',
   `user_create_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'วันเวลาที่สร้างผู้ใช้'
@@ -103,9 +105,11 @@ CREATE TABLE `login` (
 -- Dumping data for table `login`
 --
 
-INSERT INTO `login` (`user_id`, `username`, `password`, `user_type`, `user_status`, `email_verified_code`, `email_verified_status`, `user_create_date`) VALUES
-(1, 'admin', 'admin0000', 0, 1, '0', 0, '2023-07-10 12:20:42'),
-(12, 'not6248', '$2y$10$mTWoejdGsVuv1RyiDzunt.HD5zfT6PiieCzNizWtdEb0aGENqSjyy', 1, 1, NULL, 0, '2023-08-07 16:58:17');
+INSERT INTO `login` (`user_id`, `username`, `password`, `user_type`, `user_status`, `user_email`, `email_verified_code`, `email_verified_status`, `user_create_date`) VALUES
+(1, 'admin', 'admin0000', 0, 1, 'admin@admin.com', '', 1, '2023-07-10 12:20:42'),
+(37, 'not6248', '$2y$10$bJ1vzq7fad6lt1Qwa2/4DOkr4QzM7HZxoJLx/mdn2zdsCenF08qTa', 1, 1, 'not-6248@hotmail.com', NULL, 1, '2023-08-24 19:13:35'),
+(38, 'bidder', '$2y$10$MkFYSlmmC7QlHyAs6VzqSegBxCV2S52SH77JOxj9tFu9.5lxfBhG.', 1, 1, 'b@hotmail.com', NULL, 1, '2023-08-27 09:17:53'),
+(39, 'seller', '$2y$10$2jXa.bVngiTUypkAYP/KPu4HTyByktNQsAwlOiwTCFuJAyfLscV9K', 2, 1, 's@hotmail.com', NULL, 1, '2023-08-27 09:17:53');
 
 -- --------------------------------------------------------
 
@@ -146,6 +150,15 @@ CREATE TABLE `prefix` (
   `prefix_name` varchar(150) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'คำนำหน้า'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `prefix`
+--
+
+INSERT INTO `prefix` (`prefix_id`, `prefix_name`) VALUES
+(1, 'นาย'),
+(2, 'นาง'),
+(3, 'นางสาว');
+
 -- --------------------------------------------------------
 
 --
@@ -154,18 +167,27 @@ CREATE TABLE `prefix` (
 
 CREATE TABLE `product` (
   `pd_id` int NOT NULL COMMENT 'รหัสสินค้า',
-  `user_id` varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รหัสผู้ใช้',
-  `pd_type_id` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'ประเภทสินค้า',
-  `pd_name` int NOT NULL COMMENT 'ชื่อสินค้า',
-  `pd_detail` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รายละเอียดสินค้า',
+  `user_id` int NOT NULL COMMENT 'รหัสผู้ใช้',
+  `pd_type_id` int NOT NULL COMMENT 'ประเภทสินค้า',
+  `pd_name` varchar(150) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'ชื่อสินค้า',
+  `pd_detail` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รายละเอียดสินค้า',
   `pd_price_start` int NOT NULL COMMENT 'ราคาเริ่มต้น',
-  `pd_img` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รูปสินค้าประมูล',
+  `pd_img` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'รูปสินค้าประมูล',
   `pd_condition` int NOT NULL COMMENT 'สภาพสินค้า',
   `pd_status` int NOT NULL COMMENT 'สถานะสินค้าประมูล',
   `pd_start_date` datetime NOT NULL COMMENT 'วัน-เวลาเริ่มการประมูล',
   `pd_end_date` datetime NOT NULL COMMENT 'วัน-เวลาจบการประมูล',
   `pd_create_datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'วันเวลาสร้างสินค้า'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`pd_id`, `user_id`, `pd_type_id`, `pd_name`, `pd_detail`, `pd_price_start`, `pd_img`, `pd_condition`, `pd_status`, `pd_start_date`, `pd_end_date`, `pd_create_datetime`) VALUES
+(1, 37, 1, 'แผ่นเพลงแมวน้ำ', 'แมวน้ำเคปเฟอร์ซีลเป็นสัตว์สังคม แต่มักขี้บ่น อยู่รวมกันเป็นฝูงใหญ่ ชอบล่าเหยื่อและหากินตามผิวน้ำหรือน้ำตื้นๆ หากินปลาตามเรือของชาวประมง ในช่วงกลางเดือนตุลาคม ตัวผู้จะไปยังพื้นที่ผสมพันธุ์ซึ่งเป็นชายหาดที่เป็นโขดหินและประกาศอาณาเขต อีกหลายสัปดาห์ต่อมาตัวเมียจะตามเข้ามาเพื่อออกลูกจำนวน 1 ตัว ซึ่งจะมีตัวเมียหลายตัวเข้ามาในอาณาเขต ตัวผู้ที่ครองอาณาเขตจะไล่ตัวผู้ตัวอื่นออกนอกอาณาเขตหากล้ำเข้ามา จนกว่ามันจะได้ผสมพันธุ์กับตัวเมียทุกตัว ตัวเมียจะเป็นสัดหลังการออกลูก 5 - 6 วัน และมีระยะการตั้งท้องนานประมาณ 1 ปี', 100, '', 1, 1, '2023-08-25 21:54:52', '2023-08-28 21:54:52', '2023-08-25 21:56:50'),
+(5, 37, 1, 'แผ่นเพลงแมวดำ', 'แมว (ชื่อวิทยาศาสตร์: Felis catus) เป็นสปีชีส์สัตว์เลี้ยงของสัตว์เลี้ยงลูกด้วยนมกินเนื้อขนาดเล็ก[1][2] โดยเป็นแมวสปีชีส์เดียวในวงศ์ Felidae ที่ถูกปรับเป็นสัตว์เลี้ยง และมักเรียกเป็น แมวบ้าน เพื่อแยกมันจากสมาชิกที่อยู่ในป่า[4] แมวเหล่านี้สามารถอาศัยเป็นแมวบ้าน, แมวฟาร์ม หรือแมวจรได้ แต่แมวประเภทหลังสุดมักอาศัยอยู่อย่างอิสระและหลีกเลี่ยงการติดต่อกับมนุษย์[5] มนุษย์ให้ค่ากับแมวบ้านในฐานะคู่หูและความสามารถในการฆ่าสัตว์ฟันแทะ สำนักจดทะเบียนแมว (cat registries) หลายแห่งยอมรับสายพันธุ์แมวประมาณ 60 สายพันธุ์', 100, '', 1, 1, '2023-08-25 21:54:52', '2023-08-26 19:59:52', '2023-08-25 21:56:50'),
+(6, 37, 2, 'แผ่นเพลงครัวซอง', 'สวัสดี', 100, '', 1, 1, '2023-08-25 21:54:52', '2023-08-28 21:54:52', '2023-08-26 12:59:50');
 
 -- --------------------------------------------------------
 
@@ -177,6 +199,16 @@ CREATE TABLE `product_type` (
   `pd_type_id` int NOT NULL COMMENT 'รหัสประเภทสินค้า',
   `pd_type_name` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'ชื่อประเภทสินค้า'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `product_type`
+--
+
+INSERT INTO `product_type` (`pd_type_id`, `pd_type_name`) VALUES
+(1, 'Historical Vinyls'),
+(2, 'Genre Vinyls'),
+(3, 'Artist Vinyls'),
+(4, 'Collector’s Vinyls');
 
 -- --------------------------------------------------------
 
@@ -190,7 +222,6 @@ CREATE TABLE `user_detail` (
   `prefix_id` int DEFAULT NULL COMMENT 'รหัสผู้ใช้งาน',
   `ud_address` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'ที่อยู่ผู้ใช้',
   `ud_phone` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'เบอร์โทรศัพท์ผู้ใช้',
-  `ud_email` varchar(150) COLLATE utf8mb4_general_ci NOT NULL COMMENT 'อีเมล์ผู้ใช้',
   `ud_id_card` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'รหัสบัตรประชาชน ',
   `ud_idcard_img` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'รูปบัตรประชาชน',
   `ud_fname` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'ชื่อจริง',
@@ -201,8 +232,10 @@ CREATE TABLE `user_detail` (
 -- Dumping data for table `user_detail`
 --
 
-INSERT INTO `user_detail` (`ud_id`, `user_id`, `prefix_id`, `ud_address`, `ud_phone`, `ud_email`, `ud_id_card`, `ud_idcard_img`, `ud_fname`, `ud_lname`) VALUES
-(12, 12, NULL, NULL, NULL, 'not-6248@hotmail.com', NULL, NULL, NULL, NULL);
+INSERT INTO `user_detail` (`ud_id`, `user_id`, `prefix_id`, `ud_address`, `ud_phone`, `ud_id_card`, `ud_idcard_img`, `ud_fname`, `ud_lname`) VALUES
+(37, 37, 1, 'ดาวอังคคาร', '0621188722', NULL, NULL, 'เอกภพ', 'แผงลอย'),
+(38, 38, 2, NULL, NULL, NULL, NULL, 'เอด', NULL),
+(39, 39, 1, 'เมืองไมย', '081', NULL, NULL, 'นักขาย', 'มือทอง');
 
 --
 -- Indexes for dumped tables
@@ -306,7 +339,7 @@ ALTER TABLE `delivery_type`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `user_id` int NOT NULL AUTO_INCREMENT COMMENT 'รหัสผู้ใช้', AUTO_INCREMENT=13;
+  MODIFY `user_id` int NOT NULL AUTO_INCREMENT COMMENT 'รหัสผู้ใช้', AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `order_tb`
@@ -324,25 +357,25 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `prefix`
 --
 ALTER TABLE `prefix`
-  MODIFY `prefix_id` int NOT NULL AUTO_INCREMENT COMMENT 'รหัสคำนำหน้าชื่อ';
+  MODIFY `prefix_id` int NOT NULL AUTO_INCREMENT COMMENT 'รหัสคำนำหน้าชื่อ', AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `pd_id` int NOT NULL AUTO_INCREMENT COMMENT 'รหัสสินค้า', AUTO_INCREMENT=5;
+  MODIFY `pd_id` int NOT NULL AUTO_INCREMENT COMMENT 'รหัสสินค้า', AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `product_type`
 --
 ALTER TABLE `product_type`
-  MODIFY `pd_type_id` int NOT NULL AUTO_INCREMENT COMMENT 'รหัสประเภทสินค้า';
+  MODIFY `pd_type_id` int NOT NULL AUTO_INCREMENT COMMENT 'รหัสประเภทสินค้า', AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_detail`
 --
 ALTER TABLE `user_detail`
-  MODIFY `ud_id` int NOT NULL AUTO_INCREMENT COMMENT 'รหัสรายละเอียดผู้ใช้', AUTO_INCREMENT=13;
+  MODIFY `ud_id` int NOT NULL AUTO_INCREMENT COMMENT 'รหัสรายละเอียดผู้ใช้', AUTO_INCREMENT=40;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
