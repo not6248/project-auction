@@ -7,20 +7,33 @@
     <?php include './includes/navbar.php'; ?> <!-- mavbar -->
 
     <?php
-    if (!isset($_GET['page']) && empty($_GET['page'])) {
-        include './page/homepage.php';
-    }elseif((isset($_GET['page']) && $_GET['page'] == 'contact')){
-        include './page/contact.php';
-    }elseif ((isset($_GET['page']) && $_GET['page'] == 'register')) {
-        if (isset($_GET['function']) && $_GET['function'] == 'verify_email') {
-            include './page/otp/otp.php';
-        } else {
-            include './page/register/register.php';
-        }
-    } elseif((isset($_GET['page']) && $_GET['page'] == 'profile')){
-        include './page/profile/index.php';
-    }elseif((isset($_GET['page']) && $_GET['page'] == 'product')){
-        include './page/product_details/index.php';
+    $page = isset($_GET['page']) ? $_GET['page'] : '';
+    $function = isset($_GET['function']) ? $_GET['function'] : '';
+
+    switch ($page) {
+        case '':
+            include './page/homepage.php';
+            break;
+        case 'contact':
+            include './page/contact.php';
+            break;
+        case 'register':
+            if ($function == 'verify_email') {
+                include './page/otp/otp.php';
+            } else {
+                include './page/register/register.php';
+            }
+            break;
+        case 'profile':
+            include './page/profile/index.php';
+            break;
+        case 'product':
+            include './page/product_details/index.php';
+            break;
+        default:
+            // หากไม่มีการกำหนดหน้าหรือไม่ตรงกับเงื่อนไขใดๆ
+            include './page/homepage.php';
+            break;
     }
 
     include "./includes/footer.php";
