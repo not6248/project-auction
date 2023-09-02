@@ -1,15 +1,10 @@
-<?php
-if (isset($_SESSION['user_type']) && $_SESSION['user_type'] != 2) {
-    echo '<script>window.location.href = "./?page=profile";</script>';
-    exit; // ออกจากการทำงานของสคริปต์ PHP เพื่อป้องกันการแสดงผลเนื้อหาหลังจากนี้
-} ?>
 <div class="card" style="background: rgb(236,238,249);box-shadow: 0px 4px 4px rgba(33,37,41,0.25);">
     <div class="card-body">
         <div class="d-flex justify-content-between">
             <h4 class="card-title mb-6" style="font-size: 28px;">Product</h4>
             <!-- <button type="button" class="btn btn-success btn-sm rounded"><i class="fa-solid fa-plus"></i> Add new product</button> -->
-            <a class="btn btn-success rounded " href="#" role="button"><i class="fa-solid fa-plus"></i> Add new product</a>
-  
+            <a class="btn btn-success rounded-5" href="./?page=<?=$_GET['page']?>&subpage=<?=$_GET['subpage']?>&function=add" role="button"><i class="fa-solid fa-plus"></i> Add new product</a>
+
         </div>
         <div class="row mt-3">
             <div class="col-12">
@@ -18,45 +13,43 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] != 2) {
                         <h4 style="color: rgb(84,88,94);" class="mb-0">Product List</h4>
                     </div>
                     <div class="card-body" style="background: #ECEEF9;">
-                    <?php 
-                    $sql = "SELECT * FROM `product`";
-                    $result = mysqli_query($conn,$sql);
-                    if(mysqli_num_rows($result) > 99){
+                        <?php
+                        $sql = "SELECT * FROM `product` WHERE user_id =" . $_SESSION['user_login'];
+                        $result = mysqli_query($conn, $sql);
+                        if (mysqli_num_rows($result) > 0) :
+                            $i = 1 ?>
+                            <table id="seller_product_list" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No.</th>
+                                        <th scope="col">Img</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Start Price</th>
+                                        <th scope="col">Time Left</th>
+                                        <th scope="col">Menu</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($result as $row) : ?>
+                                        <tr>
+                                            <th scope="row"><?= $i++ ?></th>
+                                            <td><img class="card-img-top w-100 d-block fit-cover" style="height: 100px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"></td>
+                                            <td><?= $row['pd_name'] ?></td>
+                                            <td><?= $row['pd_price_start'] ?></td>
+                                            <td>@mdo</td>
+                                            <td class="">
+                                                <a href="" class="btn btn-info btn-sm">รายละเอียด</a>
+                                                <a href="./?page=<?=$_GET['page']?>&subpage=<?=$_GET['subpage']?>&function=edit" class="btn btn-warning btn-sm">แก้ไข</a>
+                                                <a href="./?page=<?=$_GET['page']?>&subpage=<?=$_GET['subpage']?>&function=delete" class="btn btn-danger btn-sm" onclick="return confirm('คุณต้องการลบข้อมูลของ admin หรือไม่')">ลบ</a>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach ?>
+                                </tbody>
+                            </table>
+                        <?php else : ?>
+                            echo '<p class="text-center text-muted mt-3">no product</p>';
+                        <?php endif ?>
 
-                    }else{
-                        echo '<p class="text-center text-muted mt-3">no product</p>';
-                    }
-                    ?>
-                        <!-- <table id="seller_product_list" class="table">
-                            <thead>
-                                <tr>
-                                    <th scope="col">No.</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>Mark</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">3</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                </tr>
-                            </tbody>
-                        </table> -->
                     </div>
                 </div>
             </div>
@@ -72,7 +65,7 @@ if (isset($_SESSION['user_type']) && $_SESSION['user_type'] != 2) {
                 "emptyTable": "ไม่มีข้อมูลในตาราง",
                 "info": "กำลังแสดง _START_ ถึง _END_ จาก _TOTAL_ รายการ",
                 "infoEmpty": "กำลังแสดง 0 ถึง 0 จาก 0 รายการ",
-                "infoFiltered": "(กรองจากทั้งหมด _MAX_ รายการ)",
+                "infoFiltered": "<br>(กรองจากทั้งหมด _MAX_ รายการ)",
                 "infoPostFix": "",
                 "thousands": ",",
                 "lengthMenu": "แสดง _MENU_ รายการ",
