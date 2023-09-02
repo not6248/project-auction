@@ -36,7 +36,7 @@
                                                 : "btn-light" ?> mt-2 me-2 category-btn" role="button">All</a>
 
                  <?php foreach ($sqlpro_type_result as $row_pro_type) : ?>
-                     <a href="./?filter_product_typeID=<?= $row_pro_type['pd_type_id']?>" class="btn <?= isset($_GET['filter_product_typeID']) && $_GET['filter_product_typeID'] == $row_pro_type['pd_type_id']
+                     <a href="./?filter_product_typeID=<?= $row_pro_type['pd_type_id'] ?>" class="btn <?= isset($_GET['filter_product_typeID']) && $_GET['filter_product_typeID'] == $row_pro_type['pd_type_id']
                                                                                                             ? "btn btn-primary"
                                                                                                             : "btn-light" ?> mt-2 me-2 category-btn" role="button"><?= $row_pro_type['pd_type_name'] ?></a>
                  <?php endforeach ?>
@@ -44,7 +44,7 @@
              </div>
          </div>
          <div id=" product-list" class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3 mb-xl-4">
-                <?php include 'homepage_product_list.php'?>
+             <?php include 'homepage_product_list.php' ?>
              <!-- <div class="col-sm-6 col-lg-4 col-xl-3">
                      <div class="card hover-p">
                          <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
