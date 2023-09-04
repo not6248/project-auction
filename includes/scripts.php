@@ -6,3 +6,5 @@
 <script src="admin_panel/plugins/datatables/datatables.min.js"></script>
 <!-- โค้ดแจ้งเตือนของ sweetalert2-->
 <script src="assets/js/sweetalert.js"></script>
+<!-- Main -->
+<script src="assets/js/main.js"></script>
