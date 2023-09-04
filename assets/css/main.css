@@ -14,12 +14,14 @@ body {
   transform: scale(1.03);
 }
 
-input:focus {
+input:focus,select:focus,textarea:focus{
   outline: none;
   border: 1px solid #1c62b9 !important;
   box-shadow: none !important;
   margin-left: 0px !important;
 }
+
+
 
 .form-signin {
   max-width: 850px;
@@ -120,3 +122,13 @@ input:focus {
 a {
   text-decoration: none;
 }
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.product-image-thumb:hover {
+    opacity: .5;
+}
+
+
