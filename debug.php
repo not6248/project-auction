@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'includes/head.php';
@@ -10,7 +11,17 @@
     <a type="" class="btn btn-secondary " href="debug.php?LoginByPass">Admin Login (login bypass)</a>
     <a class="btn btn-success " href="admin_panel/login.php">Admin Login Page</a>
     <a class="btn btn-info" href="./">User Page</a>
+    <a class="btn btn-primary" href="../project-bc-store-main/admin/"><i class="fa-solid fa-computer"></i> bc-store-main-ADMIN</a>
     <br>
+
+    <?php
+  unset($_SESSION['admin_login']);
+  if (isset($_GET['LoginByPass'])) {
+    echo 'ทดสอบ';
+    $_SESSION['admin_login'] = "";
+    header("location: admin_panel");
+  }
+  ?>
 
     <br><br>
     <?php
@@ -91,14 +102,7 @@
 
   </div>
 
-  <?php
-  unset($_SESSION['admin_login']);
-  if (isset($_GET['LoginByPass'])) {
-    echo 'ทดสอบ';
-    $_SESSION['admin_login'] = "";
-    header("location: admin_panel");
-  }
-  ?>
+
 
   <?php include 'includes/scripts.php'; ?>
 </body>
