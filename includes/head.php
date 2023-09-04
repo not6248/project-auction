@@ -44,7 +44,6 @@
     <!-- ------------------------------------------------------------------------->
 
     <!-- main -->
-    <script src="./assets/js/main.js"></script>
     <script src="./assets/js/countdown.js"></script>
 <!-- -->
 </head>
