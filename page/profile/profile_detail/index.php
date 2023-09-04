@@ -60,8 +60,10 @@ $prefix = $row['prefix_id'];
                             <div class="mb-5">
                                 <p class="mb-0 ms-1">รหัสบัตรประชาชน</p>
                                 <input disabled type="text" value="" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
-                                <p style="font-size: 12px;text-decoration:  underline;">อัปโหลด รูปภาพ บัตรประชาชน
-                                </p>
+                                <label style="font-size: 12px;">อัปโหลด รูปภาพ บัตรประชาชน</label>
+                                <label class="cursor-pointer" for="id-card-img-upload" style="font-size: 12px;text-decoration:  underline;">คลิกที่นี่</label>
+                                <input class="d-none" type="file" name="" id="id-card-img-upload" onchange="getImage(this.value)">
+                                <p id="id-card-img-upload-file-name" style="font-size: 12px;"></p>
                             </div>
                     </div>
                     <div class="card-footer" style="background: #D8DBE9;">
@@ -73,3 +75,10 @@ $prefix = $row['prefix_id'];
         </div>
     </div>
 </div>
+
+<script>
+        function getImage(imgname) {
+            let newimgname = imgname.replace(/^.*\\/,"");
+            $("#id-card-img-upload-file-name").html(newimgname);
+        }
+</script>
