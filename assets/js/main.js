@@ -1,28 +1,71 @@
-// $(document).ready(function () {
-//     loadProducts(1);
+$("#main-img-pd-input").change(function() {
+    MianimagePreview(this);
+});
 
-//     $(".category-btn").click(function () {
-//         $(".category-btn").removeClass("btn-primary").addClass("btn-light");
-//         $(this).removeClass("btn-light").addClass("btn-primary");
-//         let pro_typeID = $(this).data("pro-type");
-//         console.log(pro_typeID);
-//         loadProducts(pro_typeID);
-//     });
+function MianimagePreview(fileInput) {
+    if (fileInput.files && fileInput.files[0]) {
+        var fileReader = new FileReader();
+        fileReader.onload = function(event) {
+            $('#main-preview').html('<img class="mb-3" src="' + event.target.result + '" width="200" height="200"/>');
+        };
+        fileReader.readAsDataURL(fileInput.files[0]);
+    }
+}
 
-//     function loadProducts(pro_typeID) {
-//         $.ajax({
-//             url: "./ajax/ajax_product_list.php", // Replace with your server-side script to fetch products
-//             method: "GET",
-//             data: { pd_type_id: pro_typeID },
-//             success: function (data) {
-//                 $("#product-list").html(data);
-//             },
-//             error: function (error) {
-//                 console.error("Error loading products:", error);
-//             }
-//         });
-//     }
-// });
+// ===============================================================
+
+$("#sub-img-pd-input").change(function() {
+    SubimagePreview(this);
+});
+
+function SubimagePreview(fileInput) {
+    let previewContainer = $('#sub-preview');
+    if (fileInput.files && fileInput.files.length > 0) {
+        if (fileInput.files.length > 3) {
+            Swal.fire({
+                icon: 'error',
+                title: 'You have exceeded the number of files selected.',
+                text: 'Please select no more than 6 images.',
+            });
+            previewContainer.empty();
+            let colDiv = $('<div>').addClass('col-3 mb-3');
+            let img = $('<img>').attr('width', '200').attr('height', '200');
+            colDiv.append(img);
+            previewContainer.append(colDiv);
+            fileInput.value = ''; // ล้างไฟล์ที่ถูกเลือก
+            // <img class="mb-3" width="210" height="140">
+
+            return;
+        }
+
+        previewContainer.empty(); // Clear previous previews
+
+        for (let i = 0; i < fileInput.files.length; i++) {
+            let fileReader = new FileReader();
+            fileReader.onload = function(event) {
+                // สร้าง <div class="col-3">
+                let colDiv = $('<div>').addClass('col-3 mb-3');
+
+                // สร้าง <img> และกำหนดคุณสมบัติ
+                let img = $('<img>').attr('src', event.target.result).attr('width', '200').attr('height', '200');
+
+                // เพิ่ม <img> ลงใน <div class="col-3">
+                colDiv.append(img);
+
+                // เพิ่ม <div class="col-3"> ลงใน previewContainer
+                previewContainer.append(colDiv);
+            };
+            fileReader.readAsDataURL(fileInput.files[i]);
+        }
+    }
+}
 
 
-
+$(document).ready(function() {
+    $('.product-image-thumb').on('click', function () {
+      var $image_element = $(this).find('img')
+      $('.product-image').prop('src', $image_element.attr('src'))
+      $('.product-image-thumb.active').removeClass('active')
+      $(this).addClass('active')
+    })
+  })
