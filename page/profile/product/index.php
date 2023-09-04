@@ -1,7 +1,7 @@
 <div class="card" style="background: rgb(236,238,249);box-shadow: 0px 4px 4px rgba(33,37,41,0.25);">
     <div class="card-body">
         <div class="d-flex justify-content-between">
-            <h4 class="card-title mb-6" style="font-size: 28px;">Product</h4>
+            <h4 class="card-title mb-0" style="font-size: 28px;">Product</h4>
             <!-- <button type="button" class="btn btn-success btn-sm rounded"><i class="fa-solid fa-plus"></i> Add new product</button> -->
             <a class="btn btn-success rounded-5" href="./?page=<?=$_GET['page']?>&subpage=<?=$_GET['subpage']?>&function=add" role="button"><i class="fa-solid fa-plus"></i> Add new product</a>
 
@@ -26,16 +26,21 @@
                                         <th scope="col">Name</th>
                                         <th scope="col">Start Price</th>
                                         <th scope="col">Time Left</th>
+                                        <th scope="col">Status</th>
                                         <th scope="col">Menu</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($result as $row) : ?>
+                                    <?php foreach ($result as $row) : 
+                                            $image_json = $row['pd_img'];
+                                            $pd_img = json_decode($image_json);
+                                            ?>
                                         <tr>
                                             <th scope="row"><?= $i++ ?></th>
-                                            <td><img class="card-img-top w-100 d-block fit-cover" style="height: 100px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"></td>
+                                            <td><img class=" fit-cover rounded-0" width="80" height="80" src="./upload/product/<?=$pd_img[0]?>"></td>
                                             <td><?= $row['pd_name'] ?></td>
-                                            <td><?= $row['pd_price_start'] ?></td>
+                                            <td><?=number_format($row['pd_price_start'],0)?> บาท</td>
+                                            <td>@mdo</td>
                                             <td>@mdo</td>
                                             <td class="">
                                                 <a href="" class="btn btn-info btn-sm">รายละเอียด</a>
@@ -51,6 +56,7 @@
                         <?php endif ?>
 
                     </div>
+                    
                 </div>
             </div>
         </div>
