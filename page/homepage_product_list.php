@@ -8,10 +8,19 @@ $query_product = mysqli_query($conn, $sql);
 ?>
 
 <?php if (mysqli_num_rows($query_product) > 0) :
-    foreach ($query_product as $row) :?>
+    foreach ($query_product as $row) :
+        $image_json = $row['pd_img'];
+        $image_filenames = json_decode($image_json);
+
+        if (isset($image_filenames[0])) {
+            $selected_image = "upload/product/" . $image_filenames[0];
+        } else {
+            $selected_image = "assets/img/pre_img.png";
+        }
+        ?>
         <div class="col-sm-6 col-lg-4 col-xl-3">
             <div class="card hover-p">
-                <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png">
+                <a href="./?page=product&pd_id=<?=$row['pd_id']?>"><img class="card-img-top w-100 d-block fit-cover" style="height: 300px;" src="<?=$selected_image?>"></a>
                 <div class="card-body p-4 ps-xl-2 pe-xl-2">
                     <h4 class="card-title" style="font-size: 18px;font-family: 'Baloo Thambi 2', serif;font-weight: bold;"><?= $row['pd_name'] ?></h4>
                     <?php
