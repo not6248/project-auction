@@ -236,7 +236,7 @@ $(document).ready(function () {
                 }else if(response == "error"){
                     Swal.fire({
                         icon: 'warning',
-                        title: 'อัพเดตแล้วไม่สำเร็จ',
+                        title: 'อัพเดตไม่สำเร็จ',
                         showConfirmButton: false
                       })
                 }
@@ -245,3 +245,31 @@ $(document).ready(function () {
 
     });
 });
+
+$(document).ready(function () {
+    $("#product-upload").submit(function (e) { 
+        e.preventDefault();
+        let Method = $(this).attr("method");
+        let formUrl = $(this).attr("action");
+        let formData = new FormData(this);
+        $.ajax({
+            type: Method,
+            url: formUrl,
+            data: formData,
+            processData: false,  // ไม่ต้องประมวลผลข้อมูล
+            contentType: false,  // ไม่ต้องตั้งค่า content type
+            success: function (response) {
+                console.log(response);
+            }
+        });
+    });
+});
+
+$(document).ready(function() {
+    $('.product-image-thumb').on('click', function () {
+      var $image_element = $(this).find('img')
+      $('.product-image').prop('src', $image_element.attr('src'))
+      $('.product-image-thumb.active').removeClass('active')
+      $(this).addClass('active')
+    })
+  })
