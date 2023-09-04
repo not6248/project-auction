@@ -15,7 +15,7 @@
                     <!-- Navbar Menu List -->
                     <li class="nav-item"><a class="nav-link fw-bold" href="debug.php">debug.php</a></li>
                     <?= isset($_SESSION['user_type']) && $_SESSION['user_type'] == '2'
-                        ? '<li class="nav-item"><a class="nav-link fw-bold" href="./?page=profile&subpage=product"><i class="fa-solid fa-plus"></i> Add Product</a></li>'
+                        ? '<li class="nav-item"><a class="nav-link fw-bold" href="./?page=profile&subpage=product&function=add"><i class="fa-solid fa-plus"></i> Add Product</a></li>'
                         : '' ?>
                     <li class="nav-item"><a class="nav-link fw-bold" href="./">Home</a></li> <!-- active -->
                     <li class="nav-item "><a class="nav-link fw-bold d-flex align-items-center" href="#">Guide<i class="fa-solid fa-book fa-xs ms-1 pt-1"></i></a></li>
