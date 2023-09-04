@@ -32,7 +32,7 @@
             break;
         default:
             // หากไม่มีการกำหนดหน้าหรือไม่ตรงกับเงื่อนไขใดๆ
-            include './page/homepage.php';
+            include './page/404.php';
             break;
     }
 
