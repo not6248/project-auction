@@ -2,6 +2,7 @@
 session_start();
 include '../db/db_conn.php';
 
+
 $ud_fname = $_POST["fname"];
 $ud_lname = $_POST["lname"];
 $ud_address = $_POST["address"];
