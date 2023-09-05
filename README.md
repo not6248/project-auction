@@ -37,6 +37,6 @@
 
 | Features | ความคืบหน้า | เสร็จ
 | :-------- | :------- | :------- |
-| `ลงสินค้า` | ![](https://geps.dev/progress/0) | :x: |
+| `ลงสินค้า` | ![](https://geps.dev/progress/85) | :x: |
 | `ประมูล` | ![](https://geps.dev/progress/0) | :x: |
-| `upload img` | ![](https://geps.dev/progress/0) | :x: |
+| `upload img` | ![](https://geps.dev/progress/90) | :x: |
