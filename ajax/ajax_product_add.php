@@ -58,9 +58,11 @@ if (isset($_POST) && $_SESSION['user_type'] == "2") {
                     $uploaded_filenames[] = $subImageNewName;
                 } else {
                     echo 'Error uploading sub image ' . $subImageName;
+                    exit();
                 }
             } else {
                 echo 'Invalid file type for sub image ' . $subImageName;
+                exit();
             }
         }
 
