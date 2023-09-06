@@ -64,11 +64,14 @@
                                     <label>สภาพของสินค้า</label>
                                     <select name="pd_condition" class="form-control" required="required">
                                         <option value="" selected disabled>สภาพสินค้า</option>
-                                        <option value="0">ไม่เคยใช้</option>
-                                        <option value="1">เหมือนใหม่</option>
+                                        <?php $i = -1;
+                                        foreach($pd_condition_array as $arr_condition) :?>
+                                        <option value="<?=$i++?>"><?=$arr_condition[$i++]?></option>
+                                        <?php endforeach?>
+                                        <!-- <option value="1">เหมือนใหม่</option>
                                         <option value="2">มีตำหนิเล็กน้อย</option>
                                         <option value="3">เก่า</option>
-                                        <option value="4">เสียหาย</option>
+                                        <option value="4">เสียหาย</option> -->
                                     </select>
                                 </div>
                                 <!-- ============================================================================================================== -->
