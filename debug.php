@@ -82,6 +82,16 @@
       <button type="submit" name="add_img">add img</button>
     </form>
 
+    <div id="time_test"></div>
+    <script>
+    const startTime = new Date("2023-09-05 10:00:00").getTime();
+    const endTime = new Date("2023-09-15 12:00:00").getTime();
+
+countdown_time("time_test", startTime, endTime);
+
+
+    </script>
+
     <?php
   if (isset($_POST['add_img'])) {
     $filenames = $_FILES['product_img']['name'];
