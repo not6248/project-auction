@@ -33,7 +33,7 @@ $query_product = mysqli_query($conn, $sql);
                     <div class="row mb-3" style="color: rgb(13,110,253);">
                         <div class="col-6 col-xl-6">
                             <h6 style="font-weight: bold;" class="mb-xl-0 pb-xl-2">ราคาปัจจุบัน</h6>
-                            <span><?=$row['pd_price_start']?>฿</span>
+                            <span><?=number_format($row['pd_price_start'],0)?>฿</span>
                         </div>
                         <div class="col-6 col-xl-6 text-end">
                             <h6 style="font-weight: bold;" class="mb-xl-0 pb-xl-2">เวลาที่เหลือ</h6>
