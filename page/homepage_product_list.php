@@ -51,11 +51,6 @@ $query_product = mysqli_query($conn, $sql);
                     <?php endif?>
             </div>
         </div>
-        <script>
-            // countdown_time("product-timeleftID-<? //=$row['pd_id']
-                                                    ?>","<? //=$row['pd_end_date']
-                                                                            ?>");
-        </script>
     <?php endforeach ?>
 <?php else : ?>
     <p>No products found for this product type.</p>
