@@ -4,15 +4,15 @@ include '../db/db_conn.php';
 
 // ตรวจสอบการเข้าสู่ระบบและรับค่า user_id และ pd_id จาก session และ GET request
 if (isset($_POST) && isset($_SESSION['user_login']) && isset($_POST['pd_id'])) {
-    $user_id = $_SESSION['user_login'];
-    $pd_id = $_POST['pd_id'];
+    $user_id = mysqli_real_escape_string($conn,$_SESSION['user_login']);
+    $pd_id = mysqli_real_escape_string($conn,$_POST['pd_id']);
 
     // ตรวจสอบว่าสินค้าเป็นของผู้ใช้หรือไม่
     $sql_check_owner = "SELECT pd_id FROM `product` WHERE user_id = $user_id and pd_id = $pd_id";
     $result_check_owner = mysqli_query($conn, $sql_check_owner);
 
     if (mysqli_num_rows($result_check_owner) > 0) {
-        echoJson_status_msg("own_product", "คุณไม่สามารถเพิ่มสินค้าโปรดจากสินค้าของคุณเองได้");
+        echoJson_status_msg("own_product", "คุณไม่สามารถเพิ่มรายการโปรด<br>จากสินค้าของคุณเองได้");
     }
 
     // ตรวจสอบว่าผู้ใช้มีข้อมูลในตาราง favorite หรือไม่
