@@ -26,10 +26,10 @@
                 </a>
             </li>
             <!-- --------------------------------------------------------------------------------------- -->
-            <!-- Order Bidder -->
+            <!-- Fav -->
             <li class="nav-item">
                 <a class="nav-link <?= isset($_GET['subpage']) && $_GET['subpage'] == 'favorite' ? 'active' : '' ?>" href="./?page=profile&subpage=favorite">
-                    <i class="bi bi-heart me-1"></i>
+                    <?= isset($_GET['subpage']) && $_GET['subpage'] == 'favorite' ? '<i class="fa-solid fa-star"></i>' : '<i class="fa-regular fa-star"></i>' ?>
                     <p class="d-inline" style="font-size: 16px;">Favorite</p>
                 </a>
             </li>
