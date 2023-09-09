@@ -13,8 +13,6 @@ if (!$conn) {
   // echo "Connected successfully";
 
 
-
-
   include 'function.php';
   include 'variable.php';
 ?>
