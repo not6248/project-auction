@@ -14,7 +14,7 @@
                     </div>
                     <div class="card-body" style="background: #ECEEF9;">
                         <!-- Start Form -->
-                        <form id="product-upload" action="./ajax/ajax_product_add.php" method="POST" enctype="multipart/form-data">
+                        <form id="product-add" action="./ajax/ajax_product_add.php" method="POST" enctype="multipart/form-data">
                             <div class="card-body col-lg-12">
 
                                 <div class="form-group mb-3">
@@ -36,7 +36,7 @@
                                     </div>
                                     <!-- (The first image will be the product cover image.) -->
                                     <label for="">picture (no more than 3 photos) </label>
-                                    <input name="sub-img-pd-input[]" class="form-control" type="file" id="sub-img-pd-input" value="" required multiple />
+                                    <input name="sub-img-pd-input[]" class="form-control" type="file" id="sub-img-pd-input" value="" multiple />
                                     <p class="mt-1" style="font-size: 13px;" class="">กรุณาใช้รูปที่เป็นนามสกุล jpeg,jpg,png ( แนะนำรูป 1:1 )</p>
                                 </div>
                                 <hr>
