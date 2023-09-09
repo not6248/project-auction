@@ -18,7 +18,7 @@ input:focus,select:focus,textarea:focus{
   outline: none;
   border: 1px solid #1c62b9 !important;
   box-shadow: none !important;
-  margin-left: 0px !important;
+  /* margin-left: 0px !important; */
 }
 
 
