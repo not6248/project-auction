@@ -52,7 +52,7 @@
                                 </tbody>
                             </table>
                         <?php else : ?>
-                            echo '<p class="text-center text-muted mt-3">no product</p>';
+                            <p class="text-center text-muted mt-3">no product</p>
                         <?php endif ?>
 
                     </div>
@@ -66,6 +66,7 @@
 <script>
     $(document).ready(function() {
         $('#seller_product_list').DataTable({
+            responsive: true,
             language: {
                 "decimal": "",
                 "emptyTable": "ไม่มีข้อมูลในตาราง",
