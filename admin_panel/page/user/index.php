@@ -82,48 +82,10 @@
   </div>
   <!-- /.content -->
 </div>
-<script>
-  // $(document).ready(function() {
-  //     $('#example').DataTable({
-  //         language: {
-  //             "decimal": "",
-  //             "emptyTable": "ไม่มีข้อมูลในตาราง",
-  //             "info": "กำลังแสดง _START_ ถึง _END_ จาก _TOTAL_ รายการ",
-  //             "infoEmpty": "กำลังแสดง 0 ถึง 0 จาก 0 รายการ",
-  //             "infoFiltered": "(กรองจากทั้งหมด _MAX_ รายการ)",
-  //             "infoPostFix": "",
-  //             "thousands": ",",
-  //             "lengthMenu": "แสดง _MENU_ รายการ",
-  //             "loadingRecords": "กำลังโหลด...",
-  //             "processing": "",
-  //             "search": "ค้นหา:",
-  //             "zeroRecords": "ไม่พบบันทึกที่ตรงกัน",
-  //             "paginate": {
-  //             "first": "อันดับแรก",
-  //             "last": "ล่าสุด",
-  //             "next": "ต่อไป",
-  //             "previous": "ก่อนหน้า"
-  //             },
-  //             "aria": {
-  //                 "sortAscending": ": เปิดใช้งานเพื่อจัดเรียงคอลัมน์จากน้อยไปมาก",
-  //                 "sortDescending": ": เปิดใช้งานเพื่อจัดเรียงคอลัมน์จากมากไปน้อย"
-  //             }
-  //         }
-  //     });
-  // }); 
-</script>
 <script type="text/javascript">
   $(document).ready(function() {
-    // Setup - add a text input to each footer cell
-    $('#example thead tr')
-      .clone(true)
-      .addClass('filters')
-      .appendTo('#example thead');
-
-    var table = $('#example').DataTable({
+    $('#example').DataTable({
       responsive: true,
-      orderCellsTop: true,
-      fixedHeader: true,
       language: {
         "decimal": "",
         "emptyTable": "ไม่มีข้อมูลในตาราง",
@@ -147,46 +109,7 @@
           "sortAscending": ": เปิดใช้งานเพื่อจัดเรียงคอลัมน์จากน้อยไปมาก",
           "sortDescending": ": เปิดใช้งานเพื่อจัดเรียงคอลัมน์จากมากไปน้อย"
         }
-      },
-      initComplete: function() {
-        var api = this.api();
-
-        // For each column except the last one
-        api.columns().eq(0).each(function(colIdx) {
-          // Set the header cell to contain the input element
-          var cell = $('.filters th').eq($(api.column(colIdx).header()).index());
-          var title = $(cell).text();
-          $(cell).html('<input type="text" placeholder="' + title + '" />');
-
-          var input = $('input', cell);
-
-          // On every keypress in this input
-          input
-            .off('keyup change')
-            .on('change', function(e) {
-              var regexr = '({search})';
-              var cursorPosition = this.selectionStart;
-
-              // Search the column for that value
-              api.column(colIdx).search(
-                this.value !== '' ?
-                regexr.replace('{search}', '(((' + this.value + ')))') :
-                '',
-                this.value !== '',
-                this.value === ''
-              ).draw();
-            })
-            .on('keyup', function(e) {
-              e.stopPropagation();
-
-              $(this).trigger('change');
-              var cursorPosition = this.selectionStart;
-              $(this).focus()[0].setSelectionRange(cursorPosition, cursorPosition);
-            });
-        });
       }
-
-
     });
   });
 </script>
