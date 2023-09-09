@@ -15,7 +15,7 @@ $(document).ready(function () {
                 if (result.status == "success") { //success
                     window.location.href = "./?page=register&function=verify_email"
                 } else if (result.status == "warning") { //warning
-                    console.log("warning");
+                    // console.log("warning");
                     Swal.fire({
                         title: 'แจ้งเตือน!',
                         text: result.msg,
@@ -81,7 +81,7 @@ $(document).ready(function () {
                             clearInterval(timerInterval)
                         }
                         // confirmButtonText: "เข้าสู่ระบบ",
-                    }).then(function (result) {
+                    }).then(() => {
                         window.location.href = "./"
                     })
                 } else if (result.status == "warning") {
@@ -137,7 +137,7 @@ $(document).ready(function () {
                             clearInterval(timerInterval)
                         }
                         // confirmButtonText: "เข้าสู่ระบบ",
-                    }).then(function (result) {
+                    }).then(() => {
                         window.location.href = "./"
                     })
                 }
@@ -217,6 +217,7 @@ $(document).ready(function () {
     });
 });
 
+// ปุ่ม Update ข้อมูล profil
 $(document).ready(function () {
     $('#profil-detail-update-form').submit(function (e) {
         e.preventDefault();
@@ -250,8 +251,10 @@ $(document).ready(function () {
     });
 });
 
+//* เพิ่มสินค้า 
+//!อย่าลืมมาทำต่อให้เสร็จ
 $(document).ready(function () {
-    $("#product-upload").submit(function (e) {
+    $("#product-add").submit(function (e) {
         e.preventDefault();
         let Method = $(this).attr("method");
         let formUrl = $(this).attr("action");
@@ -262,25 +265,32 @@ $(document).ready(function () {
             data: formData,
             processData: false,  // ไม่ต้องประมวลผลข้อมูล
             contentType: false,  // ไม่ต้องตั้งค่า content type
-            success: function (response) {
-                console.log(response);
+            success: function (data) {//ข้อมูลที่จะนำไปแสดงหลังจากเพิ่มส้นค้า
+                let result = JSON.parse(data);
+                if (result.status == "success") { //success
+                    Swal.fire({
+                        icon: 'success',
+                        title: result.msg,
+                        showConfirmButton: false,
+                        heightAuto: false,
+                        timer: 1500
+                    }).then(() => {
+                        window.location.href = "./?page=profile&subpage=product"
+                    })
+                } else if (result.status == "error") {
+                    Swal.fire({
+                        icon: result.status,
+                        title: 'Oops...',
+                        html: result.msg,
+                        heightAuto: false,
+                    })
+                }
             }
         });
     });
 });
 
-$(document).ready(function () {
-    $('.product-image-thumb').on('click', function () {
-        var $image_element = $(this).find('img')
-        $('.product-image').prop('src', $image_element.attr('src'))
-        $('.product-image-thumb.active').removeClass('active')
-        $(this).addClass('active')
-    })
-})
-
-
-
-
+//ปุ่ม Fav สลับดาว และ นำการเพิ่มข้อมูลใส่ภายในฐานข้อมูล
 $(document).ready(function () {
     // เมื่อคลิกที่ icon
     $(".fav_star_icon").click(function () {
@@ -314,28 +324,68 @@ $(document).ready(function () {
                     Swal.fire({
                         icon: 'warning',
                         title: result.msg,
-                        showConfirmButton: false,
                         heightAuto: false,
-                        timer: 2750
                     })
-                }else if (result.status === "error") {
+                } else if (result.status === "error") {
                     Swal.fire({
                         icon: 'error',
                         title: result.msg,
-                        showConfirmButton: false,
                         heightAuto: false,
-                        timer: 2750
                     })
-                }else if(result.status === "no_login"){
+                } else if (result.status === "no_login") {
                     Swal.fire({
                         icon: 'warning',
                         title: result.msg,
-                        showConfirmButton: false,
                         heightAuto: false,
-                        timer: 1600
                     })
                 }
             }
         });
+    });
+});
+
+//ลบสินค้า
+$(document).ready(function () {
+    $('#seller_product_list').on('click', '.product-del-btn', function (e) {
+        e.preventDefault();
+        let pd_id = $(this).data("pd-id");
+        let formUrl = $(this).attr("href");
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                console.log(pd_id);
+                $.ajax({
+                    type: "post",
+                    url: formUrl,
+                    data: { pd_id: pd_id },
+                    success: function (data) {
+                        let result = JSON.parse(data)
+                        if (result.status == "success") {
+                            console.log(result);
+                            Swal.fire(
+                                'Deleted!',
+                                result.msg,
+                                result.status
+                            ).then(() => {
+                                location.reload();
+                            })
+                        } else if (result.status == "error") {
+                            Swal.fire(
+                                'Deleted!',
+                                result.msg,
+                                result.status
+                            )
+                        }
+                    }
+                });
+            }
+        })
     });
 });
