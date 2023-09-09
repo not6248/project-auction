@@ -30,7 +30,7 @@ if (!isset($_SESSION['user_login']) && empty($_SESSION['user_login'])) {
                     include 'order_bidder/index.php';
                     break;
                 case 'favorite':
-                    echo "favorite";
+                    include 'favorite/index.php';
                     break;
                 case 'product':
                     if ($function == 'add') {
