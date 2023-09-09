@@ -121,6 +121,7 @@
       .appendTo('#example thead');
 
     var table = $('#example').DataTable({
+      responsive: true,
       orderCellsTop: true,
       fixedHeader: true,
       language: {
