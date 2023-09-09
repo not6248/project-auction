@@ -287,6 +287,7 @@ $(document).ready(function () {
         // ตรวจสอบสถานะของ icon
         let isFavorite = $(this).hasClass("bi-star");
         let pd_id = $(this).data("pd-id"); // รับค่า pd_id จาก PHP
+        console.log("dwad");
         $.ajax({
             type: "POST",
             url: "./ajax/ajax_fav.php",
@@ -316,6 +317,22 @@ $(document).ready(function () {
                         showConfirmButton: false,
                         heightAuto: false,
                         timer: 2750
+                    })
+                }else if (result.status === "error") {
+                    Swal.fire({
+                        icon: 'error',
+                        title: result.msg,
+                        showConfirmButton: false,
+                        heightAuto: false,
+                        timer: 2750
+                    })
+                }else if(result.status === "no_login"){
+                    Swal.fire({
+                        icon: 'warning',
+                        title: result.msg,
+                        showConfirmButton: false,
+                        heightAuto: false,
+                        timer: 1600
                     })
                 }
             }
