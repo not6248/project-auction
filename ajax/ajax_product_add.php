@@ -41,10 +41,10 @@ if (isset($_POST) && $_SESSION['user_type'] == "2") {
             if (move_uploaded_file($mainImageTmpName, $target . $mainImageNewName)) {
                 $uploaded_filenames[] = $mainImageNewName;
             } else {
-                echo 'Error uploading main image';
+                echoJson_status_msg("error","Error uploading main image $mainImageName");
             }
         } else {
-            echo 'Invalid file type for main image';
+            echoJson_status_msg("error","Invalid file type for main image <ins><b>$mainImageName</b></ins> <br> Please use image file extensions <b>jpeg , jpg , png.</b>");
         }
 
         // Handle the sub images
@@ -57,12 +57,10 @@ if (isset($_POST) && $_SESSION['user_type'] == "2") {
                 if (move_uploaded_file($subImageTmpNames[$key], $target . $subImageNewName)) {
                     $uploaded_filenames[] = $subImageNewName;
                 } else {
-                    echo 'Error uploading sub image ' . $subImageName;
-                    exit();
+                    echoJson_status_msg("error","Error uploading sub image $subImageName");
                 }
             } else {
-                echo 'Invalid file type for sub image ' . $subImageName;
-                exit();
+                echoJson_status_msg("error","Invalid file type for sub image <ins><b>$subImageName</b></ins> <br> Please use image file extensions <b>jpeg , jpg , png.</b>");
             }
         }
 
@@ -71,17 +69,35 @@ if (isset($_POST) && $_SESSION['user_type'] == "2") {
         $image_json = '[]'; // No images uploaded
     }
 
-    $sql = "INSERT INTO `product` (`user_id`, `pd_type_id`, `pd_name`, `pd_detail`, `pd_price_start`, `pd_img`, `pd_condition`, `pd_start_date`, `pd_end_date`) 
-        VALUES ('$user_id', '$pd_type_id', '$pd_name', '$pd_detail', '$pd_price_start', '$image_json', '$pd_condition', '$fourDaysLaterFormatted', '$elevenDaysLaterFormatted')";
+    // เริ่มการทำงานแบบ Transaction
+    mysqli_begin_transaction($conn);
+
+    $sql1 = "INSERT INTO product (user_id, pd_type_id, pd_name, pd_detail, pd_price_start, pd_img, pd_condition, pd_start_date, pd_end_date) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+$stmt1 = mysqli_prepare($conn, $sql1);
+mysqli_stmt_bind_param($stmt1, "sssssssss", $user_id, $pd_type_id, $pd_name, $pd_detail, $pd_price_start, $image_json, $pd_condition, $fourDaysLaterFormatted, $elevenDaysLaterFormatted);
     
-    if (mysqli_query($conn, $sql)) {
-        // echo '<script>alert("Product added successfully"); window.location.href = "?page=product";</script>';
-        echo "Success";
-        exit();
+    if (mysqli_stmt_execute($stmt1)) {
+        $lastProduct = mysqli_insert_id($conn);
+
+        $sql2 = "INSERT INTO order_tb (order_id, pd_id) VALUES (?, ?)";
+        $stmt2 = mysqli_prepare($conn, $sql2);
+        mysqli_stmt_bind_param($stmt2,"ii",$lastProduct,$lastProduct);
+        
+        if (mysqli_stmt_execute($stmt2)) {
+            // ทำการ Commit ข้อมูลเมื่อสำเร็จ
+            mysqli_commit($conn);
+            echoJson_status_msg("success","Product added successfully");
+        }else{
+            mysqli_rollback($conn);
+            echoJson_status_msg("error","mysqli_error($conn)");
+        }
+        
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        mysqli_rollback($conn);
+        echoJson_status_msg("error","mysqli_error($conn)");
     }
 
     mysqli_close($conn);
 }
-?>
