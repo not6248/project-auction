@@ -8,12 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>เว็บประมูล</title>
 
-<!-- CSS -->
+    <!-- CSS -->
     <!-- bootstrap CSS =========================================================-->
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <!-- ------------------------------------------------------------------------->
     <!-- bootstrap icon =========================================================-->
-        <link rel="stylesheet" href="assets/bootstrap/bootstrap-icons-1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap-icons-1.10.5/font/bootstrap-icons.css">
     <!-- ------------------------------------------------------------------------->
 
     <!-- sweetalert2 CSS =======================================================-->
@@ -36,14 +36,19 @@
     <!-- Datatables ==============================================================-->
     <link rel="stylesheet" href="admin_panel/plugins/datatables/datatables.min.css">
     <!-- ------------------------------------------------------------------------->
-<!-- -->
+    <!-- -->
 
-<!-- Java Script -->
+    <!-- Java Script -->
     <!-- jquery ================================================================-->
     <script src="assets/js/jquery-3.7.0.min.js"></script>
+    <!-- datatables -->
+    <script src="admin_panel/plugins/datatables/datatables.min.js"></script>
+    <!-- head -->
+    <script src="assets/js/head.js"></script>
     <!-- ------------------------------------------------------------------------->
-
-    <!-- main -->
+    <!-- countdown -->
     <script src="assets/js/countdown.js"></script>
-<!-- -->
+
+
+    <!-- -->
 </head>
