@@ -12,7 +12,7 @@ if (isset($_POST) && isset($_SESSION['user_login']) && isset($_POST['pd_id'])) {
     $result_check_owner = mysqli_query($conn, $sql_check_owner);
 
     if (mysqli_num_rows($result_check_owner) > 0) {
-        echoJson_status_msg("own_product", "คุณไม่สามารถเพิ่มรายการโปรด<br>จากสินค้าของคุณเองได้");
+        echoJson_status_msg("warning", "คุณไม่สามารถเพิ่มรายการโปรด<br>จากสินค้าของคุณเองได้");
     }
 
     // ตรวจสอบว่าผู้ใช้มีข้อมูลในตาราง favorite หรือไม่
@@ -45,5 +45,5 @@ if (isset($_POST) && isset($_SESSION['user_login']) && isset($_POST['pd_id'])) {
     // ปิดการเชื่อมต่อฐานข้อมูล
     mysqli_close($conn);
 }else{
-    echoJson_status_msg("no_login", "Please login <br> before using this function.");
+    echoJson_status_msg("warning", "Please login <br> before using this function.");
 }
