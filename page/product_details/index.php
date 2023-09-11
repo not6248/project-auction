@@ -1,7 +1,22 @@
 <?php
 $pd_id = $_GET['pd_id'];
-$sql = "SELECT p.*,l.username FROM product p INNER JOIN login l USING(user_id) WHERE pd_id = $pd_id";
+$user_id = $user_id = $_SESSION['user_login'] ?? "";
+$sql = "SELECT * FROM product_with_username WHERE pd_id = $pd_id";
+$sql2 = "SELECT * FROM order_summary WHERE order_id = $pd_id";
+$sql3 = "SELECT * FROM last_user_bid WHERE order_id = $pd_id";
 $result = mysqli_query($conn, $sql);
+$result2 = mysqli_query($conn, $sql2);
+$result3 = mysqli_query($conn, $sql3);
+$row_order_summary = mysqli_fetch_assoc($result2);
+if(mysqli_num_rows($result3) > 0){
+    $row_last_bid = mysqli_fetch_assoc($result3);
+    $username_last_bid = $row_last_bid['username'];
+    $username_last_bid_id = $row_last_bid['latest_bidder'];
+}else{
+    $username_last_bid= "ยังไม่มีผู้ประมูล";
+    $username_last_bid_id = "";
+}
+
 if (mysqli_num_rows($result) < 1) {
     echo '<script>window.location.href = "./";</script>';
     exit; // ออกจากการทำงานของสคริปต์ PHP เพื่อป้องกันการแสดงผลเนื้อหาหลังจากนี้
