@@ -319,21 +319,15 @@ $(document).ready(function () {
                         $(".fav_star_icon").removeClass("bi-star-fill").addClass("bi-star");
 
                     }
-                } else if (result.status === "own_product") {
+                } else if (result.status === "warning") {
                     Swal.fire({
-                        icon: 'warning',
+                        icon: result.status,
                         title: result.msg,
                         heightAuto: false,
                     })
                 } else if (result.status === "error") {
                     Swal.fire({
-                        icon: 'error',
-                        title: result.msg,
-                        heightAuto: false,
-                    })
-                } else if (result.status === "no_login") {
-                    Swal.fire({
-                        icon: 'warning',
+                        icon: result.status,
                         title: result.msg,
                         heightAuto: false,
                     })
@@ -381,6 +375,75 @@ $(document).ready(function () {
                                 result.msg,
                                 result.status
                             )
+                        }
+                    }
+                });
+            }
+        })
+    });
+});
+
+$(document).ready(function () {
+    $("#bid-form").submit(function (e) {
+        e.preventDefault();
+        let Method = $(this).attr("method");
+        let formUrl = $(this).attr("action");
+        let pd_id = $(this).data("pd-id");
+        let pd_price_chack = $(this).data("pd-price-chack");
+        let formData = $(this).serialize();
+        console.log(pd_id);
+        console.log(formData);
+        let priceOfferValue = $(this).find('[name="price-offer"]').val();
+        let price = priceOfferValue * 10;
+
+        Swal.fire({
+            title: 'Are you sure?',
+            html: "The price you offer is : <b>" + price + " ฿</b><br>You won't be able to revert this!",
+            icon: 'warning',
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: "Yes, that's correct.",
+            showCancelButton: true,
+            heightAuto: false,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: Method,
+                    url: formUrl,
+                    data: {
+                        price_offer: price,
+                        pd_id: pd_id,
+                        pd_price_chack: pd_price_chack
+                    },
+                    success: function (data) {
+                        let result = JSON.parse(data);
+                        let status = result.status;
+                        console.log(status);
+                        switch (status) {
+                            case "success":
+                                Swal.fire({
+                                    icon: result.status,
+                                    title: result.msg,
+                                    heightAuto: false,
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                }).then(() => {
+                                    location.reload();
+                                });
+                                break;
+                            case "warning":
+                                Swal.fire({
+                                    icon: result.status,
+                                    title: result.msg,
+                                    heightAuto: false,
+                                })
+                                break;
+                            case "error":
+                                Swal.fire({
+                                    icon: result.status,
+                                    title: result.msg,
+                                    heightAuto: false,
+                                })
                         }
                     }
                 });
