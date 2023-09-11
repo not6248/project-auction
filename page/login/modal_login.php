@@ -1,7 +1,6 @@
-<button type="button" data-bs-target="#Modal-login" class="btn btn-nav btn-primary me-sm-2 ms-md-2 me-md-3" data-bs-toggle="modal" style="font-weight: bold;font-size: 16px;" >Login</button>
+<button type="button" data-bs-target="#Modal-login" class="btn btn-nav btn-primary me-sm-2 ms-md-2 me-md-3" data-bs-toggle="modal" style="font-weight: bold;font-size: 16px;">Login</button>
 <div class="modal fade" id="Modal-login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-
         <div class="modal-content rounded-4 shadow">
             <div class="modal-header p-5 pb-4 border-bottom-0">
                 <h1 class="fw-bold mb-0 fs-2">Login</h1>
@@ -11,7 +10,7 @@
                 <!-- Form -->
                 <form id="loginForm" action="./ajax/ajax_login.php" method="post" class="" data-bitwarden-watching="1">
                     <div class="form-floating mb-3">
-                        <input type="email" name="email" class="form-control rounded-3" placeholder="name@example.com"  autocomplete="current-password" required>
+                        <input type="email" name="email" class="form-control rounded-3" placeholder="name@example.com" autocomplete="current-password" required>
                         <label for="floatingInput">Email address</label>
                     </div>
                     <div class="form-floating mb-3">

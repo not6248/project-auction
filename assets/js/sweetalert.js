@@ -252,7 +252,6 @@ $(document).ready(function () {
 });
 
 //* เพิ่มสินค้า 
-//!อย่าลืมมาทำต่อให้เสร็จ
 $(document).ready(function () {
     $("#product-add").submit(function (e) {
         e.preventDefault();
