@@ -1,4 +1,4 @@
-<div class="col-11 col-lg-4 col-xl-4 col-xxl-4 mt-0">
+<div class="col-11 col-lg-4 col-xl-4 col-xxl-4 mt-0 order-2 order-lg-1">
     <div>
         <h5 class="mb-4 fw-bold "><?= $row['pd_name'] ?></h5>
         <div class="row pt-xl-2 pb-xl-2 ms-xl-0 me-xl-0" style="border-top: 1px solid rgba(33,37,41,0.3) ;border-bottom-width: 1px;border-bottom-style: none;">
