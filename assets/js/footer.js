@@ -72,3 +72,22 @@ $(document).ready(function() {
     })
   })
 
+
+
+$(document).ready(function () {
+    $("#price-offer").on("input", function () {
+        let userInput = $(this).val();
+                
+        // แปลงค่าที่รับมาเป็นตัวเลขและคูณด้วย 10
+        if(userInput.length > 0){
+            let result = parseFloat(userInput) * 10;
+            $("#x10-price-offer").text(result);
+        }else{
+            $("#x10-price-offer").text("--");
+        }
+        
+        
+        // แสดงผลลัพธ์ใน span ที่มี id="x10-price-offer"
+        
+    });
+});
