@@ -24,10 +24,10 @@
             </div>
         </div>
         <div class="mb-3" style="min-width: 90%;text-align: center;border-bottom: 1px solid rgba(33,37,41,0.3);">
-            <span style="font-size: 23px;font-weight: bold;color: #3E168E;">15,000฿</span>
+            <span style="font-size: 23px;font-weight: bold;color: #3E168E;"><?= number_format($row_order_summary['total_price'], 0) ?> ฿</span>
         </div>
         <div class="mb-1">
-            <button class="btn btn-primary" style="font-size: 20px;width: 263.906px;" data-bs-toggle="modal" data-bs-target="#exampleModal">เสนอราคา</button>
+            <button class="btn btn-primary" style="font-size: 20px;width: 263.906px;" data-bs-toggle="modal" data-bs-target="#bid-modal">เสนอราคา</button>
         </div>
         <div class="">
             <span class="fw-bold" style="color: rgb(62, 0, 186);">จำนวนผู้ประมูล 7 คน</span>
