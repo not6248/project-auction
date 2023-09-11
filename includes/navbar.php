@@ -1,5 +1,5 @@
     <nav class="navbar navbar-expand-lg bg-body py-3" style="box-shadow: 0px 0px 8px rgba(33,37,41,0.1);">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="./"><img src="assets/img/logo.png" width="30" height="37"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="./"><img src="assets/img/logo.png" width="50" height="37"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-2">
                 <?php hide_for_regis_page('
                 <div class="input-group search mt-3 mt-md-0 me-auto ms-0 pe-0 me-5 me-sm-5 me-md-0 pe-md-3 pe-lg-5 me-xl-0 pe-xl-0"">
