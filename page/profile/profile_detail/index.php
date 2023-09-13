@@ -1,8 +1,13 @@
 <?php
 $sql = "SELECT * FROM `login` INNER JOIN `user_detail` USING(user_id) WHERE user_id = " . $_SESSION['user_login'];
+$sql2 = "SELECT ud_id_card,ud_idcard_img FROM `user_detail` WHERE user_id = " . $_SESSION['user_login'];
 $result = mysqli_query($conn, $sql);
+$result2 = mysqli_query($conn, $sql2);
 $row = mysqli_fetch_assoc($result);
+$row2 = mysqli_fetch_assoc($result2);
 $prefix = $row['prefix_id'];
+$ud_id_card = $row['ud_id_card'];
+$ud_idcard_img = $row['ud_idcard_img'];
 ?>
 
 <div class="card" style="background: rgb(236,238,249);box-shadow: 0px 4px 4px rgba(33,37,41,0.25);">
@@ -57,19 +62,47 @@ $prefix = $row['prefix_id'];
                                 </div>
                             </div>
                             <!-- End radio -->
+                            <?php
+                            if ($_SESSION['user_type'] == 1) {
+                                $idCardMessage = "";
+                                $label = "อัปโหลด รูปภาพ บัตรประชาชน";
+                                $labelLink = "คลิกที่นี่";
+
+                                if ($ud_idcard_img == NULL) {
+                                    $idCardMessage = "ยังไม่ทำการยืนยันบัตรประชาชน";
+                                } else if ($ud_id_card == null) {
+                                    $idCardMessage = "บัตรประชาชนรอการตรวจสอบ";
+                                    $label = "";
+                                    $labelLink = "";
+                                } elseif ($ud_id_card == 0) {
+                                    $idCardMessage = "ภาพไม่สมบูรณ์ กรุณาอัพโหลดใหม่อีกครั้ง";
+                                    $label = "ภาพไม่สมบูรณ์ กรุณาอัพโหลดใหม่อีกครั้ง";
+                                }
+                            } else {
+                                $idCardMessage = "ยืนยันแล้ว";
+                                $labelLink = "";
+                                $label = "ตอนนี้ คุณสามารถลงสินค้าได้แล้ว";
+                            }
+                            ?>
                             <div class="mb-5">
                                 <p class="mb-0 ms-1">รหัสบัตรประชาชน</p>
-                                <input disabled type="text" value="" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
-                                <label style="font-size: 12px;">อัปโหลด รูปภาพ บัตรประชาชน</label>
-                                <label class="cursor-pointer" for="id-card-img-upload" style="font-size: 12px;text-decoration:  underline;">คลิกที่นี่</label>
-                                <input class="d-none" type="file" name="" id="id-card-img-upload" onchange="getImage(this.value)">
-                                <p id="id-card-img-upload-file-name" style="font-size: 12px;"></p>
+                                <input disabled type="text" value="<?= $idCardMessage ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
+
+
+                                <label style="font-size: 12px;"><?=$label?></label>
+                                <label class="cursor-pointer" for="id-card-img-upload" style="font-size: 12px;text-decoration:  underline;">
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#add_id_card_img"><?=$labelLink?></a>
+                                </label>
+
+                                <!-- <input class="d-none" type="file" name="" id="id-card-img-upload" onchange="getImage(this.value)"> -->
+                                <!-- <p id="id-card-img-upload-file-name" style="font-size: 12px;"></p> -->
                             </div>
                     </div>
                     <div class="card-footer" style="background: #D8DBE9;">
                         <button class="btn btn-primary" type="submit" style="border-radius: 7px;">ยืนยันการแก้ไข</button>
                     </div>
                     </form>
+                    <?php include 'page/profile/profile_detail/id_card_insert_modal.php'; ?>
                 </div>
             </div>
         </div>
@@ -77,8 +110,8 @@ $prefix = $row['prefix_id'];
 </div>
 
 <script>
-        function getImage(imgname) {
-            let newimgname = imgname.replace(/^.*\\/,"");
-            $("#id-card-img-upload-file-name").html(newimgname);
-        }
+    function getImage(imgname) {
+        let newimgname = imgname.replace(/^.*\\/, "");
+        $("#id-card-img-upload-file-name").html(newimgname);
+    }
 </script>
