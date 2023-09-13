@@ -235,7 +235,8 @@ $(document).ready(function () {
                         icon: 'success',
                         title: 'ข้อมูลอัพเดตแล้ว',
                         heightAuto: false,
-                        showConfirmButton: false
+                        showConfirmButton: false,
+                        timer: 1200
                     })
                 } else if (response == "error") {
                     Swal.fire({
@@ -404,7 +405,7 @@ $(document).ready(function () {
             cancelButtonColor: '#d33',
             confirmButtonText: "Yes, that's correct.",
             showCancelButton: true,
-            heightAuto: false,
+            heightAuto: false
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
@@ -447,6 +448,73 @@ $(document).ready(function () {
                         }
                     }
                 });
+            }
+        })
+    });
+});
+
+
+
+$(document).ready(function () {
+    $("#add_id_card_img_form").submit(function (e) {
+        e.preventDefault();
+        let Method = $(this).attr("method");
+        let formUrl = $(this).attr("action");
+        let formData = new FormData(this);
+        console.log(Method);
+        // console.log(formUrl);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            heightAuto: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, upload now!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: Method,
+                    url: formUrl,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        let result = JSON.parse(response)
+                        let status = result.status;
+                        switch (status) {
+                            case "success":
+                                Swal.fire({
+                                    icon: result.status,
+                                    title: result.msg,
+                                    heightAuto: false,
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                }).then(() => {
+                                    location.reload();
+                                });
+                                break;
+                            case "error":
+                                Swal.fire({
+                                    icon: result.status,
+                                    title: result.msg,
+                                    heightAuto: false,
+                                })
+                        }
+                    }
+                });
+                // console.log(formData.get('id-card-img-pd-input'));
+                // Swal.fire({
+                //     title: 'Upload!',
+                //     text: "Your file has been upload.",
+                //     icon: 'success',
+                //     showConfirmButton: false,
+                //     timer: 1500,
+                //     heightAuto: false
+                // }).then(() => {
+                //     console.log("รีหน้าเว็บ");
+                // })
             }
         })
     });
