@@ -16,17 +16,15 @@
                         <!-- Start Form -->
                         <form id="product-add" action="./ajax/ajax_product_add.php" method="POST" enctype="multipart/form-data">
                             <div class="card-body col-lg-12">
-
                                 <div class="form-group mb-3">
-                                <div class="row">
-                                    <div class="col-3" id="main-preview">
-                                        <img class="mb-3" width="200" height="200">
+                                    <div class="row">
+                                        <div class="col-3" id="main-preview">
+                                            <img class="mb-3" width="200" height="200">
+                                        </div>
                                     </div>
+                                    <label for="">product cover image (1 photos)</label>
+                                    <input class="form-control" name="main-img-pd-input" type="file" id="main-img-pd-input" required value="" />
                                 </div>
-                                <label for="">product cover image (1 photos)</label>
-                                <input class="form-control" name="main-img-pd-input" type="file" id="main-img-pd-input" required value="" />
-                            </div <div class="form-group">
-
                                 <!-- ============================================================================================================== -->
                                 <div class="form-group mb-3">
                                     <div class="row" id="sub-preview">
@@ -64,10 +62,10 @@
                                     <label>สภาพของสินค้า</label>
                                     <select name="pd_condition" class="form-control" required="required">
                                         <option value="" selected disabled>สภาพสินค้า</option>
-                                        <?php ;
-                                        foreach($pd_condition_arr as $index => $v) :?>
-                                        <option value="<?=$index?>"><?=$v?></option>
-                                        <?php endforeach?>
+                                        <?php
+                                        foreach ($pd_condition_arr as $index => $v) : ?>
+                                            <option value="<?= $index ?>"><?= $v ?></option>
+                                        <?php endforeach ?>
                                         <!-- <option value="1">เหมือนใหม่</option>
                                         <option value="2">มีตำหนิเล็กน้อย</option>
                                         <option value="3">เก่า</option>
@@ -127,7 +125,7 @@
                     <div class="card-footer" style="background: #D8DBE9;">
                         <button name="add_product" type="submit" class="btn btn-primary rounded-2">Submit</button>
                     </div>
-                        </form>
+                    </form>
                     <!-- End Form -->
                 </div>
             </div>

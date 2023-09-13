@@ -18,12 +18,12 @@
             <form id="bid-form" action="ajax/ajax_bid.php" method="post" data-pd-id="<?=$pd_id?>" data-pd-price-chack="<?=$row_order_summary['total_price']?>">
               <div class="input-group w-50 ">
                 <!-- INPUT -->
-                <input name="price-offer"  id="price-offer" type="number" class="form-control pe-1 text-end" min="1" max="10000" required aria-label="THB amount" onInput="this.value = this.value.slice(0, 5)" onkeydown="return event.keyCode !== 69">
+                <input name="price-offer"  id="price-offer" type="number" class="form-control pe-1 text-end" min="1" max="1000" required aria-label="THB amount" onInput="this.value = this.value.slice(0, 4)" onkeydown="return event.keyCode !== 69">
                 <span class="input-group-text px-1">0</span><span class="input-group-text px-1">฿</span>
               </div>
               <p class="fs-5 mb-0 mt-2">Offer price at : <span class=" fw-bold " id="x10-price-offer">--</span> ฿</p>
               <p class="fs-5 mb-0">หากคุณชนะ ราคาที่ชำระคือ</p>
-              <p id="price-if-you-win" class="fs-5 mb-0">100000</p>
+              <p id="price-if-you-win" class="fs-5 mb-0">10000</p>
               <p></p>
           </div>
         </div>
