@@ -17,7 +17,7 @@
 | `Login` | ![](https://geps.dev/progress/100) | :heavy_check_mark: |
 | `Forgot Password` | ![](https://geps.dev/progress/0) | :x: |
 | `Data Base` | ![](https://geps.dev/progress/70) | :x: |
-| `UX/UI` | ![](https://geps.dev/progress/70) | :x: |
+| `UX/UI` | ![](https://geps.dev/progress/85) | :x: |
 
 
 #### Admin panel (backend)
@@ -37,7 +37,7 @@
 | Features | ความคืบหน้า | เสร็จ
 | :-------- | :------- | :------- |
 | `ลงสินค้า` | ![](https://geps.dev/progress/95) | :x: |
-| `ประมูล` | ![](https://geps.dev/progress/0) | :x: |
+| `ประมูล` | ![](https://geps.dev/progress/80) | :x: |
 | `upload img` | ![](https://geps.dev/progress/90) | :x: |
 | `Histoly การประมูล` | ![](https://geps.dev/progress/0) | :x: |
 | `การจ่ายเงิน` | ![](https://geps.dev/progress/0) | :x: |
