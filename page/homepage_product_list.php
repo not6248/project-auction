@@ -1,8 +1,9 @@
 <?php
-$sql = "SELECT * FROM `product`";
+$sql = "SELECT * FROM product WHERE pd_status = 2";
 if (isset($_GET['filter_product_typeID']) && !empty($_GET['filter_product_typeID'])) {
-    $sql .= " WHERE pd_type_id = '" . $_GET['filter_product_typeID'] . "' ";
+    $sql .= " AND pd_type_id = '" . $_GET['filter_product_typeID'] . "'";
 }
+ //เลือกสินค้าที่เป็นสถานะที่ให้แสดงบนหน้าเว็บเท่านั้น
 // $sql .= "GROUP BY product_tb.product_id;";
 $query_product = mysqli_query($conn, $sql);
 ?>
