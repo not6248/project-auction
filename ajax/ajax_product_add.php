@@ -14,6 +14,9 @@ if (isset($_POST) && $_SESSION['user_type'] == "2") {
     date_default_timezone_set('Asia/Bangkok');
     $currentTime = strtotime('today 12:00'); // เวลาปัจจุบันในรูปแบบ timestamp
     // =====================================================================================
+    $oneDaysLater = strtotime('+1 days', $currentTime); // คำนวณเวลา 4 วันนับจากปัจจุบัน
+    $oneDaysLaterFormatted = date('Y-m-d\TH:i', $oneDaysLater); // แปลงเป็นรูปแบบ date
+    // =====================================================================================
     $fourDaysLater = strtotime('+4 days', $currentTime); // คำนวณเวลา 4 วันนับจากปัจจุบัน
     $fourDaysLaterFormatted = date('Y-m-d\TH:i', $fourDaysLater); // แปลงเป็นรูปแบบ date
     // =====================================================================================
@@ -72,11 +75,11 @@ if (isset($_POST) && $_SESSION['user_type'] == "2") {
     // เริ่มการทำงานแบบ Transaction
     mysqli_begin_transaction($conn);
 
-    $sql1 = "INSERT INTO product (user_id, pd_type_id, pd_name, pd_detail, pd_price_start, pd_img, pd_condition, pd_start_date, pd_end_date) 
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql1 = "INSERT INTO product (user_id, pd_type_id, pd_name, pd_detail, pd_price_start, pd_img, pd_condition,pd_start_show_date, pd_start_date, pd_end_date) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt1 = mysqli_prepare($conn, $sql1);
-    mysqli_stmt_bind_param($stmt1, "sssssssss", $user_id, $pd_type_id, $pd_name, $pd_detail, $pd_price_start, $image_json, $pd_condition, $fourDaysLaterFormatted, $elevenDaysLaterFormatted);
+    mysqli_stmt_bind_param($stmt1, "ssssssssss", $user_id, $pd_type_id, $pd_name, $pd_detail, $pd_price_start, $image_json, $pd_condition,$oneDaysLaterFormatted, $fourDaysLaterFormatted, $elevenDaysLaterFormatted);
 
     if (mysqli_stmt_execute($stmt1)) {
         $lastProduct = mysqli_insert_id($conn);
