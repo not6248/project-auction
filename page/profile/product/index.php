@@ -65,6 +65,4 @@
 
 <script>
     data_tb_th("#seller_product_list");
-
-
 </script>

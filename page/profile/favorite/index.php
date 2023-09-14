@@ -1,7 +1,7 @@
 <div class="card" style="background: rgb(236,238,249);box-shadow: 0px 4px 4px rgba(33,37,41,0.25);">
     <div class="card-body">
         <div class="d-flex justify-content-between">
-            <h4 class="card-title mb-0" style="font-size: 28px;">Favorite</h4>
+            <h4 class="card-title" style="font-size: 28px;">Favorite</h4>
 
         </div>
         <div class="row mt-3">
