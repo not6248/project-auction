@@ -454,7 +454,7 @@ $(document).ready(function () {
 });
 
 
-
+//ปุ่ม Upload บัตร ปชช
 $(document).ready(function () {
     $("#add_id_card_img_form").submit(function (e) {
         e.preventDefault();
@@ -504,17 +504,66 @@ $(document).ready(function () {
                         }
                     }
                 });
-                // console.log(formData.get('id-card-img-pd-input'));
-                // Swal.fire({
-                //     title: 'Upload!',
-                //     text: "Your file has been upload.",
-                //     icon: 'success',
-                //     showConfirmButton: false,
-                //     timer: 1500,
-                //     heightAuto: false
-                // }).then(() => {
-                //     console.log("รีหน้าเว็บ");
-                // })
+            }
+        })
+    });
+});
+
+//ปุ่มอัพโหลดสลีป
+$(document).ready(function () {
+    $("#pay_slip_img_form").submit(function (e) {
+        e.preventDefault();
+        let Method = $(this).attr("method");
+        let formUrl = $(this).attr("action");
+        let formData = new FormData(this);
+        let pd_id = $(this).data("pd-id");
+
+         // เพิ่ม pd_id เข้า formData
+        formData.append('pd_id', pd_id);
+
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            heightAuto: false,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, upload now!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: Method,
+                    url: formUrl,
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (response) {
+                        console.log(response);
+                        let result = JSON.parse(response)
+                        let status = result.status;
+                        switch (status) {
+                            case "success":
+                                Swal.fire({
+                                    icon: result.status,
+                                    title: result.msg,
+                                    heightAuto: false,
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                }).then(() => {
+                                    location.reload();
+                                });
+                                break;
+                            case "error":
+                                Swal.fire({
+                                    icon: result.status,
+                                    title: result.msg,
+                                    heightAuto: false,
+                                })
+                        }
+                    }
+                });
             }
         })
     });
