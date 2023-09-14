@@ -27,7 +27,11 @@ if (!isset($_SESSION['user_login']) && empty($_SESSION['user_login'])) {
                     include 'profile_detail/index.php';
                     break;
                 case 'order_bidder':
-                    include 'order_bidder/index.php';
+                    if ($function == 'delivery') {
+                        include 'order_bidder/delivery.php';
+                    } else {
+                        include 'order_bidder/index.php';
+                    }
                     break;
                 case 'favorite':
                     include 'favorite/index.php';
