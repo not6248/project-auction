@@ -1,14 +1,23 @@
-function countdown_time(id, starttime, endtime) {
+function countdown_time(id,showtime,starttime, endtime) {
     $(document).ready(function () {
         const element = $('#' + id); // ใช้ jQuery ในการเลือก element โดยใช้ id
 
         // ฟังก์ชันเพื่ออัพเดทเวลานับถอยหลังและข้อความ
         function updateCountdown() {
             let now = new Date().getTime();
+            let startshow = new Date(showtime).getTime();
             let start = new Date(starttime).getTime();
             let end = new Date(endtime).getTime();
         
-            if (now < start) {
+            if(now < showtime){
+
+                let timeUntilStartShow = start - now;
+                let days = Math.floor(timeUntilStartShow / (1000 * 60 * 60 * 24)); // คำนวณจำนวนวัน
+                let hours = Math.floor((timeUntilStartShow % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                let minutes = Math.floor((timeUntilStartShow % (1000 * 60 * 60)) / (1000 * 60));
+                let seconds = Math.floor((timeUntilStartShow % (1000 * 60)) / 1000);
+                element.html("จะนำสินค้าไปแสดงบนเว็บไซต์ ภายใน <br>" + days + " Day " + hours + ":" + minutes + ":" + seconds + "s");
+            }else if (now >=showtime && now <= start) {
                 // กำลังเริ่ม
                 let timeUntilStart = start - now;
                 let days = Math.floor(timeUntilStart / (1000 * 60 * 60 * 24)); // คำนวณจำนวนวัน

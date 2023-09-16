@@ -69,8 +69,13 @@ $query_product = mysqli_query($conn, $sql);
                 <?php endif ?>
             </div>
         </div>
+        <?php 
+           $pd_start_date = $row['pd_start_date'];
+           $pd_end_date = $row['pd_end_date'];
+           // $pd_start_show_date = $row['pd_start_show_date'];
+           ?>
         <script>
-            countdown_time("product-timeleftID-<?= $pd_id ?>", "<?= $row['pd_start_date'] ?>", "<?= $row['pd_end_date'] ?>");
+            countdown_time("product-timeleftID-<?= $pd_id ?>","", "<?=$pd_start_date?>", "<?=$pd_end_date?>");
         </script>
     <?php endforeach ?>
 <?php else : ?>
