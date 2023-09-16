@@ -263,7 +263,7 @@ $(document).ready(function () {
 
         const { value: accept } = await Swal.fire({
             title: 'Terms and conditions',
-            html: "Products will be charged a service fee of "+ fee +" %.",
+            html: "Products will be charged a service fee of " + fee + " %.",
             input: 'checkbox',
             inputValue: 1,
             inputPlaceholder:
@@ -308,7 +308,32 @@ $(document).ready(function () {
     });
 });
 
+//ปุ่ม Update ข้อมูลสินค้า
+$(document).ready(function () {
+    $("#product-update").submit(function (e) {
+        e.preventDefault();
+        const urlParams = new URLSearchParams(window.location.search);
+        const pdId = urlParams.get('pd_id');
+        let Method = $(this).attr("method");
+        let formUrl = $(this).attr("action");
+        let formData = new FormData(this);
+        console.log(pdId);
 
+        formData.append('pd_id', pdId);
+        $.ajax({
+            type: Method,
+            url: formUrl,
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                console.log(response);
+            }
+        });
+
+
+    });
+});
 
 
 //ปุ่ม Fav สลับดาว และ นำการเพิ่มข้อมูลใส่ภายในฐานข้อมูล
@@ -405,6 +430,7 @@ $(document).ready(function () {
     });
 });
 
+//ปุ่มประมูลสินค้า
 $(document).ready(function () {
     $("#bid-form").submit(function (e) {
         e.preventDefault();
