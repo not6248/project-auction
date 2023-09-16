@@ -34,7 +34,7 @@ if (isset($_POST) && $_SESSION['user_type'] == "2") {
 
     // Handle multiple images
     if (isset($_FILES['main-img-pd-input']['name']) && !empty($_FILES['main-img-pd-input']['name'])) {
-        echo "upload main";
+        // echo "upload main";
 
         $extension = array("jpeg", "jpg", "png");
         $target = '../upload/product/';
@@ -90,10 +90,10 @@ if (isset($_POST) && $_SESSION['user_type'] == "2") {
         
     } else {
         if (!empty($_FILES['sub-img-pd-input']['name'][0])) {
-            echoJson_status_msg("error", "Unable to upload secondary images only. Please upload the main image as well.");
+            echoJson_status_msg("error", "Unable to upload secondary images only. <br> Please upload the main image as well.");
         }
         $image_json = $pd_img; // No images uploaded
-        echo "ไม่ได้กดเพิ่มรูป";
+        // echo "ไม่ได้กดเพิ่มรูป";
     }
 
     // เริ่มการทำงานแบบ Transaction
@@ -110,7 +110,7 @@ if (isset($_POST) && $_SESSION['user_type'] == "2") {
     if (mysqli_stmt_execute($stmt1)) {
         mysqli_commit($conn);
 
-        echoJson_status_msg("success", "Product added successfully");
+        echoJson_status_msg("success", "Product update successfully");
     } else {
         mysqli_rollback($conn);
         echoJson_status_msg("error", "mysqli_error($conn)");
