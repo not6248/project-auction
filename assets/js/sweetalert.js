@@ -254,41 +254,62 @@ $(document).ready(function () {
 
 //* เพิ่มสินค้า 
 $(document).ready(function () {
-    $("#product-add").submit(function (e) {
+    $("#product-add").submit(async function (e) { // เพิ่ม async ที่นี่
         e.preventDefault();
         let Method = $(this).attr("method");
         let formUrl = $(this).attr("action");
         let formData = new FormData(this);
-        $.ajax({
-            type: Method,
-            url: formUrl,
-            data: formData,
-            processData: false,  // ไม่ต้องประมวลผลข้อมูล
-            contentType: false,  // ไม่ต้องตั้งค่า content type
-            success: function (data) {//ข้อมูลที่จะนำไปแสดงหลังจากเพิ่มส้นค้า
-                let result = JSON.parse(data);
-                if (result.status == "success") { //success
-                    Swal.fire({
-                        icon: 'success',
-                        title: result.msg,
-                        showConfirmButton: false,
-                        heightAuto: false,
-                        timer: 1500
-                    }).then(() => {
-                        window.location.href = "./?page=profile&subpage=product"
-                    })
-                } else if (result.status == "error") {
-                    Swal.fire({
-                        icon: result.status,
-                        title: 'Oops...',
-                        html: result.msg,
-                        heightAuto: false,
-                    })
-                }
+        let fee = $(this).data("fee");
+
+        const { value: accept } = await Swal.fire({
+            title: 'Terms and conditions',
+            html: "Products will be charged a service fee of "+ fee +" %.",
+            input: 'checkbox',
+            inputValue: 1,
+            inputPlaceholder:
+                'I agree with the terms and conditions',
+            confirmButtonText:
+                'Continue <i class="fa fa-arrow-right"></i>',
+            inputValidator: (result) => {
+                return !result && 'You need to agree with T&C'
             }
-        });
+        })
+
+        if (accept) {
+            $.ajax({
+                type: Method,
+                url: formUrl,
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    let result = JSON.parse(data);
+                    if (result.status == "success") {
+                        Swal.fire({
+                            icon: 'success',
+                            title: result.msg,
+                            showConfirmButton: false,
+                            heightAuto: false,
+                            timer: 1500
+                        }).then(() => {
+                            window.location.href = "./?page=profile&subpage=product"
+                        })
+                    } else if (result.status == "error") {
+                        Swal.fire({
+                            icon: result.status,
+                            title: 'Oops...',
+                            html: result.msg,
+                            heightAuto: false,
+                        })
+                    }
+                }
+            });
+        }
     });
 });
+
+
+
 
 //ปุ่ม Fav สลับดาว และ นำการเพิ่มข้อมูลใส่ภายในฐานข้อมูล
 $(document).ready(function () {
@@ -518,7 +539,7 @@ $(document).ready(function () {
         let formData = new FormData(this);
         let pd_id = $(this).data("pd-id");
 
-         // เพิ่ม pd_id เข้า formData
+        // เพิ่ม pd_id เข้า formData
         formData.append('pd_id', pd_id);
 
 

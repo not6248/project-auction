@@ -14,7 +14,7 @@
                     </div>
                     <div class="card-body" style="background: #ECEEF9;">
                         <!-- Start Form -->
-                        <form id="product-add" action="./ajax/ajax_product_add.php" method="POST" enctype="multipart/form-data">
+                        <form id="product-add" data-fee="<?=$service_fee?>" action="./ajax/ajax_product_add.php" method="POST" enctype="multipart/form-data">
                             <div class="card-body col-lg-12">
                                 <div class="form-group mb-3">
                                     <div class="row">
