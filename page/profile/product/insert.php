@@ -1,3 +1,20 @@
+<?php
+$bank_detail = "SELECT ud_bank_number,ud_bank_id FROM user_detail WHERE user_id = " . $_SESSION['user_login'];
+$result_bank_detail = mysqli_query($conn,$bank_detail);
+$row_bank_detail = mysqli_fetch_assoc($result_bank_detail);
+if(is_null($row_bank_detail['ud_bank_number']) || is_null($row_bank_detail['ud_bank_id'])) : ?>
+    <script>
+        $(document).ready(function () {
+                Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Please fill in complete bank information before adding products.',
+            }).then(()=>{
+                window.location.href = "./?page=profile#bank"
+            })
+        });
+    </script>
+<?php endif ?>
 <div class="card" style="background: rgb(236,238,249);box-shadow: 0px 4px 4px rgba(33,37,41,0.25);">
     <div class="card-body">
         <div class="d-flex justify-content-between">
