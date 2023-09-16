@@ -17,13 +17,19 @@ if(mysqli_num_rows($result3) > 0){
     $username_last_bid_id = "";
 }
 
-if (mysqli_num_rows($result) < 1) {
-    echo '<script>window.location.href = "./";</script>';
+if (!mysqli_num_rows($result) > 0) {
+    echo '<script>history.back();</script>';
     exit; // ออกจากการทำงานของสคริปต์ PHP เพื่อป้องกันการแสดงผลเนื้อหาหลังจากนี้
 }
+
 foreach ($result as $row) :
     $image_json = $row['pd_img'];
     $pd_img = json_decode($image_json);
+    $pd_status = $row['pd_status'];
+    if($pd_status == 0){
+        echo '<script>history.back();</script>';
+        exit; // ออกจากการทำงานของสคริปต์ PHP เพื่อป้องกันการแสดงผลเนื้อหาหลังจากนี้
+    }
     $isFirst = true;
 ?>
     <div class="container mt-xl-5 pt-xl-0 w-100 m-auto">
