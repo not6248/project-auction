@@ -328,10 +328,29 @@ $(document).ready(function () {
             contentType: false,
             success: function (response) {
                 console.log(response);
+                let result = JSON.parse(response)
+                let status = result.status;
+                switch (status) {
+                    case "success":
+                        Swal.fire({
+                            icon: result.status,
+                            title: result.msg,
+                            heightAuto: false,
+                            showConfirmButton: false,
+                            timer: 1500,
+                        }).then(() => {
+                            history.back();
+                        });
+                        break;
+                    case "error":
+                        Swal.fire({
+                            icon: result.status,
+                            title: result.msg,
+                            heightAuto: false,
+                        })
+                }
             }
         });
-
-
     });
 });
 
