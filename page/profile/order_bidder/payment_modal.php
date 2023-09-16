@@ -14,12 +14,12 @@
                         <div class="d-flex ps-3">
                             <div class="me-4">
                                 <!-- checked="checked" -->
-                                <input required="" value="1" type="radio" class="form-check-input" name="bank">
-                                <label class="form-check-label me-2" >ธนาคารกสิกรไทย</label>
-                                <input required="" value="2" type="radio" class="form-check-input" name="bank">
-                                <label class="form-check-label me-2" >พร้อมเพย์</label>
-                                <input required="" value="3" type="radio" class="form-check-input" name="bank">
-                                <label class="form-check-label me-2" >ธนาคารกรุงไทย</label>
+                                <?php 
+                                   foreach ($bank_arr as $index => $v) : ?>
+                                    <input required="" value="<?= $index ?>" type="radio" class="form-check-input" name="bank">
+                                    <label class="form-check-label me-2" ><?= $v ?></label>
+                                <?php endforeach ?>
+                                <!--  -->
                             </div>
                         </div>
                     </div>
