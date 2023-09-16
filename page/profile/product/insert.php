@@ -41,7 +41,7 @@
                                 <!-- ============================================================================================================== -->
                                 <div class="form-group mb-2">
                                     <label>ชื่อสินค้า</label>
-                                    <input name="pd_name" type="text" class="form-control" placeholder="ใส่ ชื่อสินค้า" value="<?php echo isset($_POST['username']) && !empty($_POST['username']) ? ($_POST['username']) : ''; ?>" required="required">
+                                    <input name="pd_name" type="text" class="form-control" placeholder="ใส่ ชื่อสินค้า" value="" required="required">
                                 </div>
                                 <!-- ============================================================================================================== -->
                                 <div class="form-group mb-2">
@@ -82,7 +82,7 @@
                                 <!-- ============================================================================================================== -->
                                 <div class="form-group mb-2">
                                     <label>ราคาเริ่มต้น</label>
-                                    <input name="pd_price_start" type="number" class="form-control" placeholder="฿฿฿" value="<?php echo isset($_POST['firstname']) && !empty($_POST['firstname']) ? ($_POST['firstname']) : ''; ?>" required="required">
+                                    <input name="pd_price_start" type="number" class="form-control" placeholder="฿฿฿" value="" required="required">
                                 </div>
                                 <!-- ============================================================================================================== -->
                                 <div class="form-group mb-2">
@@ -106,7 +106,7 @@
                                         เว็บไซต์ไม่สามารถกำหนดเวลาประมูลได้ <br>
                                         เมื่อทำการลงสินค้า<br>
                                         -เว็บไซต์จะมีเวลา 1 วันก่อนแสดงบนหน้าเว็บไซต์เพื่อ <span class=" fw-bold ">ลบ หรือ แก้ไข</span><br>
-                                        -สินค้าจะแสดงบนเว็บไซต์เป็นเวลา 3 วันมีก่อนการประมูล <span class=" fw-bold ">(สามารถ ลบได้ แต่แก้ไขไม่ได้)</span><br>
+                                        -สินค้าจะแสดงบนเว็บไซต์เป็นเวลา 3 วันมีก่อนการประมูล <span class=" fw-bold ">(ไม่สามารถ ลบ แก้ไข ได้)</span><br>
                                         -และสินค้าจะขึ้นประมูลเป็นเวลา 7 วัน <span class=" fw-bold ">(ไม่สามารถ ลบ แก้ไข ได้ )</span>
                                     </span>
                                     <span class=" fw-bold ">[มีเหตุขัดข้อง กรุณาติดต่อ ADMIN]</span>
