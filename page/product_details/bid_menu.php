@@ -1,10 +1,10 @@
 <div class="col-sm-10 col-md-6 col-lg-4 order-1 order-lg-2 my-sm-4 my-md-0">
     <div class="d-flex flex-column justify-content-center align-items-center mb-0" style="height: 190px;border-radius: 16px;border: 3px solid rgb(13,110,253);">
         <div class="row" style="width: 100%;">
-            <div class="col-4">
+            <!-- <div class="col-4">
                 <span>เหลือเวลา<br>1 วัน 5 ชม.</span>
-            </div>
-            <div class="col-4 d-flex justify-content-center align-items-end pe-0 ps-0" style="text-align: center;">
+            </div> -->
+            <div class="col-4 offset-4 d-flex justify-content-center align-items-end pe-0 ps-0" style="text-align: center;">
                 <span class="fw-bold" style="color: rgb(62, 0, 186);">ราคาปัจจุบัน!</span>
             </div>
             <div class="col-4 ms-0" style="text-align: right;">

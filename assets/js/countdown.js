@@ -9,14 +9,14 @@ function countdown_time(id,showtime,starttime, endtime) {
             let start = new Date(starttime).getTime();
             let end = new Date(endtime).getTime();
         
-            if(now < showtime){
+            if(now < startshow){
 
-                let timeUntilStartShow = start - now;
+                let timeUntilStartShow = startshow - now;
                 let days = Math.floor(timeUntilStartShow / (1000 * 60 * 60 * 24)); // คำนวณจำนวนวัน
                 let hours = Math.floor((timeUntilStartShow % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 let minutes = Math.floor((timeUntilStartShow % (1000 * 60 * 60)) / (1000 * 60));
                 let seconds = Math.floor((timeUntilStartShow % (1000 * 60)) / 1000);
-                element.html("จะนำสินค้าไปแสดงบนเว็บไซต์ ภายใน <br>" + days + " Day " + hours + ":" + minutes + ":" + seconds + "s");
+                element.html("จะนำขึ้นแสดงบนเว็บไซต์ภายใน <br>" + days + " Day " + hours + ":" + minutes + ":" + seconds + "s");
             }else if (now >=showtime && now <= start) {
                 // กำลังเริ่ม
                 let timeUntilStart = start - now;
