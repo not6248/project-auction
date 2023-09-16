@@ -39,7 +39,10 @@ if (!isset($_SESSION['user_login']) && empty($_SESSION['user_login'])) {
                 case 'product':
                     if ($function == 'add') {
                         include 'product/insert.php';
-                    } else {
+                    }elseif($function == 'update'){
+                        include 'product/edit.php';
+                    }
+                     else {
                         include 'product/index.php';
                     }
                     break;
