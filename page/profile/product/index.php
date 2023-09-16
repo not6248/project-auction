@@ -44,7 +44,7 @@
                                             <td>@mdo</td>
                                             <td class="">
                                                 <a href="" class="btn btn-info btn-sm">รายละเอียด</a>
-                                                <a href="./?page=<?=$_GET['page']?>&subpage=<?=$_GET['subpage']?>&function=edit" class="btn btn-warning btn-sm">แก้ไข</a>
+                                                <a href="./?page=<?=$_GET['page']?>&subpage=<?=$_GET['subpage']?>&function=update&pd_id=<?=$row['pd_id']?>" class="btn btn-warning btn-sm">แก้ไข</a>
                                                 <a href="./ajax/ajax_product_delete.php" data-pd-id="<?=$row['pd_id']?>" class="btn btn-danger btn-sm product-del-btn">ลบ</a>
                                             </td>
                                         </tr>
