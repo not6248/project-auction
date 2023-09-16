@@ -34,19 +34,20 @@ $ud_idcard_img = $row['ud_idcard_img'];
                                 <p class="mb-0 ms-1">ที่อยู่</p>
                                 <input required type="text" name="address" value="<?= $row['ud_address'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
                             </div>
-                            <div class="mb-1">
+                            <div class="mb-1 w-50">
                                 <p class="mb-0 ms-1">อีเมล์</p>
                                 <input disabled type="text" value="<?= $row['user_email'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
                             </div>
-                            <div class="mb-1">
+                            <div class="mb-1 w-50">
                                 <p class="mb-0 ms-1">เบอร์โทรศัพท์</p>
                                 <input required type="number" name="tele" value="<?= $row['ud_phone'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
                             </div>
+
                             <!-- radio -->
                             <!-- sql radio -->
                             <?php
-                            $sql = "SELECT * FROM `prefix`";
-                            $resultprefix = mysqli_query($conn, $sql);
+                            $sql3 = "SELECT * FROM `prefix`";
+                            $resultprefix = mysqli_query($conn, $sql3);
 
                             ?>
                             <div class="mb-1">
@@ -54,13 +55,14 @@ $ud_idcard_img = $row['ud_idcard_img'];
                                 <div class="d-flex ps-3">
                                     <div class="me-4">
                                         <!-- checked="checked" -->
-                                        <?php foreach ($resultprefix as $row) : ?>
-                                            <input required value="<?= $row['prefix_id'] ?>" type="radio" class="form-check-input" name="prefix" <?= isset($prefix) && $prefix == $row['prefix_id'] ? "checked" : "" ?>>
-                                            <label class="form-check-label me-2" for="prefix-1"><?= $row['prefix_name'] ?></label>
+                                        <?php foreach ($resultprefix as $row_p) : ?>
+                                            <input required value="<?= $row_p['prefix_id'] ?>" type="radio" class="form-check-input" name="prefix" <?= isset($prefix) && $prefix == $row_p['prefix_id'] ? "checked" : "" ?>>
+                                            <label class="form-check-label me-2" for="prefix-1"><?= $row_p['prefix_name'] ?></label>
                                         <?php endforeach ?>
                                     </div>
                                 </div>
                             </div>
+
                             <!-- End radio -->
                             <?php
                             if ($_SESSION['user_type'] == 1) {
@@ -84,19 +86,37 @@ $ud_idcard_img = $row['ud_idcard_img'];
                                 $label = "ตอนนี้ คุณสามารถลงสินค้าได้แล้ว";
                             }
                             ?>
-                            <div class="mb-5">
+                            <div class="mb-1 w-50">
                                 <p class="mb-0 ms-1">รหัสบัตรประชาชน</p>
                                 <input disabled type="text" value="<?= $idCardMessage ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
 
-
-                                <label style="font-size: 12px;"><?=$label?></label>
+                                <label style="font-size: 12px;"><?= $label ?></label>
                                 <label class="cursor-pointer" for="id-card-img-upload" style="font-size: 12px;text-decoration:  underline;">
-                                    <a href="#" data-bs-toggle="modal" data-bs-target="#add_id_card_img"><?=$labelLink?></a>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#add_id_card_img"><?= $labelLink ?></a>
                                 </label>
 
                                 <!-- <input class="d-none" type="file" name="" id="id-card-img-upload" onchange="getImage(this.value)"> -->
                                 <!-- <p id="id-card-img-upload-file-name" style="font-size: 12px;"></p> -->
                             </div>
+                            <?php if ($_SESSION['user_type'] == 2) : ?>
+                            <div class="mb-1 mt-3" id="bank">
+                                <p class="mb-0 ms-1">ธนาคาร</p>
+                                <div class="d-flex ps-3">
+                                    <div class="me-4">
+                                        <!-- checked="checked" -->
+                                        <?php foreach ($bank_arr as $index => $v) : ?>
+                                            <input value="<?= $index ?>" type="radio" class="form-check-input" name="bank_id" <?= isset($row['ud_bank_id']) && $index == $row['ud_bank_id'] ? "checked" : "" ?>> <!-- checked -->
+                                            <label class="form-check-label me-2" for="prefix-1"><?= $v ?></label>
+                                        <?php endforeach ?>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mb-5 w-50 ">
+                                <p class="mb-0 ms-1">เลขบัญชี</p>
+                                <input type="text" name="bank_number" value="<?= $row['ud_bank_number'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
+                            </div>
+                            <?php endif ?>
                     </div>
                     <div class="card-footer" style="background: #D8DBE9;">
                         <button class="btn btn-primary" type="submit" style="border-radius: 7px;">ยืนยันการแก้ไข</button>
