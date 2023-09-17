@@ -63,17 +63,21 @@ if ($update_to_end) {
     echo "sql3";
     if (mysqli_num_rows($update_to_end) > 0) {
         // ทำการเปลี่ยนสถานะสินค้า pd_status = 2
-        $sql = "SELECT lb.*,sum_price_bid.*,p.pd_name FROM `last_user_bid` lb INNER JOIN (SELECT order_id,SUM(bid_price_up) AS price_sum FROM `bid` GROUP BY order_id) AS sum_price_bid USING(order_id) INNER JOIN product as p ON p.pd_id = lb.order_id;";
+        $sql = "SELECT lb.*,os.*,p.pd_name FROM `last_user_bid` lb 
+        INNER JOIN order_summary AS os USING(order_id) 
+        INNER JOIN product as p ON p.pd_id = lb.order_id 
+        WHERE order_id = (SELECT order_id FROM order_tb WHERE order_status = 2);";
+        
         $result2 = mysqli_query($conn, $sql);
         foreach ($result2 as $row) {
             $pd_name = $row['pd_name'];
             $email   = $row['user_email'];
             $subject = "You won the auction.";
             $message = "You won the auction product <b>$pd_name</b> 
-                        -The price you must pay is " . number_format($row['price_sum'], 0) . "฿";
+                        -The price you must pay is " . number_format($row['total_price'], 0) . "฿";
             $sender = "Vinyl Bid";
             if (sendMail($email, $subject, $message, $sender)) {
-                mysqli_query($conn, "UPDATE order_tb SET end_price = " . number_format($row['price_sum'], 0) . " WHERE order_tb.order_id = " . $row['order_id']);
+                mysqli_query($conn, "UPDATE order_tb SET end_price = " . number_format($row['total_price'], 0) . " WHERE order_tb.order_id = " . $row['order_id']);
             }
         }
         mysqli_query($conn, "UPDATE need_update_to_end SET pd_status = 1");
