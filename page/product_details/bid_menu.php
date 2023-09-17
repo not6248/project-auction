@@ -27,10 +27,10 @@
             <span style="font-size: 23px;font-weight: bold;color: #3E168E;"><?= number_format($row_order_summary['total_price'], 0) ?> ฿</span>
         </div>
         <div class="mb-1">
-            <button class="btn btn-primary" style="font-size: 20px;width: 263.906px;" data-bs-toggle="modal" data-bs-target="#bid-modal">เสนอราคา</button>
+            <button  <?=$order_status == 2 ? "" : "disabled"?> class="btn btn-primary" style="font-size: 20px;width: 263.906px;" data-bs-toggle="modal" data-bs-target="#bid-modal">เสนอราคา</button>
         </div>
         <div class="">
-            <span class="fw-bold" style="color: rgb(62, 0, 186);">จำนวนผู้ประมูล 7 คน</span>
+            <!-- <span class="fw-bold" style="color: rgb(62, 0, 186);">จำนวนผู้ประมูล 7 คน</span> -->
         </div>
     </div>
 </div>
