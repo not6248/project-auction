@@ -1,5 +1,4 @@
 <?php
-update_status($conn);
 
 $sql = "SELECT * FROM product WHERE pd_status = 2";
 if (isset($_GET['filter_product_typeID']) && !empty($_GET['filter_product_typeID'])) {
