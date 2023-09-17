@@ -7,8 +7,8 @@
     <?php include './includes/navbar.php'; ?> <!-- mavbar -->
 
     <?php
-    $page = isset($_GET['page']) ? $_GET['page'] : '';
-    $function = isset($_GET['function']) ? $_GET['function'] : '';
+    $page = $_GET['page'] ?? "";
+    $function = $_GET['function'] ?? "";
 
     switch ($page) {
         case '':
@@ -58,7 +58,7 @@
         <div class="spinner-border text-primary" role="status">
         </div>
     </div>
-    
+
 </body>
 
 </html>
