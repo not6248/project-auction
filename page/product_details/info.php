@@ -14,7 +14,7 @@
         <hr class="my-0"> <!-- ========================================================================== -->
         <div class="row pt-xl-2 pb-xl-2 ms-xl-0 me-xl-0">
             <div class="col"><span style="font-weight: bold;">สถานะประมูล</span></div>
-            <div class="col-md-6 col-lg-5 col-xl-8 col-xxl-7 ps-xl-0"><span style="margin-left: 151px;" class="ms-xl-0 ms-0">กำลังประมูล</span></div>
+            <div class="col-md-6 col-lg-5 col-xl-8 col-xxl-7 ps-xl-0"><span style="margin-left: 151px;" class="ms-xl-0 ms-0"><?=os_sts_user($order_status,$os_name_arr)?></span></div>
         </div>
         <hr class="my-0"> <!-- ========================================================================== -->
         <div class="row pt-xl-2 pb-xl-2 ms-xl-0 me-xl-0">

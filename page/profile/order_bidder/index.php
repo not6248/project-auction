@@ -36,7 +36,7 @@ $result = mysqli_query($conn, $sql);
                                     <?php foreach ($result as $row) :
                                         $image_json = $row['pd_img'];
                                         $pd_id = $row['pd_id'];
-                                        $end_price = $row['end_price'];
+                                        $end_price = number_format($row['end_price'],0);
                                         $pd_img = json_decode($image_json);
                                         $pd_name = $row['pd_name'];
                                         $scr_img = "./upload/product/$pd_img[0]";
@@ -55,8 +55,8 @@ $result = mysqli_query($conn, $sql);
                                         <tr>
                                             <th scope="row"><?= $i++ ?></th>
                                             <td><img class=" fit-cover rounded-0" width="80" height="80" src="<?= $scr_img ?>"></td>
-                                            <td><?= $pd_name ?></td>
-                                            <td><?= $end_price ?>บาท</td>
+                                            <td><?= $pd_name?></td>
+                                            <td><?= $end_price?> บาท</td>
                                             <td>รอการราการชำระ</td>
                                             <td class="">
                                                 <button class="btn btn-warning btn-sm <?=$pay_status !=0 && $pay_status != 2 ? "d-none" : ""?>" data-bs-toggle="modal" data-bs-target="#pay_slip_img">ชำระเงิน <i class="fa-solid fa-money-bill-wave fa-bounce"></i></button>
