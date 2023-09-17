@@ -58,7 +58,6 @@
 
                                         <script>
                                             countdown_time("product-timeleftID-<?= $pd_id ?>", "<?= $pd_start_show_date ?>", "<?= $pd_start_date ?>", "<?= $pd_end_date ?>");
-                                            data_tb_th("#seller_product_list");
                                         </script>
                                     <?php endforeach ?>
                                 </tbody>
@@ -74,3 +73,6 @@
         </div>
     </div>
 </div>
+<script>
+    data_tb_th("#seller_product_list");
+</script>
