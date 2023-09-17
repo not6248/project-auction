@@ -14,25 +14,49 @@
 
     <!-- Content Wrapper. Contains page content -->
     <?php
-    if (!isset($_GET['page']) && empty($_GET['page'])) {
-      include './page/dashboard/index.php';
-    } elseif ((isset($_GET['page']) && $_GET['page'] == 'user')) {
-      include './page/user/index.php';
-    } elseif ((isset($_GET['page']) && $_GET['page'] == 'product')) {
-      include './page/product/index.php';
-    } elseif ((isset($_GET['page']) && $_GET['page'] == 'order')) {
-      include './page/order/index.php';
-    } elseif ((isset($_GET['page']) && $_GET['page'] == 'prefix')) {
-      include './page/prefix/index.php';
-    } elseif ((isset($_GET['page']) && $_GET['page'] == 'product_type')) {
-      include './page/product_type/index.php';
-    } elseif ((isset($_GET['page']) && $_GET['page'] == 'delivery_type')) {
-      include './page/delivery_type/index.php';
-    } elseif ((isset($_GET['page']) && $_GET['page'] == 'bank')) {
-      include './page/bank/index.php';
-    } else {
-      include './page/not_found.php';
+    $page = $_GET['page'] ?? '';
+    $function = $_GET['function'] ?? "";
+
+    switch ($page) {
+      case '':
+        include './page/dashboard/index.php';
+        break;
+      case 'user':
+        include './page/user/index.php';
+        break;
+      case 'product':
+        include './page/product/index.php';
+        break;
+      case 'order':
+        include './page/order/index.php';
+        break;
+      case 'prefix':
+        include './page/prefix/index.php';
+        break;
+      case 'product_type':
+        include './page/product_type/index.php';
+        break;
+      case 'delivery_type':
+        include './page/delivery_type/index.php';
+        break;
+      case 'bank':
+        include './page/bank/index.php';
+        break;
+      case 'id_card_verified':
+        include './page/id_card_verified/index.php';
+        break;
+      case 'receipt_verified':
+        if($function == 'detail'){
+          include './page/receipt_verified/detail.php';
+        }else{
+          include './page/receipt_verified/index.php';
+        }
+        break;
+      default:
+        include './page/not_found.php';
+        break;
     }
+
     ?>
     <!-- /.content-wrapper -->
 
