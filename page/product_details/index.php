@@ -4,9 +4,13 @@ $user_id = $user_id = $_SESSION['user_login'] ?? "";
 $sql = "SELECT * FROM product_with_username WHERE pd_id = $pd_id";
 $sql2 = "SELECT * FROM order_summary WHERE order_id = $pd_id";
 $sql3 = "SELECT * FROM last_user_bid WHERE order_id = $pd_id";
+$sql4 = "SELECT * FROM order_tb WHERE order_id = $pd_id";
 $result = mysqli_query($conn, $sql);
 $result2 = mysqli_query($conn, $sql2);
 $result3 = mysqli_query($conn, $sql3);
+$result4 = mysqli_query($conn, $sql4);
+$row_order = mysqli_fetch_assoc($result4);
+$order_status = $row_order['order_status'];
 $row_order_summary = mysqli_fetch_assoc($result2);
 if (mysqli_num_rows($result3) > 0) {
     $row_last_bid = mysqli_fetch_assoc($result3);
