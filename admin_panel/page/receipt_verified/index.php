@@ -36,7 +36,7 @@ $result3 = mysqli_query($conn, $sql3);
         <div class="col-lg-8">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">ตาราง</h3>
+              <h3 class="card-title">ตาราง : ตรวจสอบการชำระเงิน</h3>
             </div>
             <div class="card-body">
               <?php if (mysqli_num_rows($result1) > 0) : ?>
@@ -76,7 +76,7 @@ $result3 = mysqli_query($conn, $sql3);
         <div class="col-4">
           <div class="card card-warning">
             <div class="card-header">
-              <h3 class="card-title">ตาราง</h3>
+              <h3 class="card-title">ตาราง : สลิปไม่ถูกต้อง</h3>
             </div>
             <div class="card-body">
             <?php if (mysqli_num_rows($result2) > 0) : ?>
@@ -103,13 +103,13 @@ $result3 = mysqli_query($conn, $sql3);
                   </tbody>
                 </table>
               <?php else : ?>
-                <p class="text-center text-muted mt-3">ไม่มีการชำระเงินที่ต้องยืนยันในขณะนี้</p>
+                <p class="text-center text-muted mt-3">ไม่มีสลิปที่ไม่ถูกต้องในขณะนี้</p>
               <?php endif ?>
             </div>
           </div>
           <div class="card card-success">
             <div class="card-header">
-              <h3 class="card-title">ตาราง</h3>
+              <h3 class="card-title">ตาราง : ตรวจสอบเรียบร้อย</h3>
             </div>
             <div class="card-body">
             <?php if (mysqli_num_rows($result3) > 0) : ?>
@@ -136,7 +136,7 @@ $result3 = mysqli_query($conn, $sql3);
                   </tbody>
                 </table>
               <?php else : ?>
-                <p class="text-center text-muted mt-3">ไม่มีการชำระเงินที่ต้องยืนยันในขณะนี้</p>
+                <p class="text-center text-muted mt-3">ไม่พบข้อมูล</p>
               <?php endif ?>
             </div>
           </div>
