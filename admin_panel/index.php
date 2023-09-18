@@ -43,12 +43,16 @@
         include './page/bank/index.php';
         break;
       case 'id_card_verified':
-        include './page/id_card_verified/index.php';
+        if ($function == 'detail') {
+          include './page/id_card_verified/detail.php';
+        } else {
+          include './page/id_card_verified/index.php';
+        }
         break;
       case 'receipt_verified':
-        if($function == 'detail'){
+        if ($function == 'detail') {
           include './page/receipt_verified/detail.php';
-        }else{
+        } else {
           include './page/receipt_verified/index.php';
         }
         break;
