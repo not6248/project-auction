@@ -8,8 +8,13 @@ if (isset($_POST) && !empty(isset($_POST)) && !empty($_SESSION['user_login'])) {
     $ud_lname   = $_POST["lname"];
     $ud_address = $_POST["address"];
     $ud_phone   = $_POST["tele"];
-    $bank_id    = $_POST["bank_id"] != "" ? $_POST["bank_id"] : NULL;
-    $bank_number= $_POST["bank_number"] != "" ? $_POST["bank_number"] : NULL;
+    if(isset($_POST["bank_id"]) && isset($_POST["bank_number"])){
+        $bank_id    = $_POST["bank_id"] ?? NULL || $_POST["bank_id"] != "" ? $_POST["bank_id"] : NULL;
+        $bank_number= $_POST["bank_number"]  ?? NULL || $_POST["bank_number"] != "" ? $_POST["bank_number"] : NULL;
+    }else{
+        $bank_id= NULL;
+        $bank_number= NULL;
+    }
     $user_id    = $_SESSION['user_login'];
 
     $sql = "UPDATE `user_detail` SET 
