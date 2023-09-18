@@ -72,13 +72,17 @@ $ud_idcard_img = $row['ud_idcard_img'];
 
                                 if ($ud_idcard_img == NULL) {
                                     $idCardMessage = "ยังไม่ทำการยืนยันบัตรประชาชน";
-                                } else if ($ud_id_card == null) {
+                                } else if ($ud_id_card == NULL) {
                                     $idCardMessage = "บัตรประชาชนรอการตรวจสอบ";
                                     $label = "";
                                     $labelLink = "";
                                 } elseif ($ud_id_card == 0) {
                                     $idCardMessage = "ภาพไม่สมบูรณ์ กรุณาอัพโหลดใหม่อีกครั้ง";
                                     $label = "ภาพไม่สมบูรณ์ กรุณาอัพโหลดใหม่อีกครั้ง";
+                                }else{
+                                    $idCardMessage = "บัตรประชาชนตรวจสอบแล้ว กรุณาเข้าสู่ระบบใหม่";
+                                    $label = "";
+                                    $labelLink = "";
                                 }
                             } else {
                                 $idCardMessage = "ยืนยันแล้ว";
@@ -114,7 +118,7 @@ $ud_idcard_img = $row['ud_idcard_img'];
 
                             <div class="mb-5 w-50 ">
                                 <p class="mb-0 ms-1">เลขบัญชี</p>
-                                <input type="text" name="bank_number" value="<?= $row['ud_bank_number'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
+                                <input type="number" name="bank_number" value="<?= $row['ud_bank_number'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
                             </div>
                             <?php endif ?>
                     </div>
