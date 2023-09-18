@@ -37,7 +37,16 @@
         include './page/product_type/index.php';
         break;
       case 'delivery_type':
-        include './page/delivery_type/index.php';
+        if ($function == 'add') {
+          include './page/delivery_type/insert.php';
+        }elseif($function == 'delete'){
+          include './page/delivery_type/delete.php';
+        }elseif($function == 'update'){
+          include './page/delivery_type/edit.php';
+        }else{
+          include './page/delivery_type/index.php';
+        }
+
         break;
       case 'bank':
         include './page/bank/index.php';
