@@ -3,8 +3,8 @@
 $sql = "SELECT l.*,p.*,o.end_price,pay.pay_status FROM last_user_bid AS l 
 INNER JOIN product AS p ON l.order_id = p.pd_id 
 INNER JOIN order_tb AS o ON o.order_id = p.pd_id
-INNER JOIN payment as pay ON pay.pay_id = p.pd_id
-WHERE o.order_status >= 3 AND l.latest_bidder = " . $_SESSION['user_login'];
+LEFT JOIN payment as pay ON pay.pay_id = p.pd_id
+WHERE o.order_status >= 3 AND l.latest_bidder =  " . $_SESSION['user_login'];
 $result = mysqli_query($conn, $sql);
 ?>
 <div class="card" style="background: rgb(236,238,249);box-shadow: 0px 4px 4px rgba(33,37,41,0.25);">
@@ -40,7 +40,7 @@ $result = mysqli_query($conn, $sql);
                                         $end_price = number_format($row['end_price'], 0);
                                         $pd_img = json_decode($image_json);
                                         $pd_name = $row['pd_name'];
-                                        $pay_status = $row['pay_status'];
+                                        $pay_status = $row['pay_status'] ?? "0";
                                         $scr_img = "./upload/product/$pd_img[0]";
                                         $delivery_link = "./?page=" . $_GET['page'] . "&subpage=" . $_GET['subpage'] . "&function=delivery&order_id=$pd_id";
                                     ?>
