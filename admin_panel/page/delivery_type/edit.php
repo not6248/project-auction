@@ -44,7 +44,7 @@ if (isset($_POST) && !empty($_POST)) {
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">ประเภทสินค้า</h1>
+          <h1 class="m-0">ประเภทขนส่ง</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -62,7 +62,7 @@ if (isset($_POST) && !empty($_POST)) {
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-4">
-          <div class="card card-primary">
+          <div class="card card-warning">
             <div class="card-header">
               <h3 class="card-title">ฟอร์มสำหรับแก้ไขประเภทขนส่ง</h3>
             </div>
@@ -75,7 +75,7 @@ if (isset($_POST) && !empty($_POST)) {
                 <!-- /.card-body -->
             </div>
             <div class="card-footer">
-              <button name="add_dlvt" type="submit" class="btn btn-primary">บันทึก</button>
+              <button name="add_dlvt" type="submit" class="btn btn-warning">บันทึก</button>
               </form>
             </div>
           </div>
