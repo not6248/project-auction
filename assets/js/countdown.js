@@ -8,7 +8,7 @@ function countdown_time(id,showtime,starttime, endtime) {
             let startshow = new Date(showtime).getTime();
             let start = new Date(starttime).getTime();
             let end = new Date(endtime).getTime();
-        
+            console.log(startshow);
             if(now < startshow){
 
                 let timeUntilStartShow = startshow - now;
@@ -17,7 +17,7 @@ function countdown_time(id,showtime,starttime, endtime) {
                 let minutes = Math.floor((timeUntilStartShow % (1000 * 60 * 60)) / (1000 * 60));
                 let seconds = Math.floor((timeUntilStartShow % (1000 * 60)) / 1000);
                 element.html("จะนำขึ้นแสดงบนเว็บไซต์ภายใน <br>" + days + " Day " + hours + ":" + minutes + ":" + seconds + "s");
-            }else if (now >= startshow && now <= start) {
+            }else if (now >= startshow && now <= start || now <= start) {
                 // กำลังเริ่ม
                 let timeUntilStart = start - now;
                 let days = Math.floor(timeUntilStart / (1000 * 60 * 60 * 24)); // คำนวณจำนวนวัน
