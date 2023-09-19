@@ -13,7 +13,7 @@ if (isset($_POST['complete'])) {
     if ($result1 && $result2) {
         echo '<script>
             alert("ยืนยันเรียบร้อย");
-            window.location.href = "?page=receipt_verified";
+            window.location.href = "?page=id_card_verified";
         </script>';
     }
 } elseif (isset($_POST['incomplete'])) {
@@ -21,7 +21,7 @@ if (isset($_POST['complete'])) {
     if ($result) {
         echo '<script>
             alert("ยืนยันเรียบร้อย");
-            window.location.href = "?page=receipt_verified";
+            window.location.href = "?page=id_card_verified";
         </script>';
     }
 }
