@@ -8,9 +8,8 @@ function countdown_time(id,showtime,starttime, endtime) {
             let startshow = new Date(showtime).getTime();
             let start = new Date(starttime).getTime();
             let end = new Date(endtime).getTime();
-            console.log(startshow);
-            if(now < startshow){
 
+            if(now < startshow){
                 let timeUntilStartShow = startshow - now;
                 let days = Math.floor(timeUntilStartShow / (1000 * 60 * 60 * 24)); // คำนวณจำนวนวัน
                 let hours = Math.floor((timeUntilStartShow % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
