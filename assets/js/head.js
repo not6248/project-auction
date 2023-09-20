@@ -1,5 +1,6 @@
 function data_tb_th(ID) {
     $(ID).DataTable({
+        fixedHeader: true,
         "responsive": true,
         "autoWidth": false,
         language: {
