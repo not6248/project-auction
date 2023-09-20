@@ -634,3 +634,60 @@ $(document).ready(function () {
         })
     });
 });
+
+//ปุ่มเพิ่มเลขพัสดุ
+$(document).ready(function () {
+    $("#tk_form").submit(function (e) { 
+        e.preventDefault();
+        let Method = $(this).attr("method");
+        let formUrl = $(this).attr("action");
+        let formData = $(this).serialize();
+        const urlParams = new URLSearchParams(window.location.search);
+        const order_id = urlParams.get('order_id');
+
+        // เพิ่ม order_id เข้า formData
+        formData += '&order_id=' + order_id;
+
+        Swal.fire({
+            title: 'คุณแน่ใจหรือไม่?',
+            text: "คุณจะไม่สามารถย้อนกลับสิ่งนี้ได้!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ใช่!',
+            cancelButtonText: 'ยกเลิก'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: Method,
+                    url: formUrl,
+                    data: formData,
+                    success: function (response) {
+                        let result = JSON.parse(response)
+                        let status = result.status;
+                        switch (status) {
+                            case "success":
+                                Swal.fire({
+                                    icon: result.status,
+                                    title: result.msg,
+                                    heightAuto: false,
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                }).then(() => {
+                                    location.reload();
+                                });
+                                break;
+                            case "error":
+                                Swal.fire({
+                                    icon: result.status,
+                                    title: result.msg,
+                                    heightAuto: false,
+                                })
+                        }
+                    }
+                });
+            }
+          })
+    });
+});
