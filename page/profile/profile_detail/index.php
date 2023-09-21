@@ -31,7 +31,7 @@ $ud_idcard_img = $row['ud_idcard_img'];
                                 <input required type="text" name="lname" value="<?= $row['ud_lname'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
                             </div>
                             <div class="mb-1">
-                                <p class="mb-0 ms-1">ที่อยู่</p>
+                                <p class="mb-0 ms-1">ที่อยู่ (ในการจัดส่ง)</p>
                                 <input required type="text" name="address" value="<?= $row['ud_address'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
                             </div>
                             <div class="mb-1 w-50">
