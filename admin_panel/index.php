@@ -65,6 +65,13 @@
           include './page/receipt_verified/index.php';
         }
         break;
+      case 'pay_seller':
+        if ($function == 'detail') {
+          include './page/pay_seller/detail.php';
+        } else {
+          include './page/pay_seller/index.php';
+        }
+        break;
       default:
         include './page/not_found.php';
         break;
