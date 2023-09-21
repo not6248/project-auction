@@ -27,9 +27,9 @@ $result = mysqli_query($conn, $sql);
                                 <thead>
                                     <tr>
                                         <th scope="col">No.</th>
-                                        <th scope="col">Img</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Price</th>
+                                        <th scope="col">ภาพ</th>
+                                        <th scope="col">ชื่อ</th>
+                                        <th scope="col">ราคา</th>
                                         <th scope="col">สถานะ order</th>
                                         <th scope="col">สถานะการจ่ายเงิน</th>
                                         <th scope="col">Menu</th>
