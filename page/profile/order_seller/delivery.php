@@ -12,6 +12,16 @@ WHERE o.order_status >= 3 AND $user_login AND p.pd_id = $pd_id";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
+$sql2 = "SELECT * FROM last_user_bid lub
+INNER JOIN login l ON l.user_id = lub.latest_bidder
+INNER JOIN user_detail ud ON ud.user_id = l.user_id
+WHERE lub.order_id = $pd_id";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+
+$result2 = mysqli_query($conn, $sql2);
+$row2 = mysqli_fetch_assoc($result2);
+
 $pay_status = $row['pay_status'] ?? "0";
 $dlv_status = $row['dlv_status'] ?? "0";
 $dlv_code = $row['dlv_code'] ?? "---";
@@ -26,6 +36,7 @@ $dlvt_name = $row['dlvt_name'] ?? "---";
                 <h6 class="text-end">จัดส่งโดย : <?= $dlvt_name ?></h6>
             </div>
         </div>
+
         <div class="row mt-3">
             <div class="col-12">
                 <div class="container h-100">
@@ -38,11 +49,11 @@ $dlvt_name = $row['dlvt_name'] ?? "---";
                                         </div>
                                         <div class="row justify-content-between">
 
-                                            <div class="order-tracking <?= $pay_status <= 3 && $dlv_status >= 0 ? "completed" : "" ?> ">
+                                            <div class="order-tracking <?= $pay_status >= 1 && $dlv_status >= 0 ? "completed" : "" ?> ">
                                                 <span class="is-complete"></span>
                                                 <p class="mt-4"><i class="fa-solid fa-clipboard-list fa-lg"></i> Order Processed</p>
                                             </div>
-                                            <div class="order-tracking <?= $pay_status >= 3 && $dlv_status >= 1 ? "completed" : "" ?>">
+                                            <div class="order-tracking <?= $pay_status >= 2 && $dlv_status >= 1 ? "completed" : "" ?>">
                                                 <span class="is-complete "></span>
                                                 <p class="mt-4"><i class="fa-solid fa-box-open fa-lg"></i> Order Shipped</p>
                                             </div>
@@ -60,6 +71,73 @@ $dlvt_name = $row['dlvt_name'] ?? "---";
                 </div>
             </div>
         </div>
+
+        <div class="row mt-3">
+            <div class="col-12">
+                <div class="container h-100">
+                    <div class="row d-flex justify-content-center align-items-center h-100">
+                        <div class="col-12">
+                            <div class="card card-stepper text-black">
+                                <div class="card-body p-5 pt-4">
+                                    <div class="row">
+                                        <div class="col-5">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">ที่อยู่ในการจัดส่ง</h5>
+                                                    <h6 class="card-subtitle mt-2"><?= $row2['ud_fname'] ?> <?= $row2['ud_lname'] ?></h6>
+                                                    <p class="card-text mb-0 text-body-secondary"><?= $row2['ud_phone'] ?></p>
+                                                    <p class="card-text text-body-secondary"><?= $row2['ud_address'] ?></p>
+                                                </div>
+                                            </div>
+                                            <?php if( $pay_status >= 3 && $dlv_status >= 2) :?>
+                                            <div class="card mt-3">
+                                                <div class="card-body">
+                                                    <h5 class="card-title">สถานะการชำระเงินจากแอดมิน</h5>
+                                                    <?php if( $pay_status == 4 && $dlv_status >= 2) :?>
+                                                    <h6 class="card-subtitle mt-2 text-success ">เว็บไซต์ได้ทำการโอนเงินให้กับผู้ขายแล้ว <i class="fa-solid fa-circle-check"></i></i></h6>
+                                                    <?php else : ?>
+                                                        <h6 class="card-subtitle mt-2 text-body-secondary">อยู่ระหว่างดำเนินการ <i class="fa-solid fa-spinner fa-spin-pulse"></i></h6>
+                                                    <?php endif ?>
+                                                </div>
+                                            </div>
+                                            <?php endif ?>
+                                        </div>
+                                        <div class="col-7">
+                                            <table class="table text-end table-bordered ">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="w-50">รวมค่าสินค้า</td>
+                                                        <td class="w-25"><?= $row['end_price'] ?>฿</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="w-50">ค่าจัดส่ง</td>
+                                                        <td class="w-25">0฿</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="w-50">รวมการสั่งซื้อ</td>
+                                                        <td class="w-25"><span class=" text-primary "><?= $row['end_price'] ?>฿</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="w-50">ค่าบริการ 15%</td>
+                                                        <td class="w-25">-<?= $row['end_price'] * 0.15 ?>฿</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="w-50">เงินที่ผู้ขายจะได้รับ</td>
+                                                        <td class="w-25">
+                                                            <h5 class=" text-primary "><?= $row['end_price'] - ($row['end_price'] * 0.15) ?>฿</h5>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="card-footer py-3">
@@ -67,11 +145,10 @@ $dlvt_name = $row['dlvt_name'] ?? "---";
             <div class="col-12 px-4">
                 <div class="text-end">
                     <small id="emailHelp" class="form-text text-muted me-2">ใช้สำหรับกรอกหมายเลขพัสดุ เมื่อทำการส่งสินค้าแล้ว.</small>
-                    <button class=" btn btn-primary me-2" type="submit" aria-describedby="emailHelp" data-bs-toggle="modal" data-bs-target="#tk_modal">กรอกเลขพัสดุ</button>
+                    <button <?= $pay_status >= 3 && $dlv_status >= 1 ? "disabled" : "" ?> class=" btn btn-primary me-2" type="submit" aria-describedby="emailHelp" data-bs-toggle="modal" data-bs-target="#tk_modal">กรอกเลขพัสดุ</button>
                 </div>
                 <?php include 'page/profile/order_seller/tk_modal.php' ?>
             </div>
         </div>
-
     </div>
 </div>
