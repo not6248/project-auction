@@ -29,7 +29,8 @@ $result = mysqli_query($conn, $sql);
                                         <th scope="col">Img</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Price</th>
-                                        <th scope="col">Status</th>
+                                        <th scope="col">สถานะ order</th>
+                                        <th scope="col">สถานะการชำระเงิน</th>
                                         <th scope="col">Menu</th>
                                     </tr>
                                 </thead>
@@ -49,6 +50,7 @@ $result = mysqli_query($conn, $sql);
                                             <td><img class=" fit-cover rounded-0" width="80" height="80" src="<?= $scr_img ?>"></td>
                                             <td><?= $pd_name ?></td>
                                             <td><?= $end_price ?> บาท</td>
+                                            <td></td>
                                             <td><?= $pay_status_arr[$pay_status] ?></td>
                                             <td class="">
                                                 <?php if ($pay_status == 0 || $pay_status == 2) : ?>
