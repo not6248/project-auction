@@ -33,21 +33,24 @@ if (!isset($_SESSION['user_login']) && empty($_SESSION['user_login'])) {
                         include 'order_bidder/index.php';
                     }
                     break;
+                case 'order_seller':
+                    if ($function == 'delivery') {
+                        include 'order_seller/delivery.php';
+                    } else {
+                    include 'order_seller/index.php';
+                    }
+                    break;
                 case 'favorite':
                     include 'favorite/index.php';
                     break;
                 case 'product':
                     if ($function == 'add') {
                         include 'product/insert.php';
-                    }elseif($function == 'update'){
+                    } elseif ($function == 'update') {
                         include 'product/edit.php';
-                    }
-                     else {
+                    } else {
                         include 'product/index.php';
                     }
-                    break;
-                case 'order_seller':
-                    include 'order_seller/index.php';
                     break;
                 default:
                     include 'profile_detail/index.php';

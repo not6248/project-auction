@@ -71,7 +71,7 @@
                 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
                 <li class="nav-item">
                     <a href="?page=delivery_type" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'delivery_type' ? 'active' : '' ?>">
-                        <i class="fa-solid fa-car-side"></i>
+                        <i class="fa-solid fa-truck"></i>
                         <p>ประเภทขนส่ง</p>
                     </a>
                 </li>
@@ -94,6 +94,12 @@
                     <a href="?page=receipt_verified" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'receipt_verified' ? 'active' : '' ?>">
                         <i class="fa-solid fa-clipboard-check"></i>
                         <p>ยืนยันสลีปชำระเงิน</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="?page=pay_seller" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'pay_seller' ? 'active' : '' ?>">
+                        <i class="fa-solid fa-hand-holding-dollar"></i>
+                        <p>โอนเงินให้กับผู้ซื้อ</p>
                     </a>
                 </li>
                 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->

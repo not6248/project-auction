@@ -7,17 +7,17 @@
             </div>
             <div class="modal-body">
                 <!-- Start Form -->
-                <form action="ajax/ajax_payment_upload.php" method="post" id="pay_slip_img_form" data-pd-id="<?=$row['pd_id']?>">
+                <form action="ajax/ajax_payment_upload.php" method="post" id="pay_slip_img_form" data-pd-id="<?= $row['pd_id'] ?>">
                     <img class="h-100 w-100" src="assets/img/payment_list.png" alt="id_card_verify" srcset="">
                     <div class="mb-3">
                         <p class="mb-0 ms-1">Payment channels</p>
                         <div class="d-flex ps-3">
                             <div class="me-4">
                                 <!-- checked="checked" -->
-                                <?php 
-                                   foreach ($bank_arr as $index => $v) : ?>
+                                <?php
+                                foreach ($bank_arr as $index => $v) : ?>
                                     <input required="" value="<?= $index ?>" type="radio" class="form-check-input" name="bank">
-                                    <label class="form-check-label me-2" ><?= $v ?></label>
+                                    <label class="form-check-label me-2"><?= $v ?></label>
                                 <?php endforeach ?>
                                 <!--  -->
                             </div>
