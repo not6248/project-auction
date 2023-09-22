@@ -1,3 +1,4 @@
+let x;
 function countdown_time(id,showtime,starttime, endtime) {
     $(document).ready(function () {
         const element = $('#' + id); // ใช้ jQuery ในการเลือก element โดยใช้ id
@@ -40,9 +41,12 @@ function countdown_time(id,showtime,starttime, endtime) {
                 // หมดเวลา
                 // ใช้ jQuery เพื่อเปลี่ยนเนื้อหาของ HTML element
                 element.html("หมดเวลา<br><br>");
+                 // ยกเลิกการทำงานของ setInterval
+                clearInterval(x);
+                
             }
         }
         updateCountdown();
-        let x = setInterval(updateCountdown, 1000);
+        x = setInterval(updateCountdown, 1000);
     });
 }
