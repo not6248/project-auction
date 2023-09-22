@@ -1,3 +1,8 @@
+<?php
+$sql1 = "SELECT * FROM bank";
+$result1 = mysqli_query($conn, $sql1);
+?>
+
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <div class="content-header">
@@ -21,33 +26,44 @@
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-6">
-          <div class="card">
+        <div class="col-lg-4">
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">ตาราง : ธนาคาร</h3>
+            </div>
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-
-              <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's
-                content.
-              </p>
-
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
+              <div class="text-right">
+                <a href="?page=<?= $_GET['page'] ?>&function=add" class="btn btn-success " role="button"><i class="fa-solid fa-plus"></i> เพิ่มธนาคาร</a>
+              </div>
+              <?php if (mysqli_num_rows($result1) > 0) : ?>
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">#bank_id</th>
+                      <th scope="col" class="w-75">bank_name</th>
+                      <th scope="col">menu</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <?php foreach ($result1 as $row) : ?>
+                      <tr>
+                        <td scope="row"><?= $row['bank_id'] ?></td>
+                        <td><?= $row['bank_name'] ?></td>
+                        <td class="">
+                          <div class="d-flex ">
+                            <a href="?page=<?= $_GET['page'] ?>&function=update&bank_id=<?= $row['bank_id'] ?>"><i class="fa-solid fa-pen" style="color:darkorange;"></i></a>
+                            <a href="?page=<?= $_GET['page'] ?>&function=delete&bank_id=<?= $row['bank_id'] ?>" class="ml-4" onclick="return confirm('คุณต้องการลบธนาคาร <?= $row['bank_name'] ?> หรือไม่')"><i class="fa-solid fa-trash" style="color:red;"></i></a>
+                          </div>
+                        </td>
+                      </tr>
+                    <?php endforeach ?>
+                  </tbody>
+                </table>
+              <?php else : ?>
+                <p class="text-center text-muted mt-3">ไม่มีการชำระเงินที่ต้องยืนยันในขณะนี้</p>
+              <?php endif ?>
             </div>
           </div>
-
-          <div class="card card-primary card-outline">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-
-              <p class="card-text">
-                Some quick example text to build on the card title and make up the bulk of the card's
-                content.
-              </p>
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
-            </div>
-          </div><!-- /.card -->
         </div>
         <!-- /.col-md-6 -->
       </div>
