@@ -2,7 +2,7 @@
 // $sql = "SELECT l.*,p.* FROM last_user_bid AS l INNER JOIN product AS p ON l.order_id = p.pd_id WHERE l.latest_bidder = " . $_SESSION['user_login'];
 $user_login = $_SESSION['user_login'];
 $pd_id = $_GET['order_id'];
-$sql = "SELECT l.*,p.*,o.end_price,pay.pay_status,d.dlv_status,d.dlv_code,dt.dlvt_name FROM last_user_bid AS l 
+$sql = "SELECT l.*,p.*,o.end_price,o.order_details,pay.pay_status,d.dlv_status,d.dlv_code,dt.dlvt_name FROM last_user_bid AS l 
 INNER JOIN product AS p ON l.order_id = p.pd_id 
 INNER JOIN order_tb AS o ON o.order_id = p.pd_id
 LEFT JOIN payment AS pay ON pay.pay_id = p.pd_id
@@ -12,20 +12,12 @@ WHERE o.order_status >= 3 AND $user_login AND p.pd_id = $pd_id";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
-$sql2 = "SELECT * FROM last_user_bid lub
-INNER JOIN login l ON l.user_id = lub.latest_bidder
-INNER JOIN user_detail ud ON ud.user_id = l.user_id
-WHERE lub.order_id = $pd_id";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
-
-$result2 = mysqli_query($conn, $sql2);
-$row2 = mysqli_fetch_assoc($result2);
 
 $pay_status = $row['pay_status'] ?? "0";
 $dlv_status = $row['dlv_status'] ?? "0";
 $dlv_code = $row['dlv_code'] ?? "---";
 $dlvt_name = $row['dlvt_name'] ?? "---";
+$detail = json_decode($row['order_details'], true);
 ?>
 <div class="card" style="background: rgb(236,238,249);box-shadow: 0px 4px 4px rgba(33,37,41,0.25);">
     <div class="card-body">
@@ -84,9 +76,9 @@ $dlvt_name = $row['dlvt_name'] ?? "---";
                                             <div class="card">
                                                 <div class="card-body">
                                                     <h5 class="card-title">ที่อยู่ในการจัดส่ง</h5>
-                                                    <h6 class="card-subtitle mt-2"><?= $row2['ud_fname'] ?> <?= $row2['ud_lname'] ?></h6>
-                                                    <p class="card-text mb-0 text-body-secondary"><?= $row2['ud_phone'] ?></p>
-                                                    <p class="card-text text-body-secondary"><?= $row2['ud_address'] ?></p>
+                                                    <h6 class="card-subtitle mt-2"><?= $detail[0]['bidder_fname'] ?> <?= $detail[0]['bidder_lname'] ?></h6>
+                                                    <p class="card-text mb-0 text-body-secondary"><?= $detail[0]['bidder_phone'] ?></p>
+                                                    <p class="card-text text-body-secondary"><?= $detail[0]['bidder_address'] ?></p>
                                                 </div>
                                             </div>
                                             <?php if( $pay_status >= 3 && $dlv_status >= 2) :?>
@@ -119,12 +111,12 @@ $dlvt_name = $row['dlvt_name'] ?? "---";
                                                     </tr>
                                                     <tr>
                                                         <td class="w-50">ค่าบริการ 15%</td>
-                                                        <td class="w-25">-<?= $row['end_price'] * 0.15 ?>฿</td>
+                                                        <td class="w-25">-<?= $row['end_price'] * ($detail['fee']/100) ?>฿</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="w-50">เงินที่ผู้ขายจะได้รับ</td>
                                                         <td class="w-25">
-                                                            <h5 class=" text-primary "><?= $row['end_price'] - ($row['end_price'] * 0.15) ?>฿</h5>
+                                                            <h5 class=" text-primary "><?= $row['end_price'] - ($row['end_price'] * ($detail['fee']/100)) ?>฿</h5>
                                                         </td>
                                                     </tr>
                                                 </tbody>
