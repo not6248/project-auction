@@ -52,7 +52,7 @@ $result1 = mysqli_query($conn, $sql1);
                         <td class="">
                           <div class="d-flex ">
                             <a href="?page=<?= $_GET['page'] ?>&function=update&dlvt_id=<?= $row['dlvt_id'] ?>"><i class="fa-solid fa-pen" style="color:darkorange;"></i></a>
-                            <a href="?page=<?= $_GET['page'] ?>&function=delete&dlvt_id=<?= $row['dlvt_id'] ?>" class="ml-4" onclick="return confirm('คุณต้องการลบประเภทสินค้า <?= $row['dlvt_name'] ?> หรือไม่')"><i class="fa-solid fa-trash" style="color:red;"></i></a>
+                            <a href="?page=<?= $_GET['page'] ?>&function=delete&dlvt_id=<?= $row['dlvt_id'] ?>" class="ml-4" onclick="return confirm('คุณต้องการลบประเภทขนส่ง <?= $row['dlvt_name'] ?> หรือไม่')"><i class="fa-solid fa-trash" style="color:red;"></i></a>
                           </div>
                         </td>
                       </tr>
