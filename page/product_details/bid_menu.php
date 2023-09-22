@@ -27,7 +27,7 @@
             <span style="font-size: 23px;font-weight: bold;color: #3E168E;"><?= number_format($row_order_summary['total_price'], 0) ?> ฿</span>
         </div>
         <div class="mb-1">
-            <button id="bid" <?= $order_status == 2 ? "" : "disabled" ?> class="btn btn-primary" style="font-size: 20px;width: 263.906px;" data-bs-toggle="modal" data-bs-target="#bid-modal">เสนอราคา</button>
+            <button id="bid" <?= $order_status == 2 ? "" : "disabled" ?> class="btn btn-primary" style="font-size: 20px;width: 263.906px;" data-bs-toggle="modal" data-bs-target="#bid-modal"> <?= $order_status == 3 ? "จบการประมูล" : "เสนอราคา" ?></button>
         </div>
         <div class="">
             <!-- <span class="fw-bold" style="color: rgb(62, 0, 186);">จำนวนผู้ประมูล 7 คน</span> -->
@@ -36,28 +36,30 @@
 </div>
 
 <?php
-$info_null_chaeck = "SELECT * FROM user_detail WHERE 
-( prefix_id IS NULL OR 
-ud_address IS NULL OR 
-ud_phone IS NULL OR ud_fname IS NULL OR 
-ud_lname IS NULL) AND user_id = " . $_SESSION['user_login'];
-$result = mysqli_query($conn, $info_null_chaeck);
-if (mysqli_num_rows($result) > 0) : ?>
+if (isset($_SESSION['user_login'])) :
+    $info_null_chaeck = "SELECT * FROM user_detail WHERE(
+    prefix_id IS NULL OR 
+    ud_address IS NULL OR 
+    ud_phone IS NULL OR ud_fname IS NULL OR 
+    ud_lname IS NULL) AND user_id = " . $_SESSION['user_login'];
+    $result = mysqli_query($conn, $info_null_chaeck);
+    if (mysqli_num_rows($result) > 0) : ?>
 
-    <script>
-        $(document).ready(function() {
-            $("#bid").click(function(e) {
-                e.preventDefault();
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Oops...',
-                    html: "Please fill in information of the user in full <br> before the auction begins.",
-                    heightAuto: false,
-                }).then(() => {
-                    window.location.href = "./?page=profile"
-                })
+        <script>
+            $(document).ready(function() {
+                $("#bid").click(function(e) {
+                    e.preventDefault();
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        html: "Please fill in information of the user in full <br> before the auction begins.",
+                        heightAuto: false,
+                    }).then(() => {
+                        window.location.href = "./?page=profile"
+                    })
+                });
             });
-        });
-    </script>
+        </script>
 
+    <?php endif ?>
 <?php endif ?>
