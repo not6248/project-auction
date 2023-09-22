@@ -35,12 +35,11 @@ $result = mysqli_query($conn, $sql);
             </div>
             <div class="card-body">
               <?php
-              if (mysqli_num_rows($result) > 0) :
-                $i = 1 ?>
+              if (mysqli_num_rows($result) > 0) : ?>
                 <table id="example" class="table table-bordered">
                   <thead>
                     <tr>
-                      <th scope="col">No.</th>
+                      <th scope="col">ID</th>
                       <th scope="col">ภาพ</th>
                       <th scope="col">ชื่อ</th>
                       <th scope="col">ราคาเริ่มต้น</th>
@@ -61,7 +60,7 @@ $result = mysqli_query($conn, $sql);
                       $pd_id = $row['pd_id'];
                     ?>
                       <tr>
-                        <th scope="row"><?= $i++ ?></th>
+                        <th scope="row"><?= $row['pd_id']?></th>
                         <td><img class=" fit-cover rounded-0" width="80" height="80" src="./../upload/product/<?= $pd_img[0] ?>"></td>
                         <td><?= $row['pd_name'] ?></td>
                         <td><?= number_format($row['pd_price_start'], 0) ?> บาท</td>
