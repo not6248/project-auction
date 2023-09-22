@@ -34,7 +34,15 @@
         include './page/prefix/index.php';
         break;
       case 'product_type':
+        if ($function == 'add') {
+          include './page/product_type/insert.php';
+        }elseif($function == 'delete'){
+          include './page/product_type/delete.php';
+        }elseif($function == 'update'){
+          include './page/product_type/edit.php';
+        }else{
         include './page/product_type/index.php';
+        }
         break;
       case 'delivery_type':
         if ($function == 'add') {
@@ -49,7 +57,15 @@
 
         break;
       case 'bank':
+        if ($function == 'add') {
+          include './page/bank/insert.php';
+        }elseif($function == 'delete'){
+          include './page/bank/delete.php';
+        }elseif($function == 'update'){
+          include './page/bank/edit.php';
+        }else{
         include './page/bank/index.php';
+        }
         break;
       case 'id_card_verified':
         if ($function == 'detail') {
