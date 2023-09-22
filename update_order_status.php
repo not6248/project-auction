@@ -27,6 +27,7 @@ $update_to_start      = mysqli_query($conn, "SELECT * FROM need_update_to_start"
 //ค้าหา Order ที่ต้องเปลี่ยนเป็นจบการประมูล
 $update_to_end        = mysqli_query($conn, "SELECT * FROM need_update_to_end");
 
+//Order ที่ต้องเปลี่ยนเป็นแสดงสินค้า
 if ($update_to_show) {
     echo "sql1";
     if (mysqli_num_rows($update_to_show) > 0) { //ถ้าเจอตาราง
@@ -39,6 +40,7 @@ if ($update_to_show) {
     }
 }
 
+//Order ที่ต้องเปลี่ยนเป็นระหว่างประมูล
 if ($update_to_start) {
     echo "sql2";
     if (mysqli_num_rows($update_to_start) > 0) {
@@ -59,14 +61,16 @@ if ($update_to_start) {
     }
 }
 
+//ค้าหา Order ที่ต้องเปลี่ยนเป็นจบการประมูล
 if ($update_to_end) {
     echo "sql3";
     if (mysqli_num_rows($update_to_end) > 0) {
         // ทำการเปลี่ยนสถานะสินค้า pd_status = 2
-        $sql = "SELECT lb.*,os.*,p.pd_name FROM `last_user_bid` lb 
+        $sql = "SELECT lb.*,os.*,p.pd_name,o.order_status FROM `last_user_bid` lb 
         INNER JOIN order_summary AS os USING(order_id) 
         INNER JOIN product as p ON p.pd_id = lb.order_id 
-        WHERE order_id = (SELECT order_id FROM order_tb WHERE order_status = 2);";
+        INNER JOIN order_tb as o ON o.order_id = lb.order_id 
+        WHERE order_status = 2;";
         
         $result2 = mysqli_query($conn, $sql);
         foreach ($result2 as $row) {
@@ -78,6 +82,21 @@ if ($update_to_end) {
             $sender = "Vinyl Bid";
             if (sendMail($email, $subject, $message, $sender)) {
                 mysqli_query($conn, "UPDATE order_tb SET end_price = " . number_format($row['total_price'], 0) . " WHERE order_tb.order_id = " . $row['order_id']);
+                $sql2 = "SELECT * FROM order_detail_last_bid WHERE order_id = ".$row['order_id'];
+                $order_details = mysqli_query($conn,$sql2);
+                $od = array();
+                while ($row_details = mysqli_fetch_assoc($order_details)) {
+                    $od[] = $row_details;
+                }
+
+                // เพิ่มข้อมูลอื่น ๆ
+                $od['fee'] = $service_fee;
+
+                $ods = json_encode($od,JSON_UNESCAPED_UNICODE);
+                if($order_details){
+                    mysqli_query($conn,"UPDATE `order_tb` SET `order_details` = '$ods' WHERE `order_tb`.`order_id` = ".$row['order_id']);
+                }
+                
             }
         }
         mysqli_query($conn, "UPDATE need_update_to_end SET pd_status = 1");
