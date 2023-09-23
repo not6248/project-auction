@@ -74,7 +74,7 @@ $result = mysqli_query($conn, $sql);
                         <td class="">
                           <?php if ($row['order_status'] > 0) : ?>
                             <p>สินค้าไม่อยู่ภายในสถานะก่อนโชว์สินค้า กรุณา ลบ และ แก้ไขอย่างระมัดระวัง</p>
-                            <a href="" class="btn btn-warning btn-sm">แก้ไข</a>
+                            <a href="?page=product&function=update&pd_id=<?= $row['pd_id']?>" class="btn btn-warning btn-sm">แก้ไข</a>
                             <a href="" data-pd-id="<?= $row['pd_id'] ?>" class="btn btn-danger btn-sm product-del-btn">ลบ</a>
                           <?php else : ?>
                             <!-- <a href="./?page=<?= $_GET['page'] ?>&subpage=<?= $_GET['subpage'] ?>&function=update&pd_id=<?= $row['pd_id'] ?>" class="btn btn-warning btn-sm">แก้ไข</a>
