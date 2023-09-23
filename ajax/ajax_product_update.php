@@ -2,7 +2,7 @@
 session_start();
 include '../db/db_conn.php';
 
-if (isset($_POST) && $_SESSION['user_type'] == "2") {
+if (isset($_POST) && $_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 0) {
     $pd_id          = $_POST['pd_id'];
     $pd_type_id     = $_POST['pd_type_id'];
     $pd_name        = $_POST['pd_name'];
