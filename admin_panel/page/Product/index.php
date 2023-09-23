@@ -1,5 +1,5 @@
 <?php
-$sql = 'SELECT * FROM `product_with_username` JOIN order_summary ON pd_id';
+$sql = 'SELECT * FROM `product_with_username`';
 $result = mysqli_query($conn, $sql);
 ?>
 <div class="content-wrapper">
@@ -35,8 +35,8 @@ $result = mysqli_query($conn, $sql);
             </div>
             <div class="card-body">
               <?php
-              if (mysqli_num_rows($result) > 0) : ?>
-                <table id="example" class="table table-bordered">
+              if (mysqli_num_rows($result) > 0) : ?> 
+                <table id="product_list" class="table table-bordered">
                   <thead>
                     <tr>
                       <th scope="col">ID</th>
@@ -60,11 +60,15 @@ $result = mysqli_query($conn, $sql);
                       $pd_id = $row['pd_id'];
                     ?>
                       <tr>
-                        <th scope="row"><?= $row['pd_id']?></th>
+                        <th scope="row"><?= $row['pd_id']?></th> 
                         <td><img class=" fit-cover rounded-0" width="80" height="80" src="./../upload/product/<?= $pd_img[0] ?>"></td>
                         <td><?= $row['pd_name'] ?></td>
                         <td><?= number_format($row['pd_price_start'], 0) ?> บาท</td>
-                        <td><button type="button" class="btn btn-info text-white btn-sm" data-toggle="modal" data-target="#product_detail_modal"><i class="fa-solid fa-circle-info"></i></button></td>
+                        <td>
+                          <button type="button" class="btn btn-info text-white btn-sm" data-toggle="modal" data-target="#product_detail_modal-<?= $row['pd_id']?>">
+                          <i class="fa-solid fa-circle-info"></i>
+                        </button>
+                      </td>
                         <td id="product-timeleftID-<?= $pd_id ?>"></td>
                         <td><?= $os_name_arr[$row['order_status']] ?></td>
                         <td><?= $pd_condition_arr[$row['pd_condition']] ?></td>
@@ -73,14 +77,10 @@ $result = mysqli_query($conn, $sql);
                         <td><?= $row['pd_end_date'] ?></td>
                         <td class="">
                           <?php if ($row['order_status'] > 0) : ?>
-                            <p>สินค้าไม่อยู่ภายในสถานะก่อนโชว์สินค้า กรุณา ลบ และ แก้ไขอย่างระมัดระวัง</p>
+                            <p>สินค้าไม่อยู่ภายในสถานะก่อนโชว์สินค้า <!--กรุณา ลบ และ แก้ไขอย่างระมัดระวัง --></p>
+                            <?php endif ?>
                             <a href="?page=product&function=update&pd_id=<?= $row['pd_id']?>" class="btn btn-warning btn-sm">แก้ไข</a>
-                            <a href="" data-pd-id="<?= $row['pd_id'] ?>" class="btn btn-danger btn-sm product-del-btn">ลบ</a>
-                          <?php else : ?>
-                            <!-- <a href="./?page=<?= $_GET['page'] ?>&subpage=<?= $_GET['subpage'] ?>&function=update&pd_id=<?= $row['pd_id'] ?>" class="btn btn-warning btn-sm">แก้ไข</a>
-                            <a href="./ajax/ajax_product_delete.php" data-pd-id="<?= $row['pd_id'] ?>" class="btn btn-danger btn-sm product-del-btn">ลบ</a> -->
-
-                          <?php endif ?>
+                            <a href="./../ajax/ajax_product_delete.php" data-pd-id="<?= $row['pd_id'] ?>" class="btn btn-danger btn-sm product-del-btn">ลบ</a>
                         </td>
                       </tr>
                       <?php
@@ -108,12 +108,12 @@ $result = mysqli_query($conn, $sql);
       </div>
     </div>
   </div>
-
 </div>
 <script type="text/javascript">
   $(document).ready(function() {
-    $('#example').DataTable({
-      responsive: true,
+    $('#product_list').DataTable({
+      "responsive": true,
+      "autoWidth": false,
       language: {
         "decimal": "",
         "emptyTable": "ไม่มีข้อมูลในตาราง",

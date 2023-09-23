@@ -252,7 +252,7 @@ $(document).ready(function () {
     });
 });
 
-//* เพิ่มสินค้า 
+// เพิ่มสินค้า 
 $(document).ready(function () {
     $("#product-add").submit(async function (e) { // เพิ่ม async ที่นี่
         e.preventDefault();
@@ -692,6 +692,7 @@ $(document).ready(function () {
     });
 });
 
+//ปุ่มยอมรับการส่งสินค้า
 $(document).ready(function () {
     $("#accept-form").submit(function (e) { 
         e.preventDefault();

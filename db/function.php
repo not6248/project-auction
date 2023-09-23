@@ -27,4 +27,25 @@ function order_profile_status($arr,$pay_status,$dlv_status,$u_type){
             return $arr[6];
         }
 }
-?>
+
+function echo_js_alert($msg,$url){
+    if($url == "reload"){
+        echo '<script>
+              alert("'.$msg.'");
+              window.location.reload();
+              </script>';
+            exit();
+    }elseif($url == "back"){
+        echo '<script>
+              alert("'.$msg.'");
+              window.history.back();
+              </script>';
+            exit();
+    }else{
+        echo '<script>
+              alert("'.$msg.'");
+              window.location.href = "'.$url.'";
+              </script>';
+            exit();
+    }
+}

@@ -42,7 +42,7 @@ function countdown_time(id,showtime,starttime, endtime) {
                 // ใช้ jQuery เพื่อเปลี่ยนเนื้อหาของ HTML element
                 element.html("หมดเวลา<br><br>");
                  // ยกเลิกการทำงานของ setInterval
-                clearInterval(x);
+                // clearInterval(x);
                 
             }
         }

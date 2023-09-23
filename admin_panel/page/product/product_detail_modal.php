@@ -1,9 +1,9 @@
 <!-- Modal -->
-<div class="modal fade" id="product_detail_modal" tabindex="-1" aria-labelledby="product_detail_modalLabel" aria-hidden="true">
+<div class="modal fade" id="product_detail_modal-<?= $row['pd_id']?>" tabindex="-1" aria-labelledby="product_detail_modal-<?= $row['pd_id']?>Label" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="product_detail_modalLabel">Modal title</h5>
+        <h5 class="modal-title" id="product_detail_modal-<?= $row['pd_id']?>Label">Modal title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

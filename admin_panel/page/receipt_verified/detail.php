@@ -9,18 +9,12 @@ $data = mysqli_fetch_assoc($result);
 if (isset($_POST['complete'])) {
     $result = mysqli_query($conn, "UPDATE payment SET pay_status = '3' WHERE payment.pay_id = $pay_id");
     if ($result) {
-        echo '<script>
-            alert("ยืนยันเรียบร้อย");
-            window.location.href = "?page=receipt_verified";
-        </script>';
+        echo_js_alert("ยืนยันเรียบร้อย", "receipt_verified");
     }
 } elseif (isset($_POST['incomplete'])) {
     $result = mysqli_query($conn, "UPDATE payment SET pay_status = '2' WHERE payment.pay_id = $pay_id");
     if ($result) {
-        echo '<script>
-            alert("ยืนยันเรียบร้อย");
-            window.location.href = "?page=receipt_verified";
-        </script>';
+        echo_js_alert("ยืนยันเรียบร้อย", "?page=receipt_verified");
     }
 }
 ?>

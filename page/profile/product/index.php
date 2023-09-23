@@ -46,7 +46,7 @@
                                             <td><img class=" fit-cover rounded-0" width="80" height="80" src="./upload/product/<?= $pd_img[0] ?>"></td>
                                             <td><?= $row['pd_name'] ?></td>
                                             <td><?= number_format($row['pd_price_start'], 0) ?> บาท</td>
-                                            <td><button type="button" class="btn btn-info text-white btn-sm" data-bs-toggle="modal" data-bs-target="#product_detail_modal"><i class="fa-solid fa-circle-info"></i></button></td>
+                                            <td><button type="button" class="btn btn-info text-white btn-sm" data-bs-toggle="modal" data-bs-target="#product_detail_modal-<?= $row['pd_id']?>"><i class="fa-solid fa-circle-info"></i></button></td>
                                             <td id="product-timeleftID-<?= $pd_id ?>"></td>
                                             <td><?= $os_name_arr[$row['order_status']] ?></td>
                                             <td><?= $pd_condition_arr[$row['pd_condition']] ?></td>

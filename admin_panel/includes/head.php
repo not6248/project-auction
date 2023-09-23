@@ -37,6 +37,8 @@
     <script src="./../assets/js/countdown.js"></script>
      <!-- ------------------------------------------------------------------------------------------>
      <script src="./../assets/js/sweetalert2.all.min.js"></script>
+    <!-- sweet js =============================================================================-->
+    <script src="dist/js/sweet.js"></script>
 <!--  -->
 
 

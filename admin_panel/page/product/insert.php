@@ -16,7 +16,7 @@
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
-
+    
     <!-- Main content -->
     <div class="content">
         <div class="container-fluid">
@@ -28,7 +28,7 @@
                         </div>
                         <div class="card-body">
                             <!-- Start Form -->
-                            <form id="product-add" data-fee="<?= $service_fee ?>" action="./ajax/ajax_product_add.php" method="POST" enctype="multipart/form-data">
+                            <form id="product-add" data-fee="<?= $service_fee ?>" action="./../ajax/ajax_product_add.php" method="POST" enctype="multipart/form-data">
                                 <div class="card-body col-lg-12">
                                     <div class="form-group mb-3">
                                         <div class="row">
@@ -39,7 +39,7 @@
                                         <label for="">product cover image (1 photos)</label>
                                         <input class="form-control" name="main-img-pd-input" type="file" id="main-img-pd-input" required value="" />
                                     </div>
-                                    
+
                                     <!-- ============================================================================================================== -->
                                     <div class="form-group mb-3">
                                         <div class="row" id="sub-preview">
@@ -137,7 +137,7 @@
                                 </div>
 
                         </div>
-                        <div class="card-footer" >
+                        <div class="card-footer">
                             <button name="add_product" type="submit" class="btn btn-primary rounded-2">Submit</button>
                         </div>
                         </form>

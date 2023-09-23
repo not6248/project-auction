@@ -2,8 +2,8 @@
 session_start();
 include '../db/db_conn.php';
 
-if (isset($_POST) && $_SESSION['user_type'] == "2") {
-    $user_id        = $_SESSION['user_login'];
+if (isset($_POST) && $_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 0) {
+    $user_id        = isset($_SESSION['admin_login']) ? $_SESSION['admin_login'] : $_SESSION['user_login'] ?? '';
     $pd_type_id     = $_POST['pd_type_id'];
     $pd_name        = $_POST['pd_name'];
     $pd_detail      = $_POST['pd_detail'];
