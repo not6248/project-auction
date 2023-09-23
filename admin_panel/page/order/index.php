@@ -78,7 +78,7 @@
         <div class="col-lg-6">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">ตาราง : สินค้าที่กำลังประมูล</h3>
+              <h3 class="card-title">ตาราง : สินค้าที่ถูกประมูลแล้ว</h3>
             </div>
             <div class="card-body">
               <!-- Form -->
@@ -126,7 +126,7 @@
         <div class="col-lg-6">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">ตาราง : สินค้าที่ถูกประมูล</h3>
+              <h3 class="card-title">ตาราง : สินค้าที่กำลังประมูล</h3>
             </div>
             <div class="card-body">
               <!-- Form -->
@@ -171,7 +171,7 @@
         <div class="col-lg-6">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">ตาราง : สินค้าที่ถูกประมูล</h3>
+              <h3 class="card-title">ตาราง : ข้อมูลยอดขายสินค้า</h3>
             </div>
             <div class="card-body">
               <!-- Form -->
