@@ -14,6 +14,7 @@ $pd_img = json_decode($image_json);
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0">Update Product</h1>
+                    
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -31,13 +32,13 @@ $pd_img = json_decode($image_json);
         <div class="container-fluid">
             <div class="row">
                 <div class="col-8">
-                    <div class="card card-success">
+                    <div class="card card-warning">
                         <div class="card-header">
                             <h3 class="mb-0 card-title">Update Product Form</h3>
                         </div>
-                        <div class="card-body" style="background: #ECEEF9;">
+                        <div class="card-body">
                             <!-- Start Form -->
-                            <form id="product-update" action="ajax/ajax_product_update.php" method="POST" enctype="multipart/form-data">
+                            <form id="product-update" action="./../ajax/ajax_product_update.php" method="POST" enctype="multipart/form-data">
                                 <div class="card-body col-lg-12">
                                     <div class="form-group mb-3">
                                         <h4>Current picture</h4>
