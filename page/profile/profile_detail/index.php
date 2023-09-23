@@ -1,10 +1,7 @@
 <?php
 $sql = "SELECT * FROM `login` INNER JOIN `user_detail` USING(user_id) WHERE user_id = " . $_SESSION['user_login'];
-$sql2 = "SELECT ud_id_card,ud_idcard_img FROM `user_detail` WHERE user_id = " . $_SESSION['user_login'];
 $result = mysqli_query($conn, $sql);
-$result2 = mysqli_query($conn, $sql2);
 $row = mysqli_fetch_assoc($result);
-$row2 = mysqli_fetch_assoc($result2);
 $prefix = $row['prefix_id'];
 $ud_id_card = $row['ud_id_card'];
 $ud_idcard_img = $row['ud_idcard_img'];
