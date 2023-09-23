@@ -103,8 +103,6 @@
     </form>
 
 
-
-
     <?php
     if (isset($_POST['add_img'])) {
       $filenames = $_FILES['product_img']['name'];
