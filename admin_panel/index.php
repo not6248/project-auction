@@ -4,7 +4,9 @@
 
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
+  <div>
 
+  </div>
     <!-- Navbar -->
     <?php include 'includes/navbar.php'; ?>
     <!-- /.navbar -->
