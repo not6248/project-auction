@@ -19,13 +19,13 @@
                             <table id="fav_product_list" class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th scope="col">No.</th>
-                                        <th scope="col">Img</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Start Price</th>
-                                        <th scope="col">Time Left</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Menu</th>
+                                        <th scope="col">ลำดับ.</th>
+                                        <th scope="col">รูปภาพ</th>
+                                        <th scope="col">ชื่อ</th>
+                                        <th scope="col">ราคาเริ่มต้น</th>
+                                        <th scope="col">เหลือเวลา</th>
+                                        <th scope="col">สถานะ</th>
+                                        <th scope="col">เมนู</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,7 +49,7 @@
                                 </tbody>
                             </table>
                         <?php else : ?>
-                            <p class="text-center text-muted mt-3">No favorite product list</p>
+                            <p class="text-center text-muted mt-3">ไม่มีรายการสินค้าที่ชื่นชอบ</p>
                         <?php endif ?>
                     </div>
                 </div>
