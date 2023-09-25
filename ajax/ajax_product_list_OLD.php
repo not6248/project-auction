@@ -31,7 +31,7 @@ if (mysqli_num_rows($result) > 0) :
                         </div>
                     </div>
                     <div class="d-flex">
-                        <a href="./?page=product&pd_id=<?=$row['pd_id']?>" class="btn btn-dark" type="button" style="font-weight: bold;width: 100%;">Start Bidding</a>
+                        <a href="./?page=product&pd_id=<?=$row['pd_id']?>" class="btn btn-dark" type="button" style="font-weight: bold;width: 100%;">เริ่มการประมูล</a>
                     </div>
                 </div>
             </div>
