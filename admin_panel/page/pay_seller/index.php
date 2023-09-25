@@ -1,13 +1,17 @@
 <?php
-$sql1 = "SELECT * FROM delivery d 
-INNER JOIN payment p ON p.order_id = d.order_id 
-WHERE d.dlv_status = 2 AND p.pay_status = 3";
+$sql1 = "SELECT * FROM seller_pay WHERE dlv_status = 2 AND pay_status = 3";
 $result1 = mysqli_query($conn, $sql1);
 
-$sql2 = "SELECT * FROM delivery d 
-INNER JOIN payment p ON p.order_id = d.order_id 
-WHERE d.dlv_status = 2 AND p.pay_status = 4";
+$sql2 = "SELECT * FROM seller_pay WHERE dlv_status = 2 AND pay_status = 4";
 $result2 = mysqli_query($conn, $sql2);
+
+if (isset($_POST['complete'])) {
+    $order_id = $_POST['order_id'];
+    $result1 = mysqli_query($conn, "UPDATE payment SET pay_status = '4' WHERE payment.pay_id = $order_id");
+    if ($result1) {
+        echo_js_alert("ยืนยันเรียบร้อย", "back");
+    }
+}
 ?>
 
 
@@ -34,47 +38,53 @@ $result2 = mysqli_query($conn, $sql2);
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-12 col-xl-8">
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">ตาราง : รอการตรวจสอบบัตรประชาชน</h3>
+                            <h3 class="card-title">ตาราง : รอการตรวจสอบสลีปชำระเงิน</h3>
                         </div>
                         <div class="card-body">
                             <?php if (mysqli_num_rows($result1) > 0) : ?>
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#user_id</th>
-                                            <th scope="col">bank</th>
-                                            <th scope="col">order_id</th>
-                                            <th scope="col">pay_slip</th>
-                                            <th scope="col">pay_status</th>
-                                            <th scope="col">menu</th>
+                                            <th scope="col">#OrderID</th>
+                                            <th scope="col">#ProductID</th>
+                                            <th scope="col">ชื่อ-นามสกุล</th>
+                                            <th scope="col">จำนวนเงินที่ต้องโอนให้คนขาย</th>
+                                            <th scope="col">ชื่อธนารคาร</th>
+                                            <th scope="col">เลขบัญชี</th>
+                                            <th scope="col">เมนู</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($result1 as $row) : ?>
+                                        <?php foreach ($result1 as $row) :
+                                            $detail = json_decode($row['order_details'], true); ?>
                                             <tr>
-                                                <th scope="row"><?= $row['dlv_id'] ?></th>
-                                                <td><?= $row['dlv_id'] ?></td>
-                                                <td><?= $row['dlv_id'] ?></td>
-                                                <td><?= $row['dlv_id'] ?></td>
-                                                <td><?= $row['dlv_id'] ?></td>
+                                                <th scope="row"><?= $row['order_id'] ?></th>
+                                                <td><?= $row['pd_id'] ?></td>
+                                                <td><?= $row['ud_fname'] . " " . $row['ud_lname'] ?></td>
+                                                <td><?= number_format($detail[0]['end_price'] - ($detail[0]['end_price'] * ($detail['fee'] / 100)), 0) ?> บาท</td>
+                                                <td><?= $row['bank_name'] ?></td>
+                                                <td><?= $row['ud_bank_number'] ?></td>
                                                 <td>
-                                                    <a href="?page=<?= $_GET['page'] ?>&function=detail&order_id=<?= $row['order_id'] ?>" class="btn btn-info" role="button" aria-disabled="true">รายละเอียด</a>
+                                                    <form action="" method="post">
+                                                        <input type="hidden" name="order_id" value="<?= $row['order_id'] ?>">
+                                                        <button name="complete" type="submit" onclick="return confirm('คุณต้องการยืนยันตัวเลือกนี้หรือไม่หรือไม่')" class="btn btn-success">ยืนยีน</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         <?php endforeach ?>
                                     </tbody>
                                 </table>
                             <?php else : ?>
-                                <p class="text-center text-muted mt-3">ไม่มีข้อมูลบัตรประชาชนที่ต้องยืนยันในขณะนี้</p>
+                                <p class="text-center text-muted mt-3">ไม่มีข้อมูลสลีปชำระเงินที่ต้องยืนยันในขณะนี้</p>
                             <?php endif ?>
                         </div>
                     </div>
                 </div>
                 <!-- /.col-md-8 -->
-                <div class="col-4">
+                <div class="col-lg-12 col-xl-8">
                     <div class="card card-success">
                         <div class="card-header">
                             <h3 class="card-title">ตาราง : ตรวจสอบเรียบร้อย</h3>
@@ -84,21 +94,26 @@ $result2 = mysqli_query($conn, $sql2);
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th scope="col">#dlv_id</th>
-                                            <th scope="col">bank</th>
-                                            <th scope="col">pay_status</th>
-                                            <th scope="col">menu</th>
+                                            <th scope="col">#OrderID</th>
+                                            <th scope="col">#ProductID</th>
+                                            <th scope="col">ชื่อ-นามสกุล</th>
+                                            <th scope="col">จำนวนเงินที่ต้องโอนให้คนขาย</th>
+                                            <th scope="col">ชื่อธนารคาร</th>
+                                            <th scope="col">เลขบัญชี</th>
+                                            <th scope="col">สถานะ</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php foreach ($result2 as $row) : ?>
+                                        <?php foreach ($result2 as $row) :
+                                            $detail = json_decode($row['order_details'], true); ?>
                                             <tr>
-                                                <th scope="row"><?= $row['dlv_id'] ?></th>
-                                                <td><?= $row['dlv_id'] ?></td>
-                                                <td><?= $row['dlv_id'] ?></td>
-                                                <td>
-                                                    <a href="?page=<?= $_GET['page'] ?>&function=detail&order_id=<?= $row['order_id'] ?>" class="btn btn-info" role="button" aria-disabled="true"><i class="fa-solid fa-info"></i></a>
-                                                </td>
+                                                <th scope="row"><?= $row['order_id'] ?></th>
+                                                <td><?= $row['pd_id'] ?></td>
+                                                <td><?= $row['ud_fname'] . " " . $row['ud_lname'] ?></td>
+                                                <td><?= number_format($detail[0]['end_price'] - ($detail[0]['end_price'] * ($detail['fee'] / 100)), 0) ?> บาท</td>
+                                                <td><?= $row['bank_name'] ?></td>
+                                                <td><?= $row['ud_bank_number'] ?></td>
+                                                <td>ชำระแล้ว</td>
                                             </tr>
                                         <?php endforeach ?>
                                     </tbody>
