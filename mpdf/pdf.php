@@ -1,22 +1,56 @@
 <?php
-// require '../connection/connection.php';
-// session_start();
-// //
-// if (isset($_POST['order_id'])) {
-//   $sql = "SELECT * FROM order_tb WHERE order_id=" . $_POST['order_id'];
-//   $result = mysqli_query($conn, $sql);
-//   $row = mysqli_fetch_assoc($result);
-//   $order_details = unserialize($row['order_details']);
+require '../db/db_conn.php';
+session_start();
+$title = $_POST['title'];
+$start = $_POST['start'];
+$end = $_POST['end'];
+if (isset($_POST['o1'])) {
+  $sql = "SELECT *
+  FROM order_tb AS od
+  INNER JOIN product AS pd ON od.pd_id = pd.pd_id
+  INNER JOIN product_type AS pdt ON pd.pd_type_id = pdt.pd_type_id
+  WHERE (od.order_status = 2 OR od.order_status = 3)
+  AND DATE(od.order_create_datetime) IN ('$start', '$end');";
+} elseif (isset($_POST['o2'])) {
+  $sql = "SELECT *
+  FROM order_tb AS od
+  INNER JOIN product AS pd ON od.pd_id = pd.pd_id
+  INNER JOIN product_type AS pdt ON pd.pd_type_id = pdt.pd_type_id
+  WHERE (od.order_status >= 3)
+  AND DATE(od.order_create_datetime) IN ('$start', '$end');";
+} elseif (isset($_POST['o3'])) {
+  $sql = "SELECT *
+  FROM order_tb AS od
+  INNER JOIN product AS pd ON od.pd_id = pd.pd_id
+  INNER JOIN product_type AS pdt ON pd.pd_type_id = pdt.pd_type_id
+  WHERE (od.order_status = 2)
+  AND DATE(od.order_create_datetime) IN ('$start', '$end');";
+} elseif (isset($_POST['o4'])) {
+  $sql = "SELECT * FROM order_tb AS o
+  INNER JOIN product AS pd ON o.pd_id = pd.pd_id
+  INNER JOIN product_type AS pdt ON pd.pd_type_id = pdt.pd_type_id
+  INNER JOIN payment AS pay ON pay.pay_id = pd.pd_id
+  INNER JOIN delivery AS d ON d.dlv_id = pd.pd_id
+  INNER JOIN delivery_type AS dt ON dt.dlvt_id = d.dlvt_id
+  WHERE o.order_status = 3 AND pay.pay_status = 4 AND d.dlv_status = 2
+  AND DATE(o.order_create_datetime) IN ('$start', '$end');";
+}
+
+$reslut = mysqli_query($conn, $sql);
 
 
-// $sql = "SELECT p.product_name,k.key_serial FROM key_tb k JOIN product_tb p USING(product_id) WHERE order_id = '" . $row['order_id'] . "' ORDER BY product_id ASC;";
-// $query =  mysqli_query($conn, $sql);
-
-// $sql = mysqli_query($conn, "SELECT * FROM user_tb WHERE user_id = '" . $_SESSION['user_login'] . "'");
-// $user = mysqli_fetch_assoc($sql);
-// }
+if (mysqli_num_rows($reslut) > 0) {
+} else {
+  echo_js_alert("ไม่พบข้อมูลที่ค้นหา", "back");
+}
 
 
+// <input type="hidden" name="title" value="ตาราง : สินค้าที่ถูกประมูล">
+// <label for="start" class="ml-1">จาก :</label>
+// <input name="start" type="date" class="form-control col-3 ml-1" required>
+// <label for="end" class="ml-1">ถึง :</label>
+// <input name="end" type="date" class="form-control col-3 ml-1" required>
+// <button type="submit" class="btn btn-secondary ml-2">พิมพ์ตามวันที่เลือก</button>
 
 // ------------------------------------------------------------------------------------------------------
 require_once("vendor/autoload.php");
@@ -28,7 +62,7 @@ $fontData = $defaultFontConfig['fontdata'];
 
 $mpdf = new \Mpdf\Mpdf([
   'mode' => 'utf-8',
-  'orientation' => 'P',
+  'orientation' => 'L',
   'fontDir' => array_merge($fontDirs, [
     __DIR__ . '/vendor/mpdf/mpdf/ttfonts',
   ]),
@@ -43,52 +77,54 @@ $mpdf = new \Mpdf\Mpdf([
 ]);
 ob_start();
 ?>
-<!-- <h1>BC Game Store</h1>
-<div id="project">
-  <div><span>ORDER ID</span> # <?= $row['order_id']; ?></div>
-  <div><span>EMAIL</span> <a href="mailto:<?=$user['email']?>"><?=$user['email']?></a></div>
-  <div class="text-muted mb-1"><span>FULL NAME </span><?= $user['firstname'] . ' ' . $user['lastname'] ?></div>
-  <div><span>วันที่สร้าง Order</span> <?=$row['order_create_date'] ?></div>
-  <br>
-</div>
-</header>
-<table>
-  <tr>
-    <th class="left">ชื่อสินค้า</th>
-    <th>ราคาต่อชิ้น</th>
-    <th>จำนวน</th>
-  </tr>
-  <?php foreach ($order_details as $data) : ?>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 23px;
+  }
+
+  td,
+  th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+</style>
+</head>
+
+<body>
+
+  <h2 style="margin-bottom: 0px;"><?= $title ?></h2>
+  <h3>วันที่ <?= $start ?> ถึง <?= $end ?> </h3>
+
+  <table>
     <tr>
-      <td class="left"><?= $data['product_name'] ?> </td>
-      <td class="cen"><?= number_format($data['product_price']) ?> </td>
-      <td ><?= $data['product_cart_qty'] ?></td>
-      <td></td>
+      <th>ID</th>
+      <th>ชื่อ</th>
+      <th>ราคาราคาเริ่มต้น</th>
+      <th>ราคาจบประมูล</th>
+      <th>สถานะ</th>
     </tr>
-      <?php $qty += $data['product_cart_qty']; ?>
-  <?php endforeach ?>
-  <tr>
-    <td></td>
-    <td class="cen" class="text-center">รวม</td>
-    <td> <?= $qty; ?></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>ยอดรวมทั้งสิ้น</td>
-    <td ><?= number_format($row['order_price']) ?> บาท</td>
-  </tr>
-</table>
-<div id="notices">
-  <div class="notice">ขอบคุณที่ใช้บริการร้าน BC Game Store</div>
-</div>
-<footer>
-  Invoice was created on a computer and is valid without the signature and seal.
-</footer> -->
-<?php
-$content = ob_get_contents();
-ob_end_clean();
-$stylesheet = file_get_contents('style.css');
-$mpdf->WriteHTML($stylesheet, 1);
-$mpdf->WriteHTML($content, 2);
-$mpdf->Output("order_id_".$row['order_id'].".pdf","D");
-exit;
+    <?php foreach ($reslut as $data) : ?>
+      <tr>
+        <td><?= $data['pd_id'] ?></td> <!-- id product -->
+        <td><?= $data['pd_name'] ?></td> <!--  product name -->
+        <td><?= $data['pd_price_start'] ?></td> <!--product img -->
+        <td><?= $data['end_price'] ?? "--" ?></td> <!--product type name-->
+        <td><?= $os_name_arr[$data['order_status']] ?></td> <!--product datetime-->
+      </tr>
+    <?php endforeach ?>
+  </table>
+  <?php
+  $content = ob_get_contents();
+  ob_end_clean();
+  $stylesheet = file_get_contents('style.css');
+  $mpdf->WriteHTML($stylesheet, 1);
+  $mpdf->WriteHTML($content);
+  $mpdf->Output("order_id_"  . ".pdf", "I");
+  exit;

@@ -45,7 +45,7 @@ $dlvt_name = $row['dlvt_name'] ?? "---";
                                         <div class="mb-5">
                                         </div>
                                         <div class="row justify-content-between">
-                                            <div class="order-tracking <?= $pay_status <= 3 && $dlv_status >= 0 ? "completed" : "" ?> ">
+                                            <div class="order-tracking <?= $pay_status >= 1 && $dlv_status >= 0 ? "completed" : "" ?> ">
                                                 <span class="is-complete"></span>
                                                 <p class="mt-4"><i class="fa-solid fa-clipboard-list fa-lg"></i> มีคำสั่งซื้อ</p>
                                             </div>

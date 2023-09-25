@@ -54,7 +54,7 @@ $result = mysqli_query($conn, $sql);
                                             <td><?= $pay_status_arr[$pay_status] ?></td>
                                             <td class="">
                                                 <?php if ($pay_status == 0 || $pay_status == 2) : ?>
-                                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#pay_slip_img">ชำระเงิน <i class="fa-solid fa-money-bill-wave fa-bounce"></i></button>
+                                                    <button class="btn btn-warning btn-sm pay_btn" data-pd-id="<?= $row['pd_id'] ?>" data-bs-toggle="modal" data-bs-target="#pay_slip_img">ชำระเงิน <i class="fa-solid fa-money-bill-wave fa-bounce"></i></button>
                                                 <?php elseif ($pay_status == 1) : ?>
                                                     <button disabled class="btn btn-primary btn-sm">รอการตรวจสอบ <i class="fa-solid fa-spinner fa-spin-pulse"></i></button>
                                                 <?php elseif ($pay_status == 3) : ?>
