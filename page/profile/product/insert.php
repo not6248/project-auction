@@ -7,8 +7,8 @@ if(is_null($row_bank_detail['ud_bank_number']) || is_null($row_bank_detail['ud_b
         $(document).ready(function () {
                 Swal.fire({
                 icon: 'error',
-                title: 'Oops...',
-                text: 'Please fill in complete bank information before adding products.',
+                title: 'อุ๊ปส์...',
+                text: 'กรุณากรอกข้อมูลธนาคารให้ครบถ้วนก่อนเพิ่มสินค้า',
             }).then(()=>{
                 window.location.href = "./?page=profile#bank"
             })
@@ -18,16 +18,16 @@ if(is_null($row_bank_detail['ud_bank_number']) || is_null($row_bank_detail['ud_b
 <div class="card" style="background: rgb(236,238,249);box-shadow: 0px 4px 4px rgba(33,37,41,0.25);">
     <div class="card-body">
         <div class="d-flex justify-content-between">
-            <h4 class="card-title mb-0" style="font-size: 28px;">Product</h4>
+            <h4 class="card-title mb-0" style="font-size: 28px;">สินค้า</h4>
             <!-- <button type="button" class="btn btn-success btn-sm rounded"><i class="fa-solid fa-plus"></i> Add new product</button> -->
-            <a class="btn btn-primary rounded-5" href="./?page=<?= $_GET['page'] ?>&subpage=<?= $_GET['subpage'] ?>" role="button"><i class="fa-solid fa-arrow-left fa-2xs"></i> Back</a>
+            <a class="btn btn-primary rounded-5" href="./?page=<?= $_GET['page'] ?>&subpage=<?= $_GET['subpage'] ?>" role="button"><i class="fa-solid fa-arrow-left fa-2xs"></i> กลับ</a>
 
         </div>
         <div class="row mt-3">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header" style="background: #D8DBE9;">
-                        <h4 style="color: rgb(84,88,94);" class="mb-0">Add Product Form</h4>
+                        <h4 style="color: rgb(84,88,94);" class="mb-0">แบบฟอร์มเพิ่มสินค้า</h4>
                     </div>
                     <div class="card-body" style="background: #ECEEF9;">
                         <!-- Start Form -->
@@ -39,7 +39,7 @@ if(is_null($row_bank_detail['ud_bank_number']) || is_null($row_bank_detail['ud_b
                                             <img class="mb-3" width="200" height="200">
                                         </div>
                                     </div>
-                                    <label for="">product cover image (1 photos)</label>
+                                    <label for="">รูปภาพปกสินค้า (1 รูป)</label>
                                     <input class="form-control" name="main-img-pd-input" type="file" id="main-img-pd-input" required value="" />
                                 </div>
                                 <!-- ============================================================================================================== -->
@@ -50,7 +50,7 @@ if(is_null($row_bank_detail['ud_bank_number']) || is_null($row_bank_detail['ud_b
                                         </div>
                                     </div>
                                     <!-- (The first image will be the product cover image.) -->
-                                    <label for="">picture (no more than 3 photos) </label>
+                                    <label for="">รูปภาพ (ไม่เกิน 3 รูป) </label>
                                     <input name="sub-img-pd-input[]" class="form-control" type="file" id="sub-img-pd-input" value="" multiple />
                                     <p class="mt-1" style="font-size: 13px;" class="">กรุณาใช้รูปที่เป็นนามสกุล jpeg,jpg,png ( แนะนำรูป 1:1 )</p>
                                 </div>
@@ -126,7 +126,7 @@ if(is_null($row_bank_detail['ud_bank_number']) || is_null($row_bank_detail['ud_b
                                         -สินค้าจะแสดงบนเว็บไซต์เป็นเวลา 3 วันมีก่อนการประมูล <span class=" fw-bold ">(ไม่สามารถ ลบ แก้ไข ได้)</span><br>
                                         -และสินค้าจะขึ้นประมูลเป็นเวลา 7 วัน <span class=" fw-bold ">(ไม่สามารถ ลบ แก้ไข ได้ )</span>
                                     </span>
-                                    <span class=" fw-bold ">[มีเหตุขัดข้อง กรุณาติดต่อ ADMIN]</span>
+                                    <span class=" fw-bold ">[มีเหตุขัดข้องกรุณาติดต่อ ADMIN]</span>
 
                                 </div>
                                 <!-- ============================================================================================================== -->
@@ -140,7 +140,7 @@ if(is_null($row_bank_detail['ud_bank_number']) || is_null($row_bank_detail['ud_b
 
                     </div>
                     <div class="card-footer" style="background: #D8DBE9;">
-                        <button name="add_product" type="submit" class="btn btn-primary rounded-2">Submit</button>
+                        <button name="add_product" type="submit" class="btn btn-primary rounded-2">ยืนยัน</button>
                     </div>
                     </form>
                     <!-- End Form -->

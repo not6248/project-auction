@@ -21,9 +21,9 @@
  <div class="container py-4 py-xl-5">
      <div class="row mb-5 mb-xl-5">
          <div class="col-md-8 col-xl-6 text-center mx-auto">
-             <h2>Heading</h2>
+             <h2>คำนำ</h2>
              <p class="w-lg-50">
-                 Online audio auction website offers a platform for buying and selling audio recordings. Our goal is to provide a seamless and efficient marketplace for audio enthusiasts to connect and trade their recordings.</p>
+             เว็บไซต์ประมูลแผ่นเสียงไวนิลออนไลน์เป็นแพลตฟอร์มสำหรับการซื้อและขายแผ่นเสียงไวนิล เป้าหมายของเราคือการสร้างตลาดที่ราบรื่นและมีประสิทธิภาพสำหรับผู้ที่ชื่นชอบแผ่นเสียงเว็ยไซต์นี้จะเป็นช่องทางการเชื่อมต่อและแลกเปลี่ยนแผ่นเสียงของผู้ที่ชื่นชอบทุกคน</p>
          </div>
      </div>
      <?php $sqlpro_type = "SELECT * FROM product_type";

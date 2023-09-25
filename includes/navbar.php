@@ -15,12 +15,12 @@
                     <!-- Navbar Menu List -->
                     <li class="nav-item"><a class="nav-link fw-bold" href="debug.php">debug.php</a></li>
                     <?= isset($_SESSION['user_type']) && $_SESSION['user_type'] == '2'
-                        ? '<li class="nav-item"><a class="nav-link fw-bold" href="./?page=profile&subpage=product&function=add"><i class="fa-solid fa-plus"></i> Add Product</a></li>'
+                        ? '<li class="nav-item"><a class="nav-link fw-bold" href="./?page=profile&subpage=product&function=add"><i class="fa-solid fa-plus"></i> เพิ่มสินค้า</a></li>'
                         : '' ?>
-                    <li class="nav-item"><a class="nav-link fw-bold" href="./">Home</a></li> <!-- active -->
-                    <li class="nav-item "><a class="nav-link fw-bold d-flex align-items-center" href="#">Guide<i class="fa-solid fa-book fa-xs ms-1 pt-1"></i></a></li>
-                    <li class="nav-item"><a class="nav-link fw-bold" href="#">About</a></li>
-                    <li class="nav-item"><a class="nav-link fw-bold" href="./?page=contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="./">หน้าแรก</a></li> <!-- active -->
+                    <li class="nav-item "><a class="nav-link fw-bold d-flex align-items-center" href="#">คำแนะนำ<i class="fa-solid fa-book fa-xs ms-1 pt-1"></i></a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="#">เกี่ยวกับ</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="./?page=contact">ติดต่อ</a></li>
                     <!-- Profile Dropdown-->
                     <?php if (!(isset($_SESSION['login_status']) || !isset($_SESSION['username']))) : ?>
                         <div class="dropdown">
@@ -29,9 +29,9 @@
                                 <?= $_SESSION['username'] ?>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="./?page=profile">My Profile</a></li>
-                                <li><a class="dropdown-item" href="./?page=profile&subpage=order_bidder">My Order</a></li>
-                                <li><a id="logout-btn" class="dropdown-item text-danger" href="#">Logout</a></li>
+                                <li><a class="dropdown-item" href="./?page=profile">โปรไฟล์ของฉัน</a></li>
+                                <li><a class="dropdown-item" href="./?page=profile&subpage=order_bidder">ออเดอร์ของฉัน</a></li>
+                                <li><a id="logout-btn" class="dropdown-item text-danger" href="#">ออกจากระบบ</a></li>
                             </ul>
                         </div>
                     <?php endif ?>
@@ -42,7 +42,7 @@
                     <!-- Modal -->
                     <?php include './page/login/modal_login.php'; ?>
                     <!-- End Modal -->
-                    <?php hide_for_regis_page('<a class="fw-bold btn btn-nav btn-dark ms-md-0" role="button" href="./?page=register">Register</a>') ?>
+                    <?php hide_for_regis_page('<a class="fw-bold btn btn-nav btn-dark ms-md-0" role="button" href="./?page=register">สมัครสมาชิก</a>') ?>
                 <?php endif ?>
             </div>
         </div>

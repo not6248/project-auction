@@ -22,7 +22,7 @@ $detail = json_decode($row['order_details'], true);
 <div class="card" style="background: rgb(236,238,249);box-shadow: 0px 4px 4px rgba(33,37,41,0.25);">
     <div class="card-body">
         <div class="d-flex justify-content-between">
-            <h4 class="card-title " style="font-size: 28px;">Order tracking</h4>
+            <h4 class="card-title " style="font-size: 28px;">ติดตาม ออเดอร์</h4>
             <div>
                 <h5 class="text-end">หมายเลขพัสดุ : <?= $dlv_code ?></h5>
                 <h6 class="text-end">จัดส่งโดย : <?= $dlvt_name ?></h6>
@@ -43,15 +43,15 @@ $detail = json_decode($row['order_details'], true);
 
                                             <div class="order-tracking <?= $pay_status >= 1 && $dlv_status >= 0 ? "completed" : "" ?> ">
                                                 <span class="is-complete"></span>
-                                                <p class="mt-4"><i class="fa-solid fa-clipboard-list fa-lg"></i> Order Processed</p>
+                                                <p class="mt-4"><i class="fa-solid fa-clipboard-list fa-lg"></i> ออเดอร์ที่กำลังดำเนินการ</p>
                                             </div>
                                             <div class="order-tracking <?= $pay_status >= 2 && $dlv_status >= 1 ? "completed" : "" ?>">
                                                 <span class="is-complete "></span>
-                                                <p class="mt-4"><i class="fa-solid fa-box-open fa-lg"></i> Order Shipped</p>
+                                                <p class="mt-4"><i class="fa-solid fa-box-open fa-lg"></i> ออเดอร์ที่จัดส่งแล้ว</p>
                                             </div>
                                             <div class="order-tracking <?= $pay_status >= 3 && $dlv_status >= 2 ? "completed" : "" ?>">
                                                 <span class="is-complete"></span>
-                                                <p class="mt-4"><i class="fa-solid fa-house"></i> Order Arrived</p>
+                                                <p class="mt-4"><i class="fa-solid fa-house"></i> ออเดอร์ที่ส่งถึงแล้ว</p>
                                             </div>
                                         </div>
                                     </div>

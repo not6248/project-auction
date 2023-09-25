@@ -6,14 +6,14 @@ $resule = mysqli_query($conn, "SELECT * FROM delivery_type");
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="tk_modalLabel">Tracking number form</h1>
+                <h1 class="modal-title fs-5" id="tk_modalLabel">แบบฟอร์มหมายเลขพัสดุ</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="tk_form" action="ajax/ajax_tracking_number.php" method="post">
                 <div class="form-floating mb-3">
                         <input type="text" name="tk_num" class="form-control rounded-3" id="floatingPassword" placeholder="Tracking number" required>
-                        <label for="floatingPassword">Tracking number</label>
+                        <label for="floatingPassword">หมายเลขพัสดุ</label>
                 </div>
                 <div>
                     <select class="form-select w-75" name="tk_type" id="" required>

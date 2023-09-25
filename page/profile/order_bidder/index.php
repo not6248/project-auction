@@ -10,13 +10,13 @@ $result = mysqli_query($conn, $sql);
 <div class="card" style="background: rgb(236,238,249);box-shadow: 0px 4px 4px rgba(33,37,41,0.25);">
     <div class="card-body">
         <div class="d-flex justify-content-between">
-            <h4 class="card-title " style="font-size: 28px;">Order Bidder</h4>
+            <h4 class="card-title " style="font-size: 28px;">ออเดอร์ ผู้ประมูลสินค้า</h4>
         </div>
         <div class="row mt-3">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header" style="background: #D8DBE9;">
-                        <h4 style="color: rgb(84,88,94);" class="mb-0">Order</h4>
+                        <h4 style="color: rgb(84,88,94);" class="mb-0">ออเดอร์</h4>
                     </div>
                     <div class="card-body" style="background: #ECEEF9;">
                         <?php
@@ -25,13 +25,13 @@ $result = mysqli_query($conn, $sql);
                             <table id="seller_product_list" class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th scope="col">No.</th>
-                                        <th scope="col">Img</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Price</th>
-                                        <th scope="col">สถานะ order</th>
+                                        <th scope="col">ลำดับ</th>
+                                        <th scope="col">รูปภาพ</th>
+                                        <th scope="col">ชื่อ</th>
+                                        <th scope="col">ราคา</th>
+                                        <th scope="col">สถานะ ออเดอร์</th>
                                         <th scope="col">สถานะการชำระเงิน</th>
-                                        <th scope="col">Menu</th>
+                                        <th scope="col">เมนู</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -67,7 +67,7 @@ $result = mysqli_query($conn, $sql);
                                 </tbody>
                             </table>
                         <?php else : ?>
-                            <p class="text-center text-muted mt-3">no product</p>
+                            <p class="text-center text-muted mt-3">ไม่มีสินค้า</p>
                         <?php endif ?>
                     </div>
                 </div>
