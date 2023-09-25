@@ -11,10 +11,7 @@ $data = mysqli_fetch_assoc($result);
 if (isset($_POST['complete'])) {
     $result1 = mysqli_query($conn, "UPDATE payment SET pay_status = '4' WHERE payment.pay_id = $order_id");
     if ($result1) {
-        echo '<script>
-            alert("ยืนยันเรียบร้อย");
-            window.location.href = "?page=pay_seller";
-        </script>';
+        echo_js_alert("ยืนยันเรียบร้อย", "?page=paid_seller");
     }
 } elseif (isset($_POST['incomplete'])) {
     $result1 = mysqli_query($conn, "UPDATE user_detail SET ud_id_card = '0' WHERE user_detail.ud_id = $user_id");
