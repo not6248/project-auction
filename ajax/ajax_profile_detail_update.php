@@ -8,18 +8,27 @@ if (isset($_POST) && !empty(isset($_POST)) && !empty($_SESSION['user_login'])) {
     $ud_lname   = $_POST["lname"];
     $ud_address = $_POST["address"];
     $ud_phone   = $_POST["tele"];
+    if(isset($_POST["bank_id"]) && isset($_POST["bank_number"])){
+        $bank_id    = $_POST["bank_id"] ?? NULL || $_POST["bank_id"] != "" ? $_POST["bank_id"] : NULL;
+        $bank_number= $_POST["bank_number"]  ?? NULL || $_POST["bank_number"] != "" ? $_POST["bank_number"] : NULL;
+    }else{
+        $bank_id= NULL;
+        $bank_number= NULL;
+    }
     $user_id    = $_SESSION['user_login'];
 
     $sql = "UPDATE `user_detail` SET 
-    prefix_id   = ?, 
-    ud_fname    = ?, 
-    ud_lname    = ?, 
-    ud_address  = ?, 
-    ud_phone    = ? 
+    prefix_id       = ?, 
+    ud_fname        = ?, 
+    ud_lname        = ?, 
+    ud_address      = ?, 
+    ud_phone        = ?,
+    ud_bank_number  = ?,
+    ud_bank_id      = ?
     WHERE user_id = ?";
 
     $stmt = mysqli_prepare($conn,$sql);
-    mysqli_stmt_bind_param($stmt,"issssi",$prefix_id,$ud_fname,$ud_lname,$ud_address,$ud_phone,$user_id);
+    mysqli_stmt_bind_param($stmt,"isssssii",$prefix_id,$ud_fname,$ud_lname,$ud_address,$ud_phone,$bank_number,$bank_id,$user_id);
 
     if (mysqli_stmt_execute($stmt)) {
         echo 'success';

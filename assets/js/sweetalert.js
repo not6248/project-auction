@@ -252,7 +252,7 @@ $(document).ready(function () {
     });
 });
 
-//* เพิ่มสินค้า 
+// เพิ่มสินค้า 
 $(document).ready(function () {
     $("#product-add").submit(async function (e) { // เพิ่ม async ที่นี่
         e.preventDefault();
@@ -308,7 +308,51 @@ $(document).ready(function () {
     });
 });
 
+//ปุ่ม Update ข้อมูลสินค้า
+$(document).ready(function () {
+    $("#product-update").submit(function (e) {
+        e.preventDefault();
+        const urlParams = new URLSearchParams(window.location.search);
+        const pdId = urlParams.get('pd_id');
+        let Method = $(this).attr("method");
+        let formUrl = $(this).attr("action");
+        let formData = new FormData(this);
+        console.log(pdId);
 
+        formData.append('pd_id', pdId);
+        $.ajax({
+            type: Method,
+            url: formUrl,
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                console.log(response);
+                let result = JSON.parse(response)
+                let status = result.status;
+                switch (status) {
+                    case "success":
+                        Swal.fire({
+                            icon: result.status,
+                            title: result.msg,
+                            heightAuto: false,
+                            showConfirmButton: false,
+                            timer: 1500,
+                        }).then(() => {
+                            history.back();
+                        });
+                        break;
+                    case "error":
+                        Swal.fire({
+                            icon: result.status,
+                            title: result.msg,
+                            heightAuto: false,
+                        })
+                }
+            }
+        });
+    });
+});
 
 
 //ปุ่ม Fav สลับดาว และ นำการเพิ่มข้อมูลใส่ภายในฐานข้อมูล
@@ -405,6 +449,7 @@ $(document).ready(function () {
     });
 });
 
+//ปุ่มประมูลสินค้า
 $(document).ready(function () {
     $("#bid-form").submit(function (e) {
         e.preventDefault();
@@ -587,5 +632,114 @@ $(document).ready(function () {
                 });
             }
         })
+    });
+});
+
+//ปุ่มเพิ่มเลขพัสดุ
+$(document).ready(function () {
+    $("#tk_form").submit(function (e) { 
+        e.preventDefault();
+        let Method = $(this).attr("method");
+        let formUrl = $(this).attr("action");
+        let formData = $(this).serialize();
+        const urlParams = new URLSearchParams(window.location.search);
+        const order_id = urlParams.get('order_id');
+
+        // เพิ่ม order_id เข้า formData
+        formData += '&order_id=' + order_id;
+
+        Swal.fire({
+            title: 'คุณแน่ใจหรือไม่?',
+            text: "คุณจะไม่สามารถย้อนกลับสิ่งนี้ได้!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ใช่!',
+            cancelButtonText: 'ยกเลิก'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: Method,
+                    url: formUrl,
+                    data: formData,
+                    success: function (response) {
+                        let result = JSON.parse(response)
+                        let status = result.status;
+                        switch (status) {
+                            case "success":
+                                Swal.fire({
+                                    icon: result.status,
+                                    title: result.msg,
+                                    heightAuto: false,
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                }).then(() => {
+                                    location.reload();
+                                });
+                                break;
+                            case "error":
+                                Swal.fire({
+                                    icon: result.status,
+                                    title: result.msg,
+                                    heightAuto: false,
+                                })
+                        }
+                    }
+                });
+            }
+          })
+    });
+});
+
+//ปุ่มยอมรับการส่งสินค้า
+$(document).ready(function () {
+    $("#accept-form").submit(function (e) { 
+        e.preventDefault();
+        let Method = $(this).attr("method");
+        let formUrl = $(this).attr("action");
+        let formData = $(this).serialize();
+        console.log(formData);
+        Swal.fire({
+            title: 'คุณแน่ใจหรือไม่?',
+            html: "คุณจะไม่สามารถย้อนกลับสิ่งนี้ได้!<br>กรุณาตรวจสอบสินค้าก่อนกดยืนยันการได้รับสินค้า",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'ใช่! ฉันตรวจสอบแล้ว',
+            cancelButtonText: 'ยกเลิก'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: Method,
+                    url: formUrl,
+                    data: formData,
+                    success: function (response) {
+                        let result = JSON.parse(response)
+                        let status = result.status;
+                        switch (status) {
+                            case "success":
+                                Swal.fire({
+                                    icon: result.status,
+                                    title: result.msg,
+                                    heightAuto: false,
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                }).then(() => {
+                                    location.reload();
+                                });
+                                break;
+                            case "error":
+                                Swal.fire({
+                                    icon: result.status,
+                                    title: result.msg,
+                                    heightAuto: false,
+                                })
+                        }
+                    }
+                });
+            }
+          })
     });
 });

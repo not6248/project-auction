@@ -34,17 +34,19 @@ if (isset($_POST) && isset($_SESSION['user_login'])) {
     if (!empty($filename)) {
         $sql1 = "SELECT ud_idcard_img FROM user_detail WHERE user_id = $user_id";
         $result2 = mysqli_query($conn, $sql1);
-        if($result2){
-            if(mysqli_num_rows($result2) > 0){
+        if ($result2) {
+            if (mysqli_num_rows($result2) > 0) {
                 $row = mysqli_fetch_assoc($result2);
-                $filePath = $target . $row['ud_idcard_img'];
-                if (file_exists($filePath)) {
-                    unlink($filePath);
-                    mysqli_query($conn,"UPDATE user_detail SET ud_id_card = NULL WHERE user_detail.ud_id = $user_id");
+                if (!empty($row['ud_idcard_img'])) {
+                    $filePath = $target . $row['ud_idcard_img'];
+                    if (file_exists($filePath)) {
+                        unlink($filePath);
+                        mysqli_query($conn, "UPDATE user_detail SET ud_id_card = NULL WHERE user_detail.ud_id = $user_id");
+                    }
                 }
             }
         }
-       
+
 
         $sql2 = "UPDATE user_detail SET ud_idcard_img = '$filename' WHERE user_id = $user_id";
         $result2 = mysqli_query($conn, $sql2);

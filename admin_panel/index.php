@@ -4,7 +4,9 @@
 
 <body class="hold-transition sidebar-mini">
   <div class="wrapper">
+  <div>
 
+  </div>
     <!-- Navbar -->
     <?php include 'includes/navbar.php'; ?>
     <!-- /.navbar -->
@@ -14,25 +16,119 @@
 
     <!-- Content Wrapper. Contains page content -->
     <?php
-    if (!isset($_GET['page']) && empty($_GET['page'])) {
-      include './page/dashboard/index.php';
-    } elseif ((isset($_GET['page']) && $_GET['page'] == 'user')) {
-      include './page/user/index.php';
-    } elseif ((isset($_GET['page']) && $_GET['page'] == 'product')) {
-      include './page/product/index.php';
-    } elseif ((isset($_GET['page']) && $_GET['page'] == 'order')) {
-      include './page/order/index.php';
-    } elseif ((isset($_GET['page']) && $_GET['page'] == 'prefix')) {
-      include './page/prefix/index.php';
-    } elseif ((isset($_GET['page']) && $_GET['page'] == 'product_type')) {
-      include './page/product_type/index.php';
-    } elseif ((isset($_GET['page']) && $_GET['page'] == 'delivery_type')) {
-      include './page/delivery_type/index.php';
-    } elseif ((isset($_GET['page']) && $_GET['page'] == 'bank')) {
-      include './page/bank/index.php';
-    } else {
-      include './page/not_found.php';
+    $page = $_GET['page'] ?? '';
+    $function = $_GET['function'] ?? "";
+
+    switch ($page) {
+      case '':
+        include './page/dashboard/index.php';
+        break;
+        // ====================================================================================================
+      case 'user':
+        if ($function == 'add') {
+          include './page/user/insert.php';
+        } elseif ($function == 'delete') {
+          include './page/user/delete.php';
+        } elseif ($function == 'update') {
+          include './page/user/edit.php';
+        } elseif ($function == 'detail') {
+          include './page/user/detail.php';
+        } else {
+          include './page/user/index.php';
+        }
+        break;
+        // ====================================================================================================
+      case 'product':
+        if ($function == 'add') {
+          include './page/product/insert.php';
+        } elseif ($function == 'delete') {
+          include './page/product/delete.php';
+        } elseif ($function == 'update') {
+          include './page/product/edit.php';
+        } elseif ($function == 'detail') {
+          include './page/product/detail.php';
+        } else {
+          include './page/product/index.php';
+        }
+        break;
+        // ====================================================================================================
+      case 'order':
+        if ($function == 'detail') {
+          include './page/order/detail.php';
+        } else {
+          include './page/order/index.php';
+        }
+        break;
+        // ====================================================================================================
+      case 'prefix':
+        include './page/prefix/index.php';
+        break;
+        // ====================================================================================================
+      case 'product_type':
+        if ($function == 'add') {
+          include './page/product_type/insert.php';
+        } elseif ($function == 'delete') {
+          include './page/product_type/delete.php';
+        } elseif ($function == 'update') {
+          include './page/product_type/edit.php';
+        } else {
+          include './page/product_type/index.php';
+        }
+        break;
+        // ====================================================================================================
+      case 'delivery_type':
+        if ($function == 'add') {
+          include './page/delivery_type/insert.php';
+        } elseif ($function == 'delete') {
+          include './page/delivery_type/delete.php';
+        } elseif ($function == 'update') {
+          include './page/delivery_type/edit.php';
+        } else {
+          include './page/delivery_type/index.php';
+        }
+        break;
+        // ====================================================================================================
+      case 'bank':
+        if ($function == 'add') {
+          include './page/bank/insert.php';
+        } elseif ($function == 'delete') {
+          include './page/bank/delete.php';
+        } elseif ($function == 'update') {
+          include './page/bank/edit.php';
+        } else {
+          include './page/bank/index.php';
+        }
+        break;
+        // ==================================================================================================== 
+      case 'id_card_verified':
+        if ($function == 'detail') {
+          include './page/id_card_verified/detail.php';
+        } else {
+          include './page/id_card_verified/index.php';
+        }
+        break;
+        // ====================================================================================================
+      case 'receipt_verified':
+        if ($function == 'detail') {
+          include './page/receipt_verified/detail.php';
+        } else {
+          include './page/receipt_verified/index.php';
+        }
+        break;
+        // ====================================================================================================
+      case 'pay_seller':
+        if ($function == 'detail') {
+          include './page/pay_seller/detail.php';
+        } else {
+          include './page/pay_seller/index.php';
+        }
+        break;
+        // ====================================================================================================
+      default:
+        include './page/not_found.php';
+        break;
     }
+
     ?>
     <!-- /.content-wrapper -->
 

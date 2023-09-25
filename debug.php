@@ -20,6 +20,7 @@
     <a class="btn btn-success " href="admin_panel/login.php">Admin Login Page</a>
     <a class="btn btn-info" href="./">User Page</a>
     <a class="btn btn-primary" href="../project-bc-store-main/admin/"><i class="fa-solid fa-computer"></i> bc-store-main-ADMIN</a>
+    <a class="btn btn-primary" href="./update_order_status.php"><i class="fas fa-exclamation-triangle" style="color: #fbff00;"></i> Update Order</a>
     <br>
 
       <?php 
@@ -33,7 +34,8 @@
     <?php
     if (isset($_GET['LoginByPass'])) {
       echo 'ทดสอบ';
-      $_SESSION['admin_login'] = "";
+      $_SESSION['admin_login'] = 1;
+      $_SESSION['user_type'] = 0;
       header("location: admin_panel");
     }
     ?>
@@ -100,8 +102,6 @@
       <input type="file" name="product_img[]" id="" multiple>
       <button type="submit" name="add_img">add img</button>
     </form>
-
-
 
 
     <?php

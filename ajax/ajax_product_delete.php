@@ -2,7 +2,7 @@
 session_start();
 include '../db/db_conn.php';
 
-if (isset($_POST) && isset($_SESSION['user_login']) && $_SESSION['user_type'] == "2") {
+if (isset($_POST) && $_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 0) {
     $pd_id = $_POST['pd_id'];
     $user_id = mysqli_real_escape_string($conn, $_SESSION['user_login']);
     $user_type = mysqli_real_escape_string($conn, $_SESSION['user_type']);

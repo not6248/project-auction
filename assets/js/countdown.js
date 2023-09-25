@@ -1,3 +1,4 @@
+let x;
 function countdown_time(id,showtime,starttime, endtime) {
     $(document).ready(function () {
         const element = $('#' + id); // ใช้ jQuery ในการเลือก element โดยใช้ id
@@ -8,16 +9,15 @@ function countdown_time(id,showtime,starttime, endtime) {
             let startshow = new Date(showtime).getTime();
             let start = new Date(starttime).getTime();
             let end = new Date(endtime).getTime();
-        
-            if(now < showtime){
 
-                let timeUntilStartShow = start - now;
+            if(now < startshow){
+                let timeUntilStartShow = startshow - now;
                 let days = Math.floor(timeUntilStartShow / (1000 * 60 * 60 * 24)); // คำนวณจำนวนวัน
                 let hours = Math.floor((timeUntilStartShow % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 let minutes = Math.floor((timeUntilStartShow % (1000 * 60 * 60)) / (1000 * 60));
                 let seconds = Math.floor((timeUntilStartShow % (1000 * 60)) / 1000);
-                element.html("จะนำสินค้าไปแสดงบนเว็บไซต์ ภายใน <br>" + days + " Day " + hours + ":" + minutes + ":" + seconds + "s");
-            }else if (now >=showtime && now <= start) {
+                element.html("จะนำขึ้นแสดงบนเว็บไซต์ภายใน <br>" + days + " Day " + hours + ":" + minutes + ":" + seconds + "s");
+            }else if (now >= startshow && now <= start || now <= start) {
                 // กำลังเริ่ม
                 let timeUntilStart = start - now;
                 let days = Math.floor(timeUntilStart / (1000 * 60 * 60 * 24)); // คำนวณจำนวนวัน
@@ -41,9 +41,12 @@ function countdown_time(id,showtime,starttime, endtime) {
                 // หมดเวลา
                 // ใช้ jQuery เพื่อเปลี่ยนเนื้อหาของ HTML element
                 element.html("หมดเวลา<br><br>");
+                 // ยกเลิกการทำงานของ setInterval
+                // clearInterval(x);
+                
             }
         }
         updateCountdown();
-        let x = setInterval(updateCountdown, 1000);
+        x = setInterval(updateCountdown, 1000);
     });
 }

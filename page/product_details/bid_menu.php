@@ -1,10 +1,10 @@
 <div class="col-sm-10 col-md-6 col-lg-4 order-1 order-lg-2 my-sm-4 my-md-0">
     <div class="d-flex flex-column justify-content-center align-items-center mb-0" style="height: 190px;border-radius: 16px;border: 3px solid rgb(13,110,253);">
         <div class="row" style="width: 100%;">
-            <div class="col-4">
+            <!-- <div class="col-4">
                 <span>เหลือเวลา<br>1 วัน 5 ชม.</span>
-            </div>
-            <div class="col-4 d-flex justify-content-center align-items-end pe-0 ps-0" style="text-align: center;">
+            </div> -->
+            <div class="col-4 offset-4 d-flex justify-content-center align-items-end pe-0 ps-0" style="text-align: center;">
                 <span class="fw-bold" style="color: rgb(62, 0, 186);">ราคาปัจจุบัน!</span>
             </div>
             <div class="col-4 ms-0" style="text-align: right;">
@@ -27,10 +27,39 @@
             <span style="font-size: 23px;font-weight: bold;color: #3E168E;"><?= number_format($row_order_summary['total_price'], 0) ?> ฿</span>
         </div>
         <div class="mb-1">
-            <button class="btn btn-primary" style="font-size: 20px;width: 263.906px;" data-bs-toggle="modal" data-bs-target="#bid-modal">เสนอราคา</button>
+            <button id="bid" <?= $order_status == 2 ? "" : "disabled" ?> class="btn btn-primary" style="font-size: 20px;width: 263.906px;" data-bs-toggle="modal" data-bs-target="#bid-modal"> <?= $order_status == 3 ? "จบการประมูล" : "เสนอราคา" ?></button>
         </div>
         <div class="">
-            <span class="fw-bold" style="color: rgb(62, 0, 186);">จำนวนผู้ประมูล 7 คน</span>
+            <!-- <span class="fw-bold" style="color: rgb(62, 0, 186);">จำนวนผู้ประมูล 7 คน</span> -->
         </div>
     </div>
 </div>
+
+<?php
+if (isset($_SESSION['user_login'])) :
+    $info_null_chaeck = "SELECT * FROM user_detail WHERE(
+    prefix_id IS NULL OR 
+    ud_address IS NULL OR 
+    ud_phone IS NULL OR ud_fname IS NULL OR 
+    ud_lname IS NULL) AND user_id = " . $_SESSION['user_login'];
+    $result = mysqli_query($conn, $info_null_chaeck);
+    if (mysqli_num_rows($result) > 0) : ?>
+
+        <script>
+            $(document).ready(function() {
+                $("#bid").click(function(e) {
+                    e.preventDefault();
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        html: "Please fill in information of the user in full <br> before the auction begins.",
+                        heightAuto: false,
+                    }).then(() => {
+                        window.location.href = "./?page=profile"
+                    })
+                });
+            });
+        </script>
+
+    <?php endif ?>
+<?php endif ?>

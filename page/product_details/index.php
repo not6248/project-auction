@@ -4,16 +4,20 @@ $user_id = $user_id = $_SESSION['user_login'] ?? "";
 $sql = "SELECT * FROM product_with_username WHERE pd_id = $pd_id";
 $sql2 = "SELECT * FROM order_summary WHERE order_id = $pd_id";
 $sql3 = "SELECT * FROM last_user_bid WHERE order_id = $pd_id";
+$sql4 = "SELECT * FROM order_tb WHERE order_id = $pd_id";
 $result = mysqli_query($conn, $sql);
 $result2 = mysqli_query($conn, $sql2);
 $result3 = mysqli_query($conn, $sql3);
+$result4 = mysqli_query($conn, $sql4);
+$row_order = mysqli_fetch_assoc($result4);
+$order_status = $row_order['order_status'];
 $row_order_summary = mysqli_fetch_assoc($result2);
-if(mysqli_num_rows($result3) > 0){
+if (mysqli_num_rows($result3) > 0) {
     $row_last_bid = mysqli_fetch_assoc($result3);
     $username_last_bid = $row_last_bid['username'];
     $username_last_bid_id = $row_last_bid['latest_bidder'];
-}else{
-    $username_last_bid= "ยังไม่มีผู้ประมูล";
+} else {
+    $username_last_bid = "ยังไม่มีผู้ประมูล";
     $username_last_bid_id = "";
 }
 
@@ -26,12 +30,18 @@ foreach ($result as $row) :
     $image_json = $row['pd_img'];
     $pd_img = json_decode($image_json);
     $pd_status = $row['pd_status'];
-    if($pd_status == 0){
+    if ($pd_status == 0) {
         echo '<script>history.back();</script>';
         exit; // ออกจากการทำงานของสคริปต์ PHP เพื่อป้องกันการแสดงผลเนื้อหาหลังจากนี้
     }
+
+    $pd_start_date = $row['pd_start_date'];
+    $pd_end_date = $row['pd_end_date'];
+    // $pd_start_show_date = $row['pd_start_show_date'];
+
     $isFirst = true;
 ?>
+
     <div class="container mt-xl-5 pt-xl-0 w-100 m-auto">
         <div class="row justify-content-center">
 
@@ -53,3 +63,7 @@ foreach ($result as $row) :
 <?php
 endforeach
 ?>
+
+<script>
+    countdown_time("product-timeleftID-<?= $pd_id ?>", "", "<?= $pd_start_date ?>", "<?= $pd_end_date ?>");
+</script>
