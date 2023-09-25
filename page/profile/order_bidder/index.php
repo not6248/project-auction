@@ -1,9 +1,10 @@
 <?php
 // $sql = "SELECT l.*,p.* FROM last_user_bid AS l INNER JOIN product AS p ON l.order_id = p.pd_id WHERE l.latest_bidder = " . $_SESSION['user_login'];
-$sql = "SELECT l.*,p.*,o.end_price,pay.pay_status FROM last_user_bid AS l 
+$sql = "SELECT l.*,p.*,o.end_price,pay.pay_status,d.dlv_status FROM last_user_bid AS l 
 INNER JOIN product AS p ON l.order_id = p.pd_id 
 INNER JOIN order_tb AS o ON o.order_id = p.pd_id
 LEFT JOIN payment as pay ON pay.pay_id = p.pd_id
+LEFT JOIN delivery AS d ON d.dlv_id = p.pd_id
 WHERE o.order_status >= 3 AND l.latest_bidder =  " . $_SESSION['user_login'];
 $result = mysqli_query($conn, $sql);
 ?>
@@ -44,20 +45,22 @@ $result = mysqli_query($conn, $sql);
                                         $pay_status = $row['pay_status'] ?? "0";
                                         $scr_img = "./upload/product/$pd_img[0]";
                                         $delivery_link = "./?page=" . $_GET['page'] . "&subpage=" . $_GET['subpage'] . "&function=delivery&order_id=$pd_id";
+                                        $pay_status = $row['pay_status'] ?? "0";
+                                        $dlv_status = $row['dlv_status'] ?? "0";
                                     ?>
                                         <tr>
                                             <th scope="row"><?= $i++ ?></th>
                                             <td><img class=" fit-cover rounded-0" width="80" height="80" src="<?= $scr_img ?>"></td>
                                             <td><?= $pd_name ?></td>
                                             <td><?= $end_price ?> บาท</td>
-                                            <td></td>
+                                            <td><?= order_profile_status($status_name_arr,$pay_status,$dlv_status,"b") ?></td>
                                             <td><?= $pay_status_arr[$pay_status] ?></td>
                                             <td class="">
                                                 <?php if ($pay_status == 0 || $pay_status == 2) : ?>
                                                     <button class="btn btn-warning btn-sm pay_btn" data-pd-id="<?= $row['pd_id'] ?>" data-bs-toggle="modal" data-bs-target="#pay_slip_img">ชำระเงิน <i class="fa-solid fa-money-bill-wave fa-bounce"></i></button>
                                                 <?php elseif ($pay_status == 1) : ?>
                                                     <button disabled class="btn btn-primary btn-sm">รอการตรวจสอบ <i class="fa-solid fa-spinner fa-spin-pulse"></i></button>
-                                                <?php elseif ($pay_status == 3) : ?>
+                                                <?php elseif ($pay_status >= 3) : ?>
                                                     <a class="btn btn-primary btn-sm" href="<?= $delivery_link ?>" role="button">รายละเอียดการจัดส่ง</a>
                                                 <?php endif ?>
                                             </td>
