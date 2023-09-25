@@ -6,3 +6,7 @@
     font-family: 'Sarabun', sans-serif;
     /* font-family: 'Itim', cursive; */
 }
+
+table.dataTable thead th {
+    white-space: nowrap
+  }
