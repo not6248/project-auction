@@ -284,6 +284,7 @@ $(document).ready(function () {
                 processData: false,
                 contentType: false,
                 success: function (data) {
+                    console.log(data);
                     let result = JSON.parse(data);
                     if (result.status == "success") {
                         Swal.fire({
@@ -578,15 +579,22 @@ $(document).ready(function () {
 
 //ปุ่มอัพโหลดสลีป
 $(document).ready(function () {
+    $(".pay_btn").click(function (e) { 
+        e.preventDefault();
+        let pd_id = $(this).data("pd-id");
+        console.log(pd_id);
+        $("#pd_id_input").val(pd_id);
+    });
+
     $("#pay_slip_img_form").submit(function (e) {
         e.preventDefault();
         let Method = $(this).attr("method");
         let formUrl = $(this).attr("action");
         let formData = new FormData(this);
-        let pd_id = $(this).data("pd-id");
+        // let pd_id = $(this).data("pd-id");
 
-        // เพิ่ม pd_id เข้า formData
-        formData.append('pd_id', pd_id);
+        // // เพิ่ม pd_id เข้า formData
+        // formData.append('pd_id', pd_id);
 
 
         Swal.fire({

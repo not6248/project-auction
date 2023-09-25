@@ -2,7 +2,7 @@
 session_start();
 include '../db/db_conn.php';
 
-if (isset($_POST) && $_SESSION['user_type'] == 2) {
+if (isset($_POST) && $_SESSION['user_type'] == 0) {
     $user_id        = $_SESSION['user_login'];
     $pd_type_id     = $_POST['pd_type_id'];
     $pd_name        = $_POST['pd_name'];
@@ -44,10 +44,10 @@ if (isset($_POST) && $_SESSION['user_type'] == 2) {
             if (move_uploaded_file($mainImageTmpName, $target . $mainImageNewName)) {
                 $uploaded_filenames[] = $mainImageNewName;
             } else {
-                echoJson_status_msg("error", "อัปโหลด รูปภาพหลัก มีข้อผิดพลาด $mainImageName");
+                echoJson_status_msg("error", "Error uploading main image $mainImageName");
             }
         } else {
-            echoJson_status_msg("error", "ประเภทไฟล์ รูปภาพหลัก ไม่ถูกต้อง <ins><b>$mainImageName</b></ins> <br> กรุณาใช้เป็น <b>jpeg , jpg , png.</b>");
+            echoJson_status_msg("error", "Invalid file type for main image <ins><b>$mainImageName</b></ins> <br> Please use image file extensions <b>jpeg , jpg , png.</b>");
         }
 
         // Handle the sub images
@@ -64,10 +64,8 @@ if (isset($_POST) && $_SESSION['user_type'] == 2) {
                         echoJson_status_msg("error", "Error uploading sub image $subImageName");
                     }
                 } else {
-                    echoJson_status_msg("error", "อัปโหลด รูปภาพรอง มีข้อผิดพลาด $subImageName");
+                    echoJson_status_msg("error", "Invalid file type for sub image <ins><b>$subImageName</b></ins> <br> Please use image file extensions <b>jpeg , jpg , png.</b>");
                 }
-            } else {
-                echoJson_status_msg("error", "ประเภทไฟล์ รูปภาพรอง ไม่ถูกต้อง <ins><b>$subImageName</b></ins> <br> กรุณาใช้เป็น <b>jpeg , jpg , png.</b>");
             }
         }
 
@@ -96,7 +94,7 @@ if (isset($_POST) && $_SESSION['user_type'] == 2) {
         if (mysqli_stmt_execute($stmt2)) {
             // ทำการ Commit ข้อมูลเมื่อสำเร็จ
             mysqli_commit($conn);
-            echoJson_status_msg("success", "เพิ่มสินค้าสำเร็จ");
+            echoJson_status_msg("success", "Product added successfully");
         } else {
             mysqli_rollback($conn);
             echoJson_status_msg("error", "mysqli_error($conn)");
