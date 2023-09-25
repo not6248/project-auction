@@ -31,7 +31,7 @@ $result = mysqli_query($conn, $sql);
                                         <th scope="col">ชื่อ</th>
                                         <th scope="col">ราคา</th>
                                         <th scope="col">สถานะ ออเดอร์</th>
-                                        <th scope="col">สถานะการจ่ายเงิน</th>
+                                        <!-- <th scope="col">สถานะการจ่ายเงิน</th> -->
                                         <th scope="col">เมนู</th>
                                     </tr>
                                 </thead>
@@ -53,7 +53,7 @@ $result = mysqli_query($conn, $sql);
                                             <td><?= $pd_name ?></td>
                                             <td><?= $end_price ?> บาท</td>
                                             <td><?= order_profile_status($status_name_arr,$pay_status,$dlv_status,"s") ?></td>
-                                            <td></td>
+                                            <!-- <td></td> -->
                                             <td class="">
                                                 <a class="btn btn-primary btn-sm" href="<?= $delivery_link ?>" role="button">รายละเอียดการจัดส่ง</a>
                                             </td>
