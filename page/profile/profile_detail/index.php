@@ -9,12 +9,12 @@ $ud_idcard_img = $row['ud_idcard_img'];
 
 <div class="card" style="background: rgb(236,238,249);box-shadow: 0px 4px 4px rgba(33,37,41,0.25);">
     <div class="card-body">
-        <h4 class="card-title mb-4" style="font-size: 28px;">Profile Detail</h4>
+        <h4 class="card-title mb-4" style="font-size: 28px;">รายละเอียด โปรไฟล์</h4>
         <div class="row mt-3">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header" style="background: #D8DBE9;">
-                        <h4 style="color: rgb(84,88,94);" class="mb-0">Profile Editor</h4>
+                        <h4 style="color: rgb(84,88,94);" class="mb-0">ปรับแต่ง โปรไฟล์</h4>
                     </div>
                     <div class="card-body" style="background: #ECEEF9;">
                         <!-- form -->

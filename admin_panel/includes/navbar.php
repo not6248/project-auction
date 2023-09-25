@@ -5,10 +5,10 @@
       <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="./" class="nav-link">Home</a>
+      <a href="./" class="nav-link">หน้าแรก</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="#" class="nav-link">Contact</a>
+      <a href="#" class="nav-link">ติดต่อ</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
       <a href="../" class="nav-link">Go back to test page</a>
@@ -18,7 +18,7 @@
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
     <!-- Navbar Search -->
-    <li><a href="../logoutadmin.php" class="btn btn-danger" onclick="return confirm('ต้องการออกจากระบบหรือไม่')">logout</a>
+    <li><a href="../logoutadmin.php" class="btn btn-danger" onclick="return confirm('ต้องการออกจากระบบหรือไม่')">ออกจากระบบ</a>
     <li class="nav-item">
       <a class="nav-link" data-widget="navbar-search" href="#" role="button">
         <i class="fas fa-search"></i>

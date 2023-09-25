@@ -12,21 +12,21 @@ $pd_img = json_decode($image_json);
         <div class="d-flex justify-content-between">
             <h4 class="card-title mb-0" style="font-size: 28px;">Product</h4>
             <!-- <button type="button" class="btn btn-success btn-sm rounded"><i class="fa-solid fa-plus"></i> Add new product</button> -->
-            <a class="btn btn-primary rounded-5" href="./?page=<?= $_GET['page'] ?>&subpage=<?= $_GET['subpage'] ?>" role="button"><i class="fa-solid fa-arrow-left fa-2xs"></i> Back</a>
+            <a class="btn btn-primary rounded-5" href="./?page=<?= $_GET['page'] ?>&subpage=<?= $_GET['subpage'] ?>" role="button"><i class="fa-solid fa-arrow-left fa-2xs"></i> กลับ</a>
 
         </div>
         <div class="row mt-3">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header" style="background: #D8DBE9;">
-                        <h4 style="color: rgb(84,88,94);" class="mb-0">Update Product Form</h4>
+                        <h4 style="color: rgb(84,88,94);" class="mb-0">แบบฟอร์มอัปเดทสินค้า</h4>
                     </div>
                     <div class="card-body" style="background: #ECEEF9;">
                         <!-- Start Form -->
                         <form id="product-update" action="ajax/ajax_product_update.php" method="POST" enctype="multipart/form-data">
                             <div class="card-body col-lg-12">
                                 <div class="form-group mb-3">
-                                    <h4>Current picture</h4>
+                                    <h4>รูปภาพปัจจุบัน</h4>
                                     <div class="row">
                                         <?php foreach ($pd_img as $file_img_name) : ?>
                                             <div class="col-3">
@@ -37,14 +37,14 @@ $pd_img = json_decode($image_json);
 
                                     <hr> <!-- ======================================================== -->
                                     <h4>Uoload new picture</h4>
-                                    <p>( If you do not want to change the picture, please do not upload the picture. )</p>
+                                    <p>( หากไม่ต้องการเปลี่ยนภาพ กรุณาอย่าอัพโหลดภาพ )</p>
                                     <div class="row">
                                         <div class="col-3" id="main-preview">
                                             <img class="mb-3" width="200" height="200">
                                         </div>
                                         <!-- <label>Main picture</label> -->
                                     </div>
-                                    <label for="">product cover image (1 photos)</label>
+                                    <label for="">รูปภาพปกสินค้า (1 รูป)</label>
                                     <input class="form-control" name="main-img-pd-input" type="file" id="main-img-pd-input" value="" />
                                 </div>
                                 <!-- ============================================================================================================== -->
@@ -59,7 +59,7 @@ $pd_img = json_decode($image_json);
                                     <!-- <span class=" text-danger ">
                                     <br>Note: Unable to update pictures. Please delete products and add new products.
                                     </span> -->
-                                    <label for="">picture (no more than 3 photos) </label>
+                                    <label for="">รูปภาพ (ไม่เกิน 3 รูป) </label>
                                     <input name="sub-img-pd-input[]" class="form-control" type="file" id="sub-img-pd-input" value="" multiple />
                                     <p class="mt-1" style="font-size: 13px;" class="">กรุณาใช้รูปที่เป็นนามสกุล jpeg,jpg,png ( แนะนำรูป 1:1 )</p>
                                 </div>
@@ -114,8 +114,8 @@ $pd_img = json_decode($image_json);
                                     <input disabled type="datetime-local" value="<?= $row['pd_start_date'] ?>" name="" id="">
                                     <label>วันสิ้นสุดประมูล</label>
                                     <input disabled type="datetime-local" value="<?= $row['pd_end_date'] ?>" name="" id=""><br>
-                                    <span class=" text-danger ">Note:Unable to edit date</span><br>
-                                    <span class=" fw-bold ">[ If there is a problem, please contact ADMIN. ]</span>
+                                    <span class=" text-danger ">หมายเหตุ: ไม่สามารถแก้ไขวันที่ได้</span><br>
+                                    <span class=" fw-bold ">[ หากมีปัญหากรุณาติดต่อ ADMIN ]</span>
 
                                 </div>
                                 <!-- ============================================================================================================== -->
@@ -129,7 +129,7 @@ $pd_img = json_decode($image_json);
 
                     </div>
                     <div class="card-footer" style="background: #D8DBE9;">
-                        <button name="update_product" type="submit" class="btn btn-primary rounded-2">Update</button>
+                        <button name="update_product" type="submit" class="btn btn-primary rounded-2">อัปเดท</button>
                     </div>
                     </form>
                     <!-- End Form -->

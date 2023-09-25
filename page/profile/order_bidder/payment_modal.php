@@ -14,8 +14,8 @@
                         <div class="d-flex ps-3">
                             <div class="me-4">
                                 <!-- checked="checked" -->
-                                <?php
-                                foreach ($bank_arr as $index => $v) : ?>
+                                <?php 
+                                   foreach ($bank_arr as $index => $v) : ?>
                                     <input required="" value="<?= $index ?>" type="radio" class="form-check-input" name="bank">
                                     <label class="form-check-label me-2"><?= $v ?></label>
                                 <?php endforeach ?>
@@ -26,8 +26,8 @@
                     <input class="form-control" name="payment-img-input" type="file" id="payment-img-input" required value="" />
                     <div class="modal-footer">
                         <input type="hidden" id="pd_id_input" name="pd_id" value="">
-                        <button name="pay_slip_img_btn" type="submit" class="btn btn-primary">Submit</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button name="pay_slip_img_btn" type="submit" class="btn btn-primary">ยืนยัน</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
                     </div>
                 </form>
                 <!-- End Form -->

@@ -190,7 +190,8 @@ $(document).ready(function () {
             icon: 'question',
             showCancelButton: true,
             heightAuto: false,
-            confirmButtonText: 'ใช่, ออกจากระบบ!'
+            confirmButtonText: 'ใช่, ออกจากระบบ!',
+            cancelButtonText: 'ยกเลิก'
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({

@@ -58,12 +58,12 @@ $query_product = mysqli_query($conn, $sql);
                         </div>
                     </div>
                     <div class="d-flex">
-                        <a href="./?page=product&pd_id=<?= $pd_id ?>" class="btn btn-dark" type="button" style="font-weight: bold;width: 100%;">Start Bidding</a>
+                        <a href="./?page=product&pd_id=<?= $pd_id ?>" class="btn btn-dark" type="button" style="font-weight: bold;width: 100%;">ประมูลรายการนี้</a>
                     </div>
                 </div>
                 <?php if (isset($_SESSION['user_login']) && $row['user_id'] == $_SESSION['user_login']) : ?>
                     <h5> <span class="position-absolute top-0 end-0 badge rounded-pill bg-primary  ">
-                            You Product
+                            สินค้าของคุณ
                         </span></h5>
                 <?php endif ?>
             </div>
