@@ -7,8 +7,9 @@
     ?>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | Starter</title>
-
+    <title>ADMIN PANEL</title>
+    <link type="image/png" sizes="16x16" rel="icon" href="../assets/icon/icon-16.png">
+    <link type="image/png" sizes="32x32" rel="icon" href="../assets/icon/icon-32.png">
 <!-- CSS -->
     <!-- Theme style =============================================================================-->
     <link rel="stylesheet" href="dist/css/adminlte.min.css">
