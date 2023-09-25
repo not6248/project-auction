@@ -2,8 +2,8 @@
 session_start();
 include '../db/db_conn.php';
 
-if (isset($_POST) && $_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 0) {
-    $user_id        = isset($_SESSION['admin_login']) ? $_SESSION['admin_login'] : $_SESSION['user_login'] ?? '';
+if (isset($_POST) && $_SESSION['user_type'] == 2) {
+    $user_id        = $_SESSION['user_login'];
     $pd_type_id     = $_POST['pd_type_id'];
     $pd_name        = $_POST['pd_name'];
     $pd_detail      = $_POST['pd_detail'];
@@ -51,21 +51,24 @@ if (isset($_POST) && $_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 0)
         }
 
         // Handle the sub images
-        foreach ($subImageNames as $key => $subImageName) {
-            $ext = pathinfo($subImageName, PATHINFO_EXTENSION);
-            if (in_array($ext, $extension)) {
-                // Generate a unique filename to avoid overwriting
-                $subImageNewName = time() . '_sub_' . $key . '.' . $ext;
+        if (!empty($_FILES['sub-img-pd-input']['name'][0])) {
+            foreach ($subImageNames as $key => $subImageName) {
+                $ext = pathinfo($subImageName, PATHINFO_EXTENSION);
+                if (in_array($ext, $extension)) {
+                    // Generate a unique filename to avoid overwriting
+                    $subImageNewName = time() . '_sub_' . $key . '.' . $ext;
 
-                if (move_uploaded_file($subImageTmpNames[$key], $target . $subImageNewName)) {
-                    $uploaded_filenames[] = $subImageNewName;
+                    if (move_uploaded_file($subImageTmpNames[$key], $target . $subImageNewName)) {
+                        $uploaded_filenames[] = $subImageNewName;
+                    } else {
+                        echoJson_status_msg("error", "Error uploading sub image $subImageName");
+                    }
                 } else {
-                    echoJson_status_msg("error", "Error uploading sub image $subImageName");
+                    echoJson_status_msg("error", "Invalid file type for sub image <ins><b>$subImageName</b></ins> <br> Please use image file extensions <b>jpeg , jpg , png.</b>");
                 }
-            } else {
-                echoJson_status_msg("error", "Invalid file type for sub image <ins><b>$subImageName</b></ins> <br> Please use image file extensions <b>jpeg , jpg , png.</b>");
             }
         }
+
 
         $image_json = json_encode($uploaded_filenames);
     } else {
@@ -79,7 +82,7 @@ if (isset($_POST) && $_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 0)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt1 = mysqli_prepare($conn, $sql1);
-    mysqli_stmt_bind_param($stmt1, "ssssssssss", $user_id, $pd_type_id, $pd_name, $pd_detail, $pd_price_start, $image_json, $pd_condition,$oneDaysLaterFormatted, $fourDaysLaterFormatted, $elevenDaysLaterFormatted);
+    mysqli_stmt_bind_param($stmt1, "ssssssssss", $user_id, $pd_type_id, $pd_name, $pd_detail, $pd_price_start, $image_json, $pd_condition, $oneDaysLaterFormatted, $fourDaysLaterFormatted, $elevenDaysLaterFormatted);
 
     if (mysqli_stmt_execute($stmt1)) {
         $lastProduct = mysqli_insert_id($conn);
