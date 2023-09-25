@@ -32,8 +32,8 @@
         </div>
       </div>
       <div class="modal-footer align-items-stretch  gap-2 pb-3 border-top-0">
-        <button type="submit" class="btn btn-lg btn-primary flex-grow-1"><i class="fa-solid fa-gavel"></i> BID</button>
-        <button type="button" class="btn btn-lg btn-danger  flex-grow-1" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-lg btn-primary flex-grow-1"><i class="fa-solid fa-gavel"></i> ประมูล</button>
+        <button type="button" class="btn btn-lg btn-danger  flex-grow-1" data-bs-dismiss="modal">ปิด</button>
       </div>
     </form>
     <!-- End Form -->

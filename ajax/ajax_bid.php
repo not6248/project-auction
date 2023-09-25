@@ -33,20 +33,20 @@ if (isset($_POST) && isset($_SESSION['user_login']) && isset($_POST['pd_id'])) {
         $row = mysqli_fetch_assoc($result_order_summary);
         $PriceNowIN_database = $row['total_price'];
     } else {
-        echoJson_status_msg("error", "Bid fail <br> please try again");
+        echoJson_status_msg("error", "ประมูลผิดพลาด <br> กรุณาลองใหม่อีกครั้ง");
     }
 
     // เช็คราคาภายในฐานข้อมูล และ ราคาที่นำไปแสดงลูกค้า ว่าถุกต้องไหม
     if ($PriceUser_chack > $PriceNowIN_database) {
         $sql = "INSERT INTO bid (`user_id`, `order_id`, `bid_price_up`) VALUES ($user_id, $pd_id, $price_offer)";
         if (mysqli_query($conn, $sql)) {
-            echoJson_status_msg("success", "Bid was successfuly.");
+            echoJson_status_msg("success", "ประมูลสำเร็จ.");
         } else {
-            echoJson_status_msg("error", "Bid fail <br> please try again");
+            echoJson_status_msg("error", "ประมูลผิดพลาด <br> กรุณาลองใหม่อีกครั้ง");
         }
     } else {
-        echoJson_status_msg("warning", "The price you are bidding on Lower than the current price.<br> Please refresh and try again.");
+        echoJson_status_msg("warning", "ราคาที่ประมูลต่ำกว่าราคาปัจจุบัน.<br> กรุณารีเฟรชหน้าจอและลองใหม่อีกครั้ง.");
     }
 } else {
-    echoJson_status_msg("warning", "Please login <br> before using this function.");
+    echoJson_status_msg("warning", "กรุณาเข้าสู่ระบบ <br> ก่อนที่จะใช้งานฟังก์ชั่นนี้");
 }

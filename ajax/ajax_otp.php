@@ -27,19 +27,19 @@ if (mysqli_num_rows($code_res) > 0) { //ตรวจสอบว่ามีโ�
             unset($_SESSION['login_status']);
             echoJson_status_msg(
                 "success",
-                "Email has been confirmed.<br>
-                system willgo back to the main page<br>
-                and login automatically.<br>
-                I will close in <b></b> milliseconds.
+                "อีเมลได้รับการยืนยันแล้ว.<br>
+                ระบบกำลังดำเนินการกลับสู่หน้าหลัก<br>
+                และเข้าสู่ระบบอัตโนมัติ<br>
+                กำลังจะปิดใน <b></b> มิลลิวินาที
                 "
             );
             exit();
         } else {
-            echoJson_status_msg("success", "ยืนยัน Email เรียบร้อยแล้ว<br>I will close in <b></b> milliseconds.");
+            echoJson_status_msg("success", "ยืนยันอีเมล์เรียบร้อยแล้ว<br>กำลังจะปิดใน <b></b> มิลลิวินาที");
             exit();
         }
     } else {
-        echoJson_status_msg("error", "query fail");
+        echoJson_status_msg("error", "query ล้มเหลว");
         // $errors['otp-error'] = "Failed while updating code!";
         // echo "Failed while updating code!";
         // query fail

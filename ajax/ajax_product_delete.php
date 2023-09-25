@@ -37,7 +37,7 @@ if (isset($_POST) && isset($_SESSION['user_login']) && $_SESSION['user_type'] ==
                     unlink($filePath);
                 }
             }
-            echoJson_status_msg("success", "Your file has been deleted.");
+            echoJson_status_msg("success", "ไฟล์ของคุณถูกลบแล้ว");
         } else {
             mysqli_rollback($conn);
             echoJson_status_msg("error", "Error:" . mysqli_error($conn));

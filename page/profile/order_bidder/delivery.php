@@ -1,7 +1,7 @@
 <div class="card" style="background: rgb(236,238,249);box-shadow: 0px 4px 4px rgba(33,37,41,0.25);">
     <div class="card-body">
         <div class="d-flex justify-content-between">
-            <h4 class="card-title " style="font-size: 28px;">Order tracking</h4>
+            <h4 class="card-title " style="font-size: 28px;">การติดตาม ออเดอร์</h4>
         </div>
         <div class="row mt-3">
             <div class="col-12">
@@ -32,29 +32,29 @@
                                         <div class="d-lg-flex align-items-center">
                                             <i class="fas fa-clipboard-list fa-3x me-lg-4 mb-3 mb-lg-0"></i>
                                             <div>
-                                                <p class="fw-bold mb-1">Order</p>
-                                                <p class="fw-bold mb-0">Processed</p>
+                                                <p class="fw-bold mb-1">ออเดอร์</p>
+                                                <p class="fw-bold mb-0">ที่ดำเนินการแล้ว</p>
                                             </div>
                                         </div>
                                         <div class="d-lg-flex align-items-center">
                                             <i class="fas fa-box-open fa-3x me-lg-4 mb-3 mb-lg-0"></i>
                                             <div>
-                                                <p class="fw-bold mb-1">Order</p>
-                                                <p class="fw-bold mb-0">Shipped</p>
+                                                <p class="fw-bold mb-1">ออเดอร์</p>
+                                                <p class="fw-bold mb-0">ที่จัดส่งแล้ว</p>
                                             </div>
                                         </div>
                                         <div class="d-lg-flex align-items-center">
                                             <i class="fas fa-shipping-fast fa-3x me-lg-4 mb-3 mb-lg-0"></i>
                                             <div>
-                                                <p class="fw-bold mb-1">Order</p>
-                                                <p class="fw-bold mb-0">En Route</p>
+                                                <p class="fw-bold mb-1">ออเดอร์</p>
+                                                <p class="fw-bold mb-0">ที่อยู่ระหว่างทาง</p>
                                             </div>
                                         </div>
                                         <div class="d-lg-flex align-items-center">
                                             <i class="fas fa-home fa-3x me-lg-4 mb-3 mb-lg-0"></i>
                                             <div>
-                                                <p class="fw-bold mb-1">Order</p>
-                                                <p class="fw-bold mb-0">Arrived</p>
+                                                <p class="fw-bold mb-1">ออเดอร์</p>
+                                                <p class="fw-bold mb-0">ที่จัดส่งแล้ว</p>
                                             </div>
                                         </div>
                                     </div>

@@ -28,7 +28,7 @@ if (isset($_POST) && isset($_SESSION['user_login']) && isset($_POST['pd_id'])) {
             echo json_encode(array("status" => "fav_remove"));
             exit();
         } else {
-            echoJson_status_msg("error", "remove favorite fail");
+            echoJson_status_msg("error", "ลบรายการโปรดมีข้อผิดพลาด");
         }
     } else {
         // ถ้ายังไม่มีข้อมูลในตาราง favorite
@@ -38,12 +38,12 @@ if (isset($_POST) && isset($_SESSION['user_login']) && isset($_POST['pd_id'])) {
             echo json_encode(array("status" => "fav_add"));
             exit();
         } else {
-            echoJson_status_msg("error", "add favorite fail");
+            echoJson_status_msg("error", "เพิ่มรายการโปรดมีข้อผิดพลาด");
         }
     }
 
     // ปิดการเชื่อมต่อฐานข้อมูล
     mysqli_close($conn);
 }else{
-    echoJson_status_msg("warning", "Please login <br> before using this function.");
+    echoJson_status_msg("warning", "กรุณาเข้าสู่ระบบ <br> ก่อนที่จะใช้งานฟังก์ชั่นนี้");
 }

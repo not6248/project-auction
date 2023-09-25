@@ -120,7 +120,7 @@ $(document).ready(function () {
                 let result = JSON.parse(data);
                 if (result.status == "success") {
                     Swal.fire({
-                        title: 'success!',
+                        title: 'สำเร็จ!',
                         html: result.msg,
                         icon: result.status,
                         heightAuto: false,
@@ -147,7 +147,7 @@ $(document).ready(function () {
                         html: result.msg,
                         icon: result.status,
                         heightAuto: false,
-                        confirmButtonText: "OK",
+                        confirmButtonText: "ตกลง",
                     }).then(function (result) {
                         if (result.isConfirmed) {
                             $("#spinner-div").fadeIn(500);
@@ -185,12 +185,12 @@ $(document).ready(function () {
     $('#logout-btn').click(function (e) {
         e.preventDefault();
         Swal.fire({
-            title: 'Are you sure?',
-            text: "Do you want to log out?",
+            title: 'คุณแน่ใจหรือไม่?',
+            text: "คุณต้องการออกจากระบบ?",
             icon: 'question',
             showCancelButton: true,
             heightAuto: false,
-            confirmButtonText: 'Yes, Log out!'
+            confirmButtonText: 'ใช่, ออกจากระบบ!'
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
@@ -201,7 +201,7 @@ $(document).ready(function () {
                         if (result.status == "success") {
                             Swal.fire({
                                 icon: 'success',
-                                title: 'Log out success',
+                                title: 'ออกจากระบบสำเร็จ',
                                 showConfirmButton: false,
                                 heightAuto: false,
                                 timer: 1200
@@ -262,16 +262,16 @@ $(document).ready(function () {
         let fee = $(this).data("fee");
 
         const { value: accept } = await Swal.fire({
-            title: 'Terms and conditions',
-            html: "Products will be charged a service fee of "+ fee +" %.",
+            title: 'ข้อกำหนดและเงื่อนไข',
+            html: "สินค้าจะถูกเรียกเก็บค่าบริการเป็นจำนวน "+ fee +" % ของราคาจบการประมูล",
             input: 'checkbox',
             inputValue: 1,
             inputPlaceholder:
-                'I agree with the terms and conditions',
+                'ฉันเห็นด้วยกับข้อกำหนดและเงื่อนไข',
             confirmButtonText:
-                'Continue <i class="fa fa-arrow-right"></i>',
+                'ดำเนินการต่อ <i class="fa fa-arrow-right"></i>',
             inputValidator: (result) => {
-                return !result && 'You need to agree with T&C'
+                return !result && 'คุณต้องเห็นด้วยกับข้อกำหนดและเงื่อนไข'
             }
         })
 
@@ -297,7 +297,7 @@ $(document).ready(function () {
                     } else if (result.status == "error") {
                         Swal.fire({
                             icon: result.status,
-                            title: 'Oops...',
+                            title: 'อุ๊ปส์...',
                             html: result.msg,
                             heightAuto: false,
                         })
@@ -366,13 +366,13 @@ $(document).ready(function () {
         let pd_id = $(this).data("pd-id");
         let formUrl = $(this).attr("href");
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'คุณแน่ใจหรือไม่?',
+            text: "คุณจะไม่สามารถย้อนกลับสิ่งนี้ได้!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'ใช่, ลบสิ่งนี้!'
         }).then((result) => {
             if (result.isConfirmed) {
                 console.log(pd_id);
@@ -385,7 +385,7 @@ $(document).ready(function () {
                         if (result.status == "success") {
                             console.log(result);
                             Swal.fire(
-                                'Deleted!',
+                                'ลบแล้ว!',
                                 result.msg,
                                 result.status
                             ).then(() => {
@@ -393,7 +393,7 @@ $(document).ready(function () {
                             })
                         } else if (result.status == "error") {
                             Swal.fire(
-                                'Deleted!',
+                                'ลบแล้ว!',
                                 result.msg,
                                 result.status
                             )
@@ -419,12 +419,12 @@ $(document).ready(function () {
         let price = priceOfferValue * 10;
 
         Swal.fire({
-            title: 'Are you sure?',
-            html: "The price you offer is : <b>" + price + " ฿</b><br>You won't be able to revert this!",
+            title: 'คุณแน่ใจหรือไม่?',
+            html: "ราคาเสนอของคุณคือ : <b>" + price + " ฿</b><br>คุณจะไม่สามารถย้อนกลับการกระทำนี้ได้!",
             icon: 'warning',
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: "Yes, that's correct.",
+            confirmButtonText: "ใช่, ถูกต้อง",
             showCancelButton: true,
             heightAuto: false
         }).then((result) => {
@@ -485,14 +485,14 @@ $(document).ready(function () {
         console.log(Method);
         // console.log(formUrl);
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'คุณแน่ใจใช่หรือไม่?',
+            text: "คุณจะไม่สามารถย้อนกลับสิ่งนี้ได้!",
             icon: 'warning',
             showCancelButton: true,
             heightAuto: false,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, upload now!'
+            confirmButtonText: 'ใช่, อัปโหลดตอนนี้!'
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
@@ -544,14 +544,14 @@ $(document).ready(function () {
 
 
         Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            title: 'คุณแน่ใจใช่หรือไม่?',
+            text: "คุณจะไม่สามารถย้อนกลับสิ่งนี้ได้!",
             icon: 'warning',
             showCancelButton: true,
             heightAuto: false,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, upload now!'
+            confirmButtonText: 'ใช่, อัปโหลดตอนนี้!'
         }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({

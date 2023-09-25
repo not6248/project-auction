@@ -50,7 +50,7 @@ if (isset($_POST) && isset($_SESSION['user_login'])) {
         $result2 = mysqli_query($conn, $sql2);
 
         if ($result2) {
-            echoJson_status_msg("success","Upload img success");
+            echoJson_status_msg("success","อัปโหลดรูปภาพสำเร็จ");
         }
     }
 }
