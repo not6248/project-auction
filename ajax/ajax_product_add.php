@@ -61,13 +61,11 @@ if (isset($_POST) && $_SESSION['user_type'] == 2) {
                     if (move_uploaded_file($subImageTmpNames[$key], $target . $subImageNewName)) {
                         $uploaded_filenames[] = $subImageNewName;
                     } else {
-                        echoJson_status_msg("error", "Error uploading sub image $subImageName");
+                        echoJson_status_msg("error", "อัปโหลด รูปภาพรอง มีข้อผิดพลาด $subImageName");
                     }
                 } else {
-                    echoJson_status_msg("error", "อัปโหลด รูปภาพรอง มีข้อผิดพลาด $subImageName");
+                    echoJson_status_msg("error", "ประเภทไฟล์ รูปภาพรอง ไม่ถูกต้อง <ins><b>$subImageName</b></ins> <br> กรุณาใช้เป็น <b>jpeg , jpg , png.</b>");
                 }
-            } else {
-                echoJson_status_msg("error", "ประเภทไฟล์ รูปภาพรอง ไม่ถูกต้อง <ins><b>$subImageName</b></ins> <br> กรุณาใช้เป็น <b>jpeg , jpg , png.</b>");
             }
         }
 

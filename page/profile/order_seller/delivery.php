@@ -41,17 +41,17 @@ $detail = json_decode($row['order_details'], true);
                                         </div>
                                         <div class="row justify-content-between">
 
-                                            <div class="order-tracking <?= $pay_status >= 1 && $dlv_status >= 0 ? "completed" : "" ?> ">
+                                            <div class="order-tracking <?= $pay_status >= 0 && $dlv_status >= 0 ? "completed" : "" ?> ">
                                                 <span class="is-complete"></span>
-                                                <p class="mt-4"><i class="fa-solid fa-clipboard-list fa-lg"></i> ออเดอร์ที่กำลังดำเนินการ</p>
+                                                <p class="mt-4"><i class="fa-solid fa-clipboard-list fa-lg"></i> มีคำสั่งซื้อ</p>
                                             </div>
                                             <div class="order-tracking <?= $pay_status >= 2 && $dlv_status >= 1 ? "completed" : "" ?>">
                                                 <span class="is-complete "></span>
-                                                <p class="mt-4"><i class="fa-solid fa-box-open fa-lg"></i> ออเดอร์ที่จัดส่งแล้ว</p>
+                                                <p class="mt-4"><i class="fa-solid fa-box-open fa-lg"></i> คำสั่งซื้อที่ได้ทำการจัดส่งแล้ว</p>
                                             </div>
                                             <div class="order-tracking <?= $pay_status >= 3 && $dlv_status >= 2 ? "completed" : "" ?>">
                                                 <span class="is-complete"></span>
-                                                <p class="mt-4"><i class="fa-solid fa-house"></i> ออเดอร์ที่ส่งถึงแล้ว</p>
+                                                <p class="mt-4"><i class="fa-solid fa-house"></i> ฉันได้ตรวจสอบและ<br>ยอมรับสินค้า</p>
                                             </div>
                                         </div>
                                     </div>
@@ -136,8 +136,11 @@ $detail = json_decode($row['order_details'], true);
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 px-4">
                 <div class="text-end">
-                    <small id="emailHelp" class="form-text text-muted me-2">ใช้สำหรับกรอกหมายเลขพัสดุ เมื่อทำการส่งสินค้าแล้ว.</small>
-                    <button <?= $pay_status >= 3 && $dlv_status >= 1 ? "disabled" : "" ?> class=" btn btn-primary me-2" type="submit" aria-describedby="emailHelp" data-bs-toggle="modal" data-bs-target="#tk_modal">กรอกเลขพัสดุ</button>
+                    <!-- <button <?php //$pay_status == 3 && $dlv_status >= 1 ? "disabled" : "" ?> class=" btn btn-primary me-2" type="submit" aria-describedby="emailHelp" data-bs-toggle="modal" data-bs-target="#tk_modal">กรอกเลขพัสดุ</button> -->
+                    <?php if(!$pay_status >= 3 && !$dlv_status != 0) : ?>
+                        <small id="emailHelp" class="form-text text-muted me-2">ใช้สำหรับกรอกหมายเลขพัสดุ เมื่อทำการส่งสินค้าแล้ว.</small>
+                    <button class=" btn btn-primary me-2" type="submit" aria-describedby="emailHelp" data-bs-toggle="modal" data-bs-target="#tk_modal">กรอกเลขพัสดุ</button>
+                    <?php endif ?>
                 </div>
                 <?php include 'page/profile/order_seller/tk_modal.php' ?>
             </div>

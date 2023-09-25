@@ -2,7 +2,7 @@
 // $sql = "SELECT l.*,p.* FROM last_user_bid AS l INNER JOIN product AS p ON l.order_id = p.pd_id WHERE l.latest_bidder = " . $_SESSION['user_login'];
 $user_login = $_SESSION['user_login'];
 $pd_id = $_GET['order_id'];
-$sql = "SELECT l.*,p.*,o.end_price,pay.pay_status,d.dlv_status,d.dlv_code,dt.dlvt_name FROM last_user_bid AS l 
+$sql = "SELECT l.*,p.*,o.end_price,o.order_details,pay.pay_status,d.dlv_status,d.dlv_code,dt.dlvt_name FROM last_user_bid AS l 
 INNER JOIN product AS p ON l.order_id = p.pd_id 
 INNER JOIN order_tb AS o ON o.order_id = p.pd_id
 LEFT JOIN payment AS pay ON pay.pay_id = p.pd_id
@@ -10,20 +10,22 @@ LEFT JOIN delivery AS d ON d.dlv_id = p.pd_id
 LEFT JOIN delivery_type AS dt ON dt.dlvt_id = d.dlvt_id
 WHERE o.order_status >= 3 AND $user_login AND p.pd_id = $pd_id";
 
-$sql2 = "SELECT * FROM last_user_bid lub
-INNER JOIN login l ON l.user_id = lub.latest_bidder
-INNER JOIN user_detail ud ON ud.user_id = l.user_id
-WHERE lub.order_id = $pd_id";
+// $sql2 = "SELECT * FROM last_user_bid lub
+// INNER JOIN login l ON l.user_id = lub.latest_bidder
+// INNER JOIN user_detail ud ON ud.user_id = l.user_id
+// WHERE lub.order_id = $pd_id";
+
+// $result2 = mysqli_query($conn, $sql2);
+// $row2 = mysqli_fetch_assoc($result2);
+
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
-
-$result2 = mysqli_query($conn, $sql2);
-$row2 = mysqli_fetch_assoc($result2);
 
 $pay_status = $row['pay_status'] ?? "0";
 $dlv_status = $row['dlv_status'] ?? "0";
 $dlv_code = $row['dlv_code'] ?? "---";
 $dlvt_name = $row['dlvt_name'] ?? "---";
+$detail = json_decode($row['order_details'], true);
 ?>
 <div class="card" style="background: rgb(236,238,249);box-shadow: 0px 4px 4px rgba(33,37,41,0.25);">
     <div class="card-body">
@@ -76,21 +78,37 @@ $dlvt_name = $row['dlvt_name'] ?? "---";
                             <div class="card card-stepper text-black">
                                 <div class="card-body p-5 pt-4">
                                     <div class="row">
-                                        <div class="col-4">
+                                        <div class="col-5">
                                             <div class="card">
                                                 <div class="card-body">
-                                                    <h6 class="card-title">ที่อยู่ในการจัดส่ง</h6>
-                                                    <h6 class="card-subtitle mt-3 text-body-secondary"><?=$row2['ud_fname']?> <?=$row2['ud_lname']?></h6>
-                                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                                    <h5 class="card-title">ที่อยู่ในการจัดส่ง</h5>
+                                                    <h6 class="card-subtitle mt-2"><?= $detail[0]['bidder_fname'] ?> <?= $detail[0]['bidder_lname'] ?></h6>
+                                                    <p class="card-text mb-0 text-body-secondary"><?= $detail[0]['bidder_phone'] ?></p>
+                                                    <p class="card-text text-body-secondary"><?= $detail[0]['bidder_address'] ?></p>
                                                 </div>
                                             </div>
+                                            <?php if ($pay_status >= 3 && $dlv_status >= 2) : ?>
+                                                <div class="card mt-3">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">สถานะ : สำเร็จแล้ว</h4>
+                                                    </div>
+                                                </div>
+                                            <?php endif ?>
                                         </div>
-                                        <div class="col-8">
+                                        <div class="col-7">
                                             <table class="table text-end table-bordered ">
                                                 <tbody>
                                                     <tr>
-                                                        <td class="w-50">Otto</td>
-                                                        <td class="w-25">@mdo</td>
+                                                        <td class="w-50">รวมค่าสินค้า</td>
+                                                        <td class="w-25"><?= $row['end_price'] ?>฿</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="w-50">ค่าจัดส่ง</td>
+                                                        <td class="w-25">0฿</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="w-50">รวมการสั่งซื้อ</td>
+                                                        <td class="w-25"><span class=" text-primary "><?= $row['end_price'] ?>฿</span></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
