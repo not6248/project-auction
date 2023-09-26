@@ -77,17 +77,23 @@ $(document).ready(function() {
 $(document).ready(function () {
     $("#price-offer").on("input", function () {
         let userInput = $(this).val();
-                
+        let price_now = $("#price-now").text();
+        console.log(price_now);   
         // แปลงค่าที่รับมาเป็นตัวเลขและคูณด้วย 10
         if(userInput.length > 0){
             let result = parseFloat(userInput) * 10;
-            $("#x10-price-offer").text(result);
+            let sum = parseFloat(price_now) + result;
+            let useFormatsum = sum.toLocaleString("en-US");
+            let useFormat = result.toLocaleString("en-US");
+            $("#x10-price-offer").text(useFormat);
+            $("#price-if-you-win").text(useFormatsum+" ฿");
         }else{
             $("#x10-price-offer").text("--");
+            $("#price-if-you-win").text("");
         }
         
         
-        // แสดงผลลัพธ์ใน span ที่มี id="x10-price-offer"
+        // แสดงผลลัพธ์ใน span ที่มี id="x10-price-offer  "
         
     });
 });

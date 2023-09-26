@@ -21,9 +21,9 @@
                 <input name="price-offer"  id="price-offer" type="number" class="form-control pe-1 text-end" min="1" max="1000" required aria-label="THB amount" onInput="this.value = this.value.slice(0, 4)" onkeydown="return event.keyCode !== 69">
                 <span class="input-group-text px-1">0</span><span class="input-group-text px-1">฿</span>
               </div>
-              <p class="fs-5 mb-0 mt-2">Offer price at : <span class=" fw-bold " id="x10-price-offer">--</span> ฿</p>
+              <p class="fs-5 mb-0 mt-2">เสนอราคาที่ : <span class=" fw-bold " id="x10-price-offer">--</span> ฿</p>
               <p class="fs-5 mb-0">หากคุณชนะ ราคาที่ชำระคือ</p>
-              <p id="price-if-you-win" class="fs-5 mb-0">10000</p>
+              <p id="price-if-you-win" class="fs-5 mb-0"></p>
               <p></p>
           </div>
         </div>
@@ -32,6 +32,7 @@
         </div>
       </div>
       <div class="modal-footer align-items-stretch  gap-2 pb-3 border-top-0">
+       
         <button type="submit" class="btn btn-lg btn-primary flex-grow-1"><i class="fa-solid fa-gavel"></i> ประมูล</button>
         <button type="button" class="btn btn-lg btn-danger  flex-grow-1" data-bs-dismiss="modal">ปิด</button>
       </div>

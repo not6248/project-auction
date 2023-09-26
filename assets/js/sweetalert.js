@@ -460,14 +460,15 @@ $(document).ready(function () {
         let pd_id = $(this).data("pd-id");
         let pd_price_chack = $(this).data("pd-price-chack");
         let formData = $(this).serialize();
-        console.log(pd_id);
-        console.log(formData);
+        // console.log(pd_id);
+        // console.log(formData);
         let priceOfferValue = $(this).find('[name="price-offer"]').val();
         let price = priceOfferValue * 10;
+        let useFormat = price.toLocaleString("en-US");
 
         Swal.fire({
             title: 'คุณแน่ใจหรือไม่?',
-            html: "ราคาเสนอของคุณคือ : <b>" + price + " ฿</b><br>คุณจะไม่สามารถย้อนกลับการกระทำนี้ได้!",
+            html: "ราคาเสนอของคุณคือ : <b>" + useFormat + " ฿</b><br>คุณจะไม่สามารถย้อนกลับการกระทำนี้ได้!",
             icon: 'warning',
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
