@@ -5,7 +5,7 @@ $result1 = mysqli_query($conn, $sql1);
 $sql2 = "SELECT * FROM payment INNER JOIN bank USING(bank_id) WHERE pay_status = 2;"; 
 $result2 = mysqli_query($conn, $sql2);
 
-$sql3 = "SELECT * FROM payment INNER JOIN bank USING(bank_id) WHERE pay_status = 3;"; 
+$sql3 = "SELECT * FROM payment INNER JOIN bank USING(bank_id) WHERE pay_status >= 3;"; 
 $result3 = mysqli_query($conn, $sql3);
 ?>
 
