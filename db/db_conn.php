@@ -1,8 +1,8 @@
 <?php 
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "auction_pmn";
+$username = "zdmtyqaz_A01";
+$password = "12345";
+$dbname = "zdmtyqaz_A01";
 
 $conn = mysqli_connect($servername,$username,$password,$dbname);
 
