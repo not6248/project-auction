@@ -6,6 +6,7 @@
 <body style="background: rgb(255,255,255);" class="d-flex flex-column h-100">
     <?php include './includes/navbar.php'; ?> <!-- mavbar -->
 
+
     <?php
     $page = $_GET['page'] ?? "";
     $function = $_GET['function'] ?? "";

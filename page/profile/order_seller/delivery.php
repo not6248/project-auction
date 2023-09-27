@@ -137,7 +137,7 @@ $detail = json_decode($row['order_details'], true);
             <div class="col-12 px-4">
                 <div class="text-end">
                     <!-- <button <?php //$pay_status == 3 && $dlv_status >= 1 ? "disabled" : "" ?> class=" btn btn-primary me-2" type="submit" aria-describedby="emailHelp" data-bs-toggle="modal" data-bs-target="#tk_modal">กรอกเลขพัสดุ</button> -->
-                    <?php if(!$pay_status >= 3 && !$dlv_status != 0) : ?>
+                    <?php if($pay_status == 3 && $dlv_status == 0) : ?>
                         <small id="emailHelp" class="form-text text-muted me-2">ใช้สำหรับกรอกหมายเลขพัสดุ เมื่อทำการส่งสินค้าแล้ว.</small>
                     <button class=" btn btn-primary me-2" type="submit" aria-describedby="emailHelp" data-bs-toggle="modal" data-bs-target="#tk_modal">กรอกเลขพัสดุ</button>
                     <?php endif ?>
