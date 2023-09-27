@@ -7,16 +7,20 @@ if (isset($_POST['admin_login'])) {
     $password = $_POST['password'];
 
     if (empty($email)) {
-        $_SESSION['error'] = 'กรุณากรอกอีเมล';
+        echo_js_alert("กรุณากรอกอีเมล","back");
+        // $_SESSION['error'] = 'กรุณากรอกอีเมล';
         header("location: login.php");
     } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $_SESSION['error'] = 'รูปแบบอีเมลไม่ถูกต้อง';
+        echo_js_alert("รูปแบบอีเมลไม่ถูกต้อง","back");
+        // $_SESSION['error'] = 'รูปแบบอีเมลไม่ถูกต้อง';
         header("location: login.php");
     } else if (empty($password)) {
-        $_SESSION['error'] = 'กรุณากรอกรหัสผ่าน';
+        echo_js_alert("กรุณากรอกรหัสผ่าน","back");
+        // $_SESSION['error'] = 'กรุณากรอกรหัสผ่าน';
         header("location: login.php");
     } else if (strlen($_POST['password']) > 20 || strlen($_POST['password']) < 5) {
-        $_SESSION['error'] = 'รหัสผ่านต้องอยู่ระว่าง 5 - 20 ตัวอักษร';
+        echo_js_alert("รหัสผ่านต้องอยู่ระว่าง 5 - 20 ตัวอักษร","back");
+        // $_SESSION['error'] = 'รหัสผ่านต้องอยู่ระว่าง 5 - 20 ตัวอักษร';
         header("location: login.php");
     } else {
 
@@ -26,11 +30,12 @@ if (isset($_POST['admin_login'])) {
         if (mysqli_num_rows($result) == 1) {
             $row = mysqli_fetch_assoc($result);
             $_SESSION['admin_login'] = $row['user_id'];
-            header("location: index.php");
             echo "<script>console.log('Login สำเร็จ');</script>";
+            header("location: index.php");
         } else {
+            echo "dwa";
             echo "<script>alert('Email หรือ รหัสไม่ถูก')</script>";
-            Header('Refresh:0; login.php');
+            // Header('Refresh:0; login.php');
         }
     }
 }
