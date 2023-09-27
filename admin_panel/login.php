@@ -41,7 +41,7 @@
             </div>
         </div>
     </section>
-    <h5>
+    <!-- <h5>
         <p>===========================</p>
         <p>email : admin@admin.com</p>
         <p>password : admin0000</p>
@@ -50,8 +50,8 @@
         <p>username : admin</p>
         <p>firstname : admin</p>
         <p>user_type : 1</p>
-    </h5>
-    <a class="btn btn-primary" href="../index.php">Back to test page</a>
+    </h5> -->
+    <!-- <a class="btn btn-primary" href="../index.php">Back to test page</a> -->
     <?php include 'includes/scripts.php'; ?>
 </body>
 
