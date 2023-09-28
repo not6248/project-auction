@@ -1,6 +1,11 @@
 <?php
 $pay_id = $_GET['pay_id'];
-$sql = "SELECT * FROM payment INNER JOIN bank USING(bank_id) WHERE pay_id = $pay_id";
+$sql = "SELECT payment.*,bank.*,order_tb.end_price,user_detail.ud_fname,user_detail.ud_lname FROM payment 
+INNER JOIN bank USING(bank_id)
+INNER JOIN order_tb USING(order_id)
+INNER JOIN last_user_bid USING(order_id)
+INNER JOIN user_detail ON last_user_bid.latest_bidder = user_detail.user_id
+WHERE pay_id = $pay_id";
 $result = mysqli_query($conn, $sql);
 $data = mysqli_fetch_assoc($result);
 ?>
@@ -58,31 +63,31 @@ if (isset($_POST['complete'])) {
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#pay_id</th>
-                                        <th scope="col">bank</th>
-                                        <th scope="col">order_id</th>
-                                        <th scope="col">pay_slip</th>
-                                        <th scope="col">pay_status</th>
+                                        <th scope="col">#OrderID</th>
+                                        <th scope="col">ชื่อผู้ซื้อ</th>
+                                        <th scope="col">ธนาคาร</th>
+                                        <th scope="col">จำนวนเงิน</th>
+                                        <th scope="col">สถานะ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($result as $row) : ?>
-                                    <tr>
-                                        <th scope="row"><?= $row['pay_id'] ?></th>
-                                        <td><?= $row['bank_name'] ?></td>
-                                        <td><?= $row['order_id'] ?></td>
-                                        <td><?= $row['pay_slip'] ?></td>
-                                        <td><?= $row['pay_status'] ?></td>
+                                        <tr>
+                                            <th scope="row"><?= $row['pay_id'] ?></th>
+                                            <td><?= $row['ud_fname'] . " " . $row['ud_lname'] ?></td>
+                                            <td><?= $row['bank_name'] ?></td>
+                                            <td><?= number_format($row['end_price'], 0) ?></td>
+                                            <td><?= $pay_status_arr[$row['pay_status']] ?></td>
                                         <?php endforeach ?>
-                                    </tr>
+                                        </tr>
                                 </tbody>
                             </table>
                             <div class="d-flex justify-content-end mt-3">
-                                <?php if($row['pay_status'] == 1) : ?>
-                                <form action="" method="post">
-                                    <button type="submit" name="complete" class="btn btn-success" onclick="return confirm('คุณต้องการยืนยันตัวเลือกนี้หรือไม่หรือไม่')">ยืนยัน</button>
-                                    <button type="submit" name="incomplete" class="btn btn-danger" onclick="return confirm('คุณต้องการยืนยัน รูปภาพไม่สมบูรณ์ หรือไม่หรือไม่')">รูปภาพไม่สมบูรณ์</button>
-                                </form>
+                                <?php if ($row['pay_status'] == 1) : ?>
+                                    <form action="" method="post">
+                                        <button type="submit" name="complete" class="btn btn-success" onclick="return confirm('คุณต้องการยืนยันตัวเลือกนี้หรือไม่หรือไม่')">ยืนยัน</button>
+                                        <button type="submit" name="incomplete" class="btn btn-danger" onclick="return confirm('คุณต้องการยืนยัน รูปภาพไม่สมบูรณ์ หรือไม่หรือไม่')">รูปภาพไม่สมบูรณ์</button>
+                                    </form>
                                 <?php endif ?>
                             </div>
                         </div>
