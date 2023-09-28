@@ -1,11 +1,11 @@
 <?php
-$sql1 = "SELECT * FROM user_detail WHERE ud_id_card IS NULL AND ud_idcard_img IS NOT NULL;";
+$sql1 = "SELECT * FROM login INNER JOIN user_detail USING(user_id) WHERE ud_id_card IS NULL AND ud_idcard_img IS NOT NULL;";
 $result1 = mysqli_query($conn, $sql1);
 
-$sql2 = "SELECT * FROM user_detail WHERE ud_id_card = 0;";
+$sql2 = "SELECT * FROM login INNER JOIN user_detail USING(user_id) WHERE ud_id_card = 0;";
 $result2 = mysqli_query($conn, $sql2);
 
-$sql3 = "SELECT ud.* FROM user_detail ud INNER JOIN login l USING(user_id) WHERE ud_id_card != 0 AND l.user_type = 2;";
+$sql3 = "SELECT * FROM login l INNER JOIN user_detail ud USING(user_id) WHERE ud.ud_id_card != 0 AND l.user_type = 2;";
 $result3 = mysqli_query($conn, $sql3);
 ?>
 
@@ -16,7 +16,7 @@ $result3 = mysqli_query($conn, $sql3);
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">ยืนยันสลีปชำระเงิน</h1>
+          <h1 class="m-0">ยืนยันบัตรประชาชน</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -43,22 +43,22 @@ $result3 = mysqli_query($conn, $sql3);
                 <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th scope="col">#user_id</th>
-                      <th scope="col">bank</th>
-                      <th scope="col">order_id</th>
-                      <th scope="col">pay_slip</th>
-                      <th scope="col">pay_status</th>
-                      <th scope="col">menu</th>
+                      <th scope="col">#userID</th>
+                      <th scope="col">Username</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">ชื่อ-นามสกุล</th>
+                      <th scope="col">สถานะ</th>
+                      <th scope="col">เมนู</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php foreach ($result1 as $row) : ?>
                       <tr>
                         <th scope="row"><?= $row['user_id'] ?></th>
-                        <td><?= $row['user_id'] ?></td>
-                        <td><?= $row['user_id'] ?></td>
-                        <td><?= $row['user_id'] ?></td>
-                        <td><?= $row['user_id'] ?></td>
+                        <td><?= $row['username'] ?></td>
+                        <td><?= $row['user_email'] ?></td>
+                        <td><?= $row['ud_fname'] . " " . $row['ud_lname'] ?></td>
+                        <td>รอการตรวจสอบ</td>
                         <td>
                           <a href="?page=<?= $_GET['page'] ?>&function=detail&user_id=<?= $row['user_id'] ?>" class="btn btn-info" role="button" aria-disabled="true">รายละเอียด</a>
                         </td>
@@ -83,20 +83,20 @@ $result3 = mysqli_query($conn, $sql3);
                 <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th scope="col">#user_id</th>
-                      <th scope="col">bank</th>
-                      <th scope="col">pay_status</th>
-                      <th scope="col">menu</th>
+                      <th scope="col">#userID</th>
+                      <th scope="col">Username</th>
+                      <th scope="col">ชื่อ-นามสกุล</th>
+                      <th scope="col">เมนู</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php foreach ($result2 as $row) : ?>
                       <tr>
                         <th scope="row"><?= $row['user_id'] ?></th>
-                        <td><?= $row['user_id'] ?></td>
-                        <td><?= $row['user_id'] ?></td>
+                        <td><?= $row['username'] ?></td>
+                        <td><?= $row['ud_fname'] . " " . $row['ud_lname'] ?></td>
                         <td>
-                        <a href="?page=<?= $_GET['page'] ?>&function=detail&user_id=<?= $row['user_id'] ?>" class="btn btn-info" role="button" aria-disabled="true"><i class="fa-solid fa-info"></i></a>
+                          <a href="?page=<?= $_GET['page'] ?>&function=detail&user_id=<?= $row['user_id'] ?>" class="btn btn-info" role="button" aria-disabled="true"><i class="fa-solid fa-info"></i></a>
                         </td>
                       </tr>
                     <?php endforeach ?>
@@ -116,20 +116,22 @@ $result3 = mysqli_query($conn, $sql3);
                 <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th scope="col">#user_id</th>
-                      <th scope="col">bank</th>
-                      <th scope="col">pay_status</th>
-                      <th scope="col">menu</th>
+                      <th scope="col">#userID</th>
+                      <th scope="col">Username</th>
+                      <th scope="col">ชื่อ-นามสกุล</th>
+                      <th scope="col">สถานะ</th>
+                      <th scope="col">เมนู</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php foreach ($result3 as $row) : ?>
                       <tr>
                         <th scope="row"><?= $row['user_id'] ?></th>
-                        <td><?= $row['user_id'] ?></td>
-                        <td><?= $row['user_id'] ?></td>
+                        <td><?= $row['username'] ?></td>
+                        <td><?= $row['ud_fname'] . " " . $row['ud_lname'] ?></td>
+                        <td>ยืนยันแล้ว <i class="fa-regular fa-circle-check"></i></td>
                         <td>
-                        <a href="?page=<?= $_GET['page'] ?>&function=detail&user_id=<?= $row['user_id'] ?>" class="btn btn-info" role="button" aria-disabled="true"><i class="fa-solid fa-info"></i></a>
+                          <a href="?page=<?= $_GET['page'] ?>&function=detail&user_id=<?= $row['user_id'] ?>" class="btn btn-info" role="button" aria-disabled="true"><i class="fa-solid fa-info"></i></a>
                         </td>
                       </tr>
                     <?php endforeach ?>

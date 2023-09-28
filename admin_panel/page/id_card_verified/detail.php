@@ -39,7 +39,7 @@ if (isset($_POST['complete'])) {
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">ยืนยันสลีปชำระเงิน</h1>
+                    <h1 class="m-0">ยืนยันบัตรประชาชน</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -62,25 +62,32 @@ if (isset($_POST['complete'])) {
                             <h3 class="card-title">ตาราง</h3>
                         </div>
                         <div class="card-body">
-                            <img width="940" height="1820" class="w-25 h-auto mb-5" src="../upload/id_card/<?= $data['ud_idcard_img'] ?>" alt="no_img">
+                            <img width="940" height="1820" class="w-25 h-auto mb-5" src="../upload/id_card/<?= $data['ud_idcard_img'] ?>" alt="ภาพบัตรประชาชน">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#user_id</th>
-                                        <th scope="col">bank</th>
-                                        <th scope="col">order_id</th>
-                                        <th scope="col">pay_slip</th>
-                                        <th scope="col">pay_status</th>
+                                        <th scope="col">#userID</th>
+                                        <th scope="col">Username</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">ชื่อ-นามสกุล</th>
+                                        <th scope="col">สถานะ</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($result as $row) : ?>
                                         <tr>
                                             <th scope="row"><?= $row['user_id'] ?></th>
-                                            <td><?= $row['user_id'] ?></td>
-                                            <td><?= $row['user_id'] ?></td>
-                                            <td><?= $row['user_id'] ?></td>
-                                            <td><?= $row['user_id'] ?></td>
+                                            <td><?= $row['username'] ?></td>
+                                            <td><?= $row['user_email'] ?></td>
+                                            <td><?= $row['ud_fname'] . " " . $row['ud_lname'] ?></td>
+                                            <td><?php if(is_null($row['ud_id_card']) && !empty($row['ud_idcard_img'])){
+                                                echo "รอการตรวจสอบ";
+                                            }elseif($row['ud_id_card'] == 0){
+                                                echo 'รูปภาพไม่สมบูรณ์ <i class="fa-regular fa-circle-xmark"></i>';
+                                            }elseif($row['ud_id_card'] != 0 && $row['user_type'] == 2){
+                                                echo 'ยืนยันแล้ว <i class="fa-regular fa-circle-check"></i>';
+                                            }
+                                            ?></td>
                                         <?php endforeach ?>
                                         </tr>
                                 </tbody>

@@ -61,7 +61,15 @@
         break;
         // ====================================================================================================
       case 'prefix':
+        if($function == 'add'){
+          include './page/prefix/insert.php';
+        }elseif($function == 'delete'){
+          include './page/prefix/delete.php';
+        }elseif($function == 'update'){
+          include './page/prefix/edit.php';
+        }else{
         include './page/prefix/index.php';
+        }
         break;
         // ====================================================================================================
       case 'product_type':

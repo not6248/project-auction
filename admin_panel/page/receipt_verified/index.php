@@ -1,11 +1,26 @@
 <?php
-$sql1 = "SELECT * FROM payment INNER JOIN bank USING(bank_id) WHERE pay_status = 1;"; 
+$sql1 = "SELECT payment.*,bank.*,order_tb.end_price,user_detail.ud_fname,user_detail.ud_lname FROM payment 
+INNER JOIN bank USING(bank_id)
+INNER JOIN order_tb USING(order_id)
+INNER JOIN last_user_bid USING(order_id)
+INNER JOIN user_detail ON last_user_bid.latest_bidder = user_detail.user_id
+WHERE pay_status = 1;";
 $result1 = mysqli_query($conn, $sql1);
 
-$sql2 = "SELECT * FROM payment INNER JOIN bank USING(bank_id) WHERE pay_status = 2;"; 
+$sql2 = "SELECT payment.*,bank.*,order_tb.end_price,user_detail.ud_fname,user_detail.ud_lname FROM payment 
+INNER JOIN bank USING(bank_id)
+INNER JOIN order_tb USING(order_id)
+INNER JOIN last_user_bid USING(order_id)
+INNER JOIN user_detail ON last_user_bid.latest_bidder = user_detail.user_id
+WHERE pay_status = 2;";
 $result2 = mysqli_query($conn, $sql2);
 
-$sql3 = "SELECT * FROM payment INNER JOIN bank USING(bank_id) WHERE pay_status >= 3;"; 
+$sql3 = "SELECT payment.*,bank.*,order_tb.end_price,user_detail.ud_fname,user_detail.ud_lname FROM payment 
+INNER JOIN bank USING(bank_id)
+INNER JOIN order_tb USING(order_id)
+INNER JOIN last_user_bid USING(order_id)
+INNER JOIN user_detail ON last_user_bid.latest_bidder = user_detail.user_id
+WHERE pay_status >= 3;";
 $result3 = mysqli_query($conn, $sql3);
 ?>
 
@@ -43,27 +58,27 @@ $result3 = mysqli_query($conn, $sql3);
                 <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th scope="col">#pay_id</th>
-                      <th scope="col">bank</th>
-                      <th scope="col">order_id</th>
-                      <th scope="col">pay_slip</th>
-                      <th scope="col">pay_status</th>
-                      <th scope="col">menu</th>
+                      <th scope="col">#OrderID</th>
+                      <th scope="col">ชื่อผู้ซื้อ</th>
+                      <th scope="col">ธนาคาร</th>
+                      <th scope="col">จำนวนเงิน</th>
+                      <th scope="col">สถานะ</th>
+                      <th scope="col">เมนู</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php foreach ($result1 as $row) : ?>
-                    <tr>
-                          <th scope="row"><?= $row['pay_id'] ?></th>
-                          <td><?= $row['bank_name'] ?></td>
-                          <td><?= $row['order_id'] ?></td>
-                          <td><?= $row['pay_slip'] ?></td>
-                          <td><?= $pay_status_arr[$row['pay_status']] ?></td>
-                          <td>
-                            <a href="?page=<?= $_GET['page'] ?>&function=detail&pay_id=<?= $row['pay_id'] ?>" class="btn btn-info" role="button" aria-disabled="true">รายละเอียด</a>
-                          </td>
-                        </tr>
-                        <?php endforeach ?>
+                      <tr>
+                        <th scope="row"><?= $row['pay_id'] ?></th>
+                        <td><?= $row['ud_fname']." ".$row['ud_lname'] ?></td>
+                        <td><?= $row['bank_name'] ?></td>
+                        <td><?= number_format($row['end_price'],0) ?></td>
+                        <td><?= $pay_status_arr[$row['pay_status']] ?></td>
+                        <td>
+                          <a href="?page=<?= $_GET['page'] ?>&function=detail&pay_id=<?= $row['pay_id'] ?>" class="btn btn-info" role="button" aria-disabled="true">รายละเอียด</a>
+                        </td>
+                      </tr>
+                    <?php endforeach ?>
                   </tbody>
                 </table>
               <?php else : ?>
@@ -79,27 +94,27 @@ $result3 = mysqli_query($conn, $sql3);
               <h3 class="card-title">ตาราง : สลิปไม่ถูกต้อง</h3>
             </div>
             <div class="card-body">
-            <?php if (mysqli_num_rows($result2) > 0) : ?>
+              <?php if (mysqli_num_rows($result2) > 0) : ?>
                 <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th scope="col">#pay_id</th>
+                      <th scope="col">#OrderID</th>
                       <th scope="col">bank</th>
-                      <th scope="col">pay_status</th>
-                      <th scope="col">menu</th>
+                      <th scope="col">สถานะ</th>
+                      <th scope="col">เมนู</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php foreach ($result2 as $row) : ?>
-                    <tr>
-                          <th scope="row"><?= $row['pay_id'] ?></th>
-                          <td><?= $row['bank_name'] ?></td>
-                          <td><?= $pay_status_arr[$row['pay_status']] ?>  <i class="fa-regular fa-circle-xmark"></i></td>
-                          <td>
+                      <tr>
+                        <th scope="row"><?= $row['pay_id'] ?></th>
+                        <td><?= $row['bank_name'] ?></td>
+                        <td><?= $pay_status_arr[$row['pay_status']] ?> <i class="fa-regular fa-circle-xmark"></i></td>
+                        <td>
                           <a href="?page=<?= $_GET['page'] ?>&function=detail&pay_id=<?= $row['pay_id'] ?>" class="btn btn-info" role="button" aria-disabled="true"><i class="fa-solid fa-info"></i></a>
-                          </td>
-                        </tr>
-                        <?php endforeach ?>
+                        </td>
+                      </tr>
+                    <?php endforeach ?>
                   </tbody>
                 </table>
               <?php else : ?>
@@ -112,27 +127,27 @@ $result3 = mysqli_query($conn, $sql3);
               <h3 class="card-title">ตาราง : ตรวจสอบเรียบร้อย</h3>
             </div>
             <div class="card-body">
-            <?php if (mysqli_num_rows($result3) > 0) : ?>
+              <?php if (mysqli_num_rows($result3) > 0) : ?>
                 <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th scope="col">#pay_id</th>
+                      <th scope="col">#OrderID</th>
                       <th scope="col">bank</th>
-                      <th scope="col">pay_status</th>
-                      <th scope="col">menu</th>
+                      <th scope="col">สถานะ</th>
+                      <th scope="col">เมนู</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php foreach ($result3 as $row) : ?>
-                    <tr>
-                          <th scope="row"><?= $row['pay_id'] ?></th>
-                          <td><?= $row['bank_name'] ?></td>
-                          <td><?= $pay_status_arr[$row['pay_status']] ?>  <i class="fa-regular fa-circle-check"></i></td>
-                          <td>
+                      <tr>
+                        <th scope="row"><?= $row['pay_id'] ?></th>
+                        <td><?= $row['bank_name'] ?></td>
+                        <td><?= $pay_status_arr[$row['pay_status']] ?> <i class="fa-regular fa-circle-check"></i></td>
+                        <td>
                           <a href="?page=<?= $_GET['page'] ?>&function=detail&pay_id=<?= $row['pay_id'] ?>" class="btn btn-info" role="button" aria-disabled="true"><i class="fa-solid fa-info"></i></a>
                         </td>
                       </tr>
-                      <?php endforeach ?>
+                    <?php endforeach ?>
                   </tbody>
                 </table>
               <?php else : ?>
