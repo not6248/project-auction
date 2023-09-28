@@ -64,7 +64,7 @@
                             ? '<span class="text-success">ยังไม่ยืนยัน</span>'
                             : '<span class="text-success">ยืนยันแล้ว</span>') ?></td>
                       <td>
-                        <!-- <a href="?page=<?= $_GET['page'] ?>&function=detail&user_id=<?= $data['user_id'] ?>" class="btn btn-info btn-sm">รายละเอียด</a> -->
+                        <a href="?page=<?= $_GET['page'] ?>&function=detail&user_id=<?= $data['user_id'] ?>" class="btn btn-info btn-sm">รายละเอียด</a>
                         <a href="?page=<?= $_GET['page'] ?>&function=update&user_id=<?= $data['user_id'] ?>" class="btn btn-warning btn-sm">แก้ไข</a>
                         <a href="?page=<?= $_GET['page'] ?>&function=delete&user_id=<?= $data['user_id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('คุณต้องการลบข้อมูลของ <?= $data['username'] ?> หรือไม่')">ลบ</a>
                       </td>
