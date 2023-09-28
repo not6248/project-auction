@@ -39,9 +39,9 @@ $result1 = mysqli_query($conn, $sql1);
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th scope="col">#pd_type_id</th>
-                      <th scope="col" class="w-75">pd_type_name</th>
-                      <th scope="col">menu</th>
+                      <th scope="col">#pdTypeID</th>
+                      <th scope="col" class="w-75">ชื่อประเภทสินค้า</th>
+                      <th scope="col">เมนู</th>
                     </tr>
                   </thead>
                   <tbody>
