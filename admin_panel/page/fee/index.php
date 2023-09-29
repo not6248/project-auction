@@ -67,9 +67,6 @@ $result = mysqli_query($conn, $sql);
               <?php else : ?>
                 <p class="text-center text-muted mt-3">ไม่มีพบข้อมูล</p>
               <?php endif ?>
-
-              <a href="#" class="card-link">Card link</a>
-              <a href="#" class="card-link">Another link</a>
             </div>
           </div>
 

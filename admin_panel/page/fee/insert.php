@@ -1,19 +1,18 @@
 <?php
-if (isset($_POST['add_prefix_name']) && !empty($_POST)) {
-  $prefix_name = $_POST['prefix_name'];
+if (isset($_POST['add_fee']) && !empty($_POST)) {
+  $fee_percent = $_POST['fee_percent'];
 
-  //check
-  if (!empty($prefix_name)) {
-    $sql1 = "SELECT * FROM prefix WHERE prefix_name = '$prefix_name'";
-    $query1 = mysqli_query($conn, $sql1); //prefix_name
-    $row_prefix_name = mysqli_num_rows($query1);
-    if ($row_prefix_name > 0) {
-      echo_js_alert('มีคำนำหน้านี้แล้ว', '?page=prefix&function=add');
+  if (!empty($fee_percent)) {
+    $sql1 = "SELECT * FROM fee WHERE fee_percent = '$fee_percent'";
+    $query1 = mysqli_query($conn, $sql1); //fee_percent
+    $row_fee_percent = mysqli_num_rows($query1);
+    if ($row_fee_percent > 0) {
+      echo_js_alert('มีค่าบริการนี้แล้ว', '?page=fee&function=add');
     } else {
-      $sql = "INSERT INTO prefix (prefix_name)
-              VALUES ('$prefix_name')";
+      $sql = "INSERT INTO fee (fee_percent)
+              VALUES ('$fee_percent')";
       if (mysqli_query($conn, $sql)) {
-        echo_js_alert('เพิ่มสำเร็จ', '?page=prefix');
+        echo_js_alert('เพิ่มสำเร็จ', '?page=fee');
       } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
       }
@@ -28,7 +27,7 @@ if (isset($_POST['add_prefix_name']) && !empty($_POST)) {
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">คำนำหน้า</h1>
+          <h1 class="m-0">ค่าบริการ</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -48,20 +47,20 @@ if (isset($_POST['add_prefix_name']) && !empty($_POST)) {
         <div class="col-lg-4">
           <div class="card card-success">
             <div class="card-header">
-              <h3 class="card-title">ฟอร์มสำหรับเพิ่มคำนำหน้า</h3>
+              <h3 class="card-title">ฟอร์มสำหรับเพิ่มค่าบริการ</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
               <!-- Start Form -->
               <form action="" method="POST">
                 <div class="form-group">
-                  <label>ชื่อคำนำหน้า</label>
-                  <input name="prefix_name" type="text" class="form-control" placeholder="ตัวอย่าง: นาย" value="<?php echo isset($_POST['protype_name']) && !empty($_POST['protype_name']) ? ($_POST['protype_name']) : ''; ?>" required="required">
+                  <label>ชื่อค่าบริการ</label>
+                  <input name="fee_percent" type="number" class="form-control" placeholder="ตัวอย่าง: 15" required="required">
                 </div>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
-              <button name="add_prefix_name" type="submit" class="btn btn-success">บันทึก</button>
+              <button name="add_fee" type="submit" class="btn btn-success">บันทึก</button>
               </form>
               <!-- Form End  -->
             </div>
