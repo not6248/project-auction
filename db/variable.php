@@ -37,8 +37,12 @@ $os_name_arr = [
     "4" => "ไม่มีผู้ประมูล", 
     "5" => "ลูกค้าไม่อัพโหลดสลีปตามเวลา", 
 ];
-//ข้อความสถานะต่างๆ
-$service_fee = 15;
+
+// ค่าบริการ
+$sqlfee = "SELECT fee_percent FROM `fee` WHERE fee_active = 1;";
+$resultfee = mysqli_query($conn, $sqlfee);
+$rowfee = mysqli_fetch_assoc($resultfee);
+$service_fee = $rowfee['fee_percent'];
 
 $bank_arr = [
     "0" => "ธนาคารกสิกรไทย",
