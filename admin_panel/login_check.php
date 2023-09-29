@@ -30,12 +30,11 @@ if (isset($_POST['admin_login'])) {
         if (mysqli_num_rows($result) == 1) {
             $row = mysqli_fetch_assoc($result);
             $_SESSION['admin_login'] = $row['user_id'];
-            echo "<script>console.log('Login สำเร็จ');</script>";
-            header("location: index.php");
+            $_SESSION['user_type'] = $row['user_type'];
+            echo_js_alert("เข้าสู่ระบบสำเร็จ","./");
         } else {
-            echo "dwa";
             echo "<script>alert('Email หรือ รหัสไม่ถูก')</script>";
-            // Header('Refresh:0; login.php');
+            Header('Refresh:0; login.php');
         }
     }
 }

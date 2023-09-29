@@ -62,7 +62,7 @@ $result1 = mysqli_query($conn, $sql1);
               <?php else : ?>
                 <p class="text-center text-muted mt-3">ไม่มีการชำระเงินที่ต้องยืนยันในขณะนี้</p>
               <?php endif ?>
-            </div>
+            </div> <!-- /.card-body -->
           </div>
         </div>
         <!-- /.col-md-6 -->
