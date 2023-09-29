@@ -1,41 +1,37 @@
 <?php
-$sql = "SELECT * FROM product_type WHERE pd_type_id = " . $_GET['pd_type_id'];
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
-?>
-<?php
-// ($_POST);
-if (isset($_POST) && !empty($_POST)) {
+if (isset($_POST['pd_type_name']) && !empty($_POST['pd_type_name'])) {
   $pd_type_name = $_POST['pd_type_name'];
   $pd_type_id = $_GET['pd_type_id'];
-  if (!empty($pd_type_name)) {
-    $sql_check = "SELECT * FROM product_type WHERE pd_type_name = '$pd_type_name' AND pd_type_id != '$pd_type_id'";
-    $query_check = mysqli_query($conn, $sql_check);
-    $row_check = mysqli_num_rows($query_check);
-    if ($row_check > 0) {
+
+  $sql_check = "SELECT * FROM product_type WHERE pd_type_name = '$pd_type_name' AND pd_type_id != '$pd_type_id'";
+  $query_check = mysqli_query($conn, $sql_check);
+  $row_check = mysqli_num_rows($query_check);
+
+  if ($row_check > 0) {
+    $alert = '<script>';
+    $alert .= 'alert("ชื่อประเภทสินค้าซ้ำ กรุณากรอกใหม่อีกครั้ง");';
+    $alert .= 'window.location.href = "?page=product_type&function=update&pd_type_id=' . $pd_type_id . '";';
+    $alert .= '</script>';
+    echo $alert;
+    exit();
+  } else {
+    $sql = "UPDATE product_type SET pd_type_name = '$pd_type_name' WHERE pd_type_id =" . $_GET['pd_type_id'];
+    if (mysqli_query($conn, $sql)) {
       $alert = '<script>';
-      $alert .= 'alert("ชื่อประเภทสินค้าซ้ำ กรุณากรอกใหม่อีกครั้ง");';
-      $alert .= 'window.location.href = "?page=product_type&function=update&pd_type_id=' . $pd_type_id . '";';
+      $alert .= 'alert("แก้ไขสำเร็จ");';
+      $alert .= 'window.location.href = "?page=' . $_GET['page'] . '";';
       $alert .= '</script>';
       echo $alert;
       exit();
     } else {
-      $sql = "UPDATE product_type SET pd_type_name = '$pd_type_name'
-            WHERE pd_type_id =" . $_GET['pd_type_id'];
-      if (mysqli_query($conn, $sql)) {
-        $alert = '<script>';
-        $alert .= 'alert("แก้ไขสำเร็จ");';
-        $alert .= 'window.location.href = "?page=' . $_GET['page'] . '";';
-        $alert .= '</script>';
-        echo $alert;
-        exit();
-      } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-      }
-      mysqli_close($conn);
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
   }
 }
+
+$sql = "SELECT * FROM product_type WHERE pd_type_id = " . $_GET['pd_type_id'];
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
 ?>
 
 <div class="content-wrapper">
