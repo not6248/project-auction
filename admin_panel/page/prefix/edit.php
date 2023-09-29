@@ -45,7 +45,7 @@ if (isset($_POST['edit_prefix_name']) && !empty($_POST)) {
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">ธนาคาร</h1>
+          <h1 class="m-0">คำนำหน้า</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -65,12 +65,12 @@ if (isset($_POST['edit_prefix_name']) && !empty($_POST)) {
         <div class="col-lg-4">
           <div class="card card-warning">
             <div class="card-header">
-              <h3 class="card-title">ฟอร์มสำหรับแก้ไขธนาคาร</h3>
+              <h3 class="card-title">ฟอร์มสำหรับแก้ไขคำนำหน้า</h3>
             </div>
             <div class="card-body">
               <form action="" method="POST">
                 <div class="form-group">
-                  <label>ชื่อธนาคาร</label>
+                  <label>ชื่อคำนำหน้า</label>
                   <input name="prefix_name" type="text" class="form-control" placeholder="ตัวอย่าง: kerry" value="<?= $row['prefix_name'] ?>" required="required">
                 </div>
                 <!-- /.card-body -->
