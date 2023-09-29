@@ -2,9 +2,11 @@
 // $sql = "SELECT l.*,p.* FROM last_user_bid AS l INNER JOIN product AS p ON l.order_id = p.pd_id WHERE l.latest_bidder = " . $_SESSION['user_login'];
 $user_login = $_SESSION['user_login'];
 $pd_id = $_GET['order_id'];
-$sql = "SELECT l.*,p.*,o.end_price,o.order_details,pay.pay_status,d.dlv_status,d.dlv_code,dt.dlvt_name FROM last_user_bid AS l 
-INNER JOIN product AS p ON l.order_id = p.pd_id 
+$sql = "SELECT last.*,p.*,o.end_price,o.order_details,pay.pay_status,d.dlv_status,d.dlv_code,dt.dlvt_name,ud.ud_phone,l.user_email FROM last_user_bid AS last 
+INNER JOIN product AS p ON last.order_id = p.pd_id 
 INNER JOIN order_tb AS o ON o.order_id = p.pd_id
+INNER JOIN login AS l ON l.user_id = p.user_id
+INNER JOIN user_detail AS ud ON ud.user_id = l.user_id
 LEFT JOIN payment AS pay ON pay.pay_id = p.pd_id
 LEFT JOIN delivery AS d ON d.dlv_id = p.pd_id
 LEFT JOIN delivery_type AS dt ON dt.dlvt_id = d.dlvt_id
@@ -132,8 +134,12 @@ $detail = json_decode($row['order_details'], true);
                             <small id="emailHelp" class="form-text text-muted me-2">ใช้กดยอมรับสินค้า เมื่อได้รับสินค้าแล้ว.</small>
                             <input type="hidden" name="accept_id" value="<?= $_GET['order_id'] ?>">
                             <button name="accept" type="submit" class=" btn btn-primary me-2">ได้รับสินค้าแล้ว</button>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#seller_contact">
+                                ติดต่อผู้ขาย
+                            </button>
                         </form>
                     </div>
+                    <?php include 'page/profile/order_bidder/seller_contact.php'?>
                 <?php endif ?>
             </div>
         </div>

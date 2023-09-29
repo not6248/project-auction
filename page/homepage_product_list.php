@@ -78,5 +78,5 @@ $query_product = mysqli_query($conn, $sql);
         </script>
     <?php endforeach ?>
 <?php else : ?>
-    <p>No products found for this product type.</p>
+    <p>ไม่พบสินค้า</p>
 <?php endif ?>

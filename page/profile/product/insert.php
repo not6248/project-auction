@@ -102,6 +102,9 @@ if(is_null($row_bank_detail['ud_bank_number']) || is_null($row_bank_detail['ud_b
                                     <input name="pd_price_start" type="number" class="form-control" placeholder="฿฿฿" value="" required="required">
                                 </div>
                                 <!-- ============================================================================================================== -->
+                                <p class="mt-2 mb-0"><i class="fa-solid fa-circle-info"></i> มีค่าบริการ : <?=$service_fee?>%</p>
+                                <p class="mt-1"><i class="fa-solid fa-circle-info"></i> ผู้ลงสินค้าต้องเป็นผู้ออกค่าส่งเอง (สามารถเพิ่มค่าส่งรวมกับราคาเริ่มต้นได้)</p>
+                                <hr> <!-- ========================================================================================================= -->
                                 <div class="form-group mb-2">
                                     <?php
                                     date_default_timezone_set('Asia/Bangkok');
@@ -119,6 +122,7 @@ if(is_null($row_bank_detail['ud_bank_number']) || is_null($row_bank_detail['ud_b
                                     <input disabled type="datetime-local" value="<?= $fourDaysLaterFormatted ?>" name="" id="">
                                     <label>วันสิ้นสุดประมูล</label>
                                     <input disabled type="datetime-local" value="<?= $elevenDaysLaterFormatted ?>" name="" id=""><br>
+                                    <hr>
                                     <span class=" text-danger ">หมายเหตุ:<br>
                                         เว็บไซต์ไม่สามารถกำหนดเวลาประมูลได้ <br>
                                         เมื่อทำการลงสินค้า<br>

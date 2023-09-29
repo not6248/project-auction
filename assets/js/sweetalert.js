@@ -264,7 +264,7 @@ $(document).ready(function () {
 
         const { value: accept } = await Swal.fire({
             title: 'ข้อกำหนดและเงื่อนไข',
-            html: "สินค้าจะถูกเรียกเก็บค่าบริการเป็นจำนวน "+ fee +" % ของราคาจบการประมูล",
+            html: "สินค้าจะถูกเรียกเก็บค่าบริการ<br>เป็นจำนวน "+ fee +"% ของราคาจบการประมูล",
             input: 'checkbox',
             inputValue: 1,
             inputPlaceholder:

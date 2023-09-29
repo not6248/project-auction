@@ -3,7 +3,8 @@
         <div class="d-flex justify-content-between">
             <h4 class="card-title mb-0" style="font-size: 28px;">สินค้า</h4>
             <!-- <button type="button" class="btn btn-success btn-sm rounded"><i class="fa-solid fa-plus"></i> Add new product</button> -->
-            <a class="btn btn-success rounded-5" href="./?page=<?= $_GET['page'] ?>&subpage=<?= $_GET['subpage'] ?>&function=add" role="button"><i class="fa-solid fa-plus"></i> เพิ่มสินค้าใหม่</a>
+            <!-- <a class="btn btn-success rounded-5" href="./?page=<?= $_GET['page'] ?>&subpage=<?= $_GET['subpage'] ?>&function=add" role="button"><i class="fa-solid fa-plus"></i> เพิ่มสินค้าใหม่</a> -->
+            <button class="btn btn-success rounded-5 btn-sm px-3" onclick="window.location.href='./?page=<?= $_GET['page'] ?>&subpage=<?= $_GET['subpage'] ?>&function=add';" ><i class="fa-solid fa-plus"></i> เพิ่มสินค้าใหม่</button>
 
         </div>
         <div class="row mt-3">
@@ -46,7 +47,7 @@
                                             <td><img class=" fit-cover rounded-0" width="80" height="80" src="./upload/product/<?= $pd_img[0] ?>"></td>
                                             <td><?= $row['pd_name'] ?></td>
                                             <td><?= number_format($row['pd_price_start'], 0) ?> บาท</td>
-                                            <td><button type="button" class="btn btn-info text-white btn-sm" data-bs-toggle="modal" data-bs-target="#product_detail_modal-<?= $row['pd_id']?>"><i class="fa-solid fa-circle-info"></i></button></td>
+                                            <td><button type="button" class="btn btn-info text-white btn-sm" data-bs-toggle="modal" data-bs-target="#product_detail_modal-<?= $row['pd_id'] ?>"><i class="fa-solid fa-circle-info"></i></button></td>
                                             <td id="product-timeleftID-<?= $pd_id ?>"></td>
                                             <td><?= $os_name_arr[$row['order_status']] ?></td>
                                             <td><?= $pd_condition_arr[$row['pd_condition']] ?></td>
@@ -75,7 +76,7 @@
                                         <script>
                                             countdown_time("product-timeleftID-<?= $pd_id ?>", "<?= $pd_start_show_date ?>", "<?= $pd_start_date ?>", "<?= $pd_end_date ?>");
                                         </script>
-                                        
+
                                     <?php endforeach ?>
                                 </tbody>
                             </table>

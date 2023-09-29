@@ -61,3 +61,25 @@ function SubimagePreview(fileInput) {
         }
     }
 }
+
+
+$(document).ready(function () {
+    $(document).ready(function () {
+        $('.toggle-switch').on('change', function () {
+            $('.toggle-switch').prop('disabled', false); // ปิดการใช้งานทุกตัวก่อน
+            $('.toggle-switch').prop('checked', false); // ยกเลิกการเลือกทุกตัวก่อน
+            $(this).prop('checked', true); // เลือกตัวที่ถูกคลิก
+            $(this).prop('disabled', true); // ปิดการใช้งานตัวที่ถูกเลือก
+            let feeId = $(this).data('fee-id');
+            console.log(feeId);
+            $.ajax({
+                type: "POST",
+                url: "../ajax/ajax_fee_select.php",
+                data: { fee_id: feeId },
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+        });
+    });
+});
