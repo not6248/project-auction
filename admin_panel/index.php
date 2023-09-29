@@ -132,6 +132,18 @@
         }
         break;
         // ====================================================================================================
+        case 'fee':
+          if ($function == 'add') {
+            include './page/fee/insert.php';
+          } elseif ($function == 'delete') {
+            include './page/fee/delete.php';
+          } elseif ($function == 'update') {
+            include './page/fee/edit.php';
+          } else {
+            include './page/fee/index.php';
+          }
+          break;
+          // ====================================================================================================
       default:
         include './page/not_found.php';
         break;
