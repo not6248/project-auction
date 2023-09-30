@@ -31,7 +31,7 @@ if(is_null($row_bank_detail['ud_bank_number']) || is_null($row_bank_detail['ud_b
                     </div>
                     <div class="card-body" style="background: #ECEEF9;">
                         <!-- Start Form -->
-                        <form id="product-add" data-fee="<?=$service_fee?>" action="./ajax/ajax_product_add.php" method="POST" enctype="multipart/form-data">
+                        <form id="product-add" data-fee="<?=$service_fee['fee_percent'];?>" action="./ajax/ajax_product_add.php" method="POST" enctype="multipart/form-data">
                             <div class="card-body col-lg-12">
                                 <div class="form-group mb-3">
                                     <div class="row">
@@ -102,7 +102,7 @@ if(is_null($row_bank_detail['ud_bank_number']) || is_null($row_bank_detail['ud_b
                                     <input name="pd_price_start" type="number" class="form-control" placeholder="฿฿฿" value="" required="required">
                                 </div>
                                 <!-- ============================================================================================================== -->
-                                <p class="mt-2 mb-0"><i class="fa-solid fa-circle-info"></i> มีค่าบริการ : <?=$service_fee?>%</p>
+                                <p class="mt-2 mb-0"><i class="fa-solid fa-circle-info"></i> มีค่าบริการ : <?=$service_fee['fee_percent'];?>%</p>
                                 <p class="mt-1"><i class="fa-solid fa-circle-info"></i> ผู้ลงสินค้าต้องเป็นผู้ออกค่าส่งเอง (สามารถเพิ่มค่าส่งรวมกับราคาเริ่มต้นได้)</p>
                                 <hr> <!-- ========================================================================================================= -->
                                 <div class="form-group mb-2">
