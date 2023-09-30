@@ -9,6 +9,7 @@ if (isset($_POST) && $_SESSION['user_type'] == 0) {
     $pd_detail      = $_POST['pd_detail'];
     $pd_condition   = $_POST['pd_condition'];
     $pd_price_start = $_POST['pd_price_start'];
+    $fee_id         = $service_fee['fee_id'];
 
     // =====================================================================================
     date_default_timezone_set('Asia/Bangkok');
@@ -78,11 +79,11 @@ if (isset($_POST) && $_SESSION['user_type'] == 0) {
     // เริ่มการทำงานแบบ Transaction
     mysqli_begin_transaction($conn);
 
-    $sql1 = "INSERT INTO product (user_id, pd_type_id, pd_name, pd_detail, pd_price_start, pd_img, pd_condition,pd_start_show_date, pd_start_date, pd_end_date) 
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql1 = "INSERT INTO product (user_id, pd_type_id,fee_id, pd_name, pd_detail, pd_price_start, pd_img, pd_condition,pd_start_show_date, pd_start_date, pd_end_date) 
+    VALUES (? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     $stmt1 = mysqli_prepare($conn, $sql1);
-    mysqli_stmt_bind_param($stmt1, "ssssssssss", $user_id, $pd_type_id, $pd_name, $pd_detail, $pd_price_start, $image_json, $pd_condition, $oneDaysLaterFormatted, $fourDaysLaterFormatted, $elevenDaysLaterFormatted);
+    mysqli_stmt_bind_param($stmt1, "iiissssssss", $user_id, $pd_type_id, $fee_id, $pd_name, $pd_detail, $pd_price_start, $image_json, $pd_condition, $oneDaysLaterFormatted, $fourDaysLaterFormatted, $elevenDaysLaterFormatted);
 
     if (mysqli_stmt_execute($stmt1)) {
         $lastProduct = mysqli_insert_id($conn);
