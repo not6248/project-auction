@@ -67,7 +67,7 @@
                 <button name="o1" type="submit" class="btn btn-secondary ml-2">พิมพ์ตามวันที่เลือก</button>
               </form>
               <!-- End Form -->
-              <table class="table table-bordered" id="example">
+              <table class="table table-bordered" id="table1">
                 <thead>
                   <tr>
                     <th scope="col">ID </th>
@@ -113,7 +113,7 @@
                 <button name="o2" type="submit" class="btn btn-secondary ml-2">พิมพ์ตามวันที่เลือก</button>
               </form>
               <!-- End Form -->
-              <table class="table table-bordered" id="">
+              <table class="table table-bordered" id="table2">
                 <thead>
                   <tr>
                     <th scope="col">ID </th>
@@ -162,7 +162,7 @@
                 <button name="o3" type="submit" class="btn btn-secondary ml-2">พิมพ์ตามวันที่เลือก</button>
               </form>
               <!-- End Form -->
-              <table class="table table-bordered" id="">
+              <table class="table table-bordered" id="table3">
                 <thead>
                   <tr>
                     <th scope="col">ID </th>
@@ -207,7 +207,7 @@
                 <button name="o4" type="submit" class="btn btn-secondary ml-2">พิมพ์ตามวันที่เลือก</button>
               </form>
               <!-- End Form -->
-              <table class="table table-bordered" id="">
+              <table class="table table-bordered" id="table4">
                 <thead>
                   <tr>
                     <th scope="col">ID </th>
@@ -247,33 +247,8 @@
 
 
 <script type="text/javascript">
-  $(document).ready(function() {
-    $('#example').DataTable({
-      responsive: true,
-      language: {
-        "decimal": "",
-        "emptyTable": "ไม่มีข้อมูลในตาราง",
-        "info": "กำลังแสดง _START_ ถึง _END_ จาก _TOTAL_ รายการ",
-        "infoEmpty": "กำลังแสดง 0 ถึง 0 จาก 0 รายการ",
-        "infoFiltered": "(กรองจากทั้งหมด _MAX_ รายการ)",
-        "infoPostFix": "",
-        "thousands": ",",
-        "lengthMenu": "แสดง _MENU_ รายการ",
-        "loadingRecords": "กำลังโหลด...",
-        "processing": "",
-        "search": "ค้นหา:",
-        "zeroRecords": "ไม่พบบันทึกที่ตรงกัน",
-        "paginate": {
-          "first": "อันดับแรก",
-          "last": "ล่าสุด",
-          "next": "ต่อไป",
-          "previous": "ก่อนหน้า"
-        },
-        "aria": {
-          "sortAscending": ": เปิดใช้งานเพื่อจัดเรียงคอลัมน์จากน้อยไปมาก",
-          "sortDescending": ": เปิดใช้งานเพื่อจัดเรียงคอลัมน์จากมากไปน้อย"
-        }
-      }
-    });
-  });
+data_table("table1");
+data_table("table2");
+data_table("table3");
+data_table("table4");
 </script>
