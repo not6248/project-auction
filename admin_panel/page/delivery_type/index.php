@@ -26,7 +26,7 @@ $result1 = mysqli_query($conn, $sql1);
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-5">
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">ตาราง : ประเภทขนส่ง</h3>
@@ -39,8 +39,9 @@ $result1 = mysqli_query($conn, $sql1);
                 <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th scope="col">#dlvtID</th>
-                      <th scope="col" class="w-75">ชื่อประเภทขนส่ง</th>
+                      <th scope="col" style="width: 10%;">#dlvtID</th>
+                      <th scope="col" class="w-25">ชื่อประเภทขนส่ง</th>
+                      <th scope="col" class="w-50">ลิงค์ขนส่ง</th>
                       <th scope="col">เมนู</th>
                     </tr>
                   </thead>
@@ -49,8 +50,14 @@ $result1 = mysqli_query($conn, $sql1);
                       <tr>
                         <td scope="row"><?= $row['dlvt_id'] ?></td>
                         <td><?= $row['dlvt_name'] ?></td>
+                        <td>
+                          <?php
+                          $text = $row['dlvt_link'];
+                          $shortenedText = mb_strlen($text, 'utf-8') > 20 ? mb_substr($text, 0, 20, 'utf-8') . '...' : $text;
+                          echo $shortenedText;
+                          ?></td>
                         <td class="">
-                          <div class="d-flex ">
+                          <div class="d-flex justify-content-end">
                             <a href="?page=<?= $_GET['page'] ?>&function=update&dlvt_id=<?= $row['dlvt_id'] ?>"><i class="fa-solid fa-pen" style="color:darkorange;"></i></a>
                             <a href="?page=<?= $_GET['page'] ?>&function=delete&dlvt_id=<?= $row['dlvt_id'] ?>" class="ml-4" onclick="return confirm('คุณต้องการลบประเภทขนส่ง <?= $row['dlvt_name'] ?> หรือไม่')"><i class="fa-solid fa-trash" style="color:red;"></i></a>
                           </div>

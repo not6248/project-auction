@@ -1,7 +1,7 @@
 <?php
 if (isset($_POST['add_dlvt']) && !empty($_POST)) {
   $dlvt_name = $_POST['dlvt_name'];
-
+  $dlvt_link = $_POST['dlvt_link'];
   //check
   if (!empty($dlvt_name)) {
     $sql1 = "SELECT * FROM delivery_type WHERE dlvt_name = '$dlvt_name'";
@@ -14,8 +14,8 @@ if (isset($_POST['add_dlvt']) && !empty($_POST)) {
             </script>';
       exit();
     } else {
-      $sql = "INSERT INTO delivery_type (dlvt_name)
-              VALUES ('$dlvt_name')";
+      $sql = "INSERT INTO delivery_type (dlvt_name,dlvt_link)
+              VALUES ('$dlvt_name','$dlvt_link')";
       if (mysqli_query($conn, $sql)) {
         $alert = '<script>';
         $alert .= 'alert("เพิ่มประเภทขนส่งสำเร็จ");';
@@ -65,7 +65,11 @@ if (isset($_POST['add_dlvt']) && !empty($_POST)) {
               <form action="" method="POST">
                 <div class="form-group">
                   <label>ชื่อประเภทขนส่ง</label>
-                  <input name="dlvt_name" type="text" class="form-control" placeholder="ตัวอย่าง: kerry" value="<?php echo isset($_POST['protype_name']) && !empty($_POST['protype_name']) ? ($_POST['protype_name']) : ''; ?>" required="required">
+                  <input name="dlvt_name" type="text" class="form-control" placeholder="ตัวอย่าง: kerry" required="required">
+                </div>
+                <div class="form-group">
+                  <label>ลิงค์ขนส่ง</label>
+                  <input name="dlvt_link" type="text" class="form-control" placeholder="ตัวอย่าง: www.google.com" required="required">
                 </div>
             </div>
             <!-- /.card-body -->
