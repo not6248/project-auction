@@ -753,3 +753,56 @@ $(document).ready(function () {
           })
     });
 });
+
+//ปุ่มเปลี่ยนรหัสผ่าน
+$(document).ready(function () {
+    $("#passModal_form").submit(function (e) { 
+        e.preventDefault();
+        let Method = $(this).attr("method");
+        let formUrl = $(this).attr("action");
+        let formData = $(this).serialize();
+        console.log(formData);
+        Swal.fire({
+            title: 'คุณแน่ใจหรือไม่?',
+            html: "คุณจะไม่สามารถย้อนกลับสิ่งนี้ได้!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            heightAuto: false,
+            confirmButtonText: 'ใช่!',
+            cancelButtonText: 'ยกเลิก'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: Method,
+                    url: formUrl,
+                    data: formData,
+                    success: function (response) {
+                        let result = JSON.parse(response)
+                        let status = result.status;
+                        switch (status) {
+                            case "success":
+                                Swal.fire({
+                                    icon: result.status,
+                                    title: result.msg,
+                                    heightAuto: false,
+                                    showConfirmButton: false,
+                                    timer: 1500,
+                                }).then(() => {
+                                    location.reload();
+                                });
+                                break;
+                            case "error":
+                                Swal.fire({
+                                    icon: result.status,
+                                    title: result.msg,
+                                    heightAuto: false,
+                                })
+                        }
+                    }
+                });
+            }
+          })
+    });
+});
