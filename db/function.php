@@ -22,7 +22,11 @@ function order_profile_status($arr,$pay_status,$dlv_status,$u_type){
         }elseif($pay_status == 3 && $dlv_status == 1){
             return $arr[2][$u_type];
         }elseif($pay_status == 3 && $dlv_status == 2){
-            return $arr[3][$u_type];
+            if($u_type == "b"){
+                return $arr[6];
+            }else{
+                return $arr[3][$u_type];
+            }
         }elseif($pay_status == 4 && $dlv_status == 2){
             return $arr[6];
         }
