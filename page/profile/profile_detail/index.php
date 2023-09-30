@@ -35,6 +35,9 @@ $ud_idcard_img = $row['ud_idcard_img'];
                                 <p class="mb-0 ms-1">อีเมล์</p>
                                 <input disabled type="text" value="<?= $row['user_email'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
                             </div>
+                            <div class="mb-1 mt-1 w-50">
+                                <a href="" class="mb-0 ms-1" href="#" data-bs-toggle="modal" data-bs-target="#passModal">เปลี่ยนรหัส</a>
+                            </div>
                             <div class="mb-1 w-50">
                                 <p class="mb-0 ms-1">เบอร์โทรศัพท์</p>
                                 <input required type="number" name="tele" value="<?= $row['ud_phone'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
@@ -123,6 +126,7 @@ $ud_idcard_img = $row['ud_idcard_img'];
                         <button class="btn btn-primary" type="submit" style="border-radius: 7px;">ยืนยันการแก้ไข</button>
                     </div>
                     </form>
+                    <?php include 'page/profile/profile_detail/password_change.php'; ?>
                     <?php include 'page/profile/profile_detail/id_card_insert_modal.php'; ?>
                 </div>
             </div>

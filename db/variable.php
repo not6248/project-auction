@@ -39,11 +39,13 @@ $os_name_arr = [
 ];
 
 // ค่าบริการ
-$sqlfee = "SELECT fee_percent FROM `fee` WHERE fee_active = 1;";
+$sqlfee = "SELECT fee_id,fee_percent FROM `fee` WHERE fee_active = 1;";
 $resultfee = mysqli_query($conn, $sqlfee);
 $rowfee = mysqli_fetch_assoc($resultfee);
-$service_fee = $rowfee['fee_percent'];
-
+$service_fee = [
+    "fee_id"        => $rowfee['fee_id'],
+    "fee_percent"   => $rowfee['fee_percent'],];
+    
 $bank_arr = [
     "0" => "ธนาคารกสิกรไทย",
     "1" => "พร้อมเพย์",

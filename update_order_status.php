@@ -29,12 +29,12 @@ $update_to_end        = mysqli_query($conn, "SELECT * FROM need_update_to_end");
 
 //Order ที่ต้องเปลี่ยนเป็นแสดงสินค้า
 if ($update_to_show) {
-    echo "sql1";
     if (mysqli_num_rows($update_to_show) > 0) { //ถ้าเจอตาราง
         // ทำการเปลี่ยนสถานะสินค้า pd_status = 2
         mysqli_query($conn, "UPDATE need_update_to_show SET pd_status = 2");
         // ทำการเปลี่ยนสถานะ Order order_status = 1
         mysqli_query($conn, "UPDATE need_update_to_show SET order_status = 1"); //1 = อยู่ระหว่างแสดงสินค้า 
+        echo "update_to_show";
     } else {
         // echo "Not Found";
     }
@@ -42,7 +42,6 @@ if ($update_to_show) {
 
 //Order ที่ต้องเปลี่ยนเป็นระหว่างประมูล
 if ($update_to_start) {
-    echo "sql2";
     if (mysqli_num_rows($update_to_start) > 0) {
         $result = mysqli_query($conn, "SELECT f.pd_name,o.order_status,l.user_email FROM favorite_list f JOIN order_tb o ON o.pd_id = f.pd_id INNER JOIN login l ON f.fav_user_id = l.user_id WHERE o.order_status = 1;");
         foreach ($result as $row) {
@@ -58,12 +57,12 @@ if ($update_to_start) {
             }
         }
         mysqli_query($conn, "UPDATE need_update_to_start SET order_status = 2"); //2 = ระหว่างประมูล 
+        echo "update_to_start";
     }
 }
 
 //ค้าหา Order ที่ต้องเปลี่ยนเป็นจบการประมูล
 if ($update_to_end) {
-    echo "sql3";
     if (mysqli_num_rows($update_to_end) > 0) {
         // ทำการเปลี่ยนสถานะสินค้า pd_status = 2
         $sql = "SELECT lb.*,os.*,p.pd_name,o.order_status FROM `last_user_bid` lb 
@@ -89,9 +88,6 @@ if ($update_to_end) {
                     $od[] = $row_details;
                 }
 
-                // เพิ่มข้อมูลอื่น ๆ
-                $od['fee'] = $service_fee;
-
                 $ods = json_encode($od,JSON_UNESCAPED_UNICODE);
                 if($order_details){
                     mysqli_query($conn,"UPDATE `order_tb` SET `order_details` = '$ods' WHERE `order_tb`.`order_id` = ".$row['order_id']);
@@ -102,7 +98,7 @@ if ($update_to_end) {
         mysqli_query($conn, "UPDATE need_update_to_end SET pd_status = 1");
         // ทำการเปลี่ยนสถานะ Order order_status = 1
         mysqli_query($conn, "UPDATE need_update_to_end SET order_status = 3"); //3 = จบการประมูล 
+        echo "update_to_end";
     }
 }
-
 echo "end";

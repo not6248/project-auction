@@ -6,6 +6,7 @@ $row = mysqli_fetch_assoc($result);
 <?php
 // ($_POST);
 if (isset($_POST) && !empty($_POST)) {
+  $dlvt_link = $_POST['dlvt_link'];
   $dlvt_name = $_POST['dlvt_name'];
   $dlvt_id = $_GET['dlvt_id'];
   if (!empty($dlvt_name)) {
@@ -20,7 +21,7 @@ if (isset($_POST) && !empty($_POST)) {
       echo $alert;
       exit();
     } else {
-      $sql = "UPDATE delivery_type SET dlvt_name = '$dlvt_name'
+      $sql = "UPDATE delivery_type SET dlvt_name = '$dlvt_name', dlvt_link = '$dlvt_link' 
             WHERE dlvt_id =" . $_GET['dlvt_id'];
       if (mysqli_query($conn, $sql)) {
         $alert = '<script>';
@@ -71,6 +72,10 @@ if (isset($_POST) && !empty($_POST)) {
                 <div class="form-group">
                   <label>ชื่อประเภทขนส่ง</label>
                   <input name="dlvt_name" type="text" class="form-control" placeholder="ตัวอย่าง: kerry" value="<?= $row['dlvt_name'] ?>" required="required">
+                </div>
+                <div class="form-group">
+                  <label>ลิงค์ขนส่ง</label>
+                  <input name="dlvt_link" type="text" class="form-control" placeholder="ตัวอย่าง: kerry" value="<?= $row['dlvt_link'] ?>" required="required">
                 </div>
                 <!-- /.card-body -->
             </div>
