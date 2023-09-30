@@ -2,7 +2,7 @@
 // $sql = "SELECT l.*,p.* FROM last_user_bid AS l INNER JOIN product AS p ON l.order_id = p.pd_id WHERE l.latest_bidder = " . $_SESSION['user_login'];
 $user_login = $_SESSION['user_login'];
 $pd_id = $_GET['order_id'];
-$sql = "SELECT l.*,p.*,o.end_price,o.order_details,pay.pay_status,d.dlv_status,d.dlv_code,dt.dlvt_name FROM last_user_bid AS l 
+$sql = "SELECT l.*,p.*,o.end_price,o.order_details,pay.pay_status,d.dlv_status,d.dlv_code,dt.dlvt_name,dt.dlvt_link FROM last_user_bid AS l 
 INNER JOIN product AS p ON l.order_id = p.pd_id 
 INNER JOIN order_tb AS o ON o.order_id = p.pd_id
 LEFT JOIN payment AS pay ON pay.pay_id = p.pd_id
@@ -17,6 +17,7 @@ $pay_status = $row['pay_status'] ?? "0";
 $dlv_status = $row['dlv_status'] ?? "0";
 $dlv_code = $row['dlv_code'] ?? "---";
 $dlvt_name = $row['dlvt_name'] ?? "---";
+$dlvt_link = $row['dlvt_link'] != "" ? $row['dlvt_link'] : "#" ;
 $detail = json_decode($row['order_details'], true);
 ?>
 <div class="card" style="background: rgb(236,238,249);box-shadow: 0px 4px 4px rgba(33,37,41,0.25);">
@@ -26,6 +27,9 @@ $detail = json_decode($row['order_details'], true);
             <div>
                 <h5 class="text-end">หมายเลขพัสดุ : <?= $dlv_code ?></h5>
                 <h6 class="text-end">จัดส่งโดย : <?= $dlvt_name ?></h6>
+                <?php if($dlvt_link != "#") : ?>
+                <h6 class="text-end">เช็คเลขพัสดุ : <a href="<?= $dlvt_link ?>" target="_blank">ที่นี่</a></h6>
+                <?php endif ?>
             </div>
         </div>
 
@@ -71,6 +75,15 @@ $detail = json_decode($row['order_details'], true);
                         <div class="col-12">
                             <div class="card card-stepper text-black">
                                 <div class="card-body p-5 pt-4">
+                                <div class="row mb-3">
+                                        <div class="col">
+                                            <div class="card ">
+                                                <div class="card-body">
+                                                    <h6 class="card-title mb-0">สินค้า : <?= $row['pd_name'] ?></h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-5">
                                             <div class="card">
@@ -102,21 +115,21 @@ $detail = json_decode($row['order_details'], true);
                                                         <td class="w-25"><?= $row['end_price'] ?>฿</td>
                                                     </tr>
                                                     <tr>
+                                                        <td class="w-50">ค่าบริการ <?=$detail[0]['fee_percent']?>%</td>
+                                                        <td class="w-25">-<?= $row['end_price'] * ($detail[0]['fee_percent']/100) ?>฿</td>
+                                                    </tr>
+                                                    <!-- <tr>
+                                                        <td class="w-50">รวมการสั่งซื้อ</td>
+                                                        <td class="w-25"><span class=" text-primary "><?= $row['end_price'] - ($row['end_price'] * ($detail[0]['fee_percent']/100)) ?>฿</span></td>
+                                                    </tr> -->
+                                                    <!-- <tr>
                                                         <td class="w-50">ค่าจัดส่ง</td>
                                                         <td class="w-25">0฿</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="w-50">รวมการสั่งซื้อ</td>
-                                                        <td class="w-25"><span class=" text-primary "><?= $row['end_price'] ?>฿</span></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="w-50">ค่าบริการ 15%</td>
-                                                        <td class="w-25">-<?= $row['end_price'] * ($detail['fee']/100) ?>฿</td>
-                                                    </tr>
+                                                    </tr> -->
                                                     <tr>
                                                         <td class="w-50">เงินที่ผู้ขายจะได้รับ</td>
                                                         <td class="w-25">
-                                                            <h5 class=" text-primary "><?= $row['end_price'] - ($row['end_price'] * ($detail['fee']/100)) ?>฿</h5>
+                                                            <h5 class=" text-primary "><?= $row['end_price'] - ($row['end_price'] * ($detail[0]['fee_percent']/100)) ?>฿</h5>
                                                         </td>
                                                     </tr>
                                                 </tbody>
