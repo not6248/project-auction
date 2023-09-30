@@ -62,7 +62,7 @@ function SubimagePreview(fileInput) {
     }
 }
 
-
+//ค่าบริการ
 $(document).ready(function () {
     $(document).ready(function () {
         $('.toggle-switch').on('change', function () {
