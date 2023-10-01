@@ -33,6 +33,14 @@
                     <p class="d-inline" style="font-size: 16px;">รายการที่ชื่นชอบ</p>
                 </a>
             </li>
+             <!-- --------------------------------------------------------------------------------------- -->
+            <!-- history -->
+            <li class="nav-item">
+                <a class="nav-link <?= isset($_GET['subpage']) && $_GET['subpage'] == 'history' ? 'active' : '' ?>" href="./?page=profile&subpage=history">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                    <p class="d-inline" style="font-size: 16px;">ประวัติการประมูล</p>
+                </a>
+            </li>
         </ul>
 
 

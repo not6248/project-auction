@@ -64,7 +64,7 @@ if (isset($_POST['complete'])) {
                                                 <th scope="row"><?= $row['order_id'] ?></th>
                                                 <td><?= $row['pd_id'] ?></td>
                                                 <td><?= $row['ud_fname'] . " " . $row['ud_lname'] ?></td>
-                                                <td><?= number_format($detail[0]['end_price'] - ($detail[0]['end_price'] * ($detail[0]['fee_percent'] / 100)), 0) ?> บาท</td>
+                                                <td><?= number_format($detail[0]['end_price'] - ($detail[0]['end_price'] * ($detail[0]['fee_percent'] / 100)), 2) ?> บาท</td>
                                                 <td><?= $row['bank_name'] ?></td>
                                                 <td><?= $row['ud_bank_number'] ?></td>
                                                 <td>
@@ -110,7 +110,7 @@ if (isset($_POST['complete'])) {
                                                 <th scope="row"><?= $row['order_id'] ?></th>
                                                 <td><?= $row['pd_id'] ?></td>
                                                 <td><?= $row['ud_fname'] . " " . $row['ud_lname'] ?></td>
-                                                <td><?= number_format($detail[0]['end_price'] - ($detail[0]['end_price'] * ($detail[0]['fee_percent'] / 100)), 0) ?> บาท</td>
+                                                <td><?= number_format($detail[0]['end_price'] - ($detail[0]['end_price'] * ($detail[0]['fee_percent'] / 100)), 2) ?> บาท</td>
                                                 <td><?= $row['bank_name'] ?></td>
                                                 <td><?= $row['ud_bank_number'] ?></td>
                                                 <td>ชำระแล้ว</td>

@@ -1,19 +1,25 @@
+<?php
+//    $sql = "SELECT * FROM `bid` WHERE user_id = " . $_SESSION['user_login'] . " GROUP BY order_id";
+$user = $_SESSION['user_login'];
+$sql = "SELECT * FROM `bid` INNER JOIN product ON product.pd_id = bid.order_id 
+   WHERE bid.user_id = $user AND product.pd_status !=0 
+   GROUP BY bid.order_id;";
+$result = mysqli_query($conn, $sql);
+?>
 <div class="card" style="background: rgb(236,238,249);box-shadow: 0px 4px 4px rgba(33,37,41,0.25);">
     <div class="card-body">
         <div class="d-flex justify-content-between">
-            <h4 class="card-title mb-0" style="font-size: 28px;">รายการที่ชื่นชอบ</h4>
+            <h4 class="card-title mb-0" style="font-size: 28px;">ประวัติ</h4>
 
         </div>
         <div class="row mt-3">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header" style="background: #D8DBE9;">
-                        <h4 style="color: rgb(84,88,94);" class="mb-0">รายการทั้งหมดที่ชื่นชอบ</h4>
+                        <h4 style="color: rgb(84,88,94);" class="mb-0">รายการประวัติ</h4>
                     </div>
                     <div class="card-body" style="background: #ECEEF9;">
                         <?php
-                        $sql = "SELECT * FROM favorite_list WHERE fav_user_id = " . $_SESSION['user_login'];
-                        $result = mysqli_query($conn, $sql);
                         if (mysqli_num_rows($result) > 0) :
                             $i = 1 ?>
                             <table id="fav_product_list" class="table table-bordered">
@@ -56,7 +62,7 @@
                                 </tbody>
                             </table>
                         <?php else : ?>
-                            <p class="text-center text-muted mt-3">ไม่มีรายการสินค้าที่ชื่นชอบ</p>
+                            <p class="text-center text-muted mt-3">ไม่มีรายการประวัติ</p>
                         <?php endif ?>
                     </div>
                 </div>

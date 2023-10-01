@@ -65,40 +65,55 @@ if ($update_to_start) {
 if ($update_to_end) {
     if (mysqli_num_rows($update_to_end) > 0) {
         // ทำการเปลี่ยนสถานะสินค้า pd_status = 2
-        $sql = "SELECT lb.*,os.*,p.pd_name,o.order_status FROM `last_user_bid` lb 
+        $sql = "SELECT o.*,os.*,p.pd_name,lb.* FROM order_tb o
         INNER JOIN order_summary AS os USING(order_id) 
-        INNER JOIN product as p ON p.pd_id = lb.order_id 
-        INNER JOIN order_tb as o ON o.order_id = lb.order_id 
-        WHERE order_status = 2;";
-        
-        $result2 = mysqli_query($conn, $sql);
-        foreach ($result2 as $row) {
-            $pd_name = $row['pd_name'];
-            $email   = $row['user_email'];
-            $subject = "You won the auction.";
-            $message = "You won the auction product <b>$pd_name</b> 
-                        -The price you must pay is " . number_format($row['total_price'], 0) . "฿";
-            $sender = "Vinyl Bid";
-            if (sendMail($email, $subject, $message, $sender)) {
-                mysqli_query($conn, "UPDATE order_tb SET end_price = " . number_format($row['total_price'], 0) . " WHERE order_tb.order_id = " . $row['order_id']);
-                $sql2 = "SELECT * FROM order_detail_last_bid WHERE order_id = ".$row['order_id'];
-                $order_details = mysqli_query($conn,$sql2);
-                $od = array();
-                while ($row_details = mysqli_fetch_assoc($order_details)) {
-                    $od[] = $row_details;
-                }
+        INNER JOIN product as p ON p.pd_id = o.order_id 
+        LEFT JOIN last_user_bid as lb ON lb.order_id  = o.order_id
+        WHERE o.order_status = 2;";
 
-                $ods = json_encode($od,JSON_UNESCAPED_UNICODE);
-                if($order_details){
-                    mysqli_query($conn,"UPDATE `order_tb` SET `order_details` = '$ods' WHERE `order_tb`.`order_id` = ".$row['order_id']);
+        $result2 = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($result2) > 0) {
+            foreach ($result2 as $row) {
+                if ($row['latest_bidder'] == null) {
+                    $sql = "UPDATE need_update_to_end SET pd_status = 0 WHERE order_id = " . $row['pd_id'];
+                    mysqli_query($conn,$sql);
+                    $sql = "UPDATE need_update_to_end SET order_status = 4  WHERE order_id = ".$row['pd_id'];
+                    mysqli_query($conn, "$sql"); //4 = ไม่มีผู้ประมูล 
+                    echo "update_to_end(ไม่พบผู้ประมูล)";
+                    continue;
                 }
-                
+                // รับค่าวันที่ปัจจุบัน
+                $currentDate = date('d/m/y');
+                // เพิ่ม 7 วันจากวันที่ปัจจุบัน
+                $dueDate = date('d/m/y', strtotime($currentDate . ' + 7 days'));
+
+                $pd_name = $row['pd_name'];
+                $email   = $row['user_email'];
+                $subject = "คุณชนะการประมูล";
+                $message = "คุณชนะการประมูลสินค้า <b>$pd_name</b> 
+                        - ราคาที่คุณต้องจ่ายคือ " . number_format($row['total_price'], 0) . " บาท<br>"
+                    . "กรุณาชำระภายในวันที่ $dueDate";
+                $sender = "Vinyl Bid";
+                if (sendMail($email, $subject, $message, $sender)) {
+                    mysqli_query($conn, "UPDATE order_tb SET end_price = " . number_format($row['total_price'], 0) . " WHERE order_tb.order_id = " . $row['order_id']);
+                    $sql2 = "SELECT * FROM order_detail_last_bid WHERE order_id = " . $row['order_id'];
+                    $order_details = mysqli_query($conn, $sql2);
+                    $od = array();
+                    while ($row_details = mysqli_fetch_assoc($order_details)) {
+                        $od[] = $row_details;
+                    }
+
+                    $ods = json_encode($od, JSON_UNESCAPED_UNICODE);
+                    if ($order_details) {
+                        mysqli_query($conn, "UPDATE `order_tb` SET `order_details` = '$ods' WHERE `order_tb`.`order_id` = " . $row['order_id']);
+                    }
+                    mysqli_query($conn, "UPDATE need_update_to_end SET pd_status = 1 WHERE order_id = {$row['order_id']}");
+                    mysqli_query($conn, "UPDATE need_update_to_end SET order_status = 3 WHERE order_id = {$row['order_id']}"); //3 = จบการประมูล
+                }
             }
+            // ทำการเปลี่ยนสถานะ Order order_status = 1
+            echo "update_to_end";
         }
-        mysqli_query($conn, "UPDATE need_update_to_end SET pd_status = 1");
-        // ทำการเปลี่ยนสถานะ Order order_status = 1
-        mysqli_query($conn, "UPDATE need_update_to_end SET order_status = 3"); //3 = จบการประมูล 
-        echo "update_to_end";
     }
 }
 echo "end";

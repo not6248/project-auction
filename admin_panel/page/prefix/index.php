@@ -32,11 +32,11 @@ $result1 = mysqli_query($conn, $sql1);
               <h3 class="card-title">ตาราง : คำนำหน้า</h3>
             </div>
             <div class="card-body">
-            <div class="text-right">
+            <div class="text-right mb-3">
                 <a href="?page=<?= $_GET['page'] ?>&function=add" class="btn btn-success " role="button"><i class="fa-solid fa-plus"></i> คำนำหน้า</a>
               </div>
               <?php if (mysqli_num_rows($result1) > 0) : ?>
-                <table class="table table-hover">
+                <table id="example" class="table table-hover">
                   <thead>
                     <tr>
                       <th scope="col">#prefixID</th>
@@ -72,3 +72,6 @@ $result1 = mysqli_query($conn, $sql1);
   </div>
   <!-- /.content -->
 </div>
+<script type="text/javascript">
+  data_table("example");
+</script>

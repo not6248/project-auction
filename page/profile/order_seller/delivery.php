@@ -129,7 +129,7 @@ $detail = json_decode($row['order_details'], true);
                                                     <tr>
                                                         <td class="w-50">เงินที่ผู้ขายจะได้รับ</td>
                                                         <td class="w-25">
-                                                            <h5 class=" text-primary "><?= $row['end_price'] - ($row['end_price'] * ($detail[0]['fee_percent']/100)) ?>฿</h5>
+                                                            <h5 class=" text-primary "><?= number_format($row['end_price'] - ($row['end_price'] * ($detail[0]['fee_percent']/100)),2) ?>฿</h5>
                                                         </td>
                                                     </tr>
                                                 </tbody>
