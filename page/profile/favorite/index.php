@@ -24,7 +24,6 @@
                                         <th scope="col">ชื่อ</th>
                                         <th scope="col">ราคาเริ่มต้น</th>
                                         <th scope="col">เหลือเวลา</th>
-                                        <th scope="col">สถานะ</th>
                                         <th scope="col">เมนู</th>
                                     </tr>
                                 </thead>
@@ -32,19 +31,27 @@
                                     <?php foreach ($result as $row) :
                                         $image_json = $row['pd_img'];
                                         $pd_img = json_decode($image_json);
+                                        $pd_id = $row['pd_id'];
                                     ?>
                                         <tr>
                                             <th scope="row"><?= $i++ ?></th>
                                             <td><img class=" fit-cover rounded-0" width="80" height="80" src="./upload/product/<?= $pd_img[0] ?>"></td>
                                             <td><?= $row['pd_name'] ?></td>
                                             <td><?= number_format($row['pd_price_start'], 0) ?> บาท</td>
-                                            <td>@mdo</td>
-                                            <td>@mdo</td>
+                                            <td id="product-timeleftID-<?= $pd_id ?>"></td>
                                             <td class="">
                                                 <a href="./?page=product&pd_id=<?= $row['pd_id'] ?>" class="btn btn-info btn-sm">รายละเอียด</a>
                                                 <!-- <a href="./?page=<?= $_GET['page'] ?>&subpage=<?= $_GET['subpage'] ?>&function=edit" class="btn btn-warning btn-sm">แก้ไข</a> -->
                                             </td>
                                         </tr>
+                                        <?php
+                                        $pd_start_show_date = $row['pd_start_show_date'];
+                                        $pd_start_date = $row['pd_start_date'];
+                                        $pd_end_date = $row['pd_end_date'];
+                                        ?>
+                                        <script>
+                                            countdown_time("product-timeleftID-<?= $pd_id ?>", "<?= $pd_start_show_date ?>", "<?= $pd_start_date ?>", "<?= $pd_end_date ?>");
+                                        </script>
                                     <?php endforeach ?>
                                 </tbody>
                             </table>
