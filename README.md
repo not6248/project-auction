@@ -37,7 +37,7 @@
 | Features | ความคืบหน้า | เสร็จ
 | :-------- | :------- | :------- |
 | `ลงสินค้า` | ![](https://geps.dev/progress/100) | :heavy_check_mark: |
-| `ประมูล` | ![](https://geps.dev/progress/100) | :heavy_check_mark:: |
+| `ประมูล` | ![](https://geps.dev/progress/100) | :heavy_check_mark: |
 | `upload img` | ![](https://geps.dev/progress/100) | :heavy_check_mark: |
 | `Histoly การประมูล` | ![](https://geps.dev/progress/100) | :heavy_check_mark: |
 | `การจ่ายเงิน` | ![](https://geps.dev/progress/100) | :heavy_check_mark: |
