@@ -45,7 +45,7 @@ $result = mysqli_query($conn, $sql);
                                         $pay_status = $row['pay_status'] ?? "0";
                                         $scr_img = "./upload/product/$pd_img[0]";
                                         $delivery_link = "./?page=" . $_GET['page'] . "&subpage=" . $_GET['subpage'] . "&function=delivery&order_id=$pd_id";
-                                        $pay_status = $row['pay_status'] ?? "0";
+                                        $pay_status = $row['pay_status'] == "4" ? "3" : ($row['pay_status'] ?? "0");
                                         $dlv_status = $row['dlv_status'] ?? "0";
                                     ?>
                                         <tr>
