@@ -1,12 +1,8 @@
 <?php
 
 $sql = "SELECT * FROM product WHERE pd_status = 2";
-
 if (isset($_GET['filter_product_typeID']) && !empty($_GET['filter_product_typeID'])) {
-$sql = "SELECT * FROM product WHERE pd_status = 2 AND pd_type_id = '" . $_GET['filter_product_typeID'] . "'";
-}
-if(isset($_GET['search']) && !empty($_GET['search'])){
-$sql = "SELECT * FROM product WHERE pd_status = 2 AND pd_name LIKE '%" . $_GET['search'] . "%'";
+    $sql .= " AND pd_type_id = '" . $_GET['filter_product_typeID'] . "'";
 }
 // echo $sql;
 //เลือกสินค้าที่เป็นสถานะที่ให้แสดงบนหน้าเว็บเท่านั้น
@@ -49,20 +45,17 @@ $query_product = mysqli_query($conn, $sql);
                     <h4 class="card-title" style="font-size: 18px;font-family: 'Baloo Thambi 2', serif;font-weight: bold;"><?= $row['pd_name'] ?></h4>
                     <!-- รายละเอียด -->
                     <p style="height: 48px;" class="card-text"><?= $pdDetail ?></p>
-                    <div class="row" style="color: rgb(13,110,253);">
+                    <div class="row mb-3" style="color: rgb(13,110,253);">
                         <div class="col-4">
-                            <!-- ราคาปัจจุบัน -->
+                    <!-- ราคาปัจจุบัน -->
                             <h6 style="font-weight: bold;" class="mb-xl-0 pb-xl-2">ราคาปัจจุบัน</h6>
                             <span><?= $price_now ?> ฿</span>
                         </div>
-                        <!-- เวลาที่เหลือ -->
+                    <!-- เวลาที่เหลือ -->
                         <div class="col-8 text-end">
                             <h6 style="font-weight: bold;" class="mb-xl-0 pb-xl-2">เวลาที่เหลือ</h6>
                             <span id="product-timeleftID-<?= $pd_id ?>">xx:xx:xx</span>
                         </div>
-                    </div>
-                    <div class="row mb-3">
-                   <label for="">ส่งฟรี  <i class="fa-solid fa-truck-fast fa-lg"></i></label>
                     </div>
                     <div class="d-flex">
                         <a href="./?page=product&pd_id=<?= $pd_id ?>" class="btn btn-dark" type="button" style="font-weight: bold;width: 100%;">ประมูลรายการนี้</a>
@@ -75,13 +68,13 @@ $query_product = mysqli_query($conn, $sql);
                 <?php endif ?>
             </div>
         </div>
-        <?php
-        $pd_start_date = $row['pd_start_date'];
-        $pd_end_date = $row['pd_end_date'];
-        // $pd_start_show_date = $row['pd_start_show_date'];
-        ?>
+        <?php 
+           $pd_start_date = $row['pd_start_date'];
+           $pd_end_date = $row['pd_end_date'];
+           // $pd_start_show_date = $row['pd_start_show_date'];
+           ?>
         <script>
-            countdown_time("product-timeleftID-<?= $pd_id ?>", "", "<?= $pd_start_date ?>", "<?= $pd_end_date ?>");
+            countdown_time("product-timeleftID-<?= $pd_id ?>","", "<?=$pd_start_date?>", "<?=$pd_end_date?>");
         </script>
     <?php endforeach ?>
 <?php else : ?>
