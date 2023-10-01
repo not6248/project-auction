@@ -43,6 +43,9 @@ if (!isset($_SESSION['user_login']) && empty($_SESSION['user_login'])) {
                 case 'favorite':
                     include 'favorite/index.php';
                     break;
+                case 'history':
+                    include 'history/index.php';
+                    break;
                 case 'product':
                     if ($function == 'add') {
                         include 'product/insert.php';

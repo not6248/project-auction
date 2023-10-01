@@ -18,6 +18,9 @@
         case 'contact':
             include './page/contact.php';
             break;
+        case 'about':
+            include './page/about.php';
+            break;
         case 'register':
             if ($function == 'verify_email') {
                 include './page/otp/otp.php';
