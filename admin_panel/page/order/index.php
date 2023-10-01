@@ -3,15 +3,15 @@
   $sql = 'SELECT * FROM order_tb AS od
           INNER JOIN product AS pd ON od.pd_id = pd.pd_id
           INNER JOIN product_type AS pdt ON pd.pd_type_id = pdt.pd_type_id
-          WHERE od.order_status = 2 OR od.order_status = 3 '; //ตอนนี้ไม่มีสถานะ 2 = สินค้าที่กำลังประมูล
+          WHERE od.order_status = 2 OR od.order_status = 3 '; 
   $sql2 = 'SELECT * FROM order_tb AS od
           INNER JOIN product AS pd ON od.pd_id = pd.pd_id
           INNER JOIN product_type AS pdt ON pd.pd_type_id = pdt.pd_type_id
-          WHERE od.order_status >= 3 '; //ตอนนี้ไม่มีสถานะ 2 = สินค้าที่กำลังประมูล
+          WHERE od.order_status = 3 '; 
   $sql3 = 'SELECT * FROM order_tb AS od
           INNER JOIN product AS pd ON od.pd_id = pd.pd_id
           INNER JOIN product_type AS pdt ON pd.pd_type_id = pdt.pd_type_id
-          WHERE od.order_status = 2'; //ตอนนี้ไม่มีสถานะ 2 = สินค้าที่กำลังประมูล
+          WHERE od.order_status = 2'; 
   $sql4 = 'SELECT * FROM order_tb AS o
           INNER JOIN product AS pd ON o.pd_id = pd.pd_id
           INNER JOIN product_type AS pdt ON pd.pd_type_id = pdt.pd_type_id
