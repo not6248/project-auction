@@ -13,7 +13,7 @@
 
                 <ul class="navbar-nav ms-auto ">
                     <!-- Navbar Menu List -->
-                    <li class="nav-item"><a class="nav-link fw-bold" href="debug.php">debug.php</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link fw-bold" href="debug.php">debug.php</a></li> -->
                     <?= isset($_SESSION['user_type']) && $_SESSION['user_type'] == '2'
                         ? '<li class="nav-item"><a class="nav-link fw-bold" href="./?page=profile&subpage=product&function=add"><i class="fa-solid fa-plus"></i> เพิ่มสินค้า</a></li>'
                         : '' ?>

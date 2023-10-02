@@ -8,7 +8,7 @@ INNER JOIN order_tb AS o ON o.order_id = p.pd_id
 LEFT JOIN payment AS pay ON pay.pay_id = p.pd_id
 LEFT JOIN delivery AS d ON d.dlv_id = p.pd_id
 LEFT JOIN delivery_type AS dt ON dt.dlvt_id = d.dlvt_id
-WHERE o.order_status >= 3 AND $user_login AND p.pd_id = $pd_id";
+WHERE o.order_status = 3 AND $user_login AND p.pd_id = $pd_id";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
