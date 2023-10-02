@@ -5,7 +5,7 @@ INNER JOIN product AS p ON l.order_id = p.pd_id
 INNER JOIN order_tb AS o ON o.order_id = p.pd_id
 LEFT JOIN payment as pay ON pay.pay_id = p.pd_id
 LEFT JOIN delivery AS d ON d.dlv_id = p.pd_id
-WHERE o.order_status >= 3 AND l.latest_bidder =  " . $_SESSION['user_login'];
+WHERE o.order_status = 3 AND l.latest_bidder =  " . $_SESSION['user_login'];
 $result = mysqli_query($conn, $sql);
 ?>
 <div class="card" style="background: rgb(236,238,249);box-shadow: 0px 4px 4px rgba(33,37,41,0.25);">
