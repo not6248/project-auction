@@ -51,8 +51,8 @@ if (isset($_SESSION['user_login'])) :
                     e.preventDefault();
                     Swal.fire({
                         icon: 'warning',
-                        title: 'Oops...',
-                        html: "Please fill in information of the user in full <br> before the auction begins.",
+                        title: 'อุ๊บส์...',
+                        html: "กรุณากรอกข้อมูลของผู้ใช้ให้ครบถ้วน <br> ก่อนที่จะเริ่มต้นการประมูล",
                         heightAuto: false,
                     }).then(() => {
                         window.location.href = "./?page=profile"
