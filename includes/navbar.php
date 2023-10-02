@@ -2,12 +2,14 @@
         <div class="container"><a class="navbar-brand d-flex align-items-center" href="./"><img src="assets/img/logo.png" width="50" height="37"></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-2">
                 <?php hide_for_regis_page('
+                <form action="" method="get">
                 <div class="input-group search mt-3 mt-md-0 me-auto ms-0 pe-0 me-5 me-sm-5 me-md-0 pe-md-3 pe-lg-5 me-xl-0 pe-xl-0"">
-                    <input class=" form-control search ms-0 pb-xxl-1 pt-xxl-1" type="text" placeholder="Search..." style="padding-left: 20px;" />
-                    <button class="btn btn-primary" type="button">
+                    <input required name="search" class="form-control search ms-0 pb-xxl-1 pt-xxl-1" type="text" placeholder="Search..." style="padding-left: 20px;" />
+                    <button class="btn btn-primary" type="submit">
                         <i class="bi bi-search me-md-2"></i>
                     </button>
-                </div>')
+                    </div>
+                </form>')
                 ?>
 
 
@@ -19,7 +21,7 @@
                         : '' ?>
                     <li class="nav-item"><a class="nav-link fw-bold" href="./">หน้าแรก</a></li> <!-- active -->
                     <li class="nav-item "><a class="nav-link fw-bold d-flex align-items-center" href="#">คำแนะนำ<i class="fa-solid fa-book fa-xs ms-1 pt-1"></i></a></li>
-                    <li class="nav-item"><a class="nav-link fw-bold" href="#">เกี่ยวกับ</a></li>
+                    <li class="nav-item"><a class="nav-link fw-bold" href="./?page=about">เกี่ยวกับ</a></li>
                     <li class="nav-item"><a class="nav-link fw-bold" href="./?page=contact">ติดต่อ</a></li>
                     <!-- Profile Dropdown-->
                     <?php if (!(isset($_SESSION['login_status']) || !isset($_SESSION['username']))) : ?>
