@@ -8,10 +8,10 @@
       <a href="./" class="nav-link">หน้าแรก</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="#" class="nav-link">ติดต่อ</a>
+      <a href="../update_order_status.php" class="nav-link"><i class="fas fa-exclamation-triangle"></i> Update Order</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="../" class="nav-link">Go back to test page</a>
+      <a href="../" class="nav-link">Go back font end</a>
     </li>
   </ul>
 
