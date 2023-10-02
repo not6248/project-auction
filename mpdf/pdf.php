@@ -44,19 +44,15 @@ if (!mysqli_num_rows($result) > 0) {
 } else {
   $numrow = mysqli_num_rows($result);
   $totalEndPrice = 0;
+  $sum = '0';
   while ($rowfetch = mysqli_fetch_assoc($result)) {
     $endPrice = $rowfetch['end_price'];
     $totalEndPrice += $endPrice;
+    $detailsum = json_decode($rowfetch['order_details'], true);
+    $sum += ($rowfetch['end_price'] * $detailsum[0]['fee_percent'] / 100);
   }
 }
 
-
-// <input type="hidden" name="title" value="ตาราง : สินค้าที่ถูกประมูล">
-// <label for="start" class="ml-1">จาก :</label>
-// <input name="start" type="date" class="form-control col-3 ml-1" required>
-// <label for="end" class="ml-1">ถึง :</label>
-// <input name="end" type="date" class="form-control col-3 ml-1" required>
-// <button type="submit" class="btn btn-secondary ml-2">พิมพ์ตามวันที่เลือก</button>
 
 // ------------------------------------------------------------------------------------------------------
 require_once("vendor/autoload.php");
@@ -93,9 +89,12 @@ ob_start();
   <table>
     <tr class="thbg">
       <th></th>
-      <th>=========================== รวมทั้งหมด =========================== ></th>
-      <th><?= number_format($numrow,0) ?> ชิ้น</th>
-      <th><?=number_format($totalEndPrice,0)?> บาท </th>
+      <th style="width:40%">=============== รวมทั้งหมด =============== ></th>
+      <th><?= number_format($numrow, 0) ?> ชิ้น</th>
+      <th><?= number_format($totalEndPrice, 0) ?> บาท </th>
+      <?php if (isset($_POST['o4'])) : ?>
+        <th><?=number_format($sum,2)?> บาท</th>
+      <?php endif ?>
       <th></th>
     </tr>
     <tr>
@@ -103,14 +102,22 @@ ob_start();
       <th>ชื่อ</th>
       <th>ราคาราคาเริ่มต้น</th>
       <th>ราคาจบประมูล</th>
+      <?php if (isset($_POST['o4'])) : ?>
+        <th>ส่วนแบ่ง</th>
+      <?php endif ?>
       <th>สถานะ</th>
     </tr>
-    <?php foreach ($result as $data) : ?>
+    <?php foreach ($result as $data) :
+      $detail = json_decode($data['order_details'], true);
+    ?>
       <tr>
-        <td><?= $data['pd_id'] ?></td> <!-- id product -->
-        <td><?= $data['pd_name'] ?></td> <!--  product name -->
-        <td><?= $data['pd_price_start'] ?></td> <!--product img -->
-        <td><?= $data['end_price'] ?? "--" ?></td> <!--product type name-->
+        <td><?= $data['pd_id'] ?></td> 
+        <td><?= $data['pd_name'] ?></td> 
+        <td><?= number_format($data['pd_price_start'], 0) ?> บาท</td>
+        <td><?= number_format($data['end_price'], 0) ?? "--" ?> บาท</td>
+        <?php if (isset($_POST['o4'])) : ?>
+          <td><?= number_format($data['end_price'] * ($detail[0]['fee_percent'] / 100), 2) ?> บาท</td> <!--product type name-->
+        <?php endif ?>
         <td><?= $os_name_arr[$data['order_status']] ?></td> <!--product datetime-->
       </tr>
     <?php endforeach ?>
