@@ -92,7 +92,7 @@ if(is_null($row_bank_detail['ud_bank_number']) || is_null($row_bank_detail['ud_b
                                 <!-- ============================================================================================================== -->
                                 <div class="form-group mb-2">
                                     <label>ลายละเอียดสินค้า</label>
-                                    <textarea name="pd_detail" style="resize: none;" maxlength="700" rows="8" class="form-control" placeholder="ใส่ ลายละเอียด (สูงสุด 700ตัวอักษร)" required="required"></textarea>
+                                    <textarea name="pd_detail" style="resize: none;" maxlength="2000" rows="8" class="form-control" placeholder="ใส่ ลายละเอียด (สูงสุด 2,000 อักษร)" required="required"></textarea>
                                 </div>
 
                                 <hr>

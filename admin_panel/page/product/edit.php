@@ -112,7 +112,7 @@ $pd_img = json_decode($image_json);
                                     <!-- ============================================================================================================== -->
                                     <div class="form-group mb-2">
                                         <label>ลายละเอียดสินค้า</label>
-                                        <textarea name="pd_detail" style="resize: none;" maxlength="700" rows="8" class="form-control" placeholder="ใส่ ลายละเอียด (สูงสุด 700ตัวอักษร)" required="required"><?= $row['pd_detail'] ?></textarea>
+                                        <textarea name="pd_detail" style="resize: none;" maxlength="2000" rows="8" class="form-control" placeholder="ใส่ ลายละเอียด (สูงสุด 2,000 อักษร)" required="required"><?= $row['pd_detail'] ?></textarea>
                                     </div>
 
                                     <hr>
