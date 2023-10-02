@@ -11,6 +11,6 @@ if(isset($_POST)){
     }else{
         echoJson_status_msg("error",mysqli_error($conn));
     }
-    echo  $order_id;
+    // echo  $order_id;
 }
 ?>

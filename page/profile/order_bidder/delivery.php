@@ -144,7 +144,7 @@ $detail = json_decode($row['order_details'], true);
             <div class="col-12 px-4">
                 <?php if ($pay_status >= 3 && $dlv_status == 1) : ?>
                     <div class="text-end">
-                        <form id="accept-form" action="ajax/ajax_accept_order.php" method="post">
+                        <form id="accept-form" action="./ajax/ajax_accept_order.php" method="post">
                             <small id="emailHelp" class="form-text text-muted me-2">ใช้กดยอมรับสินค้า เมื่อได้รับสินค้าแล้ว.</small>
                             <input type="hidden" name="accept_id" value="<?= $_GET['order_id'] ?>">
                             <button name="accept" type="submit" class=" btn btn-primary me-2">ได้รับสินค้าแล้ว</button>
