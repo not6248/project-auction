@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="dist/css/main.css">
     <!-- sweetalert2 CSS =========================================================================-->
     <link rel="stylesheet" href="./../assets/css/sweetalert2.min.css">
+    
 
 
     <!-- Java Script  ============================================================================-->
@@ -30,7 +31,9 @@
     <!-- jQuery -->
     <script src="plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
-    <script src="dist/js/pages/main.js"></script>
+    <script src="dist/js/main.js"></script>
+    <!-- charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <!-- นับถอยหลังเวลาประมูล -->
     <script src="./../assets/js/countdown.js"></script>
     <!-- sweetalert2 js -->
