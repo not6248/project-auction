@@ -82,12 +82,12 @@
                 <tbody>
                   <?php foreach ($query as $data) : ?>
                     <tr>
-                      <td><?= $data['pd_id'] ?></td> <!-- id product -->
-                      <td><?= $data['pd_name'] ?></td> <!--  product name -->
-                      <td><?= $data['pd_price_start'] ?></td> <!--product img -->
-                      <td><?= $data['end_price'] ?? "--" ?></td> <!--product type name-->
-                      <td><?= $os_name_arr[$data['order_status']] ?></td> <!--product datetime-->
-                      <td><?= $data['order_create_datetime'] ?></td> <!--product type name-->
+                      <td><?= $data['pd_id'] ?></td>
+                      <td><?= $data['pd_name'] ?></td>
+                      <td><?= $data['pd_price_start'] ?></td>
+                      <td><?= $data['end_price'] ?? "--" ?></td> 
+                      <td><?= $os_name_arr[$data['order_status']] ?></td> 
+                      <td><?= date("d/m/Y H:i:s", strtotime($data['order_create_datetime'])); ?></td>
                       <td>I</td>
                     </tr>
                   <?php endforeach ?>
@@ -128,12 +128,12 @@
                 <tbody>
                   <?php foreach ($query2 as $data) : ?>
                     <tr>
-                      <td><?= $data['pd_id'] ?></td> <!-- id product -->
-                      <td><?= $data['pd_name'] ?></td> <!--  product name -->
-                      <td><?= $data['pd_price_start'] ?></td> <!--product img -->
-                      <td><?= $data['end_price'] ?? "--" ?></td> <!--product type name-->
-                      <td><?= $os_name_arr[$data['order_status']] ?></td> <!--product datetime-->
-                      <td><?= $data['order_create_datetime'] ?></td> <!--product type name-->
+                      <td><?= $data['pd_id'] ?></td>
+                      <td><?= $data['pd_name'] ?></td>
+                      <td><?= $data['pd_price_start'] ?></td>
+                      <td><?= $data['end_price'] ?? "--" ?></td>
+                      <td><?= $os_name_arr[$data['order_status']] ?></td>
+                      <td><?= date("d/m/Y H:i:s", strtotime($data['order_create_datetime'])); ?></td>
                       <td>I</td>
                     </tr>
                   <?php endforeach ?>
@@ -177,12 +177,12 @@
                 <tbody>
                   <?php foreach ($query3 as $data) : ?>
                     <tr>
-                      <td><?= $data['pd_id'] ?></td> <!-- id product -->
-                      <td><?= $data['pd_name'] ?></td> <!--  product name -->
-                      <td><?= $data['pd_price_start'] ?></td> <!--product img -->
-                      <td><?= $data['end_price'] ?? "--" ?></td> <!--product type name-->
-                      <td><?= $os_name_arr[$data['order_status']] ?></td> <!--product datetime-->
-                      <td><?= $data['order_create_datetime'] ?></td> <!--product type name-->
+                      <td><?= $data['pd_id'] ?></td> 
+                      <td><?= $data['pd_name'] ?></td> 
+                      <td><?= $data['pd_price_start'] ?></td> 
+                      <td><?= $data['end_price'] ?? "--" ?></td>
+                      <td><?= $os_name_arr[$data['order_status']] ?></td> 
+                      <td><?= date("d/m/Y H:i:s", strtotime($data['order_create_datetime'])); ?></td>
                       <td>I</td>
                     </tr>
                   <?php endforeach ?>
@@ -222,12 +222,12 @@
                 <tbody>
                   <?php foreach ($query4 as $data) : ?>
                     <tr>
-                      <td><?= $data['pd_id'] ?></td> <!-- id product -->
-                      <td><?= $data['pd_name'] ?></td> <!--  product name -->
-                      <td><?= $data['pd_price_start'] ?></td> <!--product img -->
-                      <td><?= $data['end_price'] ?? "--" ?></td> <!--product type name-->
-                      <td><?= $os_name_arr[$data['order_status']] ?></td> <!--product datetime-->
-                      <td><?= $data['order_create_datetime'] ?></td> <!--product type name-->
+                      <td><?= $data['pd_id'] ?></td> 
+                      <td><?= $data['pd_name'] ?></td> 
+                      <td><?= $data['pd_price_start'] ?></td>
+                      <td><?= $data['end_price'] ?? "--" ?></td>
+                      <td><?= $os_name_arr[$data['order_status']] ?></td>
+                      <td><?= date("d/m/Y H:i:s", strtotime($data['order_create_datetime'])); ?></td>
                       <td>I</td>
                     </tr>
                   <?php endforeach ?>

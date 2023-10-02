@@ -104,7 +104,7 @@ $ud_idcard_img = $row['ud_idcard_img'];
                             </div>
                             <?php if ($_SESSION['user_type'] == 2) : ?>
                             <div class="mb-1 mt-3" id="bank">
-                                <p class="mb-0 ms-1">ธนาคาร</p>
+                                <p class="mb-0 ms-1">ธนาคาร (ใช้สำหรับรับเงิน)</p>
                                 <div class="d-flex ps-3">
                                     <div class="me-4">
                                         <!-- checked="checked" -->

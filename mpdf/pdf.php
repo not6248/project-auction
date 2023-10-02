@@ -10,21 +10,21 @@ if (isset($_POST['o1'])) {
   INNER JOIN product AS pd ON od.pd_id = pd.pd_id
   INNER JOIN product_type AS pdt ON pd.pd_type_id = pdt.pd_type_id
   WHERE (od.order_status = 2 OR od.order_status = 3)
-  AND DATE(od.order_create_datetime) IN ('$start', '$end');";
+  AND (DATE(od.order_create_datetime) BETWEEN '$start' AND '$end');";
 } elseif (isset($_POST['o2'])) {
   $sql = "SELECT *
   FROM order_tb AS od
   INNER JOIN product AS pd ON od.pd_id = pd.pd_id
   INNER JOIN product_type AS pdt ON pd.pd_type_id = pdt.pd_type_id
-  WHERE (od.order_status >= 3)
-  AND DATE(od.order_create_datetime) IN ('$start', '$end');";
+  WHERE (od.order_status = 3)
+  AND (DATE(od.order_create_datetime) BETWEEN '$start' AND '$end');";
 } elseif (isset($_POST['o3'])) {
   $sql = "SELECT *
   FROM order_tb AS od
   INNER JOIN product AS pd ON od.pd_id = pd.pd_id
   INNER JOIN product_type AS pdt ON pd.pd_type_id = pdt.pd_type_id
   WHERE (od.order_status = 2)
-  AND DATE(od.order_create_datetime) IN ('$start', '$end');";
+  AND (DATE(od.order_create_datetime) BETWEEN '$start' AND '$end');";
 } elseif (isset($_POST['o4'])) {
   $sql = "SELECT * FROM order_tb AS o
   INNER JOIN product AS pd ON o.pd_id = pd.pd_id
@@ -33,15 +33,21 @@ if (isset($_POST['o1'])) {
   INNER JOIN delivery AS d ON d.dlv_id = pd.pd_id
   INNER JOIN delivery_type AS dt ON dt.dlvt_id = d.dlvt_id
   WHERE o.order_status = 3 AND pay.pay_status = 4 AND d.dlv_status = 2
-  AND DATE(o.order_create_datetime) IN ('$start', '$end');";
+  AND (DATE(o.order_create_datetime) BETWEEN '$start' AND '$end');";
 }
 
-$reslut = mysqli_query($conn, $sql);
+$result = mysqli_query($conn, $sql);
 
 
-if (mysqli_num_rows($reslut) > 0) {
-} else {
+if (!mysqli_num_rows($result) > 0) {
   echo_js_alert("ไม่พบข้อมูลที่ค้นหา", "back");
+} else {
+  $numrow = mysqli_num_rows($result);
+  $totalEndPrice = 0;
+  while ($rowfetch = mysqli_fetch_assoc($result)) {
+    $endPrice = $rowfetch['end_price'];
+    $totalEndPrice += $endPrice;
+  }
 }
 
 
@@ -77,24 +83,6 @@ $mpdf = new \Mpdf\Mpdf([
 ]);
 ob_start();
 ?>
-<style>
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    font-size: 23px;
-  }
-
-  td,
-  th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-  }
-
-  tr:nth-child(even) {
-    background-color: #dddddd;
-  }
-</style>
 </head>
 
 <body>
@@ -103,6 +91,13 @@ ob_start();
   <h3>วันที่ <?= $start ?> ถึง <?= $end ?> </h3>
 
   <table>
+    <tr class="thbg">
+      <th></th>
+      <th>=========================== รวมทั้งหมด =========================== ></th>
+      <th><?= number_format($numrow,0) ?> ชิ้น</th>
+      <th><?=number_format($totalEndPrice,0)?> บาท </th>
+      <th></th>
+    </tr>
     <tr>
       <th>ID</th>
       <th>ชื่อ</th>
@@ -110,7 +105,7 @@ ob_start();
       <th>ราคาจบประมูล</th>
       <th>สถานะ</th>
     </tr>
-    <?php foreach ($reslut as $data) : ?>
+    <?php foreach ($result as $data) : ?>
       <tr>
         <td><?= $data['pd_id'] ?></td> <!-- id product -->
         <td><?= $data['pd_name'] ?></td> <!--  product name -->

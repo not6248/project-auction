@@ -31,3 +31,6 @@ function data_table(id){
     });
   });
   }
+
+
+  
