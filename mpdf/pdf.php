@@ -79,9 +79,6 @@ $mpdf = new \Mpdf\Mpdf([
 ]);
 ob_start();
 ?>
-</head>
-
-<body>
 
   <h2 style="margin-bottom: 0px;"><?= $title ?></h2>
   <h3>วันที่ <?= $start ?> ถึง <?= $end ?> </h3>

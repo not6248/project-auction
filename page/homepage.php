@@ -43,7 +43,6 @@
                                                                                                             ? "btn btn-primary"
                                                                                                             : "btn-light" ?> mt-2 me-2 category-btn" role="button"><?= $row_pro_type['pd_type_name'] ?></a>
                  <?php endforeach ?>
-                 <!-- <a href="" class="btn btn-primary mt-2 me-2 category-btn" role="button" ">Genre Vinyls</a> -->
              </div>
          </div>
          <div id=" product-list" class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3 mb-xl-4">

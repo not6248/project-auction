@@ -709,7 +709,6 @@ $(document).ready(function () {
         let Method = $(this).attr("method");
         let formUrl = $(this).attr("action");
         let formData = $(this).serialize();
-        console.log(formData);
         Swal.fire({
             title: 'คุณแน่ใจหรือไม่?',
             html: "คุณจะไม่สามารถย้อนกลับสิ่งนี้ได้!<br>กรุณาตรวจสอบสินค้าก่อนกดยืนยันการได้รับสินค้า",
