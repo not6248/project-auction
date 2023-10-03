@@ -46,4 +46,4 @@
 | `ปุ่ม favorite` | ![](https://geps.dev/progress/100) | :heavy_check_mark: |
 | `นำสินค้ามาแสดงตามเงื่อนไข` | ![](https://geps.dev/progress/100) | :heavy_check_mark: |
 
-https://necessary-spaghetti-d78.notion.site/4bf3d8d2e9c144039eea93ff1be629c8?pvs=4
+to do list : https://necessary-spaghetti-d78.notion.site/4bf3d8d2e9c144039eea93ff1be629c8?pvs=4
