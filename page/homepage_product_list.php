@@ -35,6 +35,8 @@ $query_product = mysqli_query($conn, $sql);
         $price_now = number_format($row_order_summary['total_price'], 0);
 
         $pdDetail = $row['pd_detail'];
+        // ลบแท็ก HTML ออก
+        $pdDetail = strip_tags($pdDetail);
         if (mb_strlen($pdDetail, 'UTF-8') > 70) {
             $pdDetail = mb_substr($pdDetail, 0, 70, 'UTF-8') . '...';
         }
