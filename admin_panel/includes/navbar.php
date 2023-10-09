@@ -18,7 +18,7 @@
   <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
     <!-- Navbar Search -->
-    <li><a href="../logoutadmin.php" class="btn btn-danger" onclick="return confirm('ต้องการออกจากระบบหรือไม่')">ออกจากระบบ</a>
+    <li><a href="./logout.php" class="btn btn-danger" onclick="return confirm('ต้องการออกจากระบบหรือไม่')">ออกจากระบบ</a>
     <li class="nav-item">
       <a class="nav-link" data-widget="navbar-search" href="#" role="button">
         <i class="fas fa-search"></i>
