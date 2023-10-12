@@ -71,9 +71,16 @@ if (mysqli_num_rows($result) > 0) {
     if ($execute1 && $execute2) {
         // เรียกใช้ mysqli_commit เมื่อทุกคำสั่ง SQL ทำงานสำเร็จ
         mysqli_commit($conn);
-        $subject = "Email Verification Code";
-        $message = "Your verification code is $email_v_code";
-        $sender = "PMN";
+        $subject = "OTP เพื่อยืนยันการสมัครสมาชิก Vinyl bid";
+        $message = "เรียนคุณ $username <br><br>
+        ขอขอบคุณที่สมัครสมาชิก Vinyl bid เรายินดีต้อนรับคุณเข้าสู่ชุมชนนักสะสมแผ่นเสียงไวนิลของเรา <br><br>
+        เพื่อยืนยันการสมัครสมาชิกของคุณ โปรดป้อนรหัสยืนยัน (OTP) ต่อไปนี้ในช่องที่กำหนดบนเว็บไซต์ของเรา<br><br><br>
+        OTP: <b>$email_v_code</b> <br><br><br>
+        หากคุณมีคำถามหรือข้อสงสัย โปรดติดต่อเราที่ aekkapob.pa@rmuti.ac.th <br><br>
+        ขอบคุณอีกครั้งสำหรับการสมัครสมาชิกของคุณ <br><br>
+        ขอแสดงความนับถือ <br>
+        ทีม Vinyl bid";
+        $sender = "ทีม Vinyl bid";
         if (sendMail($email, $subject, $message, $sender)) {
             $info = "We've sent a verification code to your<br>email - $email";
             $_SESSION['info'] = $info;
@@ -86,16 +93,15 @@ if (mysqli_num_rows($result) > 0) {
     } else {
         mysqli_rollback($conn);
         // $_SESSION['error'] = "เกิดข้อผิดพลาดในการบันทึกข้อมูล: " . mysqli_error($conn);
-        echoJson_status_msg("error","เกิดข้อผิดพลาดในการบันทึกข้อมูล");
+        echoJson_status_msg("error", "เกิดข้อผิดพลาดในการบันทึกข้อมูล");
     }
 
     // $_SESSION['success'] = "สมัครสมาชิกเรียบร้อยแล้ว! <a href='signin.php' class='alert-link'>คลิ๊กที่นี่</a> เพื่อเข้าสู่ระบบ";
     // header("location:../../?page=register");
     // exit();
 } else {
-    echoJson_status_msg("error","มีบางอย่างผิดผลาด");
+    echoJson_status_msg("error", "มีบางอย่างผิดผลาด");
     // $_SESSION['error'] = "มีบางอย่างผิดผลาด";
     // header("location:../../?page=register");
     // exit();
 }
-

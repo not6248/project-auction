@@ -43,15 +43,19 @@ if ($update_to_show) {
 //Order ที่ต้องเปลี่ยนเป็นระหว่างประมูล
 if ($update_to_start) {
     if (mysqli_num_rows($update_to_start) > 0) {
-        $result = mysqli_query($conn, "SELECT f.pd_name,o.order_status,l.user_email FROM favorite_list f JOIN order_tb o ON o.pd_id = f.pd_id INNER JOIN login l ON f.fav_user_id = l.user_id WHERE o.order_status = 1;");
+        $result = mysqli_query($conn, "SELECT f.pd_name,o.order_status,l.user_email,l.username FROM favorite_list f JOIN order_tb o ON o.pd_id = f.pd_id INNER JOIN login l ON f.fav_user_id = l.user_id WHERE o.order_status = 1;");
         foreach ($result as $row) {
             $pd_name = $row['pd_name'];
             $email   = $row['user_email'];
-            $subject = "Your favorite item has started bidding.";
-            $message = "Your favorite item <b>$pd_name</b> has started bidding <br> 
-                        Hurry and go to the auction. before others take it away <br><br>
-                        -wish you luck";
-            $sender = "Vinyl Bid";
+            $username = $row['username'];
+            $subject = "สินค้าที่คุณสนใจเริ่มประมูลแล้ว";
+            $message = "เรียนคุณ <b>$username</b> <br> <br> 
+                        สินค้าที่คุณสนใจ <b>$pd_name</b> กำลังเริ่มประมูลแล้ว <br> <br> 
+                        รีบไปประมูลกันเถอะ ก่อนที่คนอื่นจะแย่งไป<br> <br> 
+                        ขอให้โชคดีในการประมูล<br> <br> 
+                        ขอแสดงความนับถือ<br> <br> 
+                        ทีม Vinyl Bid";
+            $sender = "ทีม Vinyl Bid";
             if (!sendMail($email, $subject, $message, $sender)) {
                 echo "send _ error";
             }
@@ -76,8 +80,8 @@ if ($update_to_end) {
             foreach ($result2 as $row) {
                 if ($row['latest_bidder'] == null) {
                     $sql = "UPDATE need_update_to_end SET pd_status = 0 WHERE order_id = " . $row['pd_id'];
-                    mysqli_query($conn,$sql);
-                    $sql = "UPDATE need_update_to_end SET order_status = 4  WHERE order_id = ".$row['pd_id'];
+                    mysqli_query($conn, $sql);
+                    $sql = "UPDATE need_update_to_end SET order_status = 4  WHERE order_id = " . $row['pd_id'];
                     mysqli_query($conn, "$sql"); //4 = ไม่มีผู้ประมูล 
                     echo "update_to_end(ไม่พบผู้ประมูล)";
                     continue;
@@ -88,12 +92,23 @@ if ($update_to_end) {
                 $dueDate = date('d/m/y', strtotime($currentDate . ' + 7 days'));
 
                 $pd_name = $row['pd_name'];
+                $username = $row['username'];
                 $email   = $row['user_email'];
-                $subject = "คุณชนะการประมูล";
-                $message = "คุณชนะการประมูลสินค้า <b>$pd_name</b> 
-                        - ราคาที่คุณต้องจ่ายคือ " . number_format($row['total_price'], 0) . " บาท<br>"
-                    . "กรุณาชำระภายในวันที่ $dueDate";
-                $sender = "Vinyl Bid";
+                $subject = "ยินดีด้วย! คุณชนะการประมูล $pd_name";
+                $message = "เรียนคุณ $username <br> <br> 
+                ขอแสดงความยินดีด้วย คุณชนะการประมูลสินค้า <b>$pd_name</b>  เรียบร้อยแล้ว! <br> <br> 
+                ราคาที่คุณต้องจ่ายคือ " . number_format($row['total_price'], 0) . " บาท <br> <br>
+                กรุณาชำระภายในวันที่ $dueDate <br> <br>
+                หากต้องการชำระค่าสินค้า คุณสามารถดำเนินการได้ดังนี้<br> <br>
+                1.เข้าสู่ระบบเว็บไซต์ Vinyl Bid<br>
+                2.คลิกที่ \"โปรไฟล์ของฉัน\"<br>
+                3.คลิกที่ปุ่ม \"ออเดอร์ ผู้ประมูลสินค้า\"<br>
+                3.คลิกที่ปุ่ม \"ชำระเงิน\"<br><br>
+                หากมีข้อสงสัยหรือต้องการความช่วยเหลือ โปรดติดต่อเราที่ aekkapob.pa@rmuti.ac.th <br><br>
+                ขอแสดงความนับถือ<br>
+                ทีม Vinyl Bid
+                ";
+                $sender = "ทีม Vinyl Bid";
                 if (sendMail($email, $subject, $message, $sender)) {
                     mysqli_query($conn, "UPDATE order_tb SET end_price = " . number_format($row['total_price'], 0) . " WHERE order_tb.order_id = " . $row['order_id']);
                     $sql2 = "SELECT * FROM order_detail_last_bid WHERE order_id = " . $row['order_id'];
