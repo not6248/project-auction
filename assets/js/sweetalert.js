@@ -125,7 +125,7 @@ $(document).ready(function () {
                         icon: result.status,
                         heightAuto: false,
                         showConfirmButton: false,
-                        timer: 1500,
+                        timer: 500,
                         didOpen: () => {
                             Swal.showLoading()
                             const b = Swal.getHtmlContainer().querySelector('b')
