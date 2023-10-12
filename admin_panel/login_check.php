@@ -3,8 +3,8 @@ session_start();
 require '../db/db_conn.php';
 
 if (isset($_POST['admin_login'])) {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
 
     if (empty($email)) {
         echo_js_alert("กรุณากรอกอีเมล","back");
@@ -23,18 +23,28 @@ if (isset($_POST['admin_login'])) {
         // $_SESSION['error'] = 'รหัสผ่านต้องอยู่ระว่าง 5 - 20 ตัวอักษร';
         header("location: login.php");
     } else {
-
-        $query = ("SELECT * FROM login WHERE user_email = '$email' AND password = '$password' AND user_status = '1' and user_type = '0'");
+        
+        $query = ("SELECT * FROM login WHERE user_email = '$email' AND user_status = '1' and user_type = '0'");
         $result = mysqli_query($conn, $query);
+        // AND password = '$password'
+        //เช็ครหัสผ่านที่ถูก hash แล้ว
+    
+        if (mysqli_num_rows($result) > 0 ) {
 
-        if (mysqli_num_rows($result) == 1) {
             $row = mysqli_fetch_assoc($result);
-            $_SESSION['admin_login'] = $row['user_id'];
-            $_SESSION['user_type'] = $row['user_type'];
-            echo_js_alert("เข้าสู่ระบบสำเร็จ","./");
+            $passwordHash = $row['password'];
+            $password_verify = password_verify($password, $passwordHash);
+            if ($password_verify) {
+                $_SESSION['admin_login'] = $row['user_id'];
+                $_SESSION['user_type'] = $row['user_type'];
+                echo_js_alert("เข้าสู่ระบบสำเร็จ","./");
+            } else {
+                echo_js_alert("Email หรือ รหัสไม่ถูก","login.php");
+                // $_SESSION['error'] = 'Email หรือ รหัสไม่ถูก';
+                header("location: login.php");
+            }
         } else {
-            echo "<script>alert('Email หรือ รหัสไม่ถูก')</script>";
-            Header('Refresh:0; login.php');
+            echo_js_alert("Email หรือ รหัสไม่ถูก","login.php");
         }
     }
 }
