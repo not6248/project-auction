@@ -99,7 +99,7 @@
                 <li class="nav-item">
                     <a href="?page=pay_seller" class="nav-link <?php echo isset($_GET['page']) && ($_GET['page']) == 'pay_seller' ? 'active' : '' ?>">
                         <i class="fa-solid fa-hand-holding-dollar"></i>
-                        <p>โอนเงินให้กับผู้ซื้อ</p>
+                        <p>โอนเงินให้กับผู้ขาย</p>
                     </a>
                 </li>
                 <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
