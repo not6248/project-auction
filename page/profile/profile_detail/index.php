@@ -35,12 +35,27 @@ $ud_idcard_img = $row['ud_idcard_img'];
                                 <p class="mb-0 ms-1">อีเมล์</p>
                                 <input disabled type="text" value="<?= $row['user_email'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
                             </div>
-                            <div class="mb-1 mt-1 w-50">
-                                <a href="" class="mb-0 ms-1" href="#" data-bs-toggle="modal" data-bs-target="#passModal">เปลี่ยนรหัส</a>
+                            <div class="mb-3 mt-1 w-50">
+                                <a href="" class="mb-0 ms-1" href="#" data-bs-toggle="modal" data-bs-target="#passModal">เปลี่ยนรหัสผ่าน</a>
                             </div>
                             <div class="mb-1 w-50">
                                 <p class="mb-0 ms-1">เบอร์โทรศัพท์</p>
-                                <input required type="number" name="tele" value="<?= $row['ud_phone'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
+                                <input required type="text" name="tele" value="<?= $row['ud_phone'] ?>" style="border-radius: 5px; border: 1px solid #CCCCCC; height: 35px; width: 100%;" class="ms-0 ps-3" oninput="validateInput(this)">
+
+                                <script>
+                                    function validateInput(inputElement) {
+                                        let inputValue = inputElement.value;
+                                        // ลบตัวอักษรที่ไม่ใช่ตัวเลข
+                                        inputValue = inputValue.replace(/[^0-9]/g, '');
+                                        // จำกัดความยาวให้เป็น 10 ตัว
+                                        if (inputValue.length > 10) {
+                                            inputValue = inputValue.slice(0, 10);
+                                        }
+                                        // กำหนดค่าใหม่กลับไปยัง input
+                                        inputElement.value = inputValue;
+                                    }
+                                </script>
+
                             </div>
 
                             <!-- radio -->
@@ -67,7 +82,7 @@ $ud_idcard_img = $row['ud_idcard_img'];
                             <?php
                             if ($_SESSION['user_type'] == 1) {
                                 $idCardMessage = "";
-                                $label = "อัปโหลด รูปภาพ บัตรประชาชน";
+                                $label = "อัปโหลด รูปภาพ บัตรประชาชน (ยืนยันตัวตน เพื่อให้สามารถลงสินค้าได้)";
                                 $labelLink = "คลิกที่นี่";
 
                                 if ($ud_idcard_img == NULL) {
@@ -79,7 +94,7 @@ $ud_idcard_img = $row['ud_idcard_img'];
                                 } elseif ($ud_id_card == 0) {
                                     $idCardMessage = "ภาพไม่สมบูรณ์ กรุณาอัพโหลดใหม่อีกครั้ง";
                                     $label = "ภาพไม่สมบูรณ์ กรุณาอัพโหลดใหม่อีกครั้ง";
-                                }else{
+                                } else {
                                     $idCardMessage = "บัตรประชาชนตรวจสอบแล้ว กรุณาเข้าสู่ระบบใหม่";
                                     $label = "";
                                     $labelLink = "";
@@ -91,7 +106,7 @@ $ud_idcard_img = $row['ud_idcard_img'];
                             }
                             ?>
                             <div class="mb-1 w-50">
-                                <p class="mb-0 ms-1">รหัสบัตรประชาชน</p>
+                                <p class="mb-0 ms-1">สถานะบัตรประชาชน</p>
                                 <input disabled type="text" value="<?= $idCardMessage ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
 
                                 <label style="font-size: 12px;"><?= $label ?></label>
@@ -103,23 +118,24 @@ $ud_idcard_img = $row['ud_idcard_img'];
                                 <!-- <p id="id-card-img-upload-file-name" style="font-size: 12px;"></p> -->
                             </div>
                             <?php if ($_SESSION['user_type'] == 2) : ?>
-                            <div class="mb-1 mt-3" id="bank">
-                                <p class="mb-0 ms-1">ธนาคาร (ใช้สำหรับรับเงิน)</p>
-                                <div class="d-flex ps-3">
-                                    <div class="me-4">
-                                        <!-- checked="checked" -->
-                                        <?php foreach ($bank_arr as $index => $v) : ?>
-                                            <input value="<?= $index ?>" type="radio" class="form-check-input" name="bank_id" <?= isset($row['ud_bank_id']) && $index == $row['ud_bank_id'] ? "checked" : "" ?>> <!-- checked -->
-                                            <label class="form-check-label me-2" for="prefix-1"><?= $v ?></label>
-                                        <?php endforeach ?>
+                                <hr>
+                                <div class="mb-1 mt-3" id="bank">
+                                    <p class="mb-0 ms-1">ธนาคาร (ใช้สำหรับรับเงิน)</p>
+                                    <div class="d-flex ps-3">
+                                        <div class="me-4">
+                                            <!-- checked="checked" -->
+                                            <?php foreach ($bank_arr as $index => $v) : ?>
+                                                <input value="<?= $index ?>" type="radio" class="form-check-input" name="bank_id" <?= isset($row['ud_bank_id']) && $index == $row['ud_bank_id'] ? "checked" : "" ?>> <!-- checked -->
+                                                <label class="form-check-label me-2" for="prefix-1"><?= $v ?></label>
+                                            <?php endforeach ?>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="mb-5 w-50 ">
-                                <p class="mb-0 ms-1">เลขบัญชี</p>
-                                <input type="number" name="bank_number" value="<?= $row['ud_bank_number'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
-                            </div>
+                                <div class="mb-5 w-50 ">
+                                    <p class="mb-0 ms-1">เลขบัญชี</p>
+                                    <input type="number" name="bank_number" value="<?= $row['ud_bank_number'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
+                                </div>
                             <?php endif ?>
                     </div>
                     <div class="card-footer" style="background: #D8DBE9;">
