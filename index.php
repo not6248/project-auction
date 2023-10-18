@@ -34,6 +34,9 @@
         case 'product':
             include './page/product_details/index.php';
             break;
+        case 'policy':
+            include './page/policy.php';
+            break;
         default:
             // หากไม่มีการกำหนดหน้าหรือไม่ตรงกับเงื่อนไขใดๆ
             include './page/404.php';
