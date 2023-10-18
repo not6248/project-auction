@@ -8,7 +8,7 @@ if (!empty($_SESSION['otp_status'])) {
     <div class="container">
         <div class="card-body p-md-5">
             <div class="row justify-content-center">
-                <div class="col-6">
+                <div class="col-12 col-sm-8 col-md-6">
                     <form id="registerForm" action="./ajax/ajax_register.php" method="post">
                         <h1 class="text-center h2 fw-bold mb-5 mt-4 fw-normal">สมัครสมาชิก</h1>
                         <div class="form-floating mb-2">

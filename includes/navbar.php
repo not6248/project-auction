@@ -20,7 +20,7 @@
                         ? '<li class="nav-item"><a class="nav-link fw-bold" href="./?page=profile&subpage=product&function=add"><i class="fa-solid fa-plus"></i> เพิ่มสินค้า</a></li>'
                         : '' ?>
                     <li class="nav-item"><a class="nav-link fw-bold" href="./">หน้าแรก</a></li> <!-- active -->
-                    <li class="nav-item "><a class="nav-link fw-bold d-flex align-items-center" href="#">คำแนะนำ<i class="fa-solid fa-book fa-xs ms-1 pt-1"></i></a></li>
+                    <li class="nav-item "><a class="nav-link fw-bold d-flex align-items-center" href="#">วิธีการใช้งาน<i class="fa-solid fa-book fa-xs ms-1 pt-1"></i></a></li>
                     <li class="nav-item"><a class="nav-link fw-bold" href="./?page=about">เกี่ยวกับ</a></li>
                     <li class="nav-item"><a class="nav-link fw-bold" href="./?page=contact">ติดต่อ</a></li>
                     <!-- Profile Dropdown-->
