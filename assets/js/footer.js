@@ -26,8 +26,8 @@ function SubimagePreview(fileInput) {
         if (fileInput.files.length > 3) {
             Swal.fire({
                 icon: 'error',
-                title: 'You have exceeded the number of files selected.',
-                text: 'Please select no more than 3 images.',
+                title: 'คุณมีไฟล์ที่เลือกเกินจำนวนที่กำหนด',
+                text: 'กรุณาเลือกไม่เกิน 3 ภาพ',
             });
             previewContainer.empty();
             let colDiv = $('<div>').addClass('col-3 mb-3');
