@@ -117,26 +117,32 @@ $ud_idcard_img = $row['ud_idcard_img'];
                                 <!-- <input class="d-none" type="file" name="" id="id-card-img-upload" onchange="getImage(this.value)"> -->
                                 <!-- <p id="id-card-img-upload-file-name" style="font-size: 12px;"></p> -->
                             </div>
-                            <?php if ($_SESSION['user_type'] == 2) : ?>
-                                <hr>
-                                <div class="mb-1 mt-3" id="bank">
-                                    <p class="mb-0 ms-1">ธนาคาร (ใช้สำหรับรับเงิน)</p>
-                                    <div class="d-flex ps-3">
-                                        <div class="me-4">
-                                            <!-- checked="checked" -->
-                                            <?php foreach ($bank_arr as $index => $v) : ?>
-                                                <input value="<?= $index ?>" type="radio" class="form-check-input" name="bank_id" <?= isset($row['ud_bank_id']) && $index == $row['ud_bank_id'] ? "checked" : "" ?>> <!-- checked -->
-                                                <label class="form-check-label me-2" for="prefix-1"><?= $v ?></label>
-                                            <?php endforeach ?>
-                                        </div>
+                            <?php //if ($_SESSION['user_type'] == 2) : 
+                            ?>
+                            <hr>
+                            <div class="mb-1 mt-3" id="bank">
+                                <?php if ($_SESSION['user_type'] == 2) : ?>
+                                    <p class="mb-0 ms-1">ธนาคาร (ใช้สำหรับรับเงิน และ รับเงินคืน)</p>
+                                <?php else : ?>
+                                    <p class="mb-0 ms-1">ธนาคาร (ใช้สำหรับรับเงินคืน)</p>
+                                <?php endif ?>
+                                <div class="d-flex ps-3">
+                                    <div class="me-4">
+                                        <!-- checked="checked" -->
+                                        <?php foreach ($bank_arr as $index => $v) : ?>
+                                            <input value="<?= $index ?>" required type="radio" class="form-check-input" name="bank_id" <?= isset($row['ud_bank_id']) && $index == $row['ud_bank_id'] ? "checked" : "" ?>> <!-- checked -->
+                                            <label class="form-check-label me-2" for="prefix-1"><?= $v ?></label>
+                                        <?php endforeach ?>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="mb-5 w-50 ">
-                                    <p class="mb-0 ms-1">เลขบัญชี</p>
-                                    <input type="number" name="bank_number" value="<?= $row['ud_bank_number'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
-                                </div>
-                            <?php endif ?>
+                            <div class="mb-5 w-50 ">
+                                <p class="mb-0 ms-1">เลขบัญชี</p>
+                                <input type="number" name="bank_number" required value="<?= $row['ud_bank_number'] ?>" style="border-radius: 5px;border: 1px solid #CCCCCC;height: 35px;width: 100%;" class="ms-0 ps-3">
+                            </div>
+                            <?php //endif 
+                            ?>
                     </div>
                     <div class="card-footer" style="background: #D8DBE9;">
                         <button class="btn btn-primary" type="submit" style="border-radius: 7px;">ยืนยันการแก้ไข</button>
