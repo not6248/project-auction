@@ -9,6 +9,7 @@ if (isset($_POST) && $_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 0)
     $pd_detail      = $_POST['pd_detail'];
     $pd_condition   = $_POST['pd_condition'];
     $pd_price_start = $_POST['pd_price_start'];
+
     // $user_id        = $_SESSION['user_login'];
     // // =====================================================================================
     // date_default_timezone_set('Asia/Bangkok');
@@ -101,11 +102,21 @@ if (isset($_POST) && $_SESSION['user_type'] == 2 || $_SESSION['user_type'] == 0)
 
     // $sql1 = "INSERT INTO product (user_id, pd_type_id, pd_name, pd_detail, pd_price_start, pd_img, pd_condition,pd_start_show_date, pd_start_date, pd_end_date) 
     // VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    if(isset($_POST['pd_status'])){
+        $pd_status      = $_POST['pd_status'];
+        $sql1 = "UPDATE product SET pd_type_id=?,pd_name=?,pd_detail=?,pd_price_start=?,pd_img=?,pd_condition=?,pd_status=? WHERE pd_id = ?";
+        $stmt1 = mysqli_prepare($conn, $sql1);
+        mysqli_stmt_bind_param($stmt1, "ssssssii", $pd_type_id, $pd_name, $pd_detail, $pd_price_start, $image_json, $pd_condition, $pd_status, $pd_id);
+    }else{
+        $sql1 = "UPDATE product SET pd_type_id=?,pd_name=?,pd_detail=?,pd_price_start=?,pd_img=?,pd_condition=? WHERE pd_id = ?";
+        $stmt1 = mysqli_prepare($conn, $sql1);
+        mysqli_stmt_bind_param($stmt1, "ssssssi", $pd_type_id, $pd_name, $pd_detail, $pd_price_start, $image_json, $pd_condition, $pd_id);
+    }
+    
+    // $sql1 = "UPDATE product SET pd_type_id=?,pd_name=?,pd_detail=?,pd_price_start=?,pd_img=?,pd_condition=? WHERE pd_id = ?";
 
-    $sql1 = "UPDATE product SET pd_type_id=?,pd_name=?,pd_detail=?,pd_price_start=?,pd_img=?,pd_condition=? WHERE pd_id = ?";
-
-    $stmt1 = mysqli_prepare($conn, $sql1);
-    mysqli_stmt_bind_param($stmt1, "ssssssi", $pd_type_id, $pd_name, $pd_detail, $pd_price_start, $image_json, $pd_condition, $pd_id);
+    // $stmt1 = mysqli_prepare($conn, $sql1);
+    // mysqli_stmt_bind_param($stmt1, "ssssssi", $pd_type_id, $pd_name, $pd_detail, $pd_price_start, $image_json, $pd_condition, $pd_id);
 
     if (mysqli_stmt_execute($stmt1)) {
         mysqli_commit($conn);

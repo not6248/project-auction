@@ -14,7 +14,7 @@ $pd_img = json_decode($image_json);
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0">Update Product</h1>
-                    
+
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -134,7 +134,17 @@ $pd_img = json_decode($image_json);
 
                                     </div>
                                     <!-- ============================================================================================================== -->
-
+                                    <div class="form-group mb-2">
+                                        <label class="mb-1">สถานะการแสดงบนหน้าเว็บไซต์</label><br>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="pd_status" value="0" <?= $row['pd_status'] == 0 ? "checked" : "" ?>>
+                                            <label class="form-check-label mr-2">ปิดการเข้าถึงสินค้า</label>
+                                            <input class="form-check-input" type="radio" name="pd_status" value="1" <?= $row['pd_status'] == 1 ? "checked" : "" ?>>
+                                            <label class="form-check-label mr-2">ไม่แสดงสินค้า(แต่สามารถเข้าผ่าน Link ได้)</label>
+                                            <input class="form-check-input" type="radio" name="pd_status" value="2" <?= $row['pd_status'] == 2 ? "checked" : "" ?>>
+                                            <label class="form-check-label mr-2">แสดงสินค้า</label>
+                                        </div>
+                                    </div>
                                     <!-- <div class="form-group">
                                 <label>สถานะ</label>
                                 <input name="product_status" type="radio" value="0" required="required"> แสดงสินค้า
