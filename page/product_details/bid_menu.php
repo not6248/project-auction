@@ -40,8 +40,11 @@ if (isset($_SESSION['user_login'])) :
     $info_null_chaeck = "SELECT * FROM user_detail WHERE(
     prefix_id IS NULL OR 
     ud_address IS NULL OR 
-    ud_phone IS NULL OR ud_fname IS NULL OR 
-    ud_lname IS NULL) AND user_id = " . $_SESSION['user_login'];
+    ud_phone IS NULL OR 
+    ud_fname IS NULL OR 
+    ud_lname IS NULL OR
+    ud_bank_number IS NULL OR
+    ud_bank_id IS NULL) AND user_id = " . $_SESSION['user_login'];
     $result = mysqli_query($conn, $info_null_chaeck);
     if (mysqli_num_rows($result) > 0) : ?>
 
