@@ -11,8 +11,8 @@
 
         <ul class="nav col-md-4 justify-content-end">
             <li class="nav-item"><a href="./" class="link-light px-2">หน้าแรก</a></li>
-            <li class="nav-item"><a href="./" class="link-light px-2">นโยบาย</a></li>
-            <li class="nav-item"><a href="#" class="link-light px-2">เกี่ยวกับ</a></li>
+            <li class="nav-item"><a href="./?page=policy" class="link-light px-2">นโยบาย</a></li>
+            <li class="nav-item"><a href="./?page=about" class="link-light px-2">เกี่ยวกับ</a></li>
             <li class="nav-item"><a href="./?page=contact" class="link-light px-2">ติดต่อ</a></li>
             <!-- <li class="nav-item"><a href="#" class="link-light px-2">Features</a></li>
                 <li class="nav-item"><a href="#" class="link-light px-2">Pricing</a></li> -->
