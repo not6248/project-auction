@@ -11,6 +11,7 @@
 
         <ul class="nav col-md-4 justify-content-end">
             <li class="nav-item"><a href="./" class="link-light px-2">หน้าแรก</a></li>
+            <li class="nav-item"><a href="./" class="link-light px-2">นโยบาย</a></li>
             <li class="nav-item"><a href="#" class="link-light px-2">เกี่ยวกับ</a></li>
             <li class="nav-item"><a href="./?page=contact" class="link-light px-2">ติดต่อ</a></li>
             <!-- <li class="nav-item"><a href="#" class="link-light px-2">Features</a></li>
@@ -18,13 +19,3 @@
         </ul>
     </div>
 </footer>
-
-<!-- <footer class="footer mt-auto text-center bg-dark py-3 my-4">
-        <div class="container text-white py-4 py-lg-5 pb-xl-2 mt-xl-0 pt-xl-3">
-            <ul class="list-inline nav justify-content-center pb-3 mb-3">
-                <li class="list-inline-item me-4"><a class="link-light" href="#">Web design</a></li>
-                <li class="list-inline-item me-4"><a class="link-light" href="#">Development</a></li>
-                <li class="list-inline-item"><a class="link-light" href="#">Hosting</a></li>
-            </ul>
-        </div>
-    </footer> -->
