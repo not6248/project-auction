@@ -262,9 +262,11 @@ $(document).ready(function () {
         let formData = new FormData(this);
         let fee = $(this).data("fee");
 
+
+
         const { value: accept } = await Swal.fire({
             title: 'ข้อกำหนดและเงื่อนไข',
-            html: "สินค้าจะถูกเรียกเก็บค่าบริการ<br>เป็นจำนวน "+ fee +"% ของราคาจบการประมูล",
+            html: "สินค้าจะถูกเรียกเก็บค่าบริการ<br>เป็นจำนวน " + fee + "% ของราคาจบการประมูล",
             input: 'checkbox',
             inputValue: 1,
             inputPlaceholder:
@@ -277,6 +279,18 @@ $(document).ready(function () {
         })
 
         if (accept) {
+            Swal.fire({
+                title: 'กำลัง Upload สินค้า กรุณารอสักครู่...',
+                allowEscapeKey: false,
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                heightAuto: false,
+                // timer: 1500,
+                didOpen: () => {
+                    swal.showLoading();
+                }
+            })
+
             $.ajax({
                 type: Method,
                 url: formUrl,
@@ -580,7 +594,7 @@ $(document).ready(function () {
 
 //ปุ่มอัพโหลดสลีป
 $(document).ready(function () {
-    $(".pay_btn").click(function (e) { 
+    $(".pay_btn").click(function (e) {
         e.preventDefault();
         let pd_id = $(this).data("pd-id");
         console.log(pd_id);
@@ -647,7 +661,7 @@ $(document).ready(function () {
 
 //ปุ่มเพิ่มเลขพัสดุ
 $(document).ready(function () {
-    $("#tk_form").submit(function (e) { 
+    $("#tk_form").submit(function (e) {
         e.preventDefault();
         let Method = $(this).attr("method");
         let formUrl = $(this).attr("action");
@@ -667,7 +681,7 @@ $(document).ready(function () {
             cancelButtonColor: '#d33',
             confirmButtonText: 'ใช่!',
             cancelButtonText: 'ยกเลิก'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
                     type: Method,
@@ -698,13 +712,13 @@ $(document).ready(function () {
                     }
                 });
             }
-          })
+        })
     });
 });
 
 //ปุ่มยอมรับการส่งสินค้า
 $(document).ready(function () {
-    $("#accept-form").submit(function (e) { 
+    $("#accept-form").submit(function (e) {
         e.preventDefault();
         let Method = $(this).attr("method");
         let formUrl = $(this).attr("action");
@@ -718,7 +732,7 @@ $(document).ready(function () {
             cancelButtonColor: '#d33',
             confirmButtonText: 'ใช่! ฉันตรวจสอบแล้ว',
             cancelButtonText: 'ยกเลิก'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
                     type: Method,
@@ -749,13 +763,13 @@ $(document).ready(function () {
                     }
                 });
             }
-          })
+        })
     });
 });
 
 //ปุ่มเปลี่ยนรหัสผ่าน
 $(document).ready(function () {
-    $("#passModal_form").submit(function (e) { 
+    $("#passModal_form").submit(function (e) {
         e.preventDefault();
         let Method = $(this).attr("method");
         let formUrl = $(this).attr("action");
@@ -771,7 +785,7 @@ $(document).ready(function () {
             heightAuto: false,
             confirmButtonText: 'ใช่!',
             cancelButtonText: 'ยกเลิก'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
                     type: Method,
@@ -802,6 +816,6 @@ $(document).ready(function () {
                     }
                 });
             }
-          })
+        })
     });
 });
