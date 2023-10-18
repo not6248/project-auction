@@ -68,6 +68,15 @@ $ud_idcard_img = $row['ud_idcard_img'];
                     <label class="form-check-label mr-2">เปิดใช้งาน</label>
                   </div>
                 </div>
+                <div class="form-group">
+                  <label class="mb-1">สถานะยืนยัน Email</label><br>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" disabled type="radio" name="email_verified_status" value="0" <?= $row['email_verified_status'] == 0 ? "checked" : "" ?>>
+                    <label class="form-check-label mr-2">ยังไม่ยืนยัน</label>
+                    <input class="form-check-input" disabled type="radio" name="email_verified_status" value="1" <?= $row['email_verified_status'] == 1 ? "checked" : "" ?>>
+                    <label class="form-check-label mr-2">ยืนยันแล้ว</label>
+                  </div>
+                </div>
             </div>
             <!-- /.card-body -->
 

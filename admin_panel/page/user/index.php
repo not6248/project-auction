@@ -54,8 +54,10 @@
                       <td><?= $data['user_id'] ?></td>
                       <td><?= $data['username'] ?></td>
                       <td><?= ($data['user_type'] == 0
-                            ? '<span class="text-primary">[ADMIN]</span>'
-                            : '<span class="text-success">USER</span>') ?></td>
+                            ? '<span class="text-danger"><b>[ADMIN]</b></span>'
+                            : ($data['user_type'] == 1
+                            ? '<span class="text-success">USER [Bider]</span>'
+                            : '<span class="text-primary">USER [Seller]</span>')) ?></td>
                       <td><?= ($data['user_status'] == 0
                             ? '<span class="text-danger"><b>ปิด</b></span>'
                             : '<span class="text-success">เปิด</span>') ?></td>

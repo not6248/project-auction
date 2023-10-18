@@ -13,7 +13,14 @@ if (isset($_POST['update_user_submit'])) {
   $user_type = $_POST['user_type'] ?? "";
   $email = $_POST['email'] ?? "";
   $user_status = $_POST['user_status'] ?? "";
-  $sql = "UPDATE login SET username='{$username}',user_type='{$user_type}',user_status={$user_status},user_email='{$email}' WHERE user_id = {$_GET['user_id']}";
+  $email_verified_status = $_POST['email_verified_status'] ?? "";
+  $sql = "UPDATE login SET 
+  username='{$username}',
+  user_type='{$user_type}',
+  user_status={$user_status},
+  user_email='{$email}',
+  email_verified_status={$email_verified_status} 
+  WHERE user_id = {$_GET['user_id']}";
   $result = mysqli_query($conn, $sql);
   if (!$result) {
     echo_js_alert(mysqli_error($conn), "back");
@@ -122,6 +129,15 @@ if (isset($_POST['update_user_submit'])) {
                     <label class="form-check-label mr-2">ปิดใช้งาน</label>
                     <input class="form-check-input" type="radio" name="user_status" value="1" <?= $row['user_status'] == 1 ? "checked" : "" ?>>
                     <label class="form-check-label mr-2">เปิดใช้งาน</label>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="mb-1">สถานะยืนยัน Email</label><br>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="email_verified_status" value="0" <?= $row['email_verified_status'] == 0 ? "checked" : "" ?>>
+                    <label class="form-check-label mr-2">ยังไม่ยืนยัน</label>
+                    <input class="form-check-input" type="radio" name="email_verified_status" value="1" <?= $row['email_verified_status'] == 1 ? "checked" : "" ?>>
+                    <label class="form-check-label mr-2">ยืนยันแล้ว</label>
                   </div>
                 </div>
             </div>
