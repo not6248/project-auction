@@ -57,11 +57,11 @@
                             ? '<span class="text-primary">[ADMIN]</span>'
                             : '<span class="text-success">USER</span>') ?></td>
                       <td><?= ($data['user_status'] == 0
-                            ? '<span class="text-success">ปิด</span>'
+                            ? '<span class="text-danger"><b>ปิด</b></span>'
                             : '<span class="text-success">เปิด</span>') ?></td>
                       <td><?= $data['user_email'] ?></td>
                       <td><?= ($data['email_verified_status'] == 0
-                            ? '<span class="text-success">ยังไม่ยืนยัน</span>'
+                            ? '<span class="text-danger"><b>ยังไม่ยืนยัน</b></span>'
                             : '<span class="text-success">ยืนยันแล้ว</span>') ?></td>
                       <td>
                         <a href="?page=<?= $_GET['page'] ?>&function=detail&user_id=<?= $data['user_id'] ?>" class="btn btn-info btn-sm">รายละเอียด</a>
