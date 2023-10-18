@@ -12,7 +12,8 @@ if (isset($_POST['update_user_submit'])) {
   $username = $_POST['username'] ?? "";
   $user_type = $_POST['user_type'] ?? "";
   $email = $_POST['email'] ?? "";
-  $sql = "UPDATE login SET username='{$username}',user_type='{$user_type}',user_email='{$email}' WHERE user_id = {$_GET['user_id']}";
+  $user_status = $_POST['user_status'] ?? "";
+  $sql = "UPDATE login SET username='{$username}',user_type='{$user_type}',user_status={$user_status},user_email='{$email}' WHERE user_id = {$_GET['user_id']}";
   $result = mysqli_query($conn, $sql);
   if (!$result) {
     echo_js_alert(mysqli_error($conn), "back");
@@ -43,6 +44,7 @@ if (isset($_POST['update_user_submit'])) {
   $ud_id_card = $_POST['ud_id_card'] ?? "NULL";
   $bank_id = $_POST['bank_id'] ?? "NULL";
   $bank_number = $_POST['bank_number'] ?? "NULL";
+  $user_status = $_POST['user_status'] ?? "NULL";
   $sql = "UPDATE user_detail SET 
   ud_fname='{$fname}',
   ud_lname='{$lname}',
@@ -113,6 +115,15 @@ if (isset($_POST['update_user_submit'])) {
                   <label>อีเมล์ผู้ใช้</label>
                   <input name="email" type="email" class="form-control" placeholder="Email" value="<?= $row['user_email'] ?? "" ?>" required="required">
                 </div>
+                <div class="form-group">
+                  <label class="mb-1">สถานะผู้ใช้</label><br>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="user_status" value="0" <?= $row['user_status'] == 0 ? "checked" : "" ?>>
+                    <label class="form-check-label mr-2">ปิดใช้งาน</label>
+                    <input class="form-check-input" type="radio" name="user_status" value="1" <?= $row['user_status'] == 1 ? "checked" : "" ?>>
+                    <label class="form-check-label mr-2">เปิดใช้งาน</label>
+                  </div>
+                </div>
             </div>
             <!-- /.card-body -->
             <div class="card-footer">
@@ -131,7 +142,7 @@ if (isset($_POST['update_user_submit'])) {
               <form name="update_pass" action="" method="POST">
                 <div class="card">
                   <div class="card-body">
-                    <?=$row['password']?>
+                    <?= $row['password'] ?>
                   </div>
                 </div>
                 <div class="form-group">
@@ -193,9 +204,9 @@ if (isset($_POST['update_user_submit'])) {
                     <?php foreach ($resultprefix as $row_p) : ?>
                       <input class="form-check-input" type="radio" name="prefix" value="<?= $row_p['prefix_id'] ?>" <?= isset($prefix) && $prefix == $row_p['prefix_id'] ? "checked" : "" ?>>
                       <label class="form-check-label mr-2"><?= $row_p['prefix_name'] ?></label>
-                      <?php endforeach ?>
-                      <input class="form-check-input" type="radio" name="prefix" value="NULL" ?>
-                      <label class="form-check-label mr-2">SET NULL</label>
+                    <?php endforeach ?>
+                    <input class="form-check-input" type="radio" name="prefix" value="NULL" ?>
+                    <label class="form-check-label mr-2">SET NULL</label>
                   </div>
                 </div>
 
@@ -240,9 +251,9 @@ if (isset($_POST['update_user_submit'])) {
                       <?php foreach ($bank_arr as $index => $v) : ?>
                         <input value="<?= $index ?>" type="radio" class="form-check-input" name="bank_id" <?= isset($row['ud_bank_id']) && $index == $row['ud_bank_id'] ? "checked" : "" ?>>
                         <label class="form-check-label mr-2" for="prefix-1"><?= $v ?></label>
-                        <?php endforeach ?>
-                        <input value="NULL" type="radio" class="form-check-input" name="bank_id">
-                        <label class="form-check-label mr-2" for="prefix-1">SET NULL</label>
+                      <?php endforeach ?>
+                      <input value="NULL" type="radio" class="form-check-input" name="bank_id">
+                      <label class="form-check-label mr-2" for="prefix-1">SET NULL</label>
 
                     </div>
                   </div>

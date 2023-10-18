@@ -59,6 +59,15 @@ $ud_idcard_img = $row['ud_idcard_img'];
                   <label>อีเมล์ผู้ใช้</label>
                   <input disabled name="email" type="email" class="form-control" placeholder="Email" value="<?= $row['user_email'] ?? "" ?>" required="required">
                 </div>
+                <div class="form-group">
+                  <label class="mb-1">สถานะผู้ใช้</label><br>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" disabled type="radio" name="user_status" value="0" <?= $row['user_status'] == 0 ? "checked" : "" ?>>
+                    <label class="form-check-label mr-2">ปิดใช้งาน</label>
+                    <input class="form-check-input" disabled type="radio" name="user_status" value="1" <?= $row['user_status'] == 1 ? "checked" : "" ?>>
+                    <label class="form-check-label mr-2">เปิดใช้งาน</label>
+                  </div>
+                </div>
             </div>
             <!-- /.card-body -->
 
