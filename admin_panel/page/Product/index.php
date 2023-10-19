@@ -25,9 +25,9 @@ $result = mysqli_query($conn, $sql);
   <div class="content">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-12 text-right">
-          <a href="?page=<?= $_GET['page'] ?>&function=add" class="btn btn-success mb-3">เพิ่มข้อมูลสินค้า</a>
-        </div>
+        <!-- <div class="col-12 text-right">
+          <a href="?page=<?php //$_GET['page'] ?>&function=add" class="btn btn-success mb-3">เพิ่มข้อมูลสินค้า</a>
+        </div> -->
         <div class="col-md-12">
           <div class="card card-primary">
             <div class="card-header">
