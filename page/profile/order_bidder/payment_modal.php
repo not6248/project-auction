@@ -7,7 +7,7 @@
             </div>
             <div class="modal-body">
                 <!-- Start Form -->
-                <form action="ajax/ajax_payment_upload.php" method="post" id="pay_slip_img_form"  ?>">
+                <form action="ajax/ajax_payment_upload.php" method="post" id="pay_slip_img_form"  ?>
                     <img class="h-100 w-100" src="assets/img/payment_list.png" alt="id_card_verify" srcset="">
                     <div class="mb-3">
                         <p class="mb-0 ms-1">ช่องทางการชำระเงิน</p>
