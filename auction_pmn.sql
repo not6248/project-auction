@@ -187,7 +187,7 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`user_id`, `username`, `password`, `user_type`, `user_status`, `user_email`, `email_verified_code`, `email_verified_status`, `user_create_date`) VALUES
-(1, 'admin', '$2y$10$1DDQL.YURsCxwze/0Jcdnuf/yV1HjfvmFw6O4L9oomTN7NRV6AngO', 0, 1, 'admin@hotmail.com', NULL, 1, '2023-10-02 21:20:37');
+(1, 'admin', '$2y$10$1DDQL.YURsCxwze/0Jcdnuf/yV1HjfvmFw6O4L9oomTN7NRV6AngO', 0, 1, 'admin@admin.com', NULL, 1, '2023-10-02 21:20:37');
 
 -- --------------------------------------------------------
 
