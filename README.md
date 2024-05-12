@@ -2,7 +2,15 @@
 การพัฒนาระบบประมูลของสะสมออนไลน์ กรณีศึกษาการประมูลแผ่นเสียงไวนิล
 
 <p align="center">
-<img src="https://github.com/not6248/project-auction/assets/96365700/7feb806c-be3d-4a20-9fc7-af93d3314fc4" width=75%>
+<img src="https://github.com/not6248/project-auction/assets/96365700/2669edc1-ddb5-43cb-a1b8-5892fc4eef5c" width=75%>
+</p>
+
+<p align="center">
+<img src="https://github.com/not6248/project-auction/assets/96365700/18769e55-4ad1-4f71-92f4-1d8359bc7938" width=75%>
+</p>
+
+<p align="center">
+<img src="https://github.com/not6248/project-auction/assets/96365700/027a965e-3b56-4e41-ae14-36feb9c18c31" width=75%>
 </p>
 
 ## Features
