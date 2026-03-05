@@ -13,6 +13,10 @@
 <img src="https://github.com/not6248/project-auction/assets/96365700/027a965e-3b56-4e41-ae14-36feb9c18c31" width=75%>
 </p>
 
+<p align="center">
+<img width="926" height="748" alt="image" src="https://github.com/user-attachments/assets/86f123c4-17b0-4f84-a607-1d7d301ccd79" />
+</p>
+
 ## Features
 
 ## ความคืบหน้า Features 
